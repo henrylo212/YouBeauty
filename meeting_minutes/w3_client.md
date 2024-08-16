@@ -1,4 +1,3 @@
-New! Keyboard shortcuts … Drive keyboard shortcuts have been updated to give you first-letters navigation
 =# SOFT3888_F16_04 meeting minutes
 
 ## Information:
