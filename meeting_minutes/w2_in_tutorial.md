@@ -1,7 +1,7 @@
 =# SOFT3888_F16_04 meeting minutes
 
 ## Information:
-- Subject: Tutor Meeting 9 August (W2)
+- Subject: In-tutorial Meeting 9 August (W2)
 - Project name: You Beauty
 - Facilitator: 
 - Prepared by: Katholiki Kritharides
