@@ -15,31 +15,53 @@ Initial user stories.
 5. As a user, I want to receive email confirmation of my appointment date and time so that I can remember when and where it is in the future.
 6. As a user, I want to be able to cancel an appointment that has not yet passed so that I can account for changes in my schedule.
 7. As a user, I want to be able to update my profile information so that I can ensure my most up to date information is stored.
+8. As a user, I want to be able to view my booking history so that I can see my upcoming, current and past bookings together.
 
-8. As a salon, I want to be able to register as a new salon w/ Background, ID and Address verification checks so that I can store my information and appointments safely.
-9. As a salon, I want to be able to provide times and days of the week when I am available so that no bookings are made outside of salon business hours.
-10. As a salon, I want to be able to block out timeslots/sessions when I am unavailable so that no bookings can be made when the salon is unavailable for other reasons.
-11. As a salon, I want to be able to receive requests for appointments so that I can review them and ensure they are appropriate.
-12. As a salon, I want to be able to accept requests for appointments so that I can ensure the salon can have customers.
-13. As a salon, I want to be able to reject requests for appointments so that I can ensure the salon does not get booked out by fake appointments.
-14. As a salon, I want to be able to provide terms and conditions of the appointment (including cancellation policy) so that customers are informed before booking.
-15. As a salon, I want to be able to view appointments on my appointment calendar so that I can manage and view the times of different appointments.
-16. As a salon, I want to receive notification of cancellations so that I can adjust the salon schedule accordingly.
-17. As a salon, I want to be able to update my profile information so that I can ensure my most up to date information is stored.
+9. As a salon, I want to be able to register as a new salon w/ Background, ID and Address verification checks so that I can store my information and appointments safely.
+10. As a salon, I want to be able to provide times and days of the week when I am available so that no bookings are made outside of salon business hours.
+11. As a salon, I want to be able to block out timeslots/sessions when I am unavailable so that no bookings can be made when the salon is unavailable for other reasons.
+12. As a salon, I want to be able to receive requests for appointments so that I can review them and ensure they are appropriate.
+13. As a salon, I want to be able to accept requests for appointments so that I can ensure the salon can have customers.
+14. As a salon, I want to be able to reject requests for appointments so that I can ensure the salon does not get booked out by fake appointments.
+15. As a salon, I want to be able to provide terms and conditions of the appointment (including cancellation policy) so that customers are informed before booking.
+16. As a salon, I want to be able to view appointments on my appointment calendar so that I can manage and view the times of different appointments.
+17. As a salon, I want to receive notification of cancellations so that I can adjust the salon schedule accordingly.
+18. As a salon, I want to be able to update my profile information so that I can ensure my most up to date information is stored.
 
 ## Initial plan
 
-Initial plan.
+Initial plan:
 
-1. one
-2. 2
-3. 3
-4. 4
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
-etc/....
+1. Recurring meetings to be held: Out of tutorial (Tuesday 6-7pm), in tutorial (Friday 4-5pm), with tutor (Friday 5-6pm), and with clients (Friday 3-4pm)
+2. Communication: mainly through Slack.
+3. Documentation: Bitbucket (meeting minutes, code, README.md etc.) and Google Drive
+4. To switch XP roles every 2 weeks (Weeks 2 & 3, 4 & 5, 6 & 7, 8 & 9, 10 & 11)
+
+
+Rough plan for development:
+
+- Wireframes to be made for front-end, to discuss with client.
+- Database to be set up with "fake" data (AI-generated data as a placeholder for development).
+- Implement login / sign up functionality for both users and salons.
+- Search filter functionality done using database.
+- Code front-end, ensuring the layout of the website optimises UX and the website has a good UI.
+- Implement booking functionality (connect to database).
+- Implement view booking history for users.
+- Implement view booking calendar for salons.
 
 ---
+Other information...
+
+.
+
+.
+
+.
+
+.
+
+.
+
 # How to use Bitbucket
 ---
 ## Edit a file
