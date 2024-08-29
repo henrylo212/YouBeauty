@@ -62,11 +62,77 @@
     color: #fff;
     font: 400 20px 'Julius Sans One', sans-serif;
     margin-top: 70px;
-    margin-right: 100px;
+    margin-right: 10vw;
     text-transform: uppercase;
     position: absolute;
     text-align: center;
-    width: 150px;
+    width: fit-content;
 }
 
 
+
+
+:root{
+    --bar-width: 20px;
+    --bar-height: 3px;
+    --hamburger-gap: 4px;
+    --background: #fff;
+    --animation-timing: 200ms ease-in-out;
+}
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: var(--hamburger-gap);
+    width: 98vw;
+    position: absolute;
+    top: 70px;
+    z-index: 2;
+    cursor: pointer;
+}
+.hamburger::before,
+.hamburger::after,
+.hamburger input{
+    content: "";
+    width: var(--bar-width);
+    height: var(--bar-height);
+    background-color: var(--background);
+    border-radius: 20px;
+    transform-origin: right center;
+    transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing);
+}
+.hamburger input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+.hamburger:has(input:checked)::before {
+    rotate: -45deg;
+}
+.hamburger:has(input:checked)::after {
+    rotate: 45deg;
+}
+.hamburger input:checked {
+    opacity: 0;
+    width: 0;
+}
+.menu {
+    display: flex;
+    padding-top: 100px;
+    overflow: hidden;
+    font: 20px 'Julius Sans One', sans-serif;
+    line-height: 40px;
+    color: #fff;
+    width: 98vw;
+    height: 0;
+    position: absolute;
+    justify-content: end;
+    opacity: 0;
+    transition: opacity var(--animation-timing), height var(--animation-timing);
+}
+.hamburger.hamburger:has(input:checked) + .menu {
+    height: fit-content;
+    opacity: 100;
+}
