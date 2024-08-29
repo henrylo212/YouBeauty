@@ -131,6 +131,7 @@
     justify-content: end;
     opacity: 0;
     transition: opacity var(--animation-timing), height var(--animation-timing);
+    list-style: none;
 }
 .hamburger.hamburger:has(input:checked) + .menu {
     height: fit-content;
