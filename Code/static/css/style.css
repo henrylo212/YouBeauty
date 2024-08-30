@@ -1,0 +1,139 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(#D282DE, #fff);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.logo-container {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    width: 112px;
+    max-width: 100%;
+    position: absolute;
+    background-color: #fff;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.logo {
+    object-fit: contain;
+    object-position: 6px 5px;
+    width: 90%;
+    height: 90%;
+}
+
+
+
+.search-salon {
+    position: absolute;
+    border-radius: 20px;
+    background-color: #fff;
+    align-self: stretch;
+    width: 20%;
+    margin: 50px 200px;
+    padding: 20px 30px;
+    font: 400 20px 'Julius Sans One', sans-serif;
+    color: #979797;
+}
+.visually-hidden:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+
+
+.business-section {
+    display: flex;
+    justify-content: end;
+}
+.business-banner {
+    color: #fff;
+    font: 400 20px 'Julius Sans One', sans-serif;
+    margin-top: 70px;
+    margin-right: 10vw;
+    text-transform: uppercase;
+    position: absolute;
+    text-align: center;
+    width: fit-content;
+}
+
+
+
+
+:root{
+    --bar-width: 20px;
+    --bar-height: 3px;
+    --hamburger-gap: 4px;
+    --background: #fff;
+    --animation-timing: 200ms ease-in-out;
+}
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: var(--hamburger-gap);
+    width: 98vw;
+    position: absolute;
+    top: 70px;
+    z-index: 2;
+    cursor: pointer;
+}
+.hamburger::before,
+.hamburger::after,
+.hamburger input{
+    content: "";
+    width: var(--bar-width);
+    height: var(--bar-height);
+    background-color: var(--background);
+    border-radius: 20px;
+    transform-origin: right center;
+    transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing);
+}
+.hamburger input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+.hamburger:has(input:checked)::before {
+    rotate: -45deg;
+}
+.hamburger:has(input:checked)::after {
+    rotate: 45deg;
+}
+.hamburger input:checked {
+    opacity: 0;
+    width: 0;
+}
+.menu {
+    display: flex;
+    padding-top: 100px;
+    overflow: hidden;
+    font: 20px 'Julius Sans One', sans-serif;
+    line-height: 40px;
+    color: #fff;
+    width: 98vw;
+    height: 0;
+    position: absolute;
+    justify-content: end;
+    opacity: 0;
+    transition: opacity var(--animation-timing), height var(--animation-timing);
+    list-style: none;
+}
+.hamburger.hamburger:has(input:checked) + .menu {
+    height: fit-content;
+    opacity: 100;
+}
