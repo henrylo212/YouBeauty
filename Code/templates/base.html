@@ -1,24 +1,40 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
+{% load static %}
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- makes website auto-size -->
-  <title>{% block title %}You Beauty{% endblock %}</title>
-  
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(to bottom, #d283de, white);
-    }
-
-  </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}You Beauty{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-  
+  <div class="background">
+    <section class="logo-section">
+        <div class="logo-container">
+            <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+        </div>
+    </section>
+
+    <section class="business-section">
+        <div class="business-banner" role="heading" aria-level="2">For Business</div>
+    </section>
+
+    <label class="hamburger">
+        <input type="checkbox" id="check">
+    </label>
+    <aside class="menu">
+        <nav>
+            <li><a class="active" href="{% url 'login' %}">Login</a></li>
+            <div>Profile</div>
+        </nav>
+    </aside>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+  </div>
 </body>
 
 </html>
