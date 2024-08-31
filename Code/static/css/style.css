@@ -140,11 +140,22 @@
 }
 
 
-.wrapper {
+.wrapper-location {
     width: 150px;
+    margin: 60px 360px 0;
+    position: absolute;
+}
+.wrapper-service {
+    width: 200px;
     margin: 60px 200px 0;
+    position: absolute;
 }
 .select-btn, .options li {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+}
+.service-btn, .options li {
     display: flex;
     cursor: pointer;
     align-items: center;
@@ -153,13 +164,31 @@
     height: 40px;
     font: 15px 'Julius Sans One', sans-serif;
     display: flex;
-    padding: 0 20px;
+    padding-left: 40px;
+    border-radius: 20px;
+    background: #fff;
+    justify-content: space-between;
+}
+.service-btn {
+    height: 40px;
+    font: 15px 'Julius Sans One', sans-serif;
+    display: flex;
+    padding-left: 40px;
     border-radius: 20px;
     background: #fff;
     justify-content: space-between;
 }
 .select-btn i {
     font: 15px 'Julius Sans One', sans-serif;
+}
+.service-btn i {
+    font: 15px 'Julius Sans One', sans-serif;
+}
+.wrapper-location.active .content{
+    display: block;
+}
+.wrapper-service.active .content{
+    display: block;
 }
 .content {
     display: none;
@@ -169,9 +198,6 @@
     background: #fff;
     position: absolute;
     width: 130px;
-}
-.wrapper.active .content{
-    display: block;
 }
 .content .search {
     position: relative;
