@@ -49,6 +49,16 @@ Rough plan for development:
 - Implement view booking history for users.
 - Implement view booking calendar for salons.
 
+Extra features to consider:
+1. Using AI models to create style suggestions for users:
+As a user, I want to get style suggestions so I can get recommendations when I want to try something new
+
+2. FAQ page:
+As a user/salon, I want a page that contains FAQ answered so I can quickly resolve small concerns without having to contact Admins
+
+3. About-us page:
+As a user/salon, I want to easily contact the Admins when I have an issue that cannot be resolved on my own
+
 ---
 Other information...
 
@@ -65,8 +75,6 @@ Other information...
 # How to use Bitbucket
 ---
 ## Edit a file
-test
-
 You’ll start by editing this README file to learn how to edit a file in Bitbucket.
 
 1. Click **Source** on the left side.
