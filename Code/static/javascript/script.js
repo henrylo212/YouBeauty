@@ -1,7 +1,7 @@
 const wrapperLocation = document.querySelector(".wrapper-location"),
 selectBtn = wrapperLocation.querySelector(".select-btn"),
 searchInp = wrapperLocation.querySelector("input"),
-options = wrapperLocation.querySelector(".options");
+options = wrapperLocation.querySelector(".options")
 
 let countries = ["Camperdown", "Darlington", "Chippendale", "Hornsby", "Epping", "Strathfield", "Burwood", "Chatswood"]
 
