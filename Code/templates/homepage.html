@@ -1,42 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Beauty</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <body>
-    <section class="logo-section">
-        <div class="logo-container">
-            <img loading="lazy" src="design/logo.png" class="logo" alt="logo">
-        </div>
-    </section>
-
-
-    <form class="search-salon" role="search">
-        <label for="salonSearch" >Search for a salon</label>
-        <input type="search" id="salonSearch" class="visually-hidden" placeholder="Search for a salon" aria-label="Search for a salon">
-    </form>
-
-
-    <section class="business-section">
-        <div class="business-banner" role="heading" aria-level="2">For Business</div>
-    </section>
-
-
-
-    <label class="hamburger">
-        <input type="checkbox" id="check">
-    </label>
-    <aside class="menu">
-        <nav>
-            <li><a class="active" href="home.html">Login</a></li>
-            <div>Profile</div>
-        </nav>
-    </aside>
-
-
     <div class="wrapper">
         <!-- <div class="select-button">
             <span>Select Location</span>
@@ -57,7 +22,5 @@
             </ul>
         </div>
     </div>
-
-    <div class="background"></div>
 </body>
-</html>
+{% endblock %}
