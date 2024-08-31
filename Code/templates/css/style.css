@@ -42,15 +42,14 @@
     font: 400 20px 'Julius Sans One', sans-serif;
     color: #979797;
 }
-.visually-hidden:not(:focus):not(:active) {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
+.visually-hidden:not(:focus):not(:active):not(:focus-within) {
+    /* clip-path: inset(50%);
     overflow: hidden;
     position: absolute;
-    white-space: nowrap;
-    width: 1px;
-}
+    white-space: nowrap; 
+    height: 30px; */
+    width: fit-content;
+  }
 
 
 
@@ -84,11 +83,13 @@
     flex-direction: column;
     align-items: end;
     gap: var(--hamburger-gap);
-    width: 98vw;
+    width: fit-content;
+    margin-left: 96%;
     position: absolute;
     top: 70px;
     z-index: 2;
     cursor: pointer;
+    /* outline-style: dashed; */
 }
 .hamburger::before,
 .hamburger::after,
@@ -136,4 +137,62 @@
 .hamburger.hamburger:has(input:checked) + .menu {
     height: fit-content;
     opacity: 100;
+}
+
+
+.wrapper {
+    width: 370px;
+    margin: 200px 200px;
+    position: absolute;
+}
+.content {
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 7px;
+    background: #fff;
+    position: absolute;
+}
+.content .search {
+    position: relative;
+}
+.search i{
+    position: absolute;
+    left: 15px;
+    color: #979797;
+    font-size: 20px;
+    line-height: 53px;
+}
+.search input {
+    height: 53px;
+    width: 80%;
+    outline: none;
+    font-size: 17px;
+    padding: 0 15px 0 43px;
+    border: 1px solid #979797;
+    border-radius: 5px;
+}
+.content .options {
+    margin-top: 20px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+.options::-webkit-scrollbar {
+    width: 7px;
+}
+.options::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 25px;
+}
+.options::-webkit-scrollbar-thumb {
+    background: lightgray;
+    border-radius: 25px;
+}
+.options li{
+    height: 50px;
+    padding: 0 13px;
+    font-size: 21px;
+    border-radius: 5px;
+}
+.options li:hover {
+    background: lightgray;
 }
