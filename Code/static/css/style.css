@@ -74,7 +74,7 @@ body {
 
 
 
-
+/* Hamburger Menu */
 :root{
     --bar-width: 20px;
     --bar-height: 3px;
@@ -143,6 +143,7 @@ body {
 }
 
 
+/* Salon Cards */
 form {
     background-color: white; 
     padding: 20px;
@@ -194,8 +195,11 @@ form {
     flex-direction: row;
 }
 
+
+
+/* Search Bar */
 .wrapper-location {
-    width: 150px;
+    width: 200px;
     margin: 60px 360px 0;
     position: absolute;
 }
@@ -204,12 +208,22 @@ form {
     margin: 60px 200px 0;
     position: absolute;
 }
+.wrapper-time {
+    width: 150px;
+    margin: 60px 520px 0;
+    position: absolute;
+}
 .select-btn, .options li {
     display: flex;
     cursor: pointer;
     align-items: center;
 }
 .service-btn, .options li {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+}
+.time-btn, .options li {
     display: flex;
     cursor: pointer;
     align-items: center;
@@ -232,16 +246,31 @@ form {
     background: #fff;
     justify-content: space-between;
 }
+.time-btn {
+    height: 40px;
+    font: 15px 'Julius Sans One', sans-serif;
+    display: flex;
+    padding-left: 45px;
+    border-radius: 20px;
+    background: #fff;
+    justify-content: space-between;
+}
 .select-btn i {
     font: 15px 'Julius Sans One', sans-serif;
 }
 .service-btn i {
     font: 15px 'Julius Sans One', sans-serif;
 }
+.time-btn i {
+    font: 15px 'Julius Sans One', sans-serif;
+}
 .wrapper-location.active .content{
     display: block;
 }
 .wrapper-service.active .content{
+    display: block;
+}
+.wrapper-time.active .content{
     display: block;
 }
 .content {
@@ -289,7 +318,6 @@ form {
     background: lightgray;
     border-radius: 25px;
 }
-
 .options li{
     height: 30px;
     padding-top: 5px;
