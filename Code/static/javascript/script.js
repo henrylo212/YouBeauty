@@ -40,7 +40,7 @@ serviceBtn = wrapperService.querySelector(".service-btn"),
 searchInpService = wrapperService.querySelector("input"),
 optionsService = wrapperService.querySelector(".options");
 
-let services = ["Camperdown", "Darlington", "Chippendale", "Hornsby", "Epping", "Strathfield", "Burwood", "Chatswood"]
+let services = ["Basic Cut", "Blowdry", "Wash and Cut", "Perm", "Bleach", "Dye", "Straighten", "Curl"]
 
 function addService() {
     optionsService.innerHTML = "";
