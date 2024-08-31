@@ -50,6 +50,7 @@ Rough plan for development:
 - Implement view booking calendar for salons.
 
 Extra features to consider:
+
 1. Using AI models to create style suggestions for users:
 As a user, I want to get style suggestions so I can get recommendations when I want to try something new
 
@@ -58,6 +59,11 @@ As a user/salon, I want a page that contains FAQ answered so I can quickly resol
 
 3. About-us page:
 As a user/salon, I want to easily contact the Admins when I have an issue that cannot be resolved on my own
+
+Extra user stories to consider:
+19. As a salon, I want to be able to cancel appointments in case of emergencies where I can not provide my services
+20. As a salon, I want to be able update booking appointments in case a customer reschedules
+21. As a user, I want to be able to reschedule my appointments in case of emergencies
 
 ---
 Other information...
