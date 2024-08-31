@@ -2,16 +2,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="wrapper">
-        <div class="select-btn">
-            <span>Location</span>
-        </div>
-        <div class="content">
-            <div class="search">
-                <input type="text" placeholder="Location">
-            </div>
-            <ul class="options"></ul>
-        </div>
+<div class="wrapper-service">
+    <div class="service-btn">
+        <span>Service</span>
     </div>
 
     <!--happy hour section-->
@@ -47,4 +40,26 @@
     </div>
 </body>
     <script src="static\javascript\script.js"></script>
+    <div class="content">
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
+        <ul class="options"></ul>
+    </div>
+</div>
+
+<div class="wrapper-location">
+    <div class="select-btn">
+        <span>Location</span>
+    </div>
+    <div class="content">
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
+        <ul class="options"></ul>
+    </div>
+</div>
+
+
+<script src="static\javascript\script.js"></script>
 {% endblock %}
