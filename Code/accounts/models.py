@@ -13,7 +13,7 @@ class SalonAddress(models.Model):
 
 class Users(models.Model):
     user_id = models.AutoField(primary_key=True)
-    type = models.CharField(max_length=255, choices=[('admin', 'admin'), ('business', 'business'), ('customer', 'customer')])  
+    type = models.CharField(max_length=255, choices=[('admin', 'admin'), ('business', 'business'), ('customer', 'customer')], default='customer') 
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)

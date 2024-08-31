@@ -1,12 +1,9 @@
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
-from django.template import loader
 
 from django.contrib.auth import login, authenticate
 from .forms import RegistrationForm
 
-# def test(request):
-#     return HttpResponse("Hello world!")
+from .models import SalonInfo
 
 def RegistrationView(request):
     if request.method == 'POST':
@@ -21,3 +18,8 @@ def RegistrationView(request):
     else:
         form = RegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+
+def extractSalonInfoView(request):
+    salon_info = SalonInfo.objects.all()  
+    return render(request, 'homepage.html', {'salon_info': salon_info})

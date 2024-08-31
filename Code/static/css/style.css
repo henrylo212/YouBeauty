@@ -142,6 +142,14 @@ body {
     opacity: 100;
 }
 
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    text-align: center;
+}
 
 /* Salon Cards */
 form {
@@ -176,13 +184,13 @@ form {
 }
 
 .salon-card {
+    font: 15px 'Julius Sans One', sans-serif;
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
     height: 280px;
-    font-family: 'Century Gothic', sans-serif;
     margin-right: 40px;
 }
 
@@ -195,6 +203,13 @@ form {
     flex-direction: row;
 }
 
+.salon-name-text {
+    font-weight: bold;
+}
+
+.salon-card-text {
+    margin: 10px;
+}
 
 
 /* Search Bar */
