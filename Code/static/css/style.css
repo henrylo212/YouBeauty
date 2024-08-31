@@ -155,7 +155,7 @@ form {
     flex-direction: column;
     justify-content: left;
     height: 30vh; 
-    padding-left: 40px;
+    padding-left: 80px;
     padding-top: 70px;
     padding-bottom: 40px;
 }
@@ -183,6 +183,10 @@ form {
     height: 280px;
     font-family: 'Century Gothic', sans-serif;
     margin-right: 40px;
+}
+
+.spacer {
+    height: 150px;
 }
 
 .card-wrapper {
