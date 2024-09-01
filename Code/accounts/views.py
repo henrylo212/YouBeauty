@@ -23,3 +23,7 @@ def RegistrationView(request):
 def extractSalonInfoView(request):
     salon_info = SalonInfo.objects.all()  
     return render(request, 'homepage.html', {'salon_info': salon_info})
+
+
+def FAQView(request):
+    return render(request, 'faq.html')

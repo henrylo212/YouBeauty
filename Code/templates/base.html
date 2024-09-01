@@ -27,8 +27,15 @@
     </label>
     <aside class="menu">
         <nav>
-            <li><a class="active" href="{% url 'login' %}">Login</a></li>
-            <div>Profile</div>
+            {% if user.is_authenticated %}
+                Hi {{ user.username }}!
+                <div>Profile</div>
+                <a href="{% url 'faq' %}">F.A.Q</a>
+            {% else %}
+                <li><a class="active" href="{% url 'login' %}">Login</a></li>
+                <div>Profile</div>
+                <a href="{% url 'faq' %}">F.A.Q</a>
+            {% endif %}
         </nav>
     </aside>
     

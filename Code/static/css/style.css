@@ -211,6 +211,19 @@ form {
     margin: 10px;
 }
 
+.faq-wrapper {
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    margin-top: 30px;
+    margin-left: 40px;
+    padding-right: 40px;
+    color: white;
+}
+
+.faq-item {
+    margin-top:30px;
+    font: 15px 'Julius Sans One', sans-serif;
+    color: black;
+}
 
 /* Search Bar */
 .wrapper-location {
