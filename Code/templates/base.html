@@ -29,11 +29,11 @@
         <nav>
             {% if user.is_authenticated %}
                 Hi {{ user.username }}!
-                <div>Profile</div>
+                <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
                 <a href="{% url 'faq' %}">F.A.Q</a>
             {% else %}
                 <li><a class="active" href="{% url 'login' %}">Login</a></li>
-                <div>Profile</div>
+                <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
                 <a href="{% url 'faq' %}">F.A.Q</a>
             {% endif %}
         </nav>
