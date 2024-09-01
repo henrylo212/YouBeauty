@@ -344,3 +344,9 @@ form {
 .options li:hover {
     background: lightgray;
 }
+
+.profile-heading {
+    text-align: center; /* Centers the text horizontally */
+    margin-top: 70px;   /* Adds some space at the top */
+    color: white;
+}
