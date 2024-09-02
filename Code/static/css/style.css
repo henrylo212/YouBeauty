@@ -57,18 +57,15 @@ body {
 
 
 
-.business-section {
+header {
     display: flex;
-    justify-content: end;
-}
-.business-banner {
     color: #fff;
     font: 400 20px 'Julius Sans One', sans-serif;
-    margin-top: 70px;
-    margin-right: 10vw;
-    text-transform: uppercase;
     position: absolute;
-    text-align: center;
+    margin-top: 70px;
+    margin-left: 86%;
+    margin-right: 100px;
+    text-transform: uppercase;
     width: fit-content;
 }
 
