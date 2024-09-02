@@ -12,9 +12,11 @@
 <body>
     <section class="logo-section">
         <div class="logo-container">
-            <div class="image-container">
-                <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
-            </div>
+            <a href="{% url 'home' %}">
+                <div class="image-container">
+                    <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+                </div>
+            </a>
         </div>
     </section>
 
