@@ -17,6 +17,18 @@ Initial user stories.
 7. As a user, I want to be able to update my profile information so that I can ensure my most up to date information is stored.
 8. As a user, I want to be able to view my booking history so that I can see my upcoming, current and past bookings together.
 
+As a user, I want to be able to access login page from the home page, so that I am able to get to the login page easily
+
+As a user, I want to be able to search for services on the home page, so that I am able to find them easily.
+
+As a user, I want to be able to search for salons using location on the home page so that I can find places near me.
+
+As a user, I want to be able to view happy hour deals on the home page so I can see the salons that are providing discounted services to get a good deal.
+
+As a user, I want to be able to go to the manage bookings page from the home page so that I am able to access it easily.
+
+
+
 9. As a salon, I want to be able to register as a new salon with store information so that I can store my information and appointments.
 10. As a salon, I want to be able to provide times and days of the week when I am available so that no bookings are made outside of salon business hours.
 11. As a salon, I want to be able to block out timeslots/sessions when I am unavailable so that no bookings can be made when the salon is unavailable for other reasons.
