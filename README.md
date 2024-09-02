@@ -77,6 +77,10 @@ Extra user stories to consider:
 19. As a salon, I want to be able to cancel appointments in case of emergencies where I can not provide my services
 20. As a salon, I want to be able update booking appointments in case a customer reschedules
 21. As a user, I want to be able to reschedule my appointments in case of emergencies
+22. As a system administrator, I want to be able to manage salon registrations, including approval, suspension, and deletion of salon accounts, so that I can maintain the quality of service providers on the platform.
+23. As a system administrator, I want the booking system to handle a high volume of concurrent users during peak hours without performance degradation, so that the platform will remain responsive and reliable.
+24. As a website visitor, I want to be able to browse salons and services available from the homepage, so that I can research services from different salons.
+25. As a user, I want the booking system to work seamlessly across different devices including laptop and mobile phones, so that I can book appointments without compatibility issues.
 
 ---
 Other information...

@@ -30,5 +30,10 @@ def FAQView(request):
 def profileView(request):
     return render(request, 'profile/profile.html')
 
+
 def bookingsView(request):
     return render(request, 'bookings.html')
+
+def forBusinessView(request):
+    return render(request, 'forBusiness.html')
+
