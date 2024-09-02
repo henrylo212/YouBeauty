@@ -12,4 +12,6 @@ urlpatterns = [
     path('bookings/', views.bookingsView, name = 'bookings'),
 
     path("forBusiness/", views.forBusinessView, name="forBusiness")
+
+
 ]
