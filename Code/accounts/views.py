@@ -29,3 +29,6 @@ def FAQView(request):
 
 def profileView(request):
     return render(request, 'profile/profile.html')
+
+def forBusinessView(request):
+    return render(request, 'forBusiness.html')
