@@ -8,7 +8,7 @@ You Beauty is an appointment booking website for salons that allows users to bro
 
 Initial user stories.
 
-1. As a user, I want to be able to register as a new user w/ ID and verification checks so that I can store my information and appointments safely.
+1. As a user, I want to be able to register as a new user so that I can store my information and appointments.
 2. As a user, I want to be able to enter a location in which I would like to find a salon so that I can make sure it is in the area I want.
 3. As a user, I want to be able to select and view a salon so that I can see information about it and check its availability.
 4. As a user, I want to be able to select timeslots/sessions at a salon so that I can make a booking for those timeslots.
@@ -17,7 +17,7 @@ Initial user stories.
 7. As a user, I want to be able to update my profile information so that I can ensure my most up to date information is stored.
 8. As a user, I want to be able to view my booking history so that I can see my upcoming, current and past bookings together.
 
-9. As a salon, I want to be able to register as a new salon w/ Background, ID and Address verification checks so that I can store my information and appointments safely.
+9. As a salon, I want to be able to register as a new salon with store information so that I can store my information and appointments.
 10. As a salon, I want to be able to provide times and days of the week when I am available so that no bookings are made outside of salon business hours.
 11. As a salon, I want to be able to block out timeslots/sessions when I am unavailable so that no bookings can be made when the salon is unavailable for other reasons.
 12. As a salon, I want to be able to receive requests for appointments so that I can review them and ensure they are appropriate.
