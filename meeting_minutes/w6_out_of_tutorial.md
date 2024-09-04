@@ -80,27 +80,14 @@
     <th> Website progress and task assignment </th>
     <td> Update of current development progress
         <ul>
-        <li>User login is f
+        <li>User login is functional but not yet for business side</li>
+        <li>Assigned functionality tasks to be done this week (w6)</li>
+        <li>Consider splitting customer and business side teams on implementing functionalities to catch up timeline</li>
         </ul>
     </td>
-    <td><ol>
-        <li>Make slides document</li>
-        <li>Code team to have a meeting to discuss code further</li>
-        <li>Work on code, have progress by Friday</li>
-    </ol>
-    </td>
-    <td><ol>
-        <li>TBD</li>
-        <li>Oydan, Niranjana</li>
-        <li>Oydan, Niranjana, 3rd person (TBD)</li>
-    </ol>
-    </td>
-    <td><ul>
-        <li>Slides AND demo due to be submitted Monday 2nd September</li>
-        <li>In-class presentation and demo on Friday 6th September</li>
-        <li>Slides should be summary of report</li>
-        <li>Oydan has done some html already (login, but not connected to database). Don’t need to do database stuff for the login page (Django admin does storage for you)</li>
-    </ul>
+    <td>Programming tasks to be done by this week. More functionality of the website should come in play in the next few.</td>
+    <td>Everyone</td>
+    <td>
     </td>
 </tr>
 
