@@ -334,7 +334,7 @@
     <td> &#10003;</td>
     <td> &#10003;</td>
     <td> &#10003;</td>
-    <td> In-tutorial Group Meeting W3</td>
+    <td> &#10003;</td>
     <td> &#10003;</td>
     <td> &#10003;</td>
     <td> Tutor Meeting W3</td>
