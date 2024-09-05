@@ -42,12 +42,11 @@
         <li>Henry to talk about requirements (1m)</li>
         <li>Kathy to talk about testing plan (1m)</li>
         <li>Oydan to talk about implemented user stories (3m)</li>
-        <li>(?) to talk about plan for other stories (30s)        </li>
-        <li>(?) to talk about system architecture (1m)        </li>
-        <li>(?) to talk about system architecture (1m)        </li>
-        <li>(?) to talk about potential risks (30s)        </li>
-        <li>(?) to talk about group process (1m)        </li>
-        <li>(?) to talk about Discipline (30s)        </li>
+        <li>Kathy to talk about plan for other stories (30s)        </li>
+        <li>Oydan to talk about system architecture (1m)        </li>
+        <li>Niranjana to talk about potential risks (30s)        </li>
+        <li>Salina to talk about group process (1m)        </li>
+        <li>Claudia to talk about Discipline (30s)        </li>
     </ul></td>
 </tr>
 
@@ -88,6 +87,15 @@
     <td>Programming tasks to be done by this week. More functionality of the website should come in play in the next few.</td>
     <td>Everyone</td>
     <td>
+        <ul>
+        <li>Claudia to do figma pages/wireframe</li>
+        <li>Henry to do business sign up, email notification for foget password</li>
+        <li>Salina to do sitemap - standardized page name</li>
+        <li>Narangina to finish business pre-login page</li>
+        <li>Kathy to do profile page (flex display)</li>
+        <li>Mohitha to do FAQ</li>
+        <li>Oydan to add instructions to use webapp and complete manage booking page</li>
+        </ul>
     </td>
 </tr>
 
