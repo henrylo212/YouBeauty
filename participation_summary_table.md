@@ -182,7 +182,7 @@
 <tr>
     <th rowspan="4"> Week 6</th>
     <th> In-tutorial Group Meeting </th>
-    <td> Claudia Choi </td>
+    <td> </td>
     <td> &#10003 </td>
     <td> &#10003 </td>
     <td> &#10003 </td>
@@ -212,7 +212,7 @@
 </tr>
 <tr>
     <th> Tutor Meeting </th>
-    <td> Claudia Choi </td>
+    <td> </td>
     <td> &#10003 </td>
     <td> &#10003 </td>
     <td> &#10003 </td>
