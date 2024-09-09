@@ -3,7 +3,7 @@
 ## Information:
 - Subject: Client meeting 23rd August (Week 4)
 - Project name: P24 You Beauty
-- Facilitator: Mohitha
+- Facilitator: Niranjana
 - Prepared by: Claudia
 - Mode: Google meet online meeting
 - Date: 23/08/2024

@@ -182,13 +182,13 @@
 <tr>
     <th rowspan="4"> Week 6</th>
     <th> In-tutorial Group Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 <tr>
     <th> Out-tutorial Group Meeting </th>
@@ -212,13 +212,13 @@
 </tr>
 <tr>
     <th> Tutor Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 
 <tr>
