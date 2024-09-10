@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 
 from django.contrib.auth import login, authenticate
+from django.contrib import messages
 from .forms import RegistrationForm
 
 from .models import SalonInfo
@@ -50,14 +51,15 @@ def business_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         
+        
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
-            if user.groups.filter(name='salon').exists():  
+            if user.groups.filter(name='salon').exists():
+                login(request, user)
                 return redirect('profile')  
         else:
             messages.error(request, 'Invalid username or password.')
     
     return render(request, 'registration/business_login.html')
-
 
