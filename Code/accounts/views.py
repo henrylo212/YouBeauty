@@ -37,3 +37,27 @@ def bookingsView(request):
 def forBusinessView(request):
     return render(request, 'forBusiness.html')
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+
+def business_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            if user.groups.filter(name='salon').exists():  
+                return redirect('profile')  
+        else:
+            messages.error(request, 'Invalid username or password.')
+    
+    return render(request, 'registration/business_login.html')
+
+
