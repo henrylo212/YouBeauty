@@ -1,6 +1,9 @@
 from django.db import models
 
 class UserType(models.Model):
+    '''
+    Table for different types of users - admin user, business user and customer
+    '''
     type_id = models.AutoField(primary_key=True)
     type = models.CharField(max_length=255, choices=[('admin', 'admin'), ('business', 'business'), ('customer', 'customer')])
 
