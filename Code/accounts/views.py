@@ -53,6 +53,8 @@ def FAQView(request):
 def profileView(request):
     return render(request, 'profile/profile.html')
 
+def editProfileView(request):
+    return render(request, 'profile/edit_profile.html')
 
 def bookingsView(request):
     return render(request, 'bookings.html')

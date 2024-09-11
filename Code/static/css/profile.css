@@ -7,6 +7,7 @@ body{
     /* justify-content: space-evenly; */
     /* align-items: center; */
     align-content: flex-start;
+    font-family: 'Kanit', Verdana, sans-serif;
 }
 
 .profile-heading-container{
@@ -120,7 +121,6 @@ body{
     align-content: flex-start;
     /* background-color: blue; */
     font-size: 20px;
-    font-family: 'Kanit', Verdana, sans-serif;
     /* padding: 0px 20px; */
     margin: 0px 40px;
     padding: 1em;
@@ -156,7 +156,7 @@ body{
     /* align-items: center; */
     /* justify-content: center; */
     /* align-self: center; */
-    margin: 10px;
+    margin: 10px 25px;
     /* text-align: center; */
     padding: 20px;
     text-align: left;
@@ -184,7 +184,7 @@ body{
     align-content: center;
     text-align: center;
     align-self:flex-end;
-    padding-right: 20px;
+    padding-right: 40px;
     font-size: 9px;
     padding-bottom: 4px;
     /* background-color: coral; */
@@ -213,8 +213,34 @@ body{
     border-radius: 10px;
     size: 40px;
 }
+::-webkit-scrollbar-track {
+    margin: 0 30px;
+}
 /* @media(max-width: 575px) {
     .profile-page {
         flex-wrap: wrap;
     }
 } */
+
+
+.edit-button {
+    font-size: 25px;
+    border-radius: 30px;
+    background-color: #d282de;
+    margin: 5px 20px;
+    margin-top: 30px;
+    padding: 10px 5px;
+    max-width: 150px;
+    align-self: center;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    /* justify-self: center; */
+}
+
+.edit-button:hover {
+    /* background-color: #ad43be; */
+    background-color: #b644c8;
+    /* color: #b644c8; */
+}
