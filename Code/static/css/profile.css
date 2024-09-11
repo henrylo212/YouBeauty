@@ -185,9 +185,21 @@ body{
     text-align: center;
     align-self:flex-end;
     padding-right: 40px;
-    font-size: 9px;
+    /* font-size: 9px; */
     padding-bottom: 4px;
     /* background-color: coral; */
+}
+
+.h2-link {
+    text-decoration: none;
+    font-size: 15px;
+    color:#484848;
+}
+
+.h2-link:hover {
+    text-decoration: underline;
+    font-size: 15px;
+    color:#484848;
 }
 
 .booking-scroll {
