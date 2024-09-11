@@ -1,8 +1,29 @@
 {% extends "base.html" %}
-
-{% block content %}
 {% load static %}
 
-<h1 class="profile-heading">MANAGE BOOKINGS</h1>
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bookings.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+{% endblock %}
 
+{% block content %}
+<div class="top-bar"></div>
+<div class="container">
+    <h1>Manage bookings</h1>
+    
+    <div class="booking-card">
+        <img src="{% static 'design/salon-image.jpg' %}" alt="Salon Image" class="salon-image">
+        <div class="booking-details">
+            <h2>Tester's Salon</h2>
+            <p>12th of September – 11am – Basic Cut</p>
+            <p>Unit 3, Testing Rd, Darlington</p>
+        </div>
+        <div class="booking-actions">
+            <div class="booking-price">
+                <span>$40</span>
+            </div>
+            <button class="edit-button">Edit</button>
+        </div>
+    </div>
+</div>
 {% endblock %}
