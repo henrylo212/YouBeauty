@@ -1,3 +1,25 @@
+New! Keyboard shortcuts … Drive keyboard shortcuts have been updated to give you first-letters navigation
+=# SOFT3888_F16_04 meeting minutes
+
+## Information:
+\nInformation:
+\nSubject: Deciding the beginning steps for the project
+\nProject name: You Beauty
+\nFacilitator: Mohitha
+\nPrepared by: Niranjana
+\nMode: Online
+\nDate: 7th August
+\nTime: 2-3
+\nAttendees: Katholiki Kritharides, Mohitha Mohan, Niranjana Saxena, Oydan Khan, Claudia Choi, Selina Thai, Henry Lo, Clients (Clarence Cheah, Amanda Ng)
+\nAbsent: N/A
+\nAgenda item
+
+
+
+
+
+
+
 =# SOFT3888_F16_04 meeting minutes 
 \nInformation:
 \nSubject: Deciding the beginning steps for the project
