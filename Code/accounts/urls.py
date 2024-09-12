@@ -11,7 +11,6 @@ urlpatterns = [
     path('edit_profile/', views.editProfileView, name='edit_profile'),
     path("forBusiness/", views.forBusinessView, name="forBusiness"),
     path('bookings/', views.bookingsView, name = 'bookings'),
-<<<<<<< HEAD
 
     path("forBusiness/", views.forBusinessView, name="forBusiness"),
     path('business-login/', views.business_login, name='business_login'),
@@ -23,7 +22,3 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
 ]
-=======
-]
-  
->>>>>>> ff0d931c3adc2ed075e714d1c6217ee896569702
