@@ -69,6 +69,15 @@ header {
     width: fit-content;
 }
 
+a {
+    text-decoration: none;
+    color: #fff
+}
+
+a:hover {
+    color: #000
+}
+
 
 
 /* Hamburger Menu */
@@ -121,59 +130,70 @@ header {
 }
 .menu {
     display: flex;
-    margin-top: 100px;
+    margin-top: 130px;
     overflow: hidden;
     font: 20px 'Julius Sans One', sans-serif;
     line-height: 40px;
     color: #fff;
-    width: 98vw;
+    width: 97vw;
     height: 0;
     position: absolute;
     justify-content: end;
     opacity: 0;
     transition: opacity var(--animation-timing), height var(--animation-timing);
     list-style: none;
+    text-align: right;
 }
 .hamburger.hamburger:has(input:checked) + .menu {
     height: fit-content;
     opacity: 100;
 }
 
+
 .login-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    margin-top: 45vh;
+    width: 100%;
     text-align: center;
+    /* outline-style: dotted; */
+    position: absolute;
 }
 
 .logout-link {
-    background: none!important;
+    background-color: transparent!important;
     border: none;
     padding: 0!important;
-    color: blue; 
+    color: #fff; 
     margin: 0;
-    text-decoration: underline;
+    font: 20px 'Julius Sans One', sans-serif;
     cursor: pointer;
     padding: 0;
     font-size: inherit; 
 }
 
+.logout-link:hover {
+    color: #000;
+}
+
 .logout-button {
-    margin-top: 15px;
-    background: none;
+    background-color: transparent;
+    color: transparent;
     border: none;
 }
 
-/* Salon Cards */
-form {
+
+/* form { -- > this was affecting "form" for the login button
     background-color: white; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
+
+/* Salon Cards */
 .salon-wrapper {
     display: flex;
     flex-direction: column;
