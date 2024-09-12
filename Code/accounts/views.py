@@ -57,7 +57,7 @@ def editProfileView(request):
     return render(request, 'profile/edit_profile.html')
 
 def bookingsView(request):
-    return render(request, 'bookings.html')
+    return render(request, 'bookings/bookings.html')
 
 def forBusinessView(request):
     return render(request, 'forBusiness.html')
