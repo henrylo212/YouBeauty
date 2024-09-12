@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}You Beauty{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css\style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
+
+    {% block extra_css %}
+    {% endblock %}
 </head>
 
 <body>
   <div class="background">
     <section class="logo-section">
         <div class="logo-container">
-            <div class="image-container">
-                <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
-            </div>
+            <a href="{% url 'home' %}">
+                <div class="image-container">
+                    <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+                </div>
+            </a>
         </div>
     </section>
 
@@ -42,7 +48,6 @@
                 </div>
             {% else %}
                 <li><a class="active" href="{% url 'login' %}">Login</a></li>
-                <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
                 <a href="{% url 'faq' %}">F.A.Q</a>
             {% endif %}
         </nav>

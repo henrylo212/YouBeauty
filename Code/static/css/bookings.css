@@ -1,0 +1,92 @@
+
+.top-bar {
+    background: #DCA8F5;
+    height: 165px; 
+    position: relative;
+    width: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+
+.container {
+    background-color: white;
+    min-height: 100vh; 
+    width: 100%;
+    padding: 20px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.container h1 {
+    margin-left: 100px; 
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: left; 
+}
+
+.booking-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin-left: 200px;
+}
+
+.booking-card img.salon-image {
+    width: 120px;
+    height: 100px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.booking-card .booking-details {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.booking-card .booking-details h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.booking-card .booking-details p {
+    margin: 5px 0;
+    color: gray;
+}
+
+.booking-card .booking-price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.booking-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    gap: 10px; 
+}
+
+.container .edit-button {
+    font-weight: bold;
+    background-color: #DCA8F5; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container .edit-button:hover {
+    background-color: #b644c8;
+}
