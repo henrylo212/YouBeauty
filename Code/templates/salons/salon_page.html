@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/salons.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+{% endblock %}
+
+{% block content %}
+<div class="top-bar"></div>
+<div class="container">
+    <div class="salon-details">
+        <h1>{{ salon.business_name }}</h1>
+        <p>Address: {{ salon.address.street }}, {{ salon.address.suburb }}, {{ salon.address.state }} {{ salon.address.postcode }}</p>
+        <p>Phone: {{ salon.salon_phone }}</p>
+        <p>Email: {{ salon.salon_email }}</p>
+    </div>
+</div>
+{% endblock %}

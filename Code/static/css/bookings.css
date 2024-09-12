@@ -75,11 +75,12 @@
 }
 
 .container .edit-button {
+    font-weight: bold;
     background-color: #DCA8F5; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     padding: 10px 20px;
     font-size: 14px;
     cursor: pointer;
@@ -87,5 +88,5 @@
 }
 
 .container .edit-button:hover {
-    background-color: #c292db; 
+    background-color: #b644c8;
 }

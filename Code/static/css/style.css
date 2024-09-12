@@ -238,6 +238,14 @@ a:hover {
     flex-direction: row;
 }
 
+.card-wrapper a {
+    color: black;
+}
+
+.card-wrapper a:hover {
+    color: #b644c8;
+}
+
 .salon-name-text {
     font-weight: bold;
 }
@@ -392,8 +400,6 @@ a:hover {
 .options li:hover {
     background: lightgray;
 }
-
-
 
 
 .profile-heading {
