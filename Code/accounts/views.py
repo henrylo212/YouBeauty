@@ -48,13 +48,49 @@ def RegistrationView(request):
 
 
 def extractSalonInfoView(request):
+    '''
+    Handles information about the salon homepage
+
+    This view handlers information about the salon homepage.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'homepage.html': The template used to display the salon homepage
+    
+    '''
     salon_info = SalonInfo.objects.all()  
     return render(request, 'homepage.html', {'salon_info': salon_info})
 
 def FAQView(request):
+    '''
+    Handles information about the FAQ homepage
+
+    This view handles information about the FAQ page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'faq.html': The template used to display the FAQ homepage
+    
+    '''
     return render(request, 'faq.html')
 
 def profileView(request):
+    '''
+    Handles information about the user profile 
+
+    This view handles information about the user profile
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'profile/profile.html': The template used to display the user profile information
+    
+    '''
     return render(request, 'profile/profile.html')
 
 def editProfileView(request):
