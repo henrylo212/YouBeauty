@@ -1,9 +1,12 @@
-from django.shortcuts import redirect, render
 
-from django.contrib.auth import login, authenticate
-from django.contrib import messages
+
 from .forms import RegistrationForm
-
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
+from customers.models import Customer
+from salons.models import SalonOwner
 from .models import SalonInfo
 
 def RegistrationView(request):
@@ -99,28 +102,45 @@ def bookingsView(request):
 def forBusinessView(request):
     return render(request, 'forBusiness.html')
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
-
-def business_login(request):
+def customer_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        
-        
-        user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
-            if user.groups.filter(name='salon').exists():
-                login(request, user)
-                return redirect('profile')  
-        else:
-            messages.error(request, 'Invalid username or password.')
-    
-    return render(request, 'registration/business_login.html')
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                
+                if hasattr(user, 'customer'):
+                    login(request, user)
+                    return redirect('customer_dashboard')
+                else:
+                    form.add_error(None, "This account is not registered as a customer.")
+            else:
+                form.add_error(None, "Invalid username or password.")
+    else:
+        form = AuthenticationForm()
 
+    return render(request, 'customers/login.html', {'form': form})
+
+def salon_login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                
+                if hasattr(user, 'salonowner'):
+                    login(request, user)
+                    return redirect('salon_dashboard')
+                else:
+                    form.add_error(None, "This account is not registered as a salon owner.")
+            else:
+                form.add_error(None, "Invalid username or password.")
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'salons/login.html', {'form': form})
