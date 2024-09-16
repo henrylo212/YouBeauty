@@ -119,7 +119,7 @@ body{
     align-items: flex-start;
     /* align-content: center; */
     align-content: flex-start;
-    /* background-color: blue; */
+    background-color: blue;
     font-size: 20px;
     /* padding: 0px 20px; */
     margin: 0px 40px;
@@ -235,10 +235,13 @@ body{
 } */
 
 
-.edit-button {
+/* .edit-button { */
+/* #edit-button { */
+.form-button {
     font-size: 25px;
     border-radius: 30px;
     background-color: #d282de;
+    border-width: 0px;
     margin: 5px 20px;
     margin-top: 30px;
     padding: 10px 5px;
@@ -251,8 +254,19 @@ body{
     /* justify-self: center; */
 }
 
-.edit-button:hover {
+/* .edit-button:hover { */
+/* #edit-button:hover { */
+.form-button:hover {
     /* background-color: #ad43be; */
     background-color: #b644c8;
     /* color: #b644c8; */
 }
+
+input[disabled] {
+    background-color: wheat;
+}
+
+input:not([disabled]) {
+    background-color: greenyellow;
+}
+

@@ -23,6 +23,26 @@
                     <img loading="lazy" src="{% static 'design/logo.png' %}" class="profile-pic" alt="profile picture">
                 </div>
             </div>
+            <form class="profile-information-container" id="profile-form">
+                <div class="profile-item-container">
+                    <label for="profile-name">Profile Name: </label>
+                    <input type="text" id="profile-name" name="profile-name" value="Firstname Lastname" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name="email" value="username@example.com" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="phone-number">Phone number: </label>
+                    <input type="number" id="phone-number" name="phone-number" value="0123456789" disabled>
+                </div>
+                
+                <button type="button" id="edit-button">EDIT</button>
+                <button type="submit" id="confirm">CONFIRM</button>
+
+            </form>
             <div class="profile-information-container">
                 <div class="profile-item-container">
                     <h3>Profile name: </h3>
@@ -37,7 +57,8 @@
                     <p>0000 000 000</p>
                 </div>
             </div>
-            <a class="edit-button" href="{% url 'edit_profile' %}" type="button">EDIT</button></a>
+            <!-- <a class="edit-button" href="{% url 'edit_profile' %}" type="button">EDIT</a>
+            <button class="edit-button" type="button" onclick="editProfile(this, 'red')">EDIT</button> -->
         </div>
         <div class="upcoming-bookings">
             <div class="upcoming-title">
@@ -76,7 +97,12 @@
         </div>
     </div>
 
-
+    <!-- <script>
+        function editProfile(element, color) {
+            element.style.backgroundcolor = color;
+        }
+    </script> -->
+    <script src="../../static/javascript/profilescript.js"></script>
 
 
 </body>
