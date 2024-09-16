@@ -122,7 +122,7 @@ def customer_login(request):
     else:
         form = AuthenticationForm()
 
-    return render(request, 'customers/login.html', {'form': form})
+    return render(request, 'registration/login.html', {'form': form})
 
 def salon_login(request):
     if request.method == 'POST':
