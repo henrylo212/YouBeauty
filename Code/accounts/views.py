@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from .forms import RegistrationForm
 
+
 from .models import SalonInfo
 
 def RegistrationView(request):
@@ -99,13 +100,6 @@ def bookingsView(request):
 def forBusinessView(request):
     return render(request, 'forBusiness.html')
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
-
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
 
 def business_login(request):
     if request.method == 'POST':
