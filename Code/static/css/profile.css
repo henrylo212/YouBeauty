@@ -239,7 +239,7 @@ body{
 
 /* .edit-button { */
 /* #edit-button { */
-.form-button {
+.profile-information-container button {
     font-size: 25px;
     border-radius: 30px;
     background-color: #d282de;
@@ -258,10 +258,16 @@ body{
 
 /* .edit-button:hover { */
 /* #edit-button:hover { */
-.form-button:hover {
+.profile-information-container button:hover {
     /* background-color: #ad43be; */
     background-color: #b644c8;
     /* color: #b644c8; */
+}
+
+#confirm {
+    display: none;
+    /* display: */
+    /* content-visibility: hidden; */
 }
 
 .profile-information-container label {
@@ -287,19 +293,21 @@ body{
 }
 
 #profile-name{
-    width: 10em;
+    width: 11.5em;
 }
 #email{
-    width: 15em;
+    width: 20em;
 }
 #phone-number{
-    width: 8em;
+    width: 10.35em;
 }
 
 .profile-information-container input:not([disabled]) {
     /* background-color: #fff;
     font-family: 'Kanit', Verdana, sans-serif; */
     /* background-color: red; */
-    border: 2px solid #000;
+    border: 2px solid #d9d9d9;
+    border-radius: 10px;
+    padding: 0px 10px;
 }
 
