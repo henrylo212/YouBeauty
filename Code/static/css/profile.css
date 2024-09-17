@@ -212,7 +212,7 @@ body{
     overflow: auto;
 }
 
-::-webkit-scrollbar {
+.booking-scroll::-webkit-scrollbar {
     appearance: none;
     height: 5px;
     /* background-color: #d9d9d9; */
@@ -221,13 +221,13 @@ body{
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+.booking-scroll::-webkit-scrollbar-thumb {
     background-color: #d9d9d9;
     /* box-shadow: 0px 0px 10px #d282de; */
     border-radius: 10px;
     size: 40px;
 }
-::-webkit-scrollbar-track {
+.booking-scroll::-webkit-scrollbar-track {
     margin: 0 30px;
 }
 /* @media(max-width: 575px) {
@@ -302,6 +302,13 @@ body{
     width: 10.35em;
 }
 
+#phone-number::-webkit-inner-spin-button, #phone-number::-webkit-outer-spin-button {
+    appearance: none;
+}
+
+#phone-number {
+    -moz-appearance: textfield;
+}
 .profile-information-container input:not([disabled]) {
     /* background-color: #fff;
     font-family: 'Kanit', Verdana, sans-serif; */
