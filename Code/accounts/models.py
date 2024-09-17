@@ -1,5 +1,9 @@
 from django.db import models
 
+# Database stuff!!
+# It's in the form of "models"
+# Each table is a class
+
 class UserType(models.Model):
     '''
     Table for different types of users - admin user, business user and customer
