@@ -9,6 +9,8 @@ from customers.models import Customer
 from salons.models import SalonOwner
 from .models import SalonInfo
 
+# Think of all these views as just webpages. Views (in the form of html/css pages) of the database almost
+
 def RegistrationView(request):
     """
     Handle user registration.
@@ -122,7 +124,7 @@ def customer_login(request):
     else:
         form = AuthenticationForm()
 
-    return render(request, 'customers/login.html', {'form': form})
+    return render(request, 'registration/login.html', {'form': form})
 
 def salon_login(request):
     if request.method == 'POST':
