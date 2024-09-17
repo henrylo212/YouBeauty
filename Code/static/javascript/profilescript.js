@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // confirmButton.style.display = 'unset';
         // confirmButton.style.display=
         // confirmButton.style.display = "";
-        // confirmButton.style.contentVisibility = "visible";
+        confirmButton.style.color = 'red';
+        confirmButton.style.contentVisibility = 'visible';
         // confirmButton.style.display = initial;
     });
 });
