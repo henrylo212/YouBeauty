@@ -14,8 +14,8 @@ urlpatterns = [
     path("forBusiness/", views.forBusinessView, name="forBusiness"),
     path('bookings/', views.bookingsView, name = 'bookings'),
 
-    # path("forBusiness/", views.forBusinessView, name="forBusiness"),
-    path('business-login/', views.business_login, name='business_login'),
+    path("forBusiness/", views.forBusinessView, name="forBusiness"),
+    path('salon-login/', views.salon_login, name='salon_login'),
     path('business-register/', views.RegistrationView, name="business_register"),
     
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),

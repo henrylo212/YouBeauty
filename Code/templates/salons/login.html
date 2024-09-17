@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% comment %} {% block title %}Salon Login{% endblock %} {% endcomment %}
+
+{% block content %}
+<div class="login-wrapper">
+    <h2>Login</h2>
+    <form method="post" action="{% url 'salon_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'register' %}">Sign up now</a></p>
+    <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+
+
+</div>
+{% endblock %}
