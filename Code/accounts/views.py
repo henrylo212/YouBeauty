@@ -6,6 +6,8 @@ from .forms import RegistrationForm
 
 from .models import SalonInfo
 
+# Think of all these views as just webpages. Views (in the form of html/css pages) of the database almost
+
 def RegistrationView(request):
     """
     Handle user registration.
