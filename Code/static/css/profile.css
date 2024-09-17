@@ -18,7 +18,9 @@ body{
 .profile-item-container {
     display: flex;
     align-items: flex-end;
-    gap: 30px;
+    gap: 15%;
+    /* border: 3px solid black; */
+    width: 100%;
 }
 
 /* .profile-heading-container{
@@ -119,7 +121,7 @@ body{
     align-items: flex-start;
     /* align-content: center; */
     align-content: flex-start;
-    background-color: blue;
+    /* background-color: blue; */
     font-size: 20px;
     /* padding: 0px 20px; */
     margin: 0px 40px;
@@ -262,11 +264,42 @@ body{
     /* color: #b644c8; */
 }
 
-input[disabled] {
-    background-color: wheat;
+.profile-information-container label {
+    font-size: x-large;
+    /* border: 3px solid black; */
 }
 
-input:not([disabled]) {
-    background-color: greenyellow;
+.profile-information-container input {
+    background-color: #fff;
+    font-family: 'Kanit', Verdana, sans-serif;
+    color: #000;
+    font-size: large;
+}
+
+.profile-information-container input[disabled] {
+    /* background-color: wheat; */
+    /* background-color: #fff; */
+    border-width: 0px;
+    /* font-family: 'Kanit', Verdana, sans-serif;
+    color: #000;
+    font-size: large; */
+    /* border-width: 4px; */
+}
+
+#profile-name{
+    width: 10em;
+}
+#email{
+    width: 15em;
+}
+#phone-number{
+    width: 8em;
+}
+
+.profile-information-container input:not([disabled]) {
+    /* background-color: #fff;
+    font-family: 'Kanit', Verdana, sans-serif; */
+    /* background-color: red; */
+    border: 2px solid #000;
 }
 
