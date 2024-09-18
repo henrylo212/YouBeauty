@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     editButton.addEventListener('click', function() {
         inputs.forEach(input => {
             input.disabled = false;
+            // input.style.
         });
         editButton.style.display = 'none';
     })

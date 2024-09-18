@@ -300,17 +300,19 @@ body{
 }
 
 
-#profile-name{
-    /* width: 10em; */
-    width: 11.5em;
+/* #profile-name{
+    min-width: 10em;
 }
 #email{
-    /* width: 15em; */
-    width: 20em;
+    min-width: 15em;
 }
 #phone-number{
-    /* width: 8em; */
-    width: 10.35em;
+    min-width: 17em;
+} */
+
+.profile-item-container input {
+    flex: 1;
+    min-width: 0;
 }
 
 #phone-number::-webkit-inner-spin-button, #phone-number::-webkit-outer-spin-button {
