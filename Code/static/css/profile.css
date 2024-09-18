@@ -70,7 +70,7 @@ body{
     display: flex;
     flex: 1;
     /* flex-grow: 1;
-    flex-shrink: 0.5; */
+    flex-shrink: 1; */
     flex-direction: column;
     /* justify-content: space-evenly; */
     /* justify-content: center; */
@@ -85,7 +85,9 @@ body{
     /* min-width: 28em; */
     /* max-width: 45%; */
     /* max-height: 40em; */
-    height: 40em;
+    /* height: 40em; */
+    /* height: 34em; */
+    max-height: 34em;
     padding: 1em;
     /* margin-left: 8%; */
     margin-left: 1%;
@@ -148,7 +150,7 @@ body{
     display: flex;
     flex: 1;
     /* flex-grow: 1;
-    flex-shrink: 0.5; */
+    flex-shrink: 1; */
     flex-direction: column;
     /* justify-content: space-evenly; */
     /* align-items: flex-start; */
@@ -163,7 +165,9 @@ body{
     min-width: 24em;
     /* min-width: 28em; */
 
-    max-height: 40em;
+    /* max-height: 40em; */
+    /* height: 34em; */
+    max-height: 34em;
     background-color: #fff;
     padding: 1em;
     margin-left: 1%;
@@ -358,12 +362,35 @@ body{
     padding: 0px 10px;
 }
 
-/* @media(max-width: 700px) {
-    .profile-page {
-        flex-wrap: wrap;
+@media(min-width:1001px) and (max-width: 2000px){
+    .profile-details {
+        max-height: 45em;
     }
     
-} */
+    .upcoming-bookings {
+        max-height: 45em;
+    }
+}
+
+@media(min-width:701px) and (max-width: 1000px) {
+    .profile-details {
+        max-height: 34em;
+    }
+    
+    .upcoming-bookings {
+        max-height: 34em;
+    }
+}
+
+@media(max-width: 700px) {
+    .profile-details {
+        max-height: 45em;
+    }
+    
+    .upcoming-bookings {
+        max-height: 45em;
+    }
+}
 
 
 
