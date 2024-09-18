@@ -22,6 +22,7 @@ body{
     gap: 15%;
     /* border: 3px solid black; */
     width: 100%;
+    flex-wrap: wrap;
 }
 
 /* .profile-heading-container{
@@ -79,7 +80,8 @@ body{
     /* space-evenly */
     /* min-width: 20%; */
     /* min-width: 50vh; */
-    min-width: 25em;
+    min-width: 24em;
+    /* min-width: 28em; */
     /* max-width: 45%; */
     padding: 1em;
     /* margin-left: 8%; */
@@ -133,7 +135,8 @@ body{
     /* background-color: blue; */
     font-size: 20px;
     /* padding: 0px 20px; */
-    margin: 0px 40px;
+    /* margin: 0px 40px; */
+    margin: 0% 10%;
     padding: 1em;
     gap: 8px;
 }
@@ -154,7 +157,8 @@ body{
     /* border: 15px solid black; */
 
     /* min-width: 50vh; */
-    min-width: 25em;
+    min-width: 24em;
+    /* min-width: 28em; */
     background-color: #fff;
     padding: 1em;
     margin-left: 1%;
@@ -274,10 +278,15 @@ body{
 }
 
 #confirm {
-    display: none;
-    /* display: */
-    /* content-visibility: hidden; */
+    /* display: none; */
+    visibility: hidden;
+    overflow: hidden;
+    width: 0px;
+    height: 0px;
+    /* background-color: aqua; */
 }
+
+
 .profile-information-container label {
     font-size: x-large;
     /* border: 3px solid black; */
@@ -287,7 +296,13 @@ body{
     background-color: #fff;
     font-family: 'Kanit', Verdana, sans-serif;
     color: #000;
+    /* color: blue; */
     font-size: large;
+    /* background-color: aqua; */
+    /* border: 3px solid brown; */
+    overflow-wrap: anywhere;
+    text-overflow: ellipsis;
+    /* max-width: 80%; */
 }
 .profile-information-container input[disabled] {
     /* background-color: wheat; */
@@ -307,18 +322,24 @@ body{
     min-width: 15em;
 }
 #phone-number{
-    min-width: 17em;
+    min-width: 10em;
 } */
 
 .profile-item-container input {
     flex: 1;
-    min-width: 0;
+    /* maybe min-width 0 for only form entry?? */
+    /* min-width: 0;  */
+    /* min-width: 20%;
+    min-width: 50%; */
+    overflow-wrap: anywhere;
+    min-width: 9em;
 }
 
 #phone-number::-webkit-inner-spin-button, #phone-number::-webkit-outer-spin-button {
     appearance: none;
 }
 #phone-number {
+    appearance: textfield;
     -moz-appearance: textfield;
 }
 

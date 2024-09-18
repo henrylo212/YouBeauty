@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // input.style.
         });
         editButton.style.display = 'none';
+        confirmButton.style.visibility = 'visible';
+        confirmButton.style.width = '100%';
+        confirmButton.style.height = 'auto';
+        confirmButton.style.overflow = 'auto';
     })
 
     confirmButton.addEventListener('click', function() {
@@ -28,8 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // confirmButton.style.display = 'unset';
         // confirmButton.style.display=
         // confirmButton.style.display = "";
-        confirmButton.style.color = 'red';
-        confirmButton.style.contentVisibility = 'visible';
+        // confirmButton.style.color = 'red';
+        // confirmButton.style.contentVisibility = 'visible';
+        confirmButton.style.visibility = 'visible';
+        confirmButton.style.width = '100%';
+        confirmButton.style.overflow = 'auto';
+
         // confirmButton.style.display = initial;
     });
 });
