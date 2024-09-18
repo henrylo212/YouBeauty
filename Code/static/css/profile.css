@@ -78,7 +78,8 @@ body{
     /* align-content: center; */
     /* space-evenly */
     /* min-width: 20%; */
-    min-width: 50vh;
+    /* min-width: 50vh; */
+    min-width: 25em;
     /* max-width: 45%; */
     padding: 1em;
     /* margin-left: 8%; */
@@ -152,7 +153,8 @@ body{
     max-width: 45%; */
     /* border: 15px solid black; */
 
-    min-width: 50vh;
+    /* min-width: 50vh; */
+    min-width: 25em;
     background-color: #fff;
     padding: 1em;
     margin-left: 1%;
@@ -328,12 +330,12 @@ body{
     padding: 0px 10px;
 }
 
-@media(max-width: 700px) {
+/* @media(max-width: 700px) {
     .profile-page {
         flex-wrap: wrap;
     }
     
-}
+} */
 
 
 
