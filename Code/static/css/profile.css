@@ -86,8 +86,8 @@ body{
     /* max-width: 45%; */
     /* max-height: 40em; */
     /* height: 40em; */
-    /* height: 34em; */
-    max-height: 34em;
+    height: 35em;
+    /* max-height: 35em; */
     padding: 1em;
     /* margin-left: 8%; */
     margin-left: 1%;
@@ -166,8 +166,8 @@ body{
     /* min-width: 28em; */
 
     /* max-height: 40em; */
-    /* height: 34em; */
-    max-height: 34em;
+    height: 35em;
+    /* max-height: 35em; */
     background-color: #fff;
     padding: 1em;
     margin-left: 1%;
@@ -362,33 +362,56 @@ body{
     padding: 0px 10px;
 }
 
-@media(min-width:1001px) and (max-width: 2000px){
+@media(min-width:1417px) and (max-width: 2000px){
     .profile-details {
         max-height: 45em;
+        height: 34em;
+        /* background-color: purple; */
     }
     
     .upcoming-bookings {
         max-height: 45em;
+        height: 34em;
     }
 }
 
-@media(min-width:701px) and (max-width: 1000px) {
+@media(min-width:1008px) and (max-width: 1416px){
     .profile-details {
-        max-height: 34em;
+        max-height: 45em;
+        height: 38em;
+        /* background-color: red; */
     }
     
     .upcoming-bookings {
-        max-height: 34em;
+        max-height: 45em;
+        height: 38em;
+        /* height: 40em; */
     }
 }
 
-@media(max-width: 700px) {
+@media(min-width:694px) and (max-width: 1007px) {
+    .profile-details {
+        max-height: 34em;
+        height: 34em;
+        /* background-color: yellow; */
+    }
+    
+    .upcoming-bookings {
+        max-height: 34em;
+        height: 34em;
+    }
+}
+
+@media(max-width: 693px) {
     .profile-details {
         max-height: 45em;
+        height: 38em;
+        /* background-color: greenyellow; */
     }
     
     .upcoming-bookings {
         max-height: 45em;
+        height: 38em;
     }
 }
 
