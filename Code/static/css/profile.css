@@ -61,6 +61,7 @@ body{
     min-height: 30em;
     flex-wrap: wrap;
     padding: 0% 7%;
+    padding-bottom: 7%;
 }
 
 .profile-details{
@@ -83,13 +84,15 @@ body{
     min-width: 24em;
     /* min-width: 28em; */
     /* max-width: 45%; */
+    /* max-height: 40em; */
+    height: 40em;
     padding: 1em;
     /* margin-left: 8%; */
     margin-left: 1%;
     margin-right: 1%;
     border-radius: 20px;
     padding-bottom: 15px;
-    margin-bottom: 100px;
+    margin-bottom: 2%;
     
     box-shadow: 8px 8px rgba(78, 78, 78, 0.14);
 }
@@ -159,13 +162,15 @@ body{
     /* min-width: 50vh; */
     min-width: 24em;
     /* min-width: 28em; */
+
+    max-height: 40em;
     background-color: #fff;
     padding: 1em;
     margin-left: 1%;
     /* margin-right: 8%; */
     margin-right: 1%;
     border-radius: 20px;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
     box-shadow: 8px 8px rgba(78, 78, 78, 0.14);
 }
 
@@ -332,7 +337,7 @@ body{
     /* min-width: 20%;
     min-width: 50%; */
     overflow-wrap: anywhere;
-    min-width: 9em;
+    min-width: 10em;
 }
 
 #phone-number::-webkit-inner-spin-button, #phone-number::-webkit-outer-spin-button {
