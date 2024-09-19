@@ -1,17 +1,12 @@
 
 
 from .forms import RegistrationForm
-<<<<<<< HEAD
-
-
-=======
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from customers.models import Customer
 from salons.models import SalonOwner
->>>>>>> e5b93525646d02921c10ac4856c7ca26206c17d8
 from .models import SalonInfo
 
 def RegistrationView(request):

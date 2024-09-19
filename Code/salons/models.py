@@ -8,7 +8,7 @@ class SalonAddress(models.Model):
     country = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'{self.address_line1}, {self.state}, {self.country}'
+        return f'{self.address_line1}, {self.address_line2}, {self.state}, {self.country}'
 
 
 class SalonInfo(models.Model):
