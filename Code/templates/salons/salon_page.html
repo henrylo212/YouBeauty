@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/salons.css' %}">
-    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
-{% endblock %}
+    
 
 {% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}You Beauty{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/salons.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+</head>
+
 <div class="top-bar"></div>
 <div class="container">
     <div class="salon-details">

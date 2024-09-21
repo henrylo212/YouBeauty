@@ -1,7 +1,54 @@
+{% extends "salon_base.html" %}
+{% load static %}
 
-<h2>Register Your Salon</h2>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ salon_form.as_p }}
-    <button type="submit">Submit Salon Info</button>
-</form>
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/salon-registration.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+</head>
+
+<div class="form-wrapper">
+    <h1>Register Your Salon</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ salon_form.as_p }}
+
+        <h2>Services Offered</h2>
+        <div id="service-form-container">
+            {{ service_formset.management_form }}
+            {% for form in service_formset %}
+                <div class="service-form">
+                    {{ form.as_p }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="button" id="add-service">Add Another Service</button>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function() {
+        let formIndex = {{ service_formset.total_form_count }};
+
+        $('#add-service').click(function() {
+            const formHtml = `
+                <div class="service-form">
+                    ${$('#service-form-container').children('.service-form:first').html().replace(/__prefix__/g, formIndex)}
+                </div>
+            `;
+            $('#service-form-container').append(formHtml);
+            formIndex++;
+            // Update form count
+            $('#id_form-TOTAL_FORMS').val(formIndex);
+        });
+    });
+</script>
+{% endblock %}

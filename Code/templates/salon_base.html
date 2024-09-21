@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}You Beauty{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css\style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\salon-base.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
 </head>
 
 <body>
-  <div class="background">
     <section class="logo-section">
         <div class="logo-container">
-            <a href="{% url 'home' %}">
+            <a href="{% url 'forBusiness' %}">
                 <div class="image-container">
                     <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
                 </div>
@@ -21,11 +22,7 @@
         </div>
     </section>
 
-    <header>
-        <nav>
-            <a href="{% url 'forBusiness' %}">For Business</a>
-        </nav>
-    </header>
+    <h1 class="forBusinessText">FOR BUSINESS</h1>
 
     <label class="hamburger">
         <input type="checkbox" id="check">
@@ -35,27 +32,21 @@
             {% if user.is_authenticated %}
                 Hi {{ user.username }}!
                 <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'bookings' %}">Manage Bookings</a></li>
                 <a href="{% url 'faq' %}">F.A.Q</a>
-                <div class="logout-button">
-                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="logout-link">Logout</button>
-                    </form>
-                </div>
             {% else %}
-                <li><a class="active" href="{% url 'login' %}">Login</a></li>
+                <li><a class="active" href="{% url 'salon_login' %}">Business Login</a></li>
+                <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
                 <a href="{% url 'faq' %}">F.A.Q</a>
             {% endif %}
+
         </nav>
     </aside>
-    
 
     <main>
-        {% block content %}
-        {% endblock %}
+        <div class="content-container">
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
-  </div>
 </body>
-
 </html>

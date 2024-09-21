@@ -1,5 +1,5 @@
 from django import forms
-from .models import SalonInfo, SalonAddress
+from .models import SalonInfo, SalonAddress, Service, SalonService
 
 
 class SalonForm(forms.ModelForm):
@@ -16,3 +16,14 @@ class SalonForm(forms.ModelForm):
             'salon_closingtime', 'happyhour_times', 
             'happyhour_days', 'happyhour_discount'
         ]
+        
+        
+class SalonServiceForm(forms.ModelForm):
+    service = forms.ModelChoiceField(queryset=Service.objects.all(), required=True)
+    price = forms.DecimalField(max_digits=10, decimal_places=2)
+    duration = forms.DurationField(help_text="Enter duration in HH:MM:SS format")
+    description = forms.CharField(widget=forms.Textarea, required=False)
+    
+    class Meta:
+        model = SalonService
+        fields = ['service', 'price', 'duration', 'description']
