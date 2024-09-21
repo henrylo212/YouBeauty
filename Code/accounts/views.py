@@ -146,47 +146,4 @@ def forBusinessView(request):
     return render(request, 'forBusiness.html')
 
 
-def customer_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                
-                if hasattr(user, 'customer'):
-                    login(request, user)
-                    return redirect('customer_dashboard')
-                else:
-                    form.add_error(None, "This account is not registered as a customer.")
-            else:
-                form.add_error(None, "Invalid username or password.")
-    else:
-        form = AuthenticationForm()
-
-    return render(request, 'registration/login.html', {'form': form})
-
-def salon_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                
-                if hasattr(user, 'salonowner'):
-                    login(request, user)
-                    return redirect('salon_dashboard')
-                else:
-                    form.add_error(None, "This account is not registered as a salon owner.")
-            else:
-                form.add_error(None, "Invalid username or password.")
-    else:
-        form = AuthenticationForm()
-
-    return render(request, 'salons/login.html', {'form': form})
-
-
-
+def custome
