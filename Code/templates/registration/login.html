@@ -1,18 +1,73 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% comment %} {% block title %}Login{% endblock %} {% endcomment %}
+
 
 {% block content %}
-<div class="login-wrapper">
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="{% url 'register' %}">Sign up now</a></p>
-    <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
 
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% comment %} {% block title %}Login{% endblock %} {% endcomment %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css\login.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="flex-box">
+            <div class="login-page">
+                <h2>Log In</h2>
+                <div class="login-form">
+                    <h3>Username</h3>
+                    <input type="text"/>
+                    <h3>Password</h3>
+                    <input type="text"/>
+                </div>
+
+            </div>
+
+            <p>Don't have an account? <a href="{% url 'register' %}">Sign up now</a></p>
+            <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+        </div>
+
+        <div class="flex-box">
+            <!-- <div class="login-page"> -->
+            <img src="{% static 'design/logo.png'%}" >
+            <!-- </div> -->
+
+        </div>
+
+        
+    </div>
+
+    <div class="login-wrapper">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    
+    </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
