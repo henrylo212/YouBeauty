@@ -1,0 +1,7 @@
+
+<h2>Register Your Salon</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ salon_form.as_p }}
+    <button type="submit">Submit Salon Info</button>
+</form>

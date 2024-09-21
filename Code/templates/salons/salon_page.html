@@ -10,10 +10,22 @@
 <div class="top-bar"></div>
 <div class="container">
     <div class="salon-details">
-        <h1>{{ salon.business_name }}</h1>
-        <p>Address: {{ salon.address.street }}, {{ salon.address.suburb }}, {{ salon.address.state }} {{ salon.address.postcode }}</p>
-        <p>Phone: {{ salon.salon_phone }}</p>
-        <p>Email: {{ salon.salon_email }}</p>
+        <h1>{{ salon.salon_name }}</h1>
+        <p>Address: {{ salon.salon_address.address_line1 }}, {{ salon.address.address_line2 }}, 
+            {{ salon.salon_address.state }} {{ salon.salon_address.postcode }}, {{ salon.salon_address.country }}</p>
+            <p>Opening Hours: {{ salon.salon_openingtime }} - {{ salon.salon_closingtime }}</p>
+        <p>Happy Hour Time: {{ salon.happyhour_times }}</p>
+        <p>Happy Hour Days: {{ salon.happyhour_days }}</p>
+        <p>Happy Hour Discount: {{ salon.happyhour_discount }}% off</p>
+        <h2>Services Offered</h2>
+        {% for service in services %}
+            <li>
+                <strong>{{ service.service.service_name }}</strong> 
+                - {{ service.price }} USD 
+                (Duration: {{ service.duration }})
+                <p>Description: {{ service.description }}</p>
+            </li>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

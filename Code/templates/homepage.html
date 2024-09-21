@@ -47,11 +47,12 @@
     <p class="homepage-text-one">DISCOVER HAPPY HOUR DEALS  > </p>
     <div class="card-wrapper">
         {% for salon in salon_info %}
-        <a href="{% url 'salon_page' salon.salon_id %}">
+        <a href="{% url 'salons:salon_page' salon.id %}">
             <div class="salon-card">
                 <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
                 <div class="salon-card-text">
-                    <p class="salon-name-text">{{ salon.business_name }}</p>
+                    <p class="salon-name-text">{{ salon.salon_name }}</p>
+                    <p>{{ salon.salon_address.address_line1 }}</p>
                 </div>
             </div>
         </a>

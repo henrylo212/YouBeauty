@@ -222,6 +222,7 @@ a:hover {
     font: 15px 'Julius Sans One', sans-serif;
     background-color: white;
     border-radius: 15px;
+    margin: 5px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
@@ -235,6 +236,8 @@ a:hover {
 
 .card-wrapper {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     flex-direction: row;
 }
 

@@ -6,7 +6,6 @@ from django.contrib.auth import views as auth_views
 # Can raise and use views to give error messages too!!
 
 urlpatterns = [
-    path('', views.extractSalonInfoView, name="home"),
     path("register/", views.RegistrationView, name="register"),
     path("faq/", views.FAQView, name="faq"),
     path('profile/', views.profileView, name='profile'),
