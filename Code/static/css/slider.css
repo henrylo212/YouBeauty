@@ -1,0 +1,152 @@
+/* Salon Cards */
+.salon-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    height: 30vh; 
+    padding-left: 80px;
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+
+.homepage-text-one {
+    word-spacing: 4px;
+    letter-spacing: 0.5px;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    padding-bottom: 20px;
+}
+
+.card-wrapper {
+    max-width: 1300px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    /* flex-wrap: wrap;
+    justify-content: space-between; */
+    flex-direction: row;
+}
+
+.card-wrapper a {
+    color: black;
+}
+
+.card-wrapper a:hover {
+    color: #b644c8;
+}
+
+.card-wrapper i {
+    height: 50px;
+    width: 50px;
+    background: #b644c8;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    font-size: 1.25 rem;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+
+}
+
+.card-wrapper i:first-child {
+    left: -22px;
+
+}
+
+.card-wrapper i:last-child {
+    right: -22px;
+
+}
+
+/* Slider */
+
+.card-wrapper .slider {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slider :where(.card, .img) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.slider.no-transition {
+    scroll-behavior: auto;
+}
+
+.slider.dragging .salon-card {
+    cursor: grab;
+    user-select: none;
+}
+
+.slider .salon-card {
+    scroll-snap-align: start;
+    font: 15px 'Julius Sans One', sans-serif;
+    background-color: white;
+    list-style: none;
+    border-radius: 8px;
+    margin: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* width: 300px; */
+    width: 98%;
+    height: 280px;
+    padding-bottom: 15px;
+    /* margin-right: 40px; */
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+/* Slider */
+
+.salon-image {
+    object-fit: cover;
+    object-position: 0px 0px;
+    width: 100%;
+    height: 65%;
+}
+
+.spacer {
+    height: 150px;
+}
+
+.salon-name-text {
+    font-weight: bold;
+}
+
+.salon-card-text {
+    margin: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    .card-wrapper .slider {
+        grid-auto-columns: calc((100% / 2) - 9px);
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card-wrapper .slider {
+        grid-auto-columns: 100%;
+
+    }
+}

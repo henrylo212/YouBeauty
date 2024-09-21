@@ -193,70 +193,6 @@ a:hover {
 } */
 
 
-/* Salon Cards */
-.salon-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    height: 30vh; 
-    padding-left: 80px;
-    padding-top: 70px;
-    padding-bottom: 40px;
-}
-
-.homepage-text-one {
-    word-spacing: 4px;
-    letter-spacing: 0.5px;
-    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-    padding-bottom: 20px;
-}
-
-.salon-image {
-    object-fit: cover;
-    object-position: 0px 0px;
-    width: 100%;
-    height: 65%;
-}
-
-.salon-card {
-    font: 15px 'Julius Sans One', sans-serif;
-    background-color: white;
-    border-radius: 15px;
-    margin: 5px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    height: 280px;
-    margin-right: 40px;
-}
-
-.spacer {
-    height: 150px;
-}
-
-.card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-.card-wrapper a {
-    color: black;
-}
-
-.card-wrapper a:hover {
-    color: #b644c8;
-}
-
-.salon-name-text {
-    font-weight: bold;
-}
-
-.salon-card-text {
-    margin: 10px;
-}
-
 .faq-wrapper {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
     margin-top: 30px;
@@ -276,16 +212,19 @@ a:hover {
     width: 200px;
     margin: 60px 360px 0;
     position: absolute;
+    z-index: 999;
 }
 .wrapper-service {
     width: 200px;
     margin: 60px 200px 0;
     position: absolute;
+    z-index: 999;
 }
 .wrapper-time {
     width: 150px;
     margin: 60px 520px 0;
     position: absolute;
+    z-index: 999;
 }
 .select-btn, .options li {
     display: flex;
