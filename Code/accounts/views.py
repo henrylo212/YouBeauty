@@ -117,7 +117,7 @@ def profileView(request):
     current_username = request.user.username
     print(current_username)
     # user = get_object_or_404(Users, username = current_username)
-    #TODO: line above is creating issues - not linked to authorization users, only accounts.
+    #todo: line above is creating issues - not linked to authorization users, only accounts.
     print(user)
     # return render(request, 'profile/profile.html', {"user_profiles": user_profiles})
 
@@ -146,4 +146,47 @@ def forBusinessView(request):
     return render(request, 'forBusiness.html')
 
 
-def custome
+def customer_login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                
+                if hasattr(user, 'customer'):
+                    login(request, user)
+                    return redirect('customer_dashboard')
+                else:
+                    form.add_error(None, "This account is not registered as a customer.")
+            else:
+                form.add_error(None, "Invalid username or password.")
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'registration/login.html', {'form': form})
+
+def salon_login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                
+                if hasattr(user, 'salonowner'):
+                    login(request, user)
+                    return redirect('salon_dashboard')
+                else:
+                    form.add_error(None, "This account is not registered as a salon owner.")
+            else:
+                form.add_error(None, "Invalid username or password.")
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'salons/login.html', {'form': form})
+
+
+
