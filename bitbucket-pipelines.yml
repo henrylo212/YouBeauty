@@ -13,7 +13,7 @@ pipelines:
           - coverage run --source="." Code/manage.py test #test
           - coverage report
           - coverage html 
-          - coverage xml
+          - coverage xml -o test-results/coverage.xml
 
         artifacts:
           - htmlcov/**
