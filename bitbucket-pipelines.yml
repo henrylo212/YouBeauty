@@ -10,14 +10,15 @@ pipelines:
           - pip install -r Code/requirements.txt
           - pip install coverage
 
-          - coverage run --source="." Code/manage.py test #test
+          - coverage run --source="." Code/manage.py test --junitxml=test-results/test-report.xml #test
           - coverage report
           - coverage html 
-          - coverage xml -o test-results/coverage.xml
+          - coverage xml
 
         artifacts:
           - htmlcov/**
-          - test-results/coverage.xml
+          - coverage.xml
+          - test-results/test-report.xml
 
 definitions:
   caches:
