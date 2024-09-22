@@ -11,7 +11,7 @@ pipelines:
           - pip install coverage
           # - pip install pytest
           # - pip install pytest-django
-          - pip install django-test-xmlrunner
+          # - pip install django-test-xmlrunner
           - pip install unittest-xml-reporting
 
           # - coverage run --source="." Code/manage.py test --testrunner=pytest_django.runner.PytestDjangoTestRunner --junitxml=test-results/test-report.xml #test
