@@ -13,9 +13,11 @@ pipelines:
           - coverage run --source="." Code/manage.py test #test
           - coverage report
           - coverage html 
+          - coverage xml
 
         artifacts:
           - htmlcov/**
+          - ./test-reports/coverage.xml
 
 definitions:
   caches:
