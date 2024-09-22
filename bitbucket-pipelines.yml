@@ -15,7 +15,7 @@ pipelines:
           - coverage html 
 
         artifacts:
-          - coverage.html
+          - htmlcov/**
 
 definitions:
   caches:
