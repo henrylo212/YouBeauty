@@ -17,7 +17,7 @@ pipelines:
 
         artifacts:
           - htmlcov/**
-          - ./test-reports/coverage.xml
+          - coverage.xml
 
 definitions:
   caches:
