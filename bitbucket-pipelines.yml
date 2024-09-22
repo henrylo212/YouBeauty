@@ -1,23 +1,22 @@
-image: alpine/git:1.0.26
-
-definitions:
-  services:
-    docker:
-      memory: 1024
-
-  steps:
-    - step: &Push-to-GitHub
-        name: Push code changes to GitHub
-        services:
-          - docker
-        caches:
-          - docker
-        script:
-          - git remote add github "git@github.com:OydanKhan/soft3888.git"
-          - git checkout $BITBUCKET_BRANCH
-          - git pull
-          - git push github $BITBUCKET_BRANCH
+image: python:3.11
 
 pipelines:
   default:
-    - step: *Push-to-GitHub
+    - step: 
+        name: Run tests - regression testing
+        caches:
+          - pip
+        script:
+          - pip install -r Code/requirements.txt
+          - pip install coverage
+
+          - coverage run --source="." manage.py test #test
+          - coverage report
+          - coverage xml 
+
+        artifacts:
+          - coverage.xml
+
+definitions:
+  caches:
+    pip: ~/.cache/pip
