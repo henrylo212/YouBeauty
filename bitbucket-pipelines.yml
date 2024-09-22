@@ -27,9 +27,9 @@ pipelines:
           - htmlcov/**
           - coverage.xml
           - test-results/test-report.xml
-        test:
-          reports:
-            junit: test-results/test-report.xml
+        # test:
+        #   reports:
+        #     junit: test-results/test-report.xml
 
 definitions:
   caches:
