@@ -1,6 +1,6 @@
 from django.test import TestCase
-from .models import UserType
-from .models import SalonAddress
+from ..models import UserType
+from ..models import SalonAddress
 
 class UserTypeTest(TestCase):
     def test_model_creation(self):
