@@ -10,7 +10,7 @@ from salons.models import SalonOwner
 # from .models import SalonInfo
 from salons.views import SalonRegistrationView
 from django.urls import reverse
-from .models import Users
+# from .models import Users
 
 # Think of all these views as just webpages. Views (in the form of html/css pages) of the database almost
 
@@ -112,11 +112,11 @@ def profileView(request):
     # # return render(request, 'profile.html', {'user_info': user_info})
     # return render(request, 'profile.html', {'current_user_info': current_user})
 
-    user_profiles = Users.objects.all() 
-    for user in user_profiles:
-        print(f"UID: {user.user_id}")
-        print(f"Username: {user.username}")
-        print("\n")
+    # user_profiles = Users.objects.all() 
+    # for user in user_profiles:
+    #     print(f"UID: {user.user_id}")
+    #     print(f"Username: {user.username}")
+    #     print("\n")
     # print(user_profiles)
     # user = get_object_or_404(Users, pk=request.user.id)
     # user = get_object_or_404(Users, username = "capstone")
@@ -124,13 +124,13 @@ def profileView(request):
     # user = get_object_or_404(Users, pk=request.user.id)
     # user = get_object_or_404(Users, pk=2)
     # print(user.user_id)
-    print(request.user)
-    print(request.user.username)
-    current_username = request.user.username
-    print(current_username)
+    # print(request.user)
+    # print(request.user.username)
+    # current_username = request.user.username
+    # print(current_username)
     # user = get_object_or_404(Users, username = current_username)
     #todo: line above is creating issues - not linked to authorization users, only accounts.
-    print(user)
+    # print(user)
     # return render(request, 'profile/profile.html', {"user_profiles": user_profiles})
 
     # if request.method == 'POST':
@@ -146,7 +146,7 @@ def profileView(request):
     #     form = RegistrationForm()
 
 
-    return render(request, 'profile/profile.html', {'current_username': current_username})
+    return render(request, 'profile/profile.html') #, {'current_username': current_username})
 
 def editProfileView(request):
     return render(request, 'profile/edit_profile.html')
