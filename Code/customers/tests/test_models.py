@@ -64,4 +64,4 @@ class BookingTest(TestCase):
         self.assertEqual(booking.start_time, start_time)
         self.assertEqual(booking.end_time, end_time)
         self.assertEqual(booking.is_cancelled, False)
-        # self.assertIsNotNone(user_type.type_id)  # Check that type_id is auto-assigned
+        # self.assertIsNotNone(user_type.type_id)  # Check that type_i

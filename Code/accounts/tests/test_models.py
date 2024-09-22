@@ -17,5 +17,4 @@
 #         self.assertEqual(salon_address.street, 'Cleveland St')
 #         self.assertEqual(salon_address.suburb, 'Chippendale')
 #         self.assertEqual(salon_address.state, 'NSW')
-#         self.assertEqual(salon_address.postcode, '2008')
-#         self.assertIsNotNone(salon_address.address_id)  # Check that address_id is auto-assigned
+#         self.assertEqual(salon_address.postcode, '
