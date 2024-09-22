@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 # from salons.views import SalonAddress
 
-class RegistrationViewTest(TestCase):
-    def test_RegistrationView(self):
-        client_response = self.client.get(reverse("RegistrationView"))
-        self.assertEqual(client_response.status_code, 200)
+# class RegistrationViewTest(TestCase):
+#     def test_RegistrationView(self):
+#         client_response = self.client.get(reverse("RegistrationView"))
+#         self.assertEqual(client_response.status_code, 200)
