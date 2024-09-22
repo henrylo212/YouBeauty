@@ -1,0 +1,18 @@
+
+
+h1 {
+    font: 400 20px 'Julius Sans One', sans-serif;
+}
+
+.form-wrapper {
+    margin-left: 100px; 
+    background-color: #ccc;
+}
+
+.service-form {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+

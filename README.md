@@ -1,5 +1,24 @@
 # READ ME
 ---
+
+## How to run the program
+1. Install Django
+For Linux/Mac:
+```bash
+python -m pip install Django
+```
+
+For Windows:
+```bash
+py -m pip install Django
+```
+Ensure a virtual environment is ready and available on your PYTHONPATH environment variable
+
+2. Run the command:
+```bash
+python3 manage.py runserver
+```
+
 ## Project description
 
 You Beauty is an appointment booking website for salons that allows users to browse salons and book with them based on availability.

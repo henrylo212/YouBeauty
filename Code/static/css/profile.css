@@ -7,7 +7,8 @@ body{
     /* justify-content: space-evenly; */
     /* align-items: center; */
     align-content: flex-start;
-    font-family: 'Kanit', Verdana, sans-serif;
+    /* font-family: 'Kanit', Verdana, sans-serif; */
+    
 }
 
 .profile-heading-container{
@@ -18,7 +19,10 @@ body{
 .profile-item-container {
     display: flex;
     align-items: flex-end;
-    gap: 30px;
+    gap: 15%;
+    /* border: 3px solid black; */
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 /* .profile-heading-container{
@@ -42,9 +46,10 @@ body{
 .profile-page{
     /* border: 15px solid red; */
     /* background-color: azure; */
+    font-family: 'Kanit', Verdana, sans-serif;
     display: flex;
     flex-direction: row;
-    width:100%;
+    width:86%;
     justify-content: space-evenly;
     /* align-items: center; */
     margin-top: 175px;
@@ -54,6 +59,9 @@ body{
     /* align-content: center; */
     /* space-evenly */
     min-height: 30em;
+    flex-wrap: wrap;
+    padding: 0% 7%;
+    padding-bottom: 7%;
 }
 
 .profile-details{
@@ -61,6 +69,8 @@ body{
     background-color: #fff;
     display: flex;
     flex: 1;
+    /* flex-grow: 1;
+    flex-shrink: 1; */
     flex-direction: column;
     /* justify-content: space-evenly; */
     /* justify-content: center; */
@@ -69,14 +79,22 @@ body{
     /* align-items: center; */
     /* align-content: center; */
     /* space-evenly */
-    min-width: 20%;
-    max-width: 45%;
+    /* min-width: 20%; */
+    /* min-width: 50vh; */
+    min-width: 24em;
+    /* min-width: 28em; */
+    /* max-width: 45%; */
+    /* max-height: 40em; */
+    /* height: 40em; */
+    height: 35em;
+    /* max-height: 35em; */
     padding: 1em;
-    margin-left: 8%;
+    /* margin-left: 8%; */
+    margin-left: 1%;
     margin-right: 1%;
     border-radius: 20px;
     padding-bottom: 15px;
-    margin-bottom: 100px;
+    margin-bottom: 2%;
     
     box-shadow: 8px 8px rgba(78, 78, 78, 0.14);
 }
@@ -122,7 +140,8 @@ body{
     /* background-color: blue; */
     font-size: 20px;
     /* padding: 0px 20px; */
-    margin: 0px 40px;
+    /* margin: 0px 40px; */
+    margin: 0% 10%;
     padding: 1em;
     gap: 8px;
 }
@@ -130,6 +149,8 @@ body{
 .upcoming-bookings {
     display: flex;
     flex: 1;
+    /* flex-grow: 1;
+    flex-shrink: 1; */
     flex-direction: column;
     /* justify-content: space-evenly; */
     /* align-items: flex-start; */
@@ -139,12 +160,21 @@ body{
     /* min-width: 20%;
     max-width: 45%; */
     /* border: 15px solid black; */
+
+    /* min-width: 50vh; */
+    min-width: 24em;
+    /* min-width: 28em; */
+
+    /* max-height: 40em; */
+    height: 35em;
+    /* max-height: 35em; */
     background-color: #fff;
     padding: 1em;
     margin-left: 1%;
-    margin-right: 8%;
+    /* margin-right: 8%; */
+    margin-right: 1%;
     border-radius: 20px;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
     box-shadow: 8px 8px rgba(78, 78, 78, 0.14);
 }
 
@@ -210,7 +240,7 @@ body{
     overflow: auto;
 }
 
-::-webkit-scrollbar {
+.booking-scroll::-webkit-scrollbar {
     appearance: none;
     height: 5px;
     /* background-color: #d9d9d9; */
@@ -219,26 +249,23 @@ body{
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+.booking-scroll::-webkit-scrollbar-thumb {
     background-color: #d9d9d9;
     /* box-shadow: 0px 0px 10px #d282de; */
     border-radius: 10px;
     size: 40px;
 }
-::-webkit-scrollbar-track {
+.booking-scroll::-webkit-scrollbar-track {
     margin: 0 30px;
 }
-/* @media(max-width: 575px) {
-    .profile-page {
-        flex-wrap: wrap;
-    }
-} */
 
-
-.edit-button {
+/* .edit-button { */
+/* #edit-button { */
+.profile-information-container button {
     font-size: 25px;
     border-radius: 30px;
     background-color: #d282de;
+    border-width: 0px;
     margin: 5px 20px;
     margin-top: 30px;
     padding: 10px 5px;
@@ -251,8 +278,143 @@ body{
     /* justify-self: center; */
 }
 
-.edit-button:hover {
+/* .edit-button:hover { */
+/* #edit-button:hover { */
+.profile-information-container button:hover {
     /* background-color: #ad43be; */
     background-color: #b644c8;
     /* color: #b644c8; */
 }
+
+#confirm {
+    /* display: none; */
+    visibility: hidden;
+    overflow: hidden;
+    width: 0px;
+    height: 0px;
+    /* background-color: aqua; */
+}
+
+
+.profile-information-container label {
+    font-size: x-large;
+    /* border: 3px solid black; */
+}
+
+.profile-information-container input {
+    background-color: #fff;
+    font-family: 'Kanit', Verdana, sans-serif;
+    color: #000;
+    /* color: blue; */
+    font-size: large;
+    /* background-color: aqua; */
+    /* border: 3px solid brown; */
+    overflow-wrap: anywhere;
+    text-overflow: ellipsis;
+    /* max-width: 80%; */
+}
+.profile-information-container input[disabled] {
+    /* background-color: wheat; */
+    /* background-color: #fff; */
+    border-width: 0px;
+    /* font-family: 'Kanit', Verdana, sans-serif;
+    color: #000;
+    font-size: large; */
+    /* border-width: 4px; */
+}
+
+
+/* #profile-name{
+    min-width: 10em;
+}
+#email{
+    min-width: 15em;
+}
+#phone-number{
+    min-width: 10em;
+} */
+
+.profile-item-container input {
+    flex: 1;
+    /* maybe min-width 0 for only form entry?? */
+    /* min-width: 0;  */
+    /* min-width: 20%;
+    min-width: 50%; */
+    overflow-wrap: anywhere;
+    min-width: 10em;
+}
+
+#phone-number::-webkit-inner-spin-button, #phone-number::-webkit-outer-spin-button {
+    appearance: none;
+}
+#phone-number {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.profile-information-container input:not([disabled]) {
+    /* background-color: #fff;
+    font-family: 'Kanit', Verdana, sans-serif; */
+    /* background-color: red; */
+    border: 2px solid #000;
+    border: 2px solid #d9d9d9;
+    border-radius: 10px;
+    padding: 0px 10px;
+}
+
+@media(min-width:1417px) and (max-width: 2000px){
+    .profile-details {
+        max-height: 45em;
+        height: 34em;
+        /* background-color: purple; */
+    }
+    
+    .upcoming-bookings {
+        max-height: 45em;
+        height: 34em;
+    }
+}
+
+@media(min-width:1008px) and (max-width: 1416px){
+    .profile-details {
+        max-height: 45em;
+        height: 38em;
+        /* background-color: red; */
+    }
+    
+    .upcoming-bookings {
+        max-height: 45em;
+        height: 38em;
+        /* height: 40em; */
+    }
+}
+
+@media(min-width:694px) and (max-width: 1007px) {
+    .profile-details {
+        max-height: 34em;
+        height: 34em;
+        /* background-color: yellow; */
+    }
+    
+    .upcoming-bookings {
+        max-height: 34em;
+        height: 34em;
+    }
+}
+
+@media(max-width: 693px) {
+    .profile-details {
+        max-height: 45em;
+        height: 38em;
+        /* background-color: greenyellow; */
+    }
+    
+    .upcoming-bookings {
+        max-height: 45em;
+        height: 38em;
+    }
+}
+
+
+
+

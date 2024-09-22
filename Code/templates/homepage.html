@@ -2,6 +2,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}You Beauty{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css\slider.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
 
 <!-- search bar -->
 <div class="wrapper-service">
@@ -46,16 +54,21 @@
 <div class="salon-wrapper">
     <p class="homepage-text-one">DISCOVER HAPPY HOUR DEALS  > </p>
     <div class="card-wrapper">
-        {% for salon in salon_info %}
-        <a href="{% url 'salon_page' salon.salon_id %}">
-            <div class="salon-card">
-                <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
-                <div class="salon-card-text">
-                    <p class="salon-name-text">{{ salon.business_name }}</p>
-                </div>
-            </div>
-        </a>
-        {% endfor %}
+        <i id="left" class="fas fa-chevron-left"></i>
+            <ul class="slider">
+                {% for salon in salon_info %}
+                <a href="{% url 'salons:salon_page' salon.id %}">
+                    <div class="salon-card">
+                        <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
+                        <div class="salon-card-text">
+                            <p class="salon-name-text">{{ salon.salon_name }}</p>
+                            <p>{{ salon.salon_address.address_line1 }}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </ul>
+        <i id="right" class="fas fa-chevron-right"></i>
     </div>
 </div>
 
@@ -63,18 +76,25 @@
 <div class="salon-wrapper">
     <p class="homepage-text-one">TOP SALONS, SYDNEY > </p>
     <div class="card-wrapper">
-        <div class="salon-card">
-            <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
-        </div>
-        <div class="salon-card">
-            <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
-        </div>
-        <div class="salon-card">
-            <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
-        </div>
+        <i id="left" class="fas fa-chevron-left"></i>
+            <ul class="slider">
+                {% for salon in salon_info %}
+                <a href="{% url 'salons:salon_page' salon.id %}">
+                    <div class="salon-card">
+                        <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
+                        <div class="salon-card-text">
+                            <p class="salon-name-text">{{ salon.salon_name }}</p>
+                            <p>{{ salon.salon_address.address_line1 }}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </ul>
+        <i id="right" class="fas fa-chevron-right"></i>
     </div>
-</div>
+</div> 
 
 
-<script src="static\javascript\script.js"></script>
+<script src="{% static 'javascript/slider.js' %}"></script>
+<script src="{% static 'javascript/script.js' %}"></script>
 {% endblock %}
