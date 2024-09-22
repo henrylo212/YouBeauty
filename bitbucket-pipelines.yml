@@ -10,7 +10,7 @@ pipelines:
           - pip install -r Code/requirements.txt
           - pip install coverage
 
-          - coverage run --source="." manage.py test #test
+          - coverage run --source="." Code/manage.py test #test
           - coverage report
           - coverage xml 
 
