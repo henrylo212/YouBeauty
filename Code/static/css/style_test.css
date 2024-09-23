@@ -1,0 +1,301 @@
+.FAQ {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .FAQ .div {
+    background-color: #ffffff;
+    overflow: scroll;
+    width: 100%;
+    /* height: 1024px; */
+    position: relative;
+  }
+  
+  .FAQ .overlap-group {
+    position: absolute;
+    width: 100%;
+    /* height: 1024px; */
+    top: 0;
+    left: 0;
+  }
+  
+  .FAQ .rectangle {
+    position: absolute;
+    width: 1440px;
+    height: 1024px;
+    top: 0;
+    left: 0;
+    transform: rotate(180deg);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(210, 130, 222) 100%);
+  }
+  
+  .FAQ .ellipse {
+    position: absolute;
+    width: 76px;
+    height: 73px;
+    top: 32px;
+    left: 33px;
+    background-color: #ffffff;
+    border-radius: 38px/36.5px;
+  }
+  
+  .FAQ .text-wrapper {
+    position: absolute;
+    top: 56px;
+    left: 1147px;
+    -webkit-text-stroke: 1px #ffffff;
+    font-family: "Julius Sans One-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .FAQ .line {
+    position: absolute;
+    width: 2px;
+    height: 26px;
+    top: 55px;
+    left: 1325px;
+  }
+  
+  .FAQ .img {
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    top: 58px;
+    left: 1364px;
+  }
+  
+  .FAQ .line-2 {
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    top: 68px;
+    left: 1364px;
+  }
+  
+  .FAQ .line-3 {
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    top: 77px;
+    left: 1364px;
+  }
+  
+  .FAQ .logo-png-format {
+    position: absolute;
+    width: 112px;
+    height: 112px;
+    top: 12px;
+    left: 15px;
+    object-fit: cover;
+  }
+  
+  .FAQ .rectangle-2 {
+    position: absolute;
+    width: 1440px;
+    height: 881px;
+    top: 143px;
+    left: 0;
+    background-color: #ffffff;
+  }
+  
+  .FAQ .rectangle-3 {
+    position: absolute;
+    width: 1151px;
+    height: 99px;
+    top: 342px;
+    left: 144px;
+    background-color: #eeeeee;
+  }
+  
+  .FAQ .rectangle-4 {
+    position: absolute;
+    width: 1151px;
+    height: 99px;
+    top: 441px;
+    left: 144px;
+    border: 2px solid;
+    border-color: #eeeeee;
+  }
+  
+  .FAQ .rectangle-5 {
+    position: absolute;
+    width: 1151px;
+    height: 99px;
+    top: 739px;
+    left: 144px;
+    border: 2px solid;
+    border-color: #eeeeee;
+  }
+  
+  .FAQ .text-wrapper-2 {
+    position: absolute;
+    top: 213px;
+    left: 415px;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .p {
+    position: absolute;
+    top: 372px;
+    left: 275px;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .text-wrapper-3 {
+    width: 983px;
+    top: 466px;
+    left: 275px;
+    color: #5e5e5e;
+    font-size: 16px;
+    position: absolute;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .text-wrapper-4 {
+    top: 372px;
+    position: absolute;
+    left: 187px;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .text-wrapper-5 {
+    top: 472px;
+    left: 187px;
+    position: absolute;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    color: #5e5e5e;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .rectangle-6 {
+    position: absolute;
+    width: 1151px;
+    height: 99px;
+    top: 640px;
+    left: 144px;
+    background-color: #eeeeee;
+  }
+  
+  .FAQ .text-wrapper-6 {
+    top: 670px;
+    left: 275px;
+    color: #000000;
+    font-size: 24px;
+    position: absolute;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .text-wrapper-7 {
+    width: 981px;
+    top: 763px;
+    left: 277px;
+    color: #5e5e5e;
+    font-size: 16px;
+    position: absolute;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .text-wrapper-8 {
+    top: 670px;
+    position: absolute;
+    left: 187px;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .text-wrapper-9 {
+    top: 769px;
+    left: 189px;
+    position: absolute;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    color: #5e5e5e;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .rectangle-7 {
+    position: absolute;
+    width: 1151px;
+    height: 99px;
+    top: 922px;
+    left: 144px;
+    background-color: #eeeeee;
+  }
+  
+  .FAQ .text-wrapper-10 {
+    top: 952px;
+    left: 275px;
+    color: #000000;
+    font-size: 24px;
+    position: absolute;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .text-wrapper-11 {
+    top: 952px;
+    position: absolute;
+    left: 187px;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .FAQ .text-wrapper-12 {
+    top: 1044px;
+    left: 159px;
+    position: absolute;
+    font-family: "Kanit-Regular", Helvetica;
+    font-weight: 400;
+    color: #5e5e5e;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
