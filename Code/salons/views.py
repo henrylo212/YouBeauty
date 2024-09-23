@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 
@@ -15,16 +15,16 @@ def SalonDetailView(request, salon_id):
 
 @login_required
 def SalonRegistrationView(request):
-    # create a factory so that the user can start with adding one service to their salon, and then add more if they want
+    # Create a factory so that the user can start with adding one service to their salon, and then add more if they want
     SalonServiceFormSet = formset_factory(SalonServiceForm, extra=1, can_delete=True)
-    
+
     if request.method == 'POST':
         salon_form = SalonForm(request.POST, request.FILES)
         service_formset = SalonServiceFormSet(request.POST)
-        
+
         if salon_form.is_valid() and service_formset.is_valid():
-            
-            # input data into SalonAddress table
+
+            # Create and save SalonAddress
             salon_address = SalonAddress.objects.create(
                 address_line1=salon_form.cleaned_data['address_line1'],
                 address_line2=salon_form.cleaned_data.get('address_line2', ''),
@@ -33,13 +33,18 @@ def SalonRegistrationView(request):
                 country=salon_form.cleaned_data['country'],
             )
 
-            # makes the table for SalonInfo
+            # Create and save SalonInfo with the associated SalonAddress
             salon_info = salon_form.save(commit=False)
-            # adds the SalonAddress field
             salon_info.salon_address = salon_address
             salon_info.save()
-            
-            # creates a new SalonService object for each service form submitted
+
+            # Associate the salon with the salon owner
+            try:
+                salon_owner = request.user.salonowner
+            except SalonOwner.DoesNotExist:
+                salon_owner = SalonOwner.objects.create(user=request.user, salon=salon_info)
+
+            # Save each service offered by the salon
             for service_form in service_formset:
                 if service_form.cleaned_data:
                     SalonService.objects.create(
@@ -50,18 +55,15 @@ def SalonRegistrationView(request):
                         description=service_form.cleaned_data['description']
                     )
 
-            # links the salon to the salon owner
-            salon_owner = request.user.salonowner
-            salon_owner.salon = salon_info
-            salon_owner.save()
-
-            # redirects the salon owner to the salon dashboard
-            return redirect('salon_dashboard')
+            # Redirect to the salon dashboard or home page
+            # return redirect('salon_dashboard')
+            return redirect('home')
     else:
         salon_form = SalonForm()
         service_formset = SalonServiceFormSet()
 
-    return render(request, 'salons/salon_form.html', {'salon_form': salon_form, 'service_formset': service_formset })
+    return render(request, 'salons/salon_form.html', {'salon_form': salon_form, 'service_formset': service_formset})
+
 
 def salon_list(request):
     salons = SalonInfo.objects.all()  
