@@ -25,21 +25,18 @@
             </div>
             <form class="profile-information-container" id="profile-form">
                 <div class="profile-item-container">
-                    <p>
-                        {{ user.id }}
-                    </p>
                     <label for="profile-name">Profile Name: </label>
-                    <input type="text" id="profile-name" name="profile-name" value="Firstname Lastname" disabled>
+                    <input type="text" id="profile-name" name="profile-name" value="{{ user.first_name }} {{ user.last_name }}" disabled>
                 </div>
 
                 <div class="profile-item-container">
                     <label for="email">Email: </label>
-                    <input type="email" id="email" name="email" value="username@example.com" disabled>
+                    <input type="email" id="email" name="email" value="{{ user.email }}" disabled>
                 </div>
 
                 <div class="profile-item-container">
                     <label for="phone-number">Phone number: </label>
-                    <input type="number" id="phone-number" name="phone-number" value="0123456789" disabled>
+                    <input type="number" id="phone-number" name="phone-number" value="{{ user.phone_number }}" disabled>
                 </div>
                 
                 <button type="button" id="edit-button">EDIT</button>

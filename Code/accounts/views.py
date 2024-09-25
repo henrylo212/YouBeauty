@@ -126,8 +126,40 @@ def profileView(request):
     # print(user.user_id)
     # print(request.user)
     # print(request.user.username)
-    # current_username = request.user.username
-    # print(current_username)
+    current_username = request.user.username #get username of logged in user
+    current_user = request.user #get logged in user
+    print(current_user)
+    is_customer = False
+    is_salon_owner = False
+    try:
+        #try to get a customer
+        customer = get_object_or_404(Customer, user=current_user) #get Customer w/ current username
+        is_customer = True    
+        # is_salon_owner = False
+    except:
+        #try to get a salon_owner
+        salon_owner = get_object_or_404(SalonOwner, user=current_user) #get SalonOwner w/ current username
+        is_salon_owner = True
+        # is_customer = False 
+
+    if is_customer:
+        user = customer.user
+        phone_number = customer.phone_number
+        profile_photo = customer.profile_photo
+        return render(request, 'profile/profile.html' , 
+        {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+        'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo})
+    elif is_salon_owner:
+        user = salon_owner.user
+        phone_number = salon_owner.phone_number
+        salon = salon_owner.salon
+        return render(request, 'profile/profile.html' , 
+        {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+        'user': user, 'phone_number': phone_number, 'salon': salon})
+
+    # customer = get_object_or_404(Customer, username=current_username) #get Customer w/ current username
+    # salon_owner = get_object_or_404(SalonOwner, username=current_username) #get SalonOwner w/ current username
+
     # user = get_object_or_404(Users, username = current_username)
     #todo: line above is creating issues - not linked to authorization users, only accounts.
     # print(user)
@@ -163,42 +195,4 @@ def customer_login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                
-                if hasattr(user, 'customer'):
-                    login(request, user)
-                    return redirect('customer_dashboard')
-                else:
-                    form.add_error(None, "This account is not registered as a customer.")
-            else:
-                form.add_error(None, "Invalid username or password.")
-    else:
-        form = AuthenticationForm()
-
-    return render(request, 'registration/login.html', {'form': form})
-
-def salon_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                
-                if hasattr(user, 'salonowner'):
-                    login(request, user)
-                    return redirect('salon_dashboard')
-                else:
-                    form.add_error(None, "This account is not registered as a salon owner.")
-            else:
-                form.add_error(None, "Invalid username or password.")
-    else:
-        form = AuthenticationForm()
-
-    return render(request, 'salons/login.html', {'form': form})
-
-
-
+            password = form.clea
