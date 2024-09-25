@@ -19,7 +19,8 @@
 
 /* } */
 
-.login-form input[type=text] {
+.login-form input {
+  text-align: center;
   border-radius: 33px;
   border-width: 0;
   width: 55%;
@@ -27,6 +28,7 @@
   margin-bottom: 15px;
   padding: 12px 20px;
 }
+
 
 h2 {
   font: 400 20px 'Kanit', sans-serif;
@@ -53,8 +55,3 @@ h3 {
   /* margin-left: 100px; */
   padding: 10% 15% 5%;
 }
-
-/* .flex-box {
-  width: 45vw;
-  padding: 1rem;
-} */
