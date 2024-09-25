@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // confirmButton.style.display = 'none';
 
     editButton.addEventListener('click', function() {
+        console.log("edit clicked!");
         inputs.forEach(input => {
             input.disabled = false;
         });
