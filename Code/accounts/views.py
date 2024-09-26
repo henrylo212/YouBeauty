@@ -137,10 +137,14 @@ def profileView(request):
         is_customer = True    
         # is_salon_owner = False
     except:
-        #try to get a salon_owner
-        salon_owner = get_object_or_404(SalonOwner, user=current_user) #get SalonOwner w/ current username
-        is_salon_owner = True
-        # is_customer = False 
+        try:
+            #try to get a salon_owner
+            salon_owner = get_object_or_404(SalonOwner, user=current_user) #get SalonOwner w/ current username
+            is_salon_owner = True
+            # is_customer = False 
+        except:
+            #is logged in but not a customer, and not a salon owner
+            print("Not a customer. Not a salon owner.")
 
     if is_customer:
         user = customer.user
@@ -157,6 +161,14 @@ def profileView(request):
         return render(request, 'profile/profile.html' , 
         {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
         'user': user, 'phone_number': phone_number, 'salon': salon})
+    else:
+        user = current_user
+        phone_number = ""
+        profile_photo = None
+        print(profile_photo)
+        return render(request, 'profile/profile.html' , 
+        {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+        'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo})
 
     # customer = get_object_or_404(Customer, username=current_username) #get Customer w/ current username
     # salon_owner = get_object_or_404(SalonOwner, username=current_username) #get SalonOwner w/ current username
