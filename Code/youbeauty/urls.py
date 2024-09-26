@@ -12,4 +12,9 @@ urlpatterns = [
     path('', include("customers.urls")),
     path('salons/', include(('salons.urls', 'salons'), namespace='salons')),
     path('', include("customers.urls")),
-    # path('salon/', incl
+    # path('salon/', include('salons.urls')),
+    path('customer/', include('customers.urls')),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
