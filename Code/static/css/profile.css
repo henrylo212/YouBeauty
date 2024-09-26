@@ -94,52 +94,60 @@ body{
     margin-right: 1%;
     border-radius: 20px;
     padding-bottom: 15px;
+    /* padding-top: 3em; */
     margin-bottom: 2%;
     
     box-shadow: 8px 8px rgba(78, 78, 78, 0.14);
 }
 
 .profile-pic-container {
-    /* display: flex; */
+    display: flex;
     /* flex-direction: column; */
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center;
     /* align-content: center; */
     align-self: center;
-    /* background-color: lime; */
+    background-color: lime;
     background-color: #d9d9d9;
-    
     aspect-ratio: 1;
     border-radius: 50%;
     /* width: 20%;
     height: 20%; */
-    max-width: 80%;
-    max-height: 80%;
-    overflow: hidden;
-    width: 220px;
-    height: 220px;
-    position: relative;
+    /* max-width: 80%; */
+    /* max-height: 80%; */
+    /* overflow: hidden; */
+    /* width: 220px; */
+    /* height: 250px; */
+    /* position: relative; */
     margin-top: 20px;
     margin-bottom: 20px;
     /* margin-left: 30px; */
-    flex-grow: 0;
+    /* flex-grow: 0; */
     /* text-align: center; */
 }
 
 .profile-pic {
     /* border: 2px solid black; */
-    position: absolute;
+    /* position: absolute; */
     /* top: 50%;
     left: 50%; */
-    object-fit: contain;
+    object-fit: cover;
     /* object-position: 6px 5px; */
-    object-position: center;
-    align-self: center;
-    min-width: 220px;
-    min-height: 220px;
-    max-width: 400px;
-    max-height: 400px;
-    margin: 0 auto;
+    /* object-position: center; */
+    /* align-self: center; */
+    /* min-width: 220px;
+    min-height: 220px; */
+    width: 220px;
+    height: 220px;
+    /* max-width: 400px;
+    max-height: 400px; */
+    max-width: 100%;
+    max-height: 100%;
+    background-color: beige;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 .profile-information-container {
@@ -418,15 +426,4 @@ body{
     .profile-details {
         max-height: 45em;
         height: 38em;
-        /* background-color: greenyellow; */
-    }
-    
-    .upcoming-bookings {
-        max-height: 45em;
-        height: 38em;
-    }
-}
-
-
-
-
+        /* backgro
