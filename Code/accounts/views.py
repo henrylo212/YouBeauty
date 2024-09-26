@@ -243,7 +243,7 @@ def salon_login(request):
     else:
         form = AuthenticationForm()
 
-    return render(request, 'salons/login.html', {'form': form})
+    return render(request, 'registration/business_login.html', {'form': form})
 
 
 

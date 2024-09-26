@@ -1,33 +1,111 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 {% load static %}
 
-{% block title %}Business Login{% endblock %}
-
 {% block content %}
-<div class="login-wrapper">
-    <h2>Business Login</h2>
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Business Login{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css\business-login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\business.css' %}">
+    
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
+</head>
 
-    <form method="post">
-        {% csrf_token %}
-        
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <button type="submit">Login</button>
-    </form>
 
-    <p>Don't have a business account? <a href="{% url 'business_register' %}">Sign up now</a></p>
-    <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+
+
+<div class="header">
+    <section class="logo-section">
+        <div class="logo-container">
+            <a href="{% url 'home' %}">
+                <div class="image-container">
+                    <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+                </div>
+            </a>
+        </div>
+    </section>
 </div>
+
+
+
+<body>
+    <h1>FOR BUSINESS</h1>
+    <label class="hamburger">
+        <input type="checkbox" id="check">
+    </label>
+
+    <aside class="menu">
+        <nav>
+            {% if user.is_authenticated %}
+                Hi {{ user.username }}!
+                <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
+                <a href="{% url 'faq' %}">F.A.Q</a>
+            {% else %}
+                <a href="{% url 'faq' %}">F.A.Q</a>
+                <li><a class="active" href="{% url 'salon_login' %}">Business Login</a></li>
+            {% endif %}
+
+        </nav>
+    </aside>
+
+    
+
+    <div class="flex-container">
+
+        <div class="flex-box">
+            <h2>YouBeauty, for your Business</h2>
+            
+                <div class="login-page">
+                    <h2>Log In</h2>
+
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <div class="login-form">
+
+                        <form method="post">
+                            {% csrf_token %}
+                            
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" required><br><br>
+                            
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required><br><br>
+                            <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+                            
+                            <button type="submit">Login</button>
+                        </form>
+                        
+                    </div>
+
+                    <p>OR <a href="{% url 'business_register' %}">Create a new account</a></p>
+                    
+                </div>
+        </div>
+        
+
+        <div class="flex-box">
+            <!-- <div class="login-page"> -->
+            <img src="{% static 'design/logo.png'%}" >
+            <!-- </div> -->
+
+        </div>
+    </div>
+
+    <!-- <div class="grey-rectangle"></div> -->
+    
+
+    
+    
+
+</body>
 {% endblock %}

@@ -47,11 +47,12 @@ h3 {
   flex-direction: row;
   display: flex;
   align-items: center;
+  /* background-color: #f4f4f4; */
   /* align-items: baseline; */
-  gap: 10%;
+  gap: 5%;
   /* border: 3px solid black; */
   width: 100%;
   flex-wrap: wrap;
   /* margin-left: 100px; */
-  padding: 10% 15% 5%;
+  padding: 5% 15% 5%;
 }
