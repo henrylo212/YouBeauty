@@ -426,4 +426,13 @@ body{
     .profile-details {
         max-height: 45em;
         height: 38em;
-        /* backgro
+        /* background-color: greenyellow; */
+    }
+    
+    .upcoming-bookings {
+        max-height: 45em;
+        height: 38em;
+    }
+}
+
+
