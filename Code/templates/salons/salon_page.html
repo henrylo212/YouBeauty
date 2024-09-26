@@ -16,21 +16,33 @@
 <div class="top-bar"></div>
 <div class="container">
     <div class="salon-details">
-        <h1>{{ salon.salon_name }}</h1>
-        <p>Address: {{ salon.salon_address.address_line1 }}, {{ salon.address.address_line2 }}, 
-            {{ salon.salon_address.state }} {{ salon.salon_address.postcode }}, {{ salon.salon_address.country }}</p>
-            <p>Opening Hours: {{ salon.salon_openingtime }} - {{ salon.salon_closingtime }}</p>
-        <p>Happy Hour Time: {{ salon.happyhour_times }}</p>
-        <p>Happy Hour Days: {{ salon.happyhour_days }}</p>
-        <p>Happy Hour Discount: {{ salon.happyhour_discount }}% off</p>
-        <h2>Services Offered</h2>
+        <div class="smaller-details">
+            <h1>{{ salon.salon_name }}</h1>
+            <p>{{ salon.salon_address.address_line1 }}, {{ salon.salon_address.state }}, {{ salon.salon_address.postcode }}</p>
+            <br>
+            <h2>Opening Hours: {{ salon.salon_openingtime }} - {{ salon.salon_closingtime }}</h2>
+            <br>
+            <h2>Happy Hour Time: {{ salon.happyhour_times }}</h2>
+            <h2>Happy Hour Days: {{ salon.happyhour_days }}</h2>
+            <h2>Happy Hour Discount: {{ salon.happyhour_discount }}% off</h2>
+        </div>
+        
+        <div class="salonpage-image-container">
+            <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salonpage-image">
+        </div>
+    </div>
+    <div class="services">
+        <h1>Services Offered</h1>
         {% for service in services %}
-            <li>
-                <strong>{{ service.service.service_name }}</strong> 
-                - {{ service.price }} USD 
-                (Duration: {{ service.duration }})
-                <p>Description: {{ service.description }}</p>
-            </li>
+            <div class="allservice-details">
+                <div class="service-details">
+                    <h2>{{ service.service.service_name }}</h2> 
+                    <p>{{ service.duration }} mins</p>
+                    <br>
+                    <h2>${{ service.price }}</h2>
+                </div>
+                <button type="button" id="book-button">BOOK</button>
+            </div>
         {% endfor %}
     </div>
 </div>
