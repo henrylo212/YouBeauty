@@ -1,18 +1,63 @@
 
-
-h1 {
-    font: 400 20px 'Julius Sans One', sans-serif;
-}
-
-.form-wrapper {
-    margin-left: 100px; 
-    background-color: #ccc;
-}
-
 .service-form {
-    border: 1px solid #ccc;
+    border: 1px solid #cfb4c8;
     padding: 10px;
     margin-bottom: 15px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    /* margin-left: 100px;  */
+    /* width: 50%; */
+    padding: 20px;
+    background-color: #F3EAFB;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Kanit', sans-serif; /* Updated font */
+}
+
+/* Headings Styling */
+h1, h2 {
+    /* font: 400 20px 'Julius Sans One', sans-serif; */
+    font-weight: bold;
+    color: #3D3D3D;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+.styled-form input[type="text"],
+.styled-form input[type="email"],
+.styled-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Rounded input boxes */
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif; /* Font for inputs */
+}
+
+/* Styling for form button */
+button.submit-btn, button#add-service {
+    background-color: #7B2D83;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'Kanit', sans-serif;
+}
+
+button.submit-btn:hover,
+button#add-service:hover {
+    background-color: #692670;
+}
+
+/* Space between fields */
+.styled-form {
+    margin-bottom: 20px;
 }
 
