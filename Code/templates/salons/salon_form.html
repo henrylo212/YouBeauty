@@ -16,7 +16,11 @@
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ salon_form.as_p }}
+        <!-- {{ salon_form.as_p }} -->
+        <!-- Displaying the form with new styles applied via CSS -->
+        <div class="styled-form">
+            {{ salon_form.as_p }}
+        </div>
 
         <h2>Services Offered</h2>
         <div id="service-form-container">
@@ -30,7 +34,7 @@
 
         <button type="button" id="add-service">Add Another Service</button>
         <br>
-        <button type="submit">Submit</button>
+        <button type="submit" class="submit-btn">Submit</button>
     </form>
 </div>
 
@@ -51,4 +55,4 @@
         });
     });
 </script>
-{% endblock %}
+{% endblock %} 
