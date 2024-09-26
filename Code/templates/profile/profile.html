@@ -20,7 +20,12 @@
         <div class="profile-details">
             <div class="profile-pic-container">
                 <div class="image-container">
+                    {% if is_customer %}
+                    <!-- <img loading="lazy" src="/profile_photos/pexels-danxavier-1239291.jpg" class="profile-pic" alt="profile picture"> -->
+                    <img loading="lazy" src="{{ profile_photo.url }}" class="profile-pic" alt="profile picture">
+                    {% else %}
                     <img loading="lazy" src="{% static 'design/logo.png' %}" class="profile-pic" alt="profile picture">
+                    {% endif %}
                 </div>
             </div>
             <form class="profile-information-container" id="profile-form">
@@ -36,7 +41,7 @@
 
                 <div class="profile-item-container">
                     <label for="phone-number">Phone number: </label>
-                    <input type="number" id="phone-number" name="phone-number" value="{{ user.phone_number }}" disabled>
+                    <input type="number" id="phone-number" name="phone-number" value="{{ phone_number }}" disabled>
                 </div>
                 
                 <button type="button" id="edit-button">EDIT</button>

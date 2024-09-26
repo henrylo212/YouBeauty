@@ -146,6 +146,7 @@ def profileView(request):
         user = customer.user
         phone_number = customer.phone_number
         profile_photo = customer.profile_photo
+        print(profile_photo)
         return render(request, 'profile/profile.html' , 
         {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
         'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo})

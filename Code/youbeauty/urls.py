@@ -2,6 +2,8 @@
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -10,7 +12,4 @@ urlpatterns = [
     path('', include("customers.urls")),
     path('salons/', include(('salons.urls', 'salons'), namespace='salons')),
     path('', include("customers.urls")),
-    # path('salon/', include('salons.urls')),
-    path('customer/', include('customers.urls')),
-]
-
+    # path('salon/', incl
