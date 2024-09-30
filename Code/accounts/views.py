@@ -201,8 +201,8 @@ def profileView(request):
 
     return render(request, 'profile/profile.html') #, {'current_username': current_username})
 
-def editProfileView(request):
-    return render(request, 'profile/edit_profile.html')
+# def editProfileView(request):
+#     return render(request, 'profile/edit_profile.html')
 
 def bookingsView(request):
     return render(request, 'bookings/bookings.html')
