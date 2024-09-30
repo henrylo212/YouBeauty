@@ -12,35 +12,32 @@
 </head>
 
 <body>
-    <div class="flex-container">
-        <div class="flex-box">
-            <div class="login-page">
-                <h2>Log In</h2>
-                <div class="login-form">
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit">Log in</button>
-                    </form>
-                </div>
+    <h3>YOUBEATUY, FOR YOU</h3>
+    <div class="card">
+        <div class="login-page">
+            <h2>LOG IN</h2>
+            <div class="login-form">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <h4><a href="{% url 'password_reset' %}">Forgot Password?</a></h4>
+                    <button type="submit">LOGIN</button>
+                </form>
             </div>
+            
 
-            <p>Don't have an account? <a href="{% url 'register' %}">Sign up now</a></p>
-            <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
-        </div>
 
-        <div class="flex-box">
-            <!-- <div class="login-page"> -->
-            <img src="{% static 'design/logo.png'%}" >
-            <!-- </div> -->
+            <h5>OR</h5>
+            <h5><a href="{% url 'register' %}">Create a new account</a></h5>
+            
 
         </div>
-
-        
     </div>
-
-
 </body>
+
+
+       
+
 
 
 

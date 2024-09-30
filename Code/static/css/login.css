@@ -1,32 +1,68 @@
 .login-page {
-    width: 500px;
-    height: 400px;
-    padding: 5% 5% 5%;
+    /* width: 400px; */
+    /* height: 300px; */
+    /* padding: 5% 5% 5%; */
     
-    /* margin: auto; */
-    background-color: rgb(233, 219, 252);
+    background-color: white;
+
+    width: 490px;
+    height: 500px;
+    padding: 2% 2% 10%;
+    
+    margin-top: -5px;
     border-radius: 25px;
     text-align: center;
     align-content: center;
-    /* display: block; */
-    /* padding: 10px; */
+
+    
 }
 
-/* .login-page login-form { */
-  /* margin: auto; */
-  /* float:left; display:inline; width: 49%; */
-  /* text-align: center; */
+form {
+  font: 400 20px 'Kanit', sans-serif;
+  display: block;
+  line-height: 40px;
+  text-align: left;
 
-/* } */
+  padding-left: 80px;
 
-.login-form input {
+}
+
+h4 {
+  /* padding-top: -20px; */
+  margin-top: -10px;
+  margin-right: 80px;
+  text-align: right;
+  font: 400 15px 'Kanit', sans-serif;
+}
+
+h5 {
+  font: 100 20px 'Kanit', sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: normal;
+
+}
+
+a {
+  text-decoration: none;
+  color: #EEEEEE;
+
+}
+
+.card {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h3 {
+  font: 400 20px 'Kanit', sans-serif;
+  font-size: 65px;
+  /* margin-top: 1px; */
+  padding-top: 120px;
   text-align: center;
-  border-radius: 33px;
-  border-width: 0;
-  width: 55%;
-  height: 33px;
-  margin-bottom: 15px;
-  padding: 12px 20px;
+  color: white;
 }
 
 
@@ -37,22 +73,33 @@ h2 {
   text-align: center;
 }
 
-h3 {
+.login-form input {
+  text-align: center;
+  border-radius: 33px;
+  border-width: 0;
+  width: 80%;
+  height: 50px;
+  margin-bottom: 15px;
+  background-color: #EEEEEE;
+  display: block;
+  /* padding: 12px 20px; */
+}
+
+.login-form button {
+  background-color: #E0A9E8;
+  color: white;
+  border-radius: 33px;
+  width: 80%;
+  height: 50px;
+  border-width: 0;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+
+
+.h3 {
   font: 400 20px 'Kanit', sans-serif;
 }
 
 
-.flex-container{
-  align-content: center;
-  flex-direction: row;
-  display: flex;
-  align-items: center;
-  /* background-color: #f4f4f4; */
-  /* align-items: baseline; */
-  gap: 5%;
-  /* border: 3px solid black; */
-  width: 100%;
-  flex-wrap: wrap;
-  /* margin-left: 100px; */
-  padding: 5% 15% 5%;
-}
