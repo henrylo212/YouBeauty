@@ -1,13 +1,14 @@
 
-
-
+body {
+  background-color:  #F4F4F4;
+}
 .login-page {
-    width: 500px;
-    height: 400px;
-    padding: 5% 5% 5%;
+    width: 490px;
+    height: 500px;
+    padding: 2% 2% 10%;
     
-    /* margin: auto; */
-    background-color: rgb(233, 219, 252);
+    margin-top: -5px;
+    background-color: #EFE2F1;
     border-radius: 25px;
     text-align: center;
     align-content: center;
@@ -15,28 +16,65 @@
     /* padding: 10px; */
 }
 
-/* .login-page login-form { */
-  /* margin: auto; */
-  /* float:left; display:inline; width: 49%; */
-  /* text-align: center; */
 
-/* } */
 
 .login-form input {
   text-align: center;
   border-radius: 33px;
   border-width: 0;
-  width: 55%;
-  height: 33px;
+  width: 70%;
+  height: 50px;
   margin-bottom: 15px;
-  padding: 12px 20px;
+  /* padding: 12px 20px; */
 }
 
-h1 {
-    font: 400 20px 'Kanit', sans-serif;
-    font-size: xx-large;
+.login-form button {
+  background-color: #8a226f;
+  color: white;
+  border-radius: 33px;
+  width: 70%;
+  height: 50px;
+  border-width: 0;
+  margin-bottom: 10px;
+}
+
+label {
+  font: 350 19px 'Kanit', sans-serif;
+  display: inline-block;
+  width: 70%;
+  text-align: left;
+  margin-bottom: 5px;
+  /* text-decoration: none; */
+}
+
+h5 {
+  font: 100 20px 'Kanit', sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: normal;
+
+}
+
+h4 {
+  /* padding-top: -20px; */
+  margin-top: -10px;
+  margin-right: 80px;
+  text-align: right;
+  font: 400 15px 'Kanit', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #8a226f;
+
+}
+
+h6 {
+    font: 400 40px 'Kanit', sans-serif;
+    font-size: 55px;
     margin-bottom: 18px;
-    text-align: center;
+    margin-left: 80px;
+    text-align: left;
   }
 
 h2 {
@@ -59,27 +97,27 @@ h3 {
     display: flex;
     align-items: center;
     /* align-items: baseline; */
-    gap: 10%;
+    gap: 100px;
     /* border: 3px solid black; */
     width: 100%;
     /* flex-wrap: wrap; */
     /* margin-left: 100px; */
-    padding: 5% 10% 5%;
+    padding: 3% 15% 8%;
     /* background-color: #F4F4F4; */
     /* width: 900px; */
     /* height: 500px; */
   
 }
 
-
-
-.grey-rectangle {
-    z-index: -1;
-    position: absolute;
-    /* background-color: #F4F4F4; */
-    width: 100%;
-    height: 444px;
-    top: 170px;
-    z-index: 60;
+.flex-box{
+  width: 500px;
 }
+
+img {
+  max-width: 100%;
+}
+
+
+
+
 

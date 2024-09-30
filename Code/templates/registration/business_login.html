@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "business_base.html" %}
 {% load static %}
 
 {% block content %}
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,50 +14,18 @@
 </head>
 
 
-
-
-<div class="header">
-    <section class="logo-section">
-        <div class="logo-container">
-            <a href="{% url 'home' %}">
-                <div class="image-container">
-                    <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
-                </div>
-            </a>
-        </div>
-    </section>
-</div>
-
-
-
 <body>
-    <h1>FOR BUSINESS</h1>
-    <label class="hamburger">
-        <input type="checkbox" id="check">
-    </label>
-
-    <aside class="menu">
-        <nav>
-            {% if user.is_authenticated %}
-                Hi {{ user.username }}!
-                <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
-                <a href="{% url 'faq' %}">F.A.Q</a>
-            {% else %}
-                <a href="{% url 'faq' %}">F.A.Q</a>
-                <li><a class="active" href="{% url 'salon_login' %}">Business Login</a></li>
-            {% endif %}
-
-        </nav>
-    </aside>
-
-    
-
+    <h6>YouBeauty, for your Business</h6>
     <div class="flex-container">
 
+        
+
         <div class="flex-box">
-            <h2>YouBeauty, for your Business</h2>
+            
+    
             
                 <div class="login-page">
+                    
                     <h2>Log In</h2>
 
                     {% if messages %}
@@ -75,19 +41,24 @@
                         <form method="post">
                             {% csrf_token %}
                             
-                            <label for="username">Username:</label>
+                            <label for="username">Username</label>
+                            <br> 
                             <input type="text" id="username" name="username" required><br><br>
                             
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" required><br><br>
-                            <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+                            <label for="password">Password</label>
+                            <br> 
+                            <input type="password" id="password" name="password" required>
+                            <h4><a href="{% url 'password_reset' %}">Forgot your password?</a></h4>
                             
-                            <button type="submit">Login</button>
+                            <button type="submit">LOGIN</button>
                         </form>
+
+                        <h5>OR</h5>
+                        <h5><a href="{% url 'business_register' %}">Create a new account</a></h5>
                         
                     </div>
 
-                    <p>OR <a href="{% url 'business_register' %}">Create a new account</a></p>
+                    
                     
                 </div>
         </div>
@@ -102,6 +73,11 @@
     </div>
 
     <!-- <div class="grey-rectangle"></div> -->
+
+    
+
+
+    
     
 
     

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Base{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/business_base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\business.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
+</head>
+
+<header>
+    <div class="logo-container">
+        <a href="{% url 'home' %}">
+            <div class="image-container">
+                <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+            </div>
+        </a>
+    </div>
+
+    <h1>FOR BUSINESS</h1>
+    <label class="hamburger">
+        <input type="checkbox" id="check">
+    </label>
+
+    <aside class="menu">
+        <nav>
+            {% if user.is_authenticated %}
+                Hi {{ user.username }}!
+                <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
+                <a href="{% url 'faq' %}">F.A.Q</a>
+            {% else %}
+                <a href="{% url 'faq' %}">F.A.Q</a>
+                <li><a class="active" href="{% url 'salon_login' %}">Business Login</a></li>
+            {% endif %}
+        </nav>
+    </aside>
+</header>
+
+
+{% block content %}
+{% endblock %}
+
+<footer></footer>
