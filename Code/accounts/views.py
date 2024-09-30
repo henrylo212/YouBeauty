@@ -5,12 +5,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from customers.models import Customer
+from customers.models import Customer, Booking
 from salons.models import SalonOwner
 # from .models import SalonInfo
 from salons.views import SalonRegistrationView
 from django.urls import reverse
 # from .models import Users
+import datetime
 
 # Think of all these views as just webpages. Views (in the form of html/css pages) of the database almost
 
@@ -151,9 +152,16 @@ def profileView(request):
         phone_number = customer.phone_number
         profile_photo = customer.profile_photo
         print(profile_photo)
+        
+        # Get upcoming bookings
+        #date_gte= means: date is GREATER THAN OR EQUAL to 
+        bookings = Booking.objects.filter(date__gte=datetime.date.today()).filter(customer=customer)
+        print(bookings)
+
         return render(request, 'profile/profile.html' , 
         {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
-        'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo})
+        'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
+        'bookings': bookings})
     elif is_salon_owner:
         user = salon_owner.user
         phone_number = salon_owner.phone_number

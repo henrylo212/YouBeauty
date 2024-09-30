@@ -73,11 +73,13 @@
                 <a class="h2-link" href="{% url 'bookings' %}">Manage all bookings ></a>
             </div>
             <div class="booking-scroll">
+                {% for booking in bookings %}
                 <div class="booking">
-                    <h3>Tester's Salon</h3>
-                    <p>12th of September - 11am - Basic Cut</p>
-                    <p>Unit 3, Testing Rd, Darlington</p>
+                    <h3>{{ booking.salon_service.salon.salon_name }}</h3>
+                    <p>{{ booking.date }} - {{ booking.start_time }} - {{ booking.salon_service.service }}</p>
+                    <p>{{ booking.salon_service.salon.salon_address }}</p>
                 </div>
+                {% endfor %}
                 <div class="booking">
                     <h3>Tester's Salon</h3>
                     <p>12th of September - 11am - Basic Cut</p>
