@@ -7,18 +7,21 @@
 {% endblock %}
 
 {% block content %}
+<div class="top-bar"></div>
+<link rel="stylesheet" type="text/css" href="{% static 'css/make_bookings.css' %}">    
 <div class="container">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/make_bookings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/make_bookings.css' %}">    
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+
+    <h1>Make bookings</h1>
     <div class="booking-section">
         <div class="left-section">
             <h2>Choose a date</h2>
             <div class="calendar">
-                <!-- Integrate a calendar widget or input -->
                 <input type="date" id="booking-date" class="calendar-input">
             </div>
             <h2>Choose a time</h2>
             <div class="time-picker">
-                <!-- Time picker for time selection -->
                 <input type="time" id="booking-time" class="time-input">
             </div>
         </div>
