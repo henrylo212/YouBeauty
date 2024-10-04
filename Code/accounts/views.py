@@ -205,7 +205,24 @@ def profileView(request):
 #     return render(request, 'profile/edit_profile.html')
 
 def bookingsView(request):
-    return render(request, 'bookings/bookings.html')
+    current_user = request.user
+    is_customer = False
+    try:
+        #try to get a customer
+        customer = get_object_or_404(Customer, user=current_user) #get Customer w/ current username
+        is_customer = True    
+        # is_salon_owner = False
+    except:
+        is_customer = False
+    
+    if is_customer:
+        bookings = Booking.objects.filter(customer=customer)
+        print(bookings)
+        return render(request, 'bookings/bookings.html', {'bookings': bookings})
+    else:
+        return render(request, 'bookings/bookings.html', {'bookings': None})
+
+    
 
 def forBusinessView(request):
     return render(request, 'forBusiness.html')
