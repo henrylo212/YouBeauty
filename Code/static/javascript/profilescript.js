@@ -54,7 +54,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.getElementById("profile-form").addEventListener("submit", function(event) {
+    // event.preventDefault();
+    
+    const nameValue = nameInput.value;
+    const emailValue = emailInput.value;
+    const phoneValue = phoneInput.value;
 
-// function editProfile(element, color) {
-//     element.style.backgroundcolor = color;
-// }
+
+    nameInput.value = nameValue;
+    emailInput.value = emailValue;
+    phoneInput.value = phoneValue;
+
+
+    // nameInput = 
+    // this.submit();
+    
+});

@@ -107,26 +107,14 @@ def profileView(request):
         'profile/profile.html': The template used to display the user profile information
     
     '''
-    # def getCurrentUser(request):
-    # current_user_id = request.user
-    # current_user = Users.objects.get(pk=current_user_id)
-    # # return render(request, 'profile.html', {'user_info': user_info})
-    # return render(request, 'profile.html', {'current_user_info': current_user})
 
-    # user_profiles = Users.objects.all() 
-    # for user in user_profiles:
-    #     print(f"UID: {user.user_id}")
-    #     print(f"Username: {user.username}")
-    #     print("\n")
-    # print(user_profiles)
-    # user = get_object_or_404(Users, pk=request.user.id)
-    # user = get_object_or_404(Users, username = "capstone")
-    
-    # user = get_object_or_404(Users, pk=request.user.id)
-    # user = get_object_or_404(Users, pk=2)
-    # print(user.user_id)
-    # print(request.user)
-    # print(request.user.username)
+    is_customer = False
+    is_salon_owner = False
+    user = request.user
+    phone_number = ""
+    profile_photo = None
+    form = None
+
     if request.method == 'POST':
         print("made it to POST")
         form = EditProfileForm(data=request.POST)
@@ -134,6 +122,7 @@ def profileView(request):
         if form.is_valid():
             customer = get_object_or_404(Customer, user=request.user) #get Customer w/ current username
             user = form.save(customer)  
+            # user = form.save(user)
             print(user)
             # extract data from form
             profile_name = form.cleaned_data.get('profile_name')
@@ -142,44 +131,22 @@ def profileView(request):
             email = form.cleaned_data.get('email')
             print(email)
             phone_number = form.cleaned_data.get('phone_number')
-            
-            
-            
-            # if role == 'salonowner':
-            #     # salon owner is redirected to salon registration page
-            #     return redirect(reverse('salons:salon_form')) 
-            # else:
-            #     # customer is redirected to homepage
-            #     return redirect('home') 
-            
-            # username = form.cleaned_data.get('username')
-            # password = form.cleaned_data.get('password')
-            # user = authenticate(username=username, password=password)
-            # # authenticate the user
-            # user = authenticate(username=username, password=password)
-            # login(request, user)
-            # if user is not None:
-                
-            #     if hasattr(user, 'customer'):
-            #         login(request, user)
-            #         return redirect('customer_dashboard')
-            #     else:
-            #         form.add_error(None, "This account is not registered as a customer.")
-            # else:
-            #     form.add_error(None, "Invalid username or password.")
+            # return redirect("success")
+
+            return redirect("profile")
     else:
         form = EditProfileForm()
 
     # phone_number = customer.phone_number
     # profile_photo = customer.profile_photo
 
-    user = request.user
-    phone_number = ""
-    profile_photo = None
+    # user = request.user
+    # phone_number = ""
+    # profile_photo = None
 
 
     if request.method == "GET":
-        current_username = request.user.username #get username of logged in user
+        # current_username = request.user.username #get username of logged in user
         current_user = request.user #get logged in user
         print(current_user)
         is_customer = False
@@ -222,39 +189,26 @@ def profileView(request):
             return render(request, 'profile/profile.html' , 
             {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
             'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form})
-        else:
-            # user = current_user
-            # phone_number = ""
-            # profile_photo = None
-            print(profile_photo)
-            return render(request, 'profile/profile.html' , 
-            {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
-            'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
-            'form': form})    
+        # else:
+        #     # user = current_user
+        #     # phone_number = ""
+        #     # profile_photo = None
+        #     print(profile_photo)
+        #     return render(request, 'profile/profile.html' , 
+        #     {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+        #     'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
+        #     'form': form})    
     else:
-        return render(request, 'profile/profile.html', {'user': request.user, 
-            'phone_number': phone_number, 'profile_photo': profile_photo,
-            'form': form})
-    # customer = get_object_or_404(Customer, username=current_username) #get Customer w/ current username
-    # salon_owner = get_object_or_404(SalonOwner, username=current_username) #get SalonOwner w/ current username
+        # return render(request, 'profile/profile.html', {'user': request.user, 
+        #     'phone_number': phone_number, 'profile_photo': profile_photo,
+        #     'form': form})
+        user = request.user
+    
+    return render(request, 'profile/profile.html' , 
+        {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+        'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
+        'form': form})   
 
-    # user = get_object_or_404(Users, username = current_username)
-    #todo: line above is creating issues - not linked to authorization users, only accounts.
-    # print(user)
-    # return render(request, 'profile/profile.html', {"user_profiles": user_profiles})
-
-    # if request.method == 'POST':
-    #     edit_form = RegistrationForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         username = form.cleaned_data.get('username')
-    #         password = form.cleaned_data.get('password1')
-    #         user = authenticate(username=username, password=password)
-    #         login(request, user)
-    #         return redirect('home')  
-    # else:
-    #     form = RegistrationForm()
-    return render(request, 'profile/profile.html') #, {'current_username': current_username})
 
 # def editProfileView(request):
 #     return render(request, 'profile/edit_profile.html')

@@ -17,10 +17,12 @@ class RegistrationForm(UserCreationForm):
 
 class EditProfileForm(forms.Form):
     profile_name = forms.CharField(max_length=301)
+    # first_name = forms.CharField(max_length=150)
+    # last_name = forms.CharField(max_length=150)
     email = forms.EmailField()
     phone_number = forms.CharField(max_length=20)
 
-    print(profile_name)
+    # print(profile_name)
     print(email)
     print(phone_number)
 
