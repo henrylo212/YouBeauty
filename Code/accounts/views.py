@@ -120,8 +120,10 @@ def profileView(request):
         form = EditProfileForm(data=request.POST)
         print(form.errors)
         if form.is_valid():
-            customer = get_object_or_404(Customer, user=request.user) #get Customer w/ current username
-            user = form.save(customer)  
+            current_user = request.user
+            print(f"exists {Customer.objects.filter(user=current_user).exists()}, {Customer.objects.filter(user=request.user)}")
+            customer = get_object_or_404(Customer, user=current_user) #get Customer w/ current user
+            saved = form.save(user)  
             # user = form.save(user)
             print(user)
             # extract data from form

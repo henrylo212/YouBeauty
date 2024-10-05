@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from customers.models import Customer
+from django.shortcuts import get_object_or_404
 
 class RegistrationForm(UserCreationForm):
     ROLE_CHOICES = [
@@ -30,8 +31,8 @@ class EditProfileForm(forms.Form):
     #     model = Customer
     #     fields = ['user.first_name', 'user.last_name', 'user.email', 'phone_number']
 
-    def save(self, customer):
-        print(f"customerr {customer}")
+    def save(self, user):
+        print(f"useeerrrr {user}")
         profile_name = self.cleaned_data["profile_name"]
         email = self.cleaned_data["email"]
         phone_number = self.cleaned_data["phone_number"]
@@ -44,14 +45,37 @@ class EditProfileForm(forms.Form):
             last_name = "-"
         else:
             last_name = first_last_name[1]
+        
+        current_user_id = user.id
+        print(current_user_id)
+        
+        user_instance = get_object_or_404(User, id=current_user_id)
+        customer_instance = get_object_or_404(Customer, user=user_instance)
+        # customer_instance = get_object_or_404(Customer, id=current_customer_id)
+        
+        # user_instance = get_object_or_404(User, id=current_user_id)
+
+        print(f"user: {user_instance} customer: {customer_instance} boop")
+
+        user_instance.first_name = first_name
+        user_instance.last_name = last_name
+        user_instance.email = email
+        customer_instance.phone_number = phone_number
+
+        user_instance.save()
+        customer_instance.save()
     
-        user = User.objects.filter(id=customer.user.id).update(first_name=first_name, last_name=last_name, email=email)
-        print(user)
-        customer = Customer.objects.filter(id=customer.id).update(user=user, phone_number=phone_number)
+
+        # user = User.objects.filter(id=customer.user.id).update(first_name=first_name, last_name=last_name, email=email)
+        # print(user)
+        # customer = Customer.objects.filter(user=customer.id).update(user=user, phone_number=phone_number)
 
         # User.objects.update(first_name=first_name, last_name=last_name, email=email)
         # Customer.objects.update(user=user,phone_number=phone_number)
 
-        return user, customer
+        print(f"user: {user_instance} customer: {customer_instance} boop number 2")
+        return user_instance, customer_instance
+
+
         
 
