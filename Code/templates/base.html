@@ -36,7 +36,8 @@
                 Hi {{ user.username }}!
                 <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'bookings' %}">Manage Bookings</a></li>
-                <a href="{% url 'faq' %}">F.A.Q</a>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'faq' %}">FAQ</a></li>
                 <div class="logout-button">
                     <form method="post" action="{% url 'logout' %}" style="display: inline;">
                         {% csrf_token %}
@@ -45,7 +46,8 @@
                 </div>
             {% else %}
                 <li><a class="active" href="{% url 'login' %}">Login</a></li>
-                <a href="{% url 'faq' %}">F.A.Q</a>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'faq' %}">FAQ</a></li>
             {% endif %}
         </nav>
     </aside>

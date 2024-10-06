@@ -94,6 +94,21 @@ def FAQView(request):
     '''
     return render(request, 'faq.html')
 
+def AboutView(request):
+    '''
+    Handles information for the About page
+
+    This view handles information for the About page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'about.html': The template used to display the About page
+    
+    '''
+    return render(request, 'about.html')
+
 def profileView(request):
     '''
     Handles information about the user profile 
