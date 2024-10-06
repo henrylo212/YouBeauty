@@ -6,6 +6,35 @@
     margin-top: 40px;
 }
 
+h1 {
+    /* margin-top: 50px; */
+    /* margin-bottom: 45px; */
+    color:rgb(0, 0, 0);
+    font-family: "Kanit";
+    font-size: 40px;
+    font-weight: normal;
+    text-align: center;
+    /* align-items: center; */
+}
+
+h2 {
+    /* display: flex; */
+    color:#585757;
+    font-family: "Kanit";
+    font-size: 30px;
+    text-align: center;
+    font-weight: normal;
+}
+
+h3 {
+    color:#585757;
+    font-family: "Kanit";
+    font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 .about-body {
     background-color: #ffffff;
     display: flex;
@@ -25,35 +54,7 @@
         flex-direction: column;
         width: 50%;
         padding: 5%;
-    }
-
-    .about-body h1 {
-        /* margin-top: 50px; */
-        /* margin-bottom: 45px; */
-        color:rgb(0, 0, 0);
-        font-family: "Kanit";
-        font-size: 40px;
-        font-weight: normal;
-        text-align: center;
-        /* align-items: center; */
-    }
-
-    .about-body h2 {
-        /* display: flex; */
-        color:#585757;
-        font-family: "Kanit";
-        font-size: 30px;
-        text-align: center;
-        font-weight: normal;
-    }
-
-    .about-body h3 {
-        color:#585757;
-        font-family: "Kanit";
-        font-size: 24px;
-        font-weight: normal;
-        text-align: center;
-        margin-bottom: 40px;
+        align-items: center;
     }
 
     .about-body .text {
@@ -64,9 +65,23 @@
     }
 
     .about-body .img {
-        position: absolute;
+        /* position: absolute; */
+        max-width: 100%;
+        max-height: 70%;
+        /* max-height: 50%; */
+        /* align-self: center; */
         /* width: 26px;
         height: 2px;
         top: 58px;
         left: 1364px; */
       }
+
+    .about-body .h3 {
+        color:#585757;
+        font-family: "Kanit";
+        font-size: 26px;
+        font-weight: normal;
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top: -100px;
+    }
