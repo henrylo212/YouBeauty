@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="confirmation-container">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/booking_confirmation.css' %}">    
+    <div class="confirmation-box">
+        <h1>Booking Confirmation</h1>
+        <p>Thank you for your booking, {{ booking.customer.user.username }}!</p>
+        <p>Your booking details:</p>
+        <ul>
+            <li>Date: {{ booking.date }}</li>
+            <li>Start Time: {{ booking.start_time }}</li>
+            <li>End Time: {{ booking.end_time }}</li>
+            <li>Service: {{ booking.salon_service.service.service_name }}</li>
+            <li>Price: ${{ booking.salon_service.price }}</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

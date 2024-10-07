@@ -14,15 +14,17 @@
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
 
     <h1>Make bookings</h1>
+    <form method="post" action="{% url 'make_bookings' salon_service.id %}">
+        {% csrf_token %}
     <div class="booking-section">
         <div class="left-section">
             <h2>Choose a date</h2>
             <div class="calendar">
-                <input type="date" id="booking-date" class="calendar-input">
+                <input type="date" id="booking-date" name="date" class="calendar-input">
             </div>
             <h2>Choose a time</h2>
             <div class="time-picker">
-                <input type="time" id="booking-time" class="time-input">
+                <input type="time" id="booking-time" name="start_time" class="time-input">
             </div>
         </div>
 
@@ -39,6 +41,7 @@
                 <button type="submit" class="confirm-button">CONFIRM BOOKING</button>
             </div>
         </div>
+    </form>
     </div>
 </div>
 <script>

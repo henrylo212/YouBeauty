@@ -1,0 +1,23 @@
+
+.confirmation-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Ensure the container takes up the full viewport height */
+}
+
+.confirmation-container .confirmation-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    max-width: 600px;
+    width: 80%;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+}
+.confirmation-container .confirmation-box ul {
+    list-style-type: none; /* Removes the dots */
+    padding: 0; /* Removes any default padding */
+    margin: 0; /* Removes any default margin */
+}
