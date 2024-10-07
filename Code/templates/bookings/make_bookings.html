@@ -28,17 +28,26 @@
 
         <div class="right-section">
             <h2>Your booking details:</h2>
+
             <div class="details-card">
-                <h3>Tester's Salon</h3>
-                <p>Camperdown, Sydney</p>
-                <p>Cut + Blow Dry <span>45 mins</span></p>
+                <h3>{{ salon_service.salon.salon_name }}</h3>
+                <p>{{ salon_service.salon.salon_address }}</p>
+                <p>{{ salon_service.service.service_name }} <span>{{ salon_service.duration }}</span></p>
                 <p>Date: <span id="selected-date">Not selected</span></p>
                 <p>Time: <span id="selected-time">Not selected</span></p>
-                <p>Total amount: <strong>$50</strong></p>
-                <button class="confirm-button">CONFIRM BOOKING</button>
+                <p>Total amount: <strong>${{ salon_service.price }}</strong></p>
+                <button type="submit" class="confirm-button">CONFIRM BOOKING</button>
             </div>
         </div>
     </div>
 </div>
-
+<script>
+    // JavaScript to update the selected date and time dynamically on the right side
+    document.getElementById('booking-date').addEventListener('change', function () {
+        document.getElementById('selected-date').textContent = this.value;
+    });
+    document.getElementById('booking-time').addEventListener('change', function () {
+        document.getElementById('selected-time').textContent = this.value;
+    });
+    </script>
 {% endblock %}

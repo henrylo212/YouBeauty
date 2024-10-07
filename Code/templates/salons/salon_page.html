@@ -41,7 +41,9 @@
                     <br>
                     <h2>${{ service.price }}</h2>
                 </div>
-                <button type="button" id="book-button">BOOK</button>
+                <a href="{% url 'make_bookings' service.id %}">
+                    <button type="button" class="book-button">BOOK</button>
+                </a>
             </div>
         {% endfor %}
     </div>
