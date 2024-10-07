@@ -21,11 +21,19 @@
         </div>
     </section>
 
-    <header>
-        <nav>
-            <a href="{% url 'forBusiness' %}">For Business</a>
-        </nav>
-    </header>
+    {% if user.is_authenticated %}
+        <!-- Hi {{ user.username }}!
+        <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
+        <a href="{% url 'faq' %}">F.A.Q</a> -->
+    {% else %}
+        <header>
+            <nav>
+                <a href="{% url 'forBusiness' %}">For Business</a>
+            </nav>
+        </header>
+    {% endif %}
+
+    
 
     <label class="hamburger">
         <input type="checkbox" id="check">
