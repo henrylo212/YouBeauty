@@ -37,8 +37,9 @@
 </div>
 
 <div class="search-keywords">
-    <form class="search-form-btn">
-        <input class="search-form" type="search" placeholder="Search keywords" aria-label="Search keywords">
+    <form class="search-form-btn" method=POST action="{% url 'search_results' %}">
+        {% csrf_token %}
+        <input class="search-form" type="search" placeholder="Search keywords" aria-label="Search keywords" name="searched" value="{{ searched }}">
         <button class="go-btn" type="submit">Search</button>
     </form>
 </div>

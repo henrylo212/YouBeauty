@@ -1,1 +1,7 @@
-<h1> You searched for... </h1>
+{% if searched %}
+    <h1> You searched for {{searched}} </h1>
+    <br/>
+    {% for salon in salon_names %}
+        {{ salon }}<br/>{{ salon.salon_address }}<br/>
+    {% endfor %}
+{% endif %}

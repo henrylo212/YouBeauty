@@ -33,7 +33,7 @@ searchInp.addEventListener("keyup", () => {
 selectBtn.addEventListener("click", () => {
     wrapperLocation.classList.toggle("active");
     wrapperService.classList.remove("active");
-    wrapperTime.classList.remove("active");
+    // wrapperTime.classList.remove("active");
 });
 
 // Service Search
@@ -72,45 +72,45 @@ searchInpService.addEventListener("keyup", () => {
 serviceBtn.addEventListener("click", () => {
     wrapperService.classList.toggle("active");
     wrapperLocation.classList.remove("active");
-    wrapperTime.classList.remove("active");
+    // wrapperTime.classList.remove("active");
 });
 
 
 // Time Search
-const wrapperTime = document.querySelector(".wrapper-time"),
-timeBtn = wrapperTime.querySelector(".time-btn"),
-searchInpTime = wrapperTime.querySelector("input"),
-optionsTime = wrapperTime.querySelector(".options");
+// const wrapperTime = document.querySelector(".wrapper-time"),
+// timeBtn = wrapperTime.querySelector(".time-btn"),
+// searchInpTime = wrapperTime.querySelector("input"),
+// optionsTime = wrapperTime.querySelector(".options");
 
-let times = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
+// let times = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
 
-function addTime() {
-    optionsTime.innerHTML = "";
-    times.forEach(time => {
-        let li = `<li onclick="updateTimeName(this)">${time}</li>`;
-        optionsTime.insertAdjacentHTML("beforeend", li);
-    });
-}
-addTime();
+// function addTime() {
+//     optionsTime.innerHTML = "";
+//     times.forEach(time => {
+//         let li = `<li onclick="updateTimeName(this)">${time}</li>`;
+//         optionsTime.insertAdjacentHTML("beforeend", li);
+//     });
+// }
+// addTime();
 
-function updateTimeName(selectedLi) {
-    searchInpTime.value = "";
-    addTime();
-    wrapperTime.classList.remove("active");
-    timeBtn.firstElementChild.innerText = selectedLi.innerText;
-}
+// function updateTimeName(selectedLi) {
+//     searchInpTime.value = "";
+//     addTime();
+//     wrapperTime.classList.remove("active");
+//     timeBtn.firstElementChild.innerText = selectedLi.innerText;
+// }
 
-searchInpTime.addEventListener("keyup", () => {
-    let arr= [];
-    let searchedVal = searchInpTime.value.toLowerCase();
-    arr = times.filter(data => {
-        return data.toLowerCase().startsWith(searchedVal);
-    }).map(data => `<li onclick="updateTimeName(this)">${data}</li>`).join("");
-    optionsTime.innerHTML = arr;
-});
+// searchInpTime.addEventListener("keyup", () => {
+//     let arr= [];
+//     let searchedVal = searchInpTime.value.toLowerCase();
+//     arr = times.filter(data => {
+//         return data.toLowerCase().startsWith(searchedVal);
+//     }).map(data => `<li onclick="updateTimeName(this)">${data}</li>`).join("");
+//     optionsTime.innerHTML = arr;
+// });
 
-timeBtn.addEventListener("click", () => {
-    wrapperTime.classList.toggle("active");
-    wrapperLocation.classList.remove("active");
-    wrapperService.classList.remove("active");
-});
+// timeBtn.addEventListener("click", () => {
+//     wrapperTime.classList.toggle("active");
+//     wrapperLocation.classList.remove("active");
+//     wrapperService.classList.remove("active");
+// });

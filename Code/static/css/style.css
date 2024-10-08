@@ -242,6 +242,7 @@ a:hover {
     color: white;
     background: #D282DE;
     border: none;
+    cursor: pointer;
 }
 
 
