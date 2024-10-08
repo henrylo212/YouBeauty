@@ -296,5 +296,5 @@ def salon_login(request):
 
     return render(request, 'registration/business_login.html', {'form': form})
 
-
-
+def search_results(request):
+    return render(request, 'search_results.html')
