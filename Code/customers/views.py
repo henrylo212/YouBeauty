@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from salons.models import SalonInfo
 from .models import Booking, Customer
 from customers.models import Customer
@@ -75,3 +75,17 @@ def make_bookings(request, salon_service_id):
 def booking_confirmation(request, booking_id):
     booking = Booking.objects.get(id=booking_id)
     return render(request, 'bookings/booking_confirmation.html', {'booking': booking})
+
+def edit_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    if request.method == 'POST':
+        if 'cancel_booking' in request.POST:
+            booking.delete()
+            return redirect('bookings')
+        else:
+            booking.date = request.POST['date']
+            booking.start_time = request.POST['time']
+            booking.save()
+            return redirect('bookings')
+
+    return render(request, 'bookings/edit_booking.html', {'booking': booking})

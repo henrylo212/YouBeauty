@@ -17,7 +17,8 @@ urlpatterns = [
     path('customer/', include('customers.urls')),
     path('book/<int:salon_service_id>/', views.make_bookings, name='make_bookings'),
     path('booking_confirmation/<int:booking_id>/', views.booking_confirmation, name='booking_confirmation'),
-    
+    path('edit_booking/<int:booking_id>/', views.edit_booking, name='edit_booking'),
+
 ]
 
 if settings.DEBUG:
