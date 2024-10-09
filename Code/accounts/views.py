@@ -130,6 +130,10 @@ def profileView(request):
     phone_number = ""
     profile_photo = None
     form = None
+    # if hasattr(user, 'salonowner'):
+    # if not hasattr(user, 'customer'):
+    #     #is not customer
+    #     redirect()
 
     if request.method == 'POST':
         print("made it to POST")
@@ -154,13 +158,6 @@ def profileView(request):
             return redirect("profile")
     else:
         form = EditProfileForm()
-
-    # phone_number = customer.phone_number
-    # profile_photo = customer.profile_photo
-
-    # user = request.user
-    # phone_number = ""
-    # profile_photo = None
 
 
     if request.method == "GET":
@@ -207,19 +204,7 @@ def profileView(request):
             return render(request, 'profile/profile.html' , 
             {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
             'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form})
-        # else:
-        #     # user = current_user
-        #     # phone_number = ""
-        #     # profile_photo = None
-        #     print(profile_photo)
-        #     return render(request, 'profile/profile.html' , 
-        #     {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
-        #     'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
-        #     'form': form})    
     else:
-        # return render(request, 'profile/profile.html', {'user': request.user, 
-        #     'phone_number': phone_number, 'profile_photo': profile_photo,
-        #     'form': form})
         user = request.user
     
     return render(request, 'profile/profile.html' , 
