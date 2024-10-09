@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from customers.models import Customer, Booking
 from salons.models import SalonOwner
+from salons.models import SalonInfo
 # from .models import SalonInfo
 from salons.views import SalonRegistrationView
 from django.urls import reverse
@@ -296,5 +297,11 @@ def salon_login(request):
 
     return render(request, 'registration/business_login.html', {'form': form})
 
-
-
+def search_results(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        salon_names = SalonInfo.objects.filter(salon_name__contains=searched)
+        return render(request, 'search_results.html', {'searched':searched, 'salon_names':salon_names})
+    else:
+        return render(request, 'search_results.html')
+    

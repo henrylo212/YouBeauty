@@ -208,24 +208,62 @@ a:hover {
 }
 
 /* Search Bar */
+.search-keywords {
+    width: 630px;
+    margin: 60px 200px 0;
+    position: absolute;
+    z-index: 1;
+    background: white;
+    border-radius: 20px;
+    /* outline-style: dotted; */
+}
+.search-form-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-form {
+    font: 15px 'Julius Sans One', sans-serif;
+    padding-left: 20px;
+    border-radius: 20px;
+    background: transparent;
+    color: #979797;
+    height: 40px;
+    border: none;
+    outline: none;
+    width: 220px;
+}
+.go-btn {
+    height: 30px;
+    font: 15px 'Julius Sans One', sans-serif;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    color: white;
+    background: #D282DE;
+    border: none;
+    cursor: pointer;
+}
+
+
 .wrapper-location {
-    width: 200px;
-    margin: 60px 360px 0;
+    width: 150px;
+    margin: 60px 580px 0;
     position: absolute;
     z-index: 999;
 }
 .wrapper-service {
     width: 200px;
-    margin: 60px 200px 0;
+    margin: 60px 420px 0;
     position: absolute;
     z-index: 999;
 }
-.wrapper-time {
+/* .wrapper-time {
     width: 150px;
     margin: 60px 520px 0;
     position: absolute;
     z-index: 999;
-}
+} */
 .select-btn, .options li {
     display: flex;
     cursor: pointer;
@@ -236,16 +274,16 @@ a:hover {
     cursor: pointer;
     align-items: center;
 }
-.time-btn, .options li {
+/* .time-btn, .options li {
     display: flex;
     cursor: pointer;
     align-items: center;
-}
+} */
 .select-btn {
     height: 40px;
     font: 15px 'Julius Sans One', sans-serif;
     display: flex;
-    padding-left: 40px;
+    padding-left: 20px;
     border-radius: 20px;
     background: #fff;
     justify-content: space-between;
@@ -254,12 +292,12 @@ a:hover {
     height: 40px;
     font: 15px 'Julius Sans One', sans-serif;
     display: flex;
-    padding-left: 40px;
+    padding-left: 20px;
     border-radius: 20px;
     background: #fff;
     justify-content: space-between;
 }
-.time-btn {
+/* .time-btn {
     height: 40px;
     font: 15px 'Julius Sans One', sans-serif;
     display: flex;
@@ -267,25 +305,25 @@ a:hover {
     border-radius: 20px;
     background: #fff;
     justify-content: space-between;
-}
+} */
 .select-btn i {
     font: 15px 'Julius Sans One', sans-serif;
 }
 .service-btn i {
     font: 15px 'Julius Sans One', sans-serif;
 }
-.time-btn i {
+/* .time-btn i {
     font: 15px 'Julius Sans One', sans-serif;
-}
+} */
 .wrapper-location.active .content{
     display: block;
 }
 .wrapper-service.active .content{
     display: block;
 }
-.wrapper-time.active .content{
+/* .wrapper-time.active .content{
     display: block;
-}
+} */
 .content {
     display: none;
     margin-top: 15px;
