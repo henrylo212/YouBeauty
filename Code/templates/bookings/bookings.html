@@ -23,7 +23,7 @@
             <div class="booking-price">
                 <span>${{ booking.salon_service.price }}</span>
             </div>
-            <button class="edit-button">Edit</button>
+            <button class="edit-button" onclick="window.location.href='{% url 'edit_booking' booking.id %}'">Edit</button>
         </div>
     </div>
     {% endfor %}
