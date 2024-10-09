@@ -58,4 +58,24 @@
                 <li><a href="{% url 'faq' %}">FAQ</a></li>
                 <div class="logout-button">
                     <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                  
+                        {% csrf_token %}
+                        <button type="submit" class="logout-link">Logout</button>
+                    </form>
+                </div>
+            {% else %}
+                <li><a class="active" href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'faq' %}">FAQ</a></li>
+            {% endif %}
+        </nav>
+    </aside>
+    
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+  </div>
+</body>
+
+</html>
