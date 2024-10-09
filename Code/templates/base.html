@@ -40,8 +40,8 @@
     </label>
     <aside class="menu">
         <nav>
-            {% if is_customer and user.is_authenticated %}
-                Hi {{ user.username }} - customer!
+            {% if is_authenticated_customer and user.is_authenticated %}
+                Hi {{ user.username }}!
                 <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'bookings' %}">Manage Bookings</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
@@ -78,4 +78,4 @@
   </div>
 </body>
 
-</html>
+</ht
