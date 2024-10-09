@@ -5,6 +5,7 @@ from customers.models import Customer
 from salons.models import SalonService
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
+from django.core.mail import send_mail
 
 def extractSalonInfoView(request):
     '''
@@ -67,6 +68,17 @@ def make_bookings(request, salon_service_id):
             is_cancelled=False
         )
         print(f"Booking created for {Customer.user} on {date} at {start_time}")
+
+        subject = f"Booking confirmed for {booking.customer.user.username} at {salon_service.salon.salon_name}"
+        message = (
+            f"Dear {booking.customer.user.username},\n\n"
+            f"Thank you for booking with Youbeauty. Your {booking.salon_service} booking "
+            f"on {date}, {start_time_str} at {salon_service.salon.salon_name} is confirmed.\n\n"
+            f"Sincerely,\nYoubeauty"
+        )
+        recipient_list = [customer.user.email]
+        send_mail(subject, message, 'your_email@example.com', recipient_list)
+
 
         return redirect('booking_confirmation', booking_id=booking.id)
     
