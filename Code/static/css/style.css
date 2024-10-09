@@ -143,6 +143,7 @@ a:hover {
     transition: opacity var(--animation-timing), height var(--animation-timing);
     list-style: none;
     text-align: right;
+    z-index:1000;
 }
 .hamburger.hamburger:has(input:checked) + .menu {
     height: fit-content;
