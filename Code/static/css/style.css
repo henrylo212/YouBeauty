@@ -218,7 +218,6 @@ a:hover {
     z-index: 1;
     background: white;
     border-radius: 20px;
-    /* outline-style: dotted; */
 }
 .search-form-btn {
     display: flex;
@@ -258,6 +257,22 @@ a:hover {
     position: absolute;
     z-index: 999;
 }
+.search-location {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.location-form {
+    font: 15px 'Julius Sans One', sans-serif;
+    padding-left: 20px;
+    border-radius: 20px;
+    background: transparent;
+    color: #979797;
+    height: 40px;
+    border: none;
+    outline: none;
+    width: 160px;
+}
 
 .wrapper-service {
     width: 200px;
@@ -279,7 +294,7 @@ a:hover {
     height: 40px;
     border: none;
     outline: none;
-    width: 200px;
+    width: 160px;
 }
 /* .wrapper-time {
     width: 150px;

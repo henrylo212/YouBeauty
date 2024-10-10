@@ -1,7 +1,6 @@
 const serviceWrapper = document.querySelector(".wrapper-service"),
 serviceSearch = serviceWrapper.querySelector(".service-form"),
-optionsSerivce = serviceWrapper.querySelector(".options");
-const hideService = serviceWrapper.querySelector(".hide"),
+optionsSerivce = serviceWrapper.querySelector(".options"),
 services_list = serviceWrapper.querySelectorAll("li");
 let temp_services = Array.from(services_list);
 
@@ -37,7 +36,7 @@ serviceSearch.addEventListener("keyup", () => {
 
 serviceSearch.addEventListener("click", () => {
     serviceWrapper.classList.toggle("active");
-    // wrapperLocation.classList.remove("active");
+    locationWrapper.classList.remove("active");
     salonNames.classList.remove("active");
 });
 
@@ -45,8 +44,7 @@ serviceSearch.addEventListener("click", () => {
 
 const salonNames = document.querySelector(".search-keywords"),
 salonSearch = salonNames.querySelector(".search-form"),
-optionsSalon = salonNames.querySelector(".options");
-const hide = salonNames.querySelector(".hide"),
+optionsSalon = salonNames.querySelector(".options"),
 salon_list = salonNames.querySelectorAll("li");
 let temp_salonNames = Array.from(salon_list);
 
@@ -82,6 +80,51 @@ salonSearch.addEventListener("keyup", () => {
 
 salonSearch.addEventListener("click", () => {
     salonNames.classList.toggle("active");
-    // wrapperLocation.classList.remove("active");
+    serviceWrapper.classList.remove("active");
+    locationWrapper.classList.remove("active");
+});
+
+
+
+
+const locationWrapper = document.querySelector(".wrapper-location"),
+locationSearch = locationWrapper.querySelector(".location-form"),
+optionsLocation = locationWrapper.querySelector(".options"),
+locations_list = locationWrapper.querySelectorAll("li");
+let temp_locations = Array.from(locations_list);
+
+let locations = [];
+temp_locations.forEach(element => {
+    locations.push(element.innerHTML.trim())
+});
+
+function addLocation() {
+    optionsLocation.innerHTML = "";
+    locations.forEach(location => {
+        let li = `<li onclick="updateLocation(this)">${location}</li>`;
+        optionsLocation.insertAdjacentHTML("beforeend", li);
+    });
+}
+addLocation();
+
+function updateLocation(selectedLi) {
+    locationSearch.value = "";
+    addLocation();
+    locationWrapper.classList.remove("active");
+    locationSearch.firstElementChild.innerText = selectedLi.innerText;
+}
+
+locationSearch.addEventListener("keyup", () => {
+    let arr= [];
+    let searchedVal = locationSearch.value.toLowerCase();
+    arr = locations.filter(data => {
+        return data.toLowerCase().startsWith(searchedVal);
+    }).map(data => `<li onclick="updateLocation(this)">${data}</li>`).join("");
+    optionsLocation.innerHTML = arr;
+});
+
+locationSearch.addEventListener("click", () => {
+    locationWrapper.classList.toggle("active");
+    salonNames.classList.remove("active");
     serviceWrapper.classList.remove("active");
 });
