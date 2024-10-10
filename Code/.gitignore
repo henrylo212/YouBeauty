@@ -1,0 +1,11 @@
+db.sqlite3
+__pycache__/
+*.py[cod]
+*.pyd
+migrations/
+.vscode/
+.idea/
+*.log
+venv/
+.env/
+dist/db.sqlite3
