@@ -33,30 +33,6 @@ class BusinessLoginView(LoginView):
 
 # Think of all these views as just webpages. Views (in the form of html/css pages) of the database almost
 
-# def RegistrationView(request):
-#     if request.method == 'POST':
-#         form = RegistrationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             # extract data from form
-#             username = form.cleaned_data.get('username')
-#             password = form.cleaned_data.get('password1')
-#             role = form.cleaned_data.get('role')
-            
-#             # authenticate the user
-#             user = authenticate(username=username, password=password)
-#             login(request, user)
-            
-#             if role == 'salonowner':
-#                 # salon owner is redirected to salon registration page
-#                 return redirect(reverse('salons:salon_form')) 
-#             else:
-#                 # customer is redirected to homepage
-#                 return redirect('home') 
-#     else:
-#         form = RegistrationForm()
-#     return render(request, 'registration/register.html', {'form': form})
-
 
 def CustomerRegistrationView(request):
     if request.method == 'POST':

@@ -66,49 +66,49 @@
 
 
 <div class="spacer"></div>
-<!--happy hour section-->
+<!-- Happy Hour Deals Section -->
 <div class="salon-wrapper">
     <p class="homepage-text-one">DISCOVER HAPPY HOUR DEALS  > </p>
-    <div class="card-wrapper">
-        <i id="left" class="fas fa-chevron-left"></i>
-            <ul class="slider">
-                {% for salon in salon_info %}
-                <a href="{% url 'salons:salon_page' salon.id %}">
-                    <div class="salon-card">
-                        <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
-                        <div class="salon-card-text">
-                            <p class="salon-name-text">{{ salon.salon_name }}</p>
-                            <p>{{ salon.salon_address.address_line1 }}</p>
-                        </div>
+    <div class="card-wrapper happy-hour-wrapper">
+        <i id="happy-hour-left" class="fas fa-chevron-left"></i>
+        <ul class="slider happy-hour-slider">
+            {% for salon in salon_info %}
+            <a href="{% url 'salons:salon_page' salon.id %}">
+                <div class="salon-card">
+                    <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
+                    <div class="salon-card-text">
+                        <p class="salon-name-text">{{ salon.salon_name }}</p>
+                        <p>{{ salon.salon_address.address_line1 }}</p>
                     </div>
-                </a>
-                {% endfor %}
-            </ul>
-        <i id="right" class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+            {% endfor %}
+        </ul>
+        <i id="happy-hour-right" class="fas fa-chevron-right"></i>
     </div>
 </div>
 
-<!--top salons section-->
+<!-- Top Salons Section -->
 <div class="salon-wrapper">
     <p class="homepage-text-one">TOP SALONS, SYDNEY > </p>
-    <div class="card-wrapper">
-        <i id="left" class="fas fa-chevron-left"></i>
-            <ul class="slider">
-                {% for salon in salon_info %}
-                <a href="{% url 'salons:salon_page' salon.id %}">
-                    <div class="salon-card">
-                        <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
-                        <div class="salon-card-text">
-                            <p class="salon-name-text">{{ salon.salon_name }}</p>
-                            <p>{{ salon.salon_address.address_line1 }}</p>
-                        </div>
+    <div class="card-wrapper top-salons-wrapper">
+        <i id="top-salons-left" class="fas fa-chevron-left"></i>
+        <ul class="slider top-salons-slider">
+            {% for salon in salon_info %}
+            <a href="{% url 'salons:salon_page' salon.id %}">
+                <div class="salon-card">
+                    <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
+                    <div class="salon-card-text">
+                        <p class="salon-name-text">{{ salon.salon_name }}</p>
+                        <p>{{ salon.salon_address.address_line1 }}</p>
                     </div>
-                </a>
-                {% endfor %}
-            </ul>
-        <i id="right" class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+            {% endfor %}
+        </ul>
+        <i id="top-salons-right" class="fas fa-chevron-right"></i>
     </div>
-</div> 
+</div>
 
 
 <script src="{% static 'javascript/slider.js' %}"></script>

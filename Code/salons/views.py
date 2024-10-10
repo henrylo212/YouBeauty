@@ -57,7 +57,7 @@ def SalonRegistrationView(request):
 
             # Redirect to the salon dashboard or home page
             # return redirect('salon_dashboard')
-            return redirect('home')
+            return redirect('forBusiness')
     else:
         salon_form = SalonForm()
         service_formset = SalonServiceFormSet()
