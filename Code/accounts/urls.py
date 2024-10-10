@@ -7,7 +7,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     # path('', views.extractSalonInfoView, name="home"),
-    path("register/", views.RegistrationView, name="register"),
+    path("customer-register/", views.CustomerRegistrationView, name="customer_register"),
     path("faq/", views.FAQView, name="faq"),
     path("about/", views.AboutView, name="about"),
     path('profile/', views.profileView, name='profile'),
@@ -17,7 +17,7 @@ urlpatterns = [
 
     path("forBusiness/", views.forBusinessView, name="forBusiness"),
     path('salon-login/', views.salon_login, name='salon_login'),
-    path('business-register/', views.RegistrationView, name="business_register"),
+    path("salon-register/", views.SalonRegistrationView, name="salon_register"),
     
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
