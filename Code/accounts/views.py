@@ -1,6 +1,6 @@
 
 
-from .forms import RegistrationForm, EditProfileForm
+from .forms import SalonOwnerRegistrationForm, CustomerRegistrationForm, EditProfileForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -13,72 +13,97 @@ from salons.views import SalonRegistrationView
 from django.urls import reverse
 # from .models import Users
 import datetime
+from django.contrib.auth.views import LoginView
+
+class CustomerLoginView(LoginView):
+    template_name = "registration/login.html"
+
+    def get_success_url(self):
+        # Redirect to the default dashboard for regular users
+        return "/customer/"
+
+class BusinessLoginView(LoginView):
+    template_name = "registration/business_login.html"
+
+    def get_success_url(self):
+        # Redirect to the business dashboard after a successful login
+        return "/accounts/forBusiness/"
+
+
 
 # Think of all these views as just webpages. Views (in the form of html/css pages) of the database almost
 
-def RegistrationView(request):
-    """
-    Handle user registration.
+# def RegistrationView(request):
+#     if request.method == 'POST':
+#         form = RegistrationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             # extract data from form
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password1')
+#             role = form.cleaned_data.get('role')
+            
+#             # authenticate the user
+#             user = authenticate(username=username, password=password)
+#             login(request, user)
+            
+#             if role == 'salonowner':
+#                 # salon owner is redirected to salon registration page
+#                 return redirect(reverse('salons:salon_form')) 
+#             else:
+#                 # customer is redirected to homepage
+#                 return redirect('home') 
+#     else:
+#         form = RegistrationForm()
+#     return render(request, 'registration/register.html', {'form': form})
 
-    This view handles user registration by processing a form submission.
-    If the request method is POST and the form is valid, the new user is created,
-    authenticated, and logged in automatically. Upon successful registration,
-    the user is redirected to the home page. If the request method is GET, the 
-    registration form is displayed.
 
-    Args:
-        request (HttpRequest): The HTTP request object, which may be GET or POST.
-
-    Returns:
-        HttpResponse: 
-            - If the request method is POST and the form is valid, redirects to the home page.
-            - If the request method is GET or the form is invalid, renders the registration form page.
-        
-    Context:
-        form (RegistrationForm): The registration form, either blank or filled with submitted data.
-
-    Template:
-        'registration/register.html': The template used to display the registration form.
-    """
+def CustomerRegistrationView(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = CustomerRegistrationForm(request.POST, request.FILES)  # also requests user to upload profile photo
         if form.is_valid():
             user = form.save()
-            # extract data from form
+            phone_number = form.cleaned_data.get('phone_number')
+            profile_photo = form.cleaned_data.get('profile_photo')
+
+            # creates Customer object linked to this user
+            Customer.objects.create(user=user, phone_number=phone_number, profile_photo=profile_photo)
+
+            # authenticate and log in the user
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
-            role = form.cleaned_data.get('role')
-            
-            # authenticate the user
             user = authenticate(username=username, password=password)
             login(request, user)
-            
-            if role == 'salonowner':
-                # salon owner is redirected to salon registration page
-                return redirect(reverse('salons:salon_form')) 
-            else:
-                # customer is redirected to homepage
-                return redirect('home') 
+
+            # redirect to the home page
+            return redirect('home')
     else:
-        form = RegistrationForm()
-    return render(request, 'registration/register.html', {'form': form})
+        form = CustomerRegistrationForm()
+    return render(request, 'registration/customer_register.html', {'form': form})
 
 
-# def extractSalonInfoView(request):
-#     '''
-#     Handles information about the salon homepage
+def SalonRegistrationView(request):
+    if request.method == 'POST':
+        form = SalonOwnerRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            phone_number = form.cleaned_data.get('phone_number')
+            
+            # creates SalonOwner object linked to this user
+            SalonOwner.objects.create(user=user, phone_number=phone_number)
 
-#     This view handlers information about the salon homepage.
+            #authenticate and log in the user
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
 
-#     Args:
-#         request (HttpRequest): The HTTP request object, which is GET
+            # redirect to the salon registration form
+            return redirect(reverse('salons:salon_form')) 
+    else:
+        form = SalonOwnerRegistrationForm()
+    return render(request, 'registration/business_register.html', {'form': form})
 
-#     Template:
-#         'homepage.html': The template used to display the salon homepage
-    
-#     '''
-#     salon_info = SalonInfo.objects.all()  
-#     return render(request, 'homepage.html', {'salon_info': salon_info})
 
 def FAQView(request):
     '''
@@ -240,47 +265,47 @@ def forBusinessView(request):
     return render(request, 'forBusiness.html')
 
 
-def customer_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
+# def customer_login(request):
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
                 
-                if hasattr(user, 'customer'):
-                    login(request, user)
-                    return redirect('customer_dashboard')
-                else:
-                    form.add_error(None, "This account is not registered as a customer.")
-            else:
-                form.add_error(None, "Invalid username or password.")
-    else:
-        form = AuthenticationForm()
+#                 if hasattr(user, 'customer'):
+#                     login(request, user)
+#                     return redirect('customer_dashboard')
+#                 else:
+#                     form.add_error(None, "This account is not registered as a customer.")
+#             else:
+#                 form.add_error(None, "Invalid username or password.")
+#     else:
+#         form = AuthenticationForm()
 
-    return render(request, 'registration/login.html', {'form': form})
+#     return render(request, 'registration/login.html', {'form': form})
 
-def salon_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
+# def salon_login(request):
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
                 
-                if hasattr(user, 'salonowner'):
-                    login(request, user)
-                    return redirect('salon_dashboard')
-                else:
-                    form.add_error(None, "This account is not registered as a salon owner.")
-            else:
-                form.add_error(None, "Invalid username or password.")
-    else:
-        form = AuthenticationForm()
+#                 if hasattr(user, 'salonowner'):
+#                     login(request, user)
+#                     return redirect('salon_dashboard')
+#                 else:
+#                     form.add_error(None, "This account is not registered as a salon owner.")
+#             else:
+#                 form.add_error(None, "Invalid username or password.")
+#     else:
+#         form = AuthenticationForm()
 
-    return render(request, 'registration/business_login.html', {'form': form})
+#     return render(request, 'registration/business_login.html', {'form': form})
 
 def search_results(request):
     if request.method == 'POST':

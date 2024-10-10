@@ -2,19 +2,72 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from customers.models import Customer
+from salons.models import SalonOwner
 from django.shortcuts import get_object_or_404
 
-class RegistrationForm(UserCreationForm):
-    ROLE_CHOICES = [
-        ('customer', 'Customer'),
-        ('salonowner', 'Salon Owner'),
-    ]
-    role = forms.ChoiceField(choices=ROLE_CHOICES, widget=forms.RadioSelect)
+class SalonOwnerRegistrationForm(UserCreationForm):
     phone_number = forms.CharField(max_length=20)
+    usable_password = None
+    
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2', 'phone_number']
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        if commit:
+            user.save()
+        return user
+    
+    def __init__(self, *args, **kwargs):
+        super(SalonOwnerRegistrationForm, self).__init__(*args, **kwargs)
+        self.fields['username'].help_text = None
+        self.fields['password1'].help_text = None
+        self.fields['password2'].help_text = None
+    
+    
+class CustomerRegistrationForm(UserCreationForm):
+    phone_number = forms.CharField(max_length=20)
+    profile_photo = forms.ImageField(required=False)
+    usable_password = None
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'role', 'phone_number']
+        fields = ['username', 'email', 'password1', 'password2', 'phone_number', 'profile_photo']
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        if commit:
+            user.save()
+        return user
+    
+    def __init__(self, *args, **kwargs):
+        super(CustomerRegistrationForm, self).__init__(*args, **kwargs)
+        self.fields['username'].help_text = None
+        self.fields['password1'].help_text = None
+        self.fields['password2'].help_text = None
+
+
+# class RegistrationForm(UserCreationForm):
+#     ROLE_CHOICES = [
+#         ('customer', 'Customer'),
+#         ('salonowner', 'Salon Owner'),
+#     ]
+#     role = forms.ChoiceField(choices=ROLE_CHOICES, widget=forms.RadioSelect)
+#     phone_number = forms.CharField(max_length=20)
+#     usable_password = None
+    
+#     def __init__(self, *args, **kwargs):
+#         super(RegistrationForm, self).__init__(*args, **kwargs)
+#         self.fields['username'].help_text = None
+#         self.fields['password1'].help_text = None
+#         self.fields['password2'].help_text = None
+
+#     class Meta:
+#         model = User
+#         fields = ['username', 'email', 'password1', 'password2', 'role', 'phone_number']
+
+
 
 class EditProfileForm(forms.Form):
     profile_name = forms.CharField(max_length=301)

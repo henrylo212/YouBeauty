@@ -1,0 +1,52 @@
+
+body {
+    font: 18px 'Kanit', sans-serif;
+}
+
+.registration-wrapper {
+    max-width: 500px; 
+    position: relative;
+    top: 300px;
+    margin: 0px auto; 
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.registration-wrapper h2 {
+    font: 400 20px 'Kanit', sans-serif;
+    font-size: xx-large;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+
+.registration-wrapper a {
+    color: #D282DE;
+}
+
+.registration-wrapper a:hover {
+    color: #B264BE;
+}
+
+form {
+    display: grid;
+    line-height: 40px;
+    text-align: center;
+}
+
+.registration-wrapper button {
+    background-color: #E0A9E8;
+    font: 18px 'Kanit', sans-serif;
+    color: white;
+    border-radius: 33px;
+    width: 170px;
+    height: 40px;
+    border-width: 0;
+    margin: 0 auto; 
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+

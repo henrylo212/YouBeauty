@@ -15,7 +15,7 @@
     <h3>YOU BEAUTY, FOR YOU</h3>
     <div class="card">
         <div class="login-page">
-            <h2>LOG IN</h2>
+            <h2>LOG</h2>
             <div class="login-form">
                 <form method="post">
                     {% csrf_token %}
@@ -24,11 +24,8 @@
                     <button type="submit">LOGIN</button>
                 </form>
             </div>
-            
-
-
             <h5>OR</h5>
-            <h5><a href="{% url 'register' %}">Create a new account</a></h5>
+            <h5><a href="{% url 'customer_register' %}">Create a new account</a></h5>
             
 
         </div>

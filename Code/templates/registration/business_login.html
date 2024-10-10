@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Business Login{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css\business-login.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css\business.css' %}">
-    
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
 </head>
@@ -17,17 +15,9 @@
 <body>
     <h6>YouBeauty, for your Business</h6>
     <div class="flex-container">
-
-        
-
         <div class="flex-box">
-            
-    
-            
                 <div class="login-page">
-                    
                     <h2>Log In</h2>
-
                     {% if messages %}
                         <ul>
                             {% for message in messages %}
@@ -37,10 +27,8 @@
                     {% endif %}
 
                     <div class="login-form">
-
                         <form method="post">
                             {% csrf_token %}
-                            
                             <label for="username">Username</label>
                             <br> 
                             <input type="text" id="username" name="username" required><br><br>
@@ -49,12 +37,11 @@
                             <br> 
                             <input type="password" id="password" name="password" required>
                             <h4><a href="{% url 'password_reset' %}">Forgot your password?</a></h4>
-                            
                             <button type="submit">LOGIN</button>
                         </form>
 
                         <h5>OR</h5>
-                        <h5><a href="{% url 'business_register' %}">Create a new account</a></h5>
+                        <h5><a href="{% url 'salon_register' %}">Create a new account</a></h5>
                         
                     </div>
 
