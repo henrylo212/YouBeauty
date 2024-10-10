@@ -13,6 +13,23 @@ from salons.views import SalonRegistrationView
 from django.urls import reverse
 # from .models import Users
 import datetime
+from django.contrib.auth.views import LoginView
+
+class CustomerLoginView(LoginView):
+    template_name = "registration/login.html"
+
+    def get_success_url(self):
+        # Redirect to the default dashboard for regular users
+        return "/customer/"
+
+class BusinessLoginView(LoginView):
+    template_name = "registration/business_login.html"
+
+    def get_success_url(self):
+        # Redirect to the business dashboard after a successful login
+        return "/accounts/forBusiness/"
+
+
 
 # Think of all these views as just webpages. Views (in the form of html/css pages) of the database almost
 
@@ -248,47 +265,47 @@ def forBusinessView(request):
     return render(request, 'forBusiness.html')
 
 
-def customer_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
+# def customer_login(request):
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
                 
-                if hasattr(user, 'customer'):
-                    login(request, user)
-                    return redirect('customer_dashboard')
-                else:
-                    form.add_error(None, "This account is not registered as a customer.")
-            else:
-                form.add_error(None, "Invalid username or password.")
-    else:
-        form = AuthenticationForm()
+#                 if hasattr(user, 'customer'):
+#                     login(request, user)
+#                     return redirect('customer_dashboard')
+#                 else:
+#                     form.add_error(None, "This account is not registered as a customer.")
+#             else:
+#                 form.add_error(None, "Invalid username or password.")
+#     else:
+#         form = AuthenticationForm()
 
-    return render(request, 'registration/login.html', {'form': form})
+#     return render(request, 'registration/login.html', {'form': form})
 
-def salon_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
+# def salon_login(request):
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
                 
-                if hasattr(user, 'salonowner'):
-                    login(request, user)
-                    return redirect('salon_dashboard')
-                else:
-                    form.add_error(None, "This account is not registered as a salon owner.")
-            else:
-                form.add_error(None, "Invalid username or password.")
-    else:
-        form = AuthenticationForm()
+#                 if hasattr(user, 'salonowner'):
+#                     login(request, user)
+#                     return redirect('salon_dashboard')
+#                 else:
+#                     form.add_error(None, "This account is not registered as a salon owner.")
+#             else:
+#                 form.add_error(None, "Invalid username or password.")
+#     else:
+#         form = AuthenticationForm()
 
-    return render(request, 'registration/business_login.html', {'form': form})
+#     return render(request, 'registration/business_login.html', {'form': form})
 
 def search_results(request):
     if request.method == 'POST':
