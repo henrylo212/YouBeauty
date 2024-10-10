@@ -245,6 +245,9 @@ a:hover {
     border: none;
     cursor: pointer;
 }
+.hide {
+    display: none;
+}
 
 
 .wrapper-location {
@@ -322,6 +325,9 @@ a:hover {
 .wrapper-service.active .content{
     display: block;
 }
+.search-keywords.active .content{
+    display: block;
+}
 /* .wrapper-time.active .content{
     display: block;
 } */
@@ -334,7 +340,7 @@ a:hover {
     position: absolute;
     width: 130px;
 }
-.content .search {
+/* .content .search {
     position: relative;
 }
 .search i{
@@ -352,7 +358,7 @@ a:hover {
     padding-left: 20px;
     border: 1px solid #979797;
     border-radius: 20px;
-}
+} */
 .content .options {
     margin-top: 5px;
     max-height: 250px;
