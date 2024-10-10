@@ -51,6 +51,36 @@ body {
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
+.info-column{
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.info-container { 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: white;
+    height: 70%;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color:#585757;
+    font-family: "Kanit";
+    font-size: 30px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.horizontal-spacer {
+    margin-left: 150px;
+}
     
 
 
