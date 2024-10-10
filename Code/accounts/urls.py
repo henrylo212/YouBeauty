@@ -16,7 +16,6 @@ urlpatterns = [
     path("forBusiness/", views.forBusinessView, name="forBusiness"),
     path('bookings/', views.bookingsView, name = 'bookings'),
 
-    path("forBusiness/", views.forBusinessView, name="forBusiness"),
     # path('salon-login/', views.salon_login, name='salon_login'),
     path('business-register/', views.SalonRegistrationView, name="salon_register"),
     
