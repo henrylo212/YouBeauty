@@ -4,6 +4,7 @@ from .models import Booking, Customer
 from customers.models import Customer
 from salons.models import SalonService
 from salons.models import Service
+from salons.models import SalonAddress
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.core.mail import send_mail
@@ -24,8 +25,9 @@ def extractSalonInfoView(request):
     salon_info = SalonInfo.objects.all()  
     services = Service.objects.all()  
     sorted_salons = SalonInfo.objects.filter(happyhour_discount__isnull=False).order_by('-happyhour_discount')
+    addresses = SalonAddress.objects.all()  
     
-    return render(request, 'homepage.html', {'salon_info': salon_info, 'services': services, 'sorted_salons': sorted_salons})
+    return render(request, 'homepage.html', {'salon_info': salon_info, 'services': services, 'addresses': addresses, 'sorted_salons': sorted_salons})
 
 
 def MakeBookingsView(request):

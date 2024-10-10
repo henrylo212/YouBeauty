@@ -28,13 +28,16 @@
 </div>
 
 <div class="wrapper-location">
-    <div class="select-btn">
-        <span>Location</span>
+    <form class="search-location">
+        {% csrf_token %}
+        <input class="location-form" type="search" placeholder="Location" aria-label="Location">
+    </form>
+    <div class="hide">
+        {% for address in addresses %}
+            <li> {{ address.address_line1 }} </li>
+        {% endfor %}
     </div>
     <div class="content">
-        <div class="search">
-            <input type="text" placeholder="Search">
-        </div>
         <ul class="options"></ul>
     </div>
 </div>
