@@ -18,7 +18,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10%;
+    width: 9%;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     /* padding-top: 20px; */
@@ -52,6 +52,71 @@ body {
     }
 
     
+.info-container { 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: white;
+    height: 80%;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 20px; */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    align-self: center;
+}
+
+h2 {
+    color:#585757;
+    font-family: "Kanit";
+    font-size: 30px;
+    text-align: center;
+    font-weight: normal;
+
+}
 
 
+.horizontal-spacer {
+    margin-left: 130px;
+}
+
+.profile-image {
+    object-fit: cover;
+    width: 220px;
+    height: 220px;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+    /* margin: 0;
+    padding: 0; */
+    display: block;
+    overflow: hidden;
+    z-index: 900;
+}
+
+.profile-information-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    align-items: flex-start;
+    /* align-content: center; */
+    align-content: flex-start;
+    /* background-color: blue; */
+    font-size: 20px;
+    /* padding: 0px 20px; */
+    /* margin: 0px 40px; */
+    margin: 0% 10%;
+    padding: 1em;
+    gap: 8px;
+}
+
+.profile-item-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 15%;
+    /* border: 3px solid black; */
+    width: 100%;
+    flex-wrap: wrap;
+}
 
