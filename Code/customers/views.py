@@ -23,9 +23,10 @@ def extractSalonInfoView(request):
     '''
     salon_info = SalonInfo.objects.all()  
     services = Service.objects.all()  
-    print(salon_info)
-    return render(request, 'homepage.html', {'salon_info': salon_info, 'services': services})
-from salons.models import SalonInfo
+    sorted_salons = SalonInfo.objects.filter(happyhour_discount__isnull=False).order_by('-happyhour_discount')
+    
+    return render(request, 'homepage.html', {'salon_info': salon_info, 'services': services, 'sorted_salons': sorted_salons})
+
 
 def MakeBookingsView(request):
     return render(request, 'bookings/make_bookings.html')

@@ -75,13 +75,14 @@
     <div class="card-wrapper happy-hour-wrapper">
         <i id="happy-hour-left" class="fas fa-chevron-left"></i>
         <ul class="slider happy-hour-slider">
-            {% for salon in salon_info %}
+            {% for salon in sorted_salons %}
             <a href="{% url 'salons:salon_page' salon.id %}">
                 <div class="salon-card">
                     <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
                     <div class="salon-card-text">
                         <p class="salon-name-text">{{ salon.salon_name }}</p>
                         <p>{{ salon.salon_address.address_line1 }}</p>
+                        <p class="happyhour-text">{{ salon.happyhour_discount }}%</p>
                     </div>
                 </div>
             </a>
