@@ -30,11 +30,11 @@
             {% if user.is_authenticated %}
                 Hi {{ user.username }}!
                 <!-- Change this link when business profile has been made!!! -->
-                <li><a class="active" class="logout" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="active" class="logout" href="{% url 'business_profile_home' %}">Profile</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <a href="{% url 'faq' %}">F.A.Q</a>
                 <div class="logout-button">
-                    <form method="post" action="{% url 'logout' %}?next= {% url 'forBusiness' %}" style="display: inline;">
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
                         {% csrf_token %}
                         <button type="submit" class="logout-link">Logout</button>
                     </form>
@@ -47,7 +47,7 @@
         </nav>
     </aside>
 </header>
-
+<div class="small-spacer"></div>
 
 {% block content %}
 {% endblock %}

@@ -81,6 +81,18 @@ def SalonRegistrationView(request):
     return render(request, 'registration/business_register.html', {'form': form})
 
 
+def BusinessProfileHomeView(request):
+
+    return render(request, 'business_profile_home.html')
+
+def BusinessProfileSettingsView(request):
+
+    return render(request, 'business_profile_settings.html')
+
+def BusinessProfileCalendarView(request):
+
+    return render(request, 'business_profile_calendar.html')
+
 def FAQView(request):
     '''
     Handles information about the FAQ homepage

@@ -16,12 +16,20 @@ urlpatterns = [
     path("forBusiness/", views.forBusinessView, name="forBusiness"),
     path('bookings/', views.bookingsView, name = 'bookings'),
 
+<<<<<<< Updated upstream
+=======
+    path("business_dashboard_home/", views.BusinessProfileHomeView, name="business_profile_home"),
+    path("business_dashboard_settings/", views.BusinessProfileSettingsView, name="business_profile_settings"),
+    path("business_dashboard_calendar/", views.BusinessProfileCalendarView, name="business_profile_calendar"),
+>>>>>>> Stashed changes
     # path('salon-login/', views.salon_login, name='salon_login'),
     path('business-register/', views.SalonRegistrationView, name="salon_register"),
     
     path("login/", views.CustomerLoginView.as_view(), name='login'),
     path("business_login/", views.BusinessLoginView.as_view(), name='business_login'),
-    
+    # path("login/", views.CustomerLoginView.as_view(), name='login')
+
+
     # path("logout/", views.CustomerLoginView.as_view(), name='login'),
     # path("business_logout/", views.BusinessLoginView.as_view(), name='business_login'),
 
