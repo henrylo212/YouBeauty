@@ -33,6 +33,7 @@ searchInp.addEventListener("keyup", () => {
 selectBtn.addEventListener("click", () => {
     wrapperLocation.classList.toggle("active");
     wrapperService.classList.remove("active");
+    salonNames.classList.remove("active");
     // wrapperTime.classList.remove("active");
 });
 
@@ -72,6 +73,7 @@ searchInpService.addEventListener("keyup", () => {
 serviceBtn.addEventListener("click", () => {
     wrapperService.classList.toggle("active");
     wrapperLocation.classList.remove("active");
+    salonNames.classList.remove("active");
     // wrapperTime.classList.remove("active");
 });
 
@@ -114,3 +116,47 @@ serviceBtn.addEventListener("click", () => {
 //     wrapperLocation.classList.remove("active");
 //     wrapperService.classList.remove("active");
 // });
+
+
+const salonNames = document.querySelector(".search-keywords"),
+salonSearch = salonNames.querySelector(".search-form"),
+optionsSalon = salonNames.querySelector(".options");
+const hide = salonNames.querySelector(".hide"),
+services_list = salonNames.querySelectorAll("li");
+let temp_salonNames = Array.from(services_list);
+
+let salon_names = [];
+temp_salonNames.forEach(element => {
+    salon_names.push(element.innerHTML.trim())
+});
+
+function addSalon() {
+    optionsSalon.innerHTML = "";
+    salon_names.forEach(salon => {
+        let li = `<li onclick="updateSalon(this)">${salon}</li>`;
+        optionsSalon.insertAdjacentHTML("beforeend", li);
+    });
+}
+addSalon();
+
+function updateSalon(selectedLi) {
+    salonSearch.value = "";
+    addSalon();
+    salonNames.classList.remove("active");
+    salonSearch.firstElementChild.innerText = selectedLi.innerText;
+}
+
+salonSearch.addEventListener("keyup", () => {
+    let arr= [];
+    let searchedVal = salonSearch.value.toLowerCase();
+    arr = salon_names.filter(data => {
+        return data.toLowerCase().startsWith(searchedVal);
+    }).map(data => `<li onclick="updateSalon(this)">${data}</li>`).join("");
+    optionsSalon.innerHTML = arr;
+});
+
+salonSearch.addEventListener("click", () => {
+    salonNames.classList.toggle("active");
+    wrapperLocation.classList.remove("active");
+    wrapperService.classList.remove("active");
+});
