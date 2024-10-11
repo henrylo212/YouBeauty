@@ -1,6 +1,8 @@
 <div>
     {% if searched %}
         <h1> You searched for {{ searched }} </h1>
+        <h1> location: {{ location }} </h1>
+        <h1> service: {{ service }} </h1>
         <br/>
         {% for salon in salon_names %}
             <li data-salon-name="{{ salon }}" data-salon-add="salon.salon_address">

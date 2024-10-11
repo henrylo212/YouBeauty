@@ -12,51 +12,46 @@
 </head>
 
 <!-- search bar -->
-<div class="wrapper-service">
-    <form class="search-service">
-        {% csrf_token %}
-        <input class="service-form" type="search" placeholder="Service" aria-label="Service">
-    </form>
-    <div class="hide">
-        {% for service in services %}
-            <li> {{ service.service_name }} </li>
-        {% endfor %}
+<form class="search-form-btn" method=POST action="{% url 'search_results' %}">
+    {% csrf_token %}
+    <div class="search-keywords">
+        <input class="search-form" type="search" placeholder="Search keywords" aria-label="Search keywords" name="searched" value="{{ searched }}"> 
+        <div class="hide">
+            {% for salon in salon_info %}
+                <li> {{ salon.salon_name }} </li>
+            {% endfor %}
+        </div>
+        <div class="content">
+            <ul class="options"></ul>
+        </div>
     </div>
-    <div class="content">
-        <ul class="options"></ul>
-    </div>
-</div>
 
-<div class="wrapper-location">
-    <form class="search-location">
-        {% csrf_token %}
-        <input class="location-form" type="search" placeholder="Location" aria-label="Location">
-    </form>
-    <div class="hide">
-        {% for address in addresses %}
-            <li> {{ address.address_line1 }} </li>
-        {% endfor %}
+    <div class="wrapper-service">
+        <input class="service-form" type="search" placeholder="Service" aria-label="Service" name="service" value="{{ service }}">
+        <div class="hide">
+            {% for service in services %}
+                <li> {{ service.service_name }} </li>
+            {% endfor %}
+        </div>
+        <div class="content">
+            <ul class="options"></ul>
+        </div>
     </div>
-    <div class="content">
-        <ul class="options"></ul>
-    </div>
-</div>
 
-<div class="search-keywords">
-    <form class="search-form-btn" method=POST action="{% url 'search_results' %}">
-        {% csrf_token %}
-        <input class="search-form" type="search" placeholder="Search keywords" aria-label="Search keywords" name="searched" value="{{ searched }}">
-        <button class="go-btn" type="submit">Search</button>
-    </form>
-    <div class="hide">
-        {% for salon in salon_info %}
-            <li> {{ salon.salon_name }} </li>
-        {% endfor %}
+    <div class="wrapper-location">
+        <input class="location-form" type="search" placeholder="Location" aria-label="Location" name="location" value="{{ location }}">
+        <div class="hide">
+            {% for address in addresses %}
+                <li> {{ address.address_line1 }} </li>
+            {% endfor %}
+        </div>
+        <div class="content">
+            <ul class="options"></ul>
+        </div>
     </div>
-    <div class="content">
-        <ul class="options"></ul>
-    </div>
-</div>
+
+    <button class="go-btn" type="submit">Search</button>
+</form>
 
 <!-- <div class="wrapper-time">
     <div class="time-btn">
