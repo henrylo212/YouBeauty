@@ -22,7 +22,7 @@ function updateService(selectedLi) {
     serviceSearch.value = "";
     addService();
     serviceWrapper.classList.remove("active");
-    serviceSearch.firstElementChild.innerText = selectedLi.innerText;
+    serviceSearch.innerHTML = selectedLi;
 }
 
 serviceSearch.addEventListener("keyup", () => {
