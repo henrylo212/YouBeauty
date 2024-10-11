@@ -50,8 +50,97 @@ body {
         background-color: rgb(157, 71, 136, 0.3);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    .calendar {
+        max-width: 1200px;
+        margin: 50px auto;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #8a226f;
+        color: white;
+        padding: 15px 20px;
+        font-size: 18px;
+    }
 
+    .month-navigation {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .view-buttons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    button {
+        background-color: #ffffff;
+        color: #8a226f;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background-color 0.2s;
+    }
+    button:hover {
+        background-color: #e0e0e0;
+    }
+
+    .calendar-grid {
+        display: grid;
+        border-top: 1px solid #e0e0e0;
+        border-left: 1px solid #e0e0e0;
+        grid-template-columns: repeat(7, 1fr);
+    }
+    .calendar-day {
+        border-right: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 10px;
+        min-height: 100px;
+        background-color: #ffffff;
+    }
+    .day-label {
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .event {
+        background-color: #f3f4f6;
+        border-left: 5px solid;
+        padding: 5px;
+        margin-top: 10px;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    .event[data-color="blue"] { border-color: #4285F4; }
+    .event[data-color="red"] { border-color: #DB4437; }
+    .event[data-color="green"] { border-color: #0F9D58; }
+    .event[data-color="yellow"] { border-color: #F4B400; }
+    .day-of-week {
+        text-align: center;
+        font-weight: bold;
+        padding: 10px;
+        background-color: #f0f0f0;
+    }
+
+    .calendar-container {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     
-
-
-
+    
