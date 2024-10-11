@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from salons.models import SalonInfo
 from .models import Booking, Customer
 from customers.models import Customer
 from salons.models import SalonService
+from salons.models import Service
+from salons.models import SalonAddress
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.core.mail import send_mail
@@ -21,8 +23,12 @@ def extractSalonInfoView(request):
     
     '''
     salon_info = SalonInfo.objects.all()  
-    return render(request, 'homepage.html', {'salon_info': salon_info})
-from salons.models import SalonInfo
+    services = Service.objects.all()  
+    sorted_salons = SalonInfo.objects.filter(happyhour_discount__isnull=False).order_by('-happyhour_discount')
+    addresses = SalonAddress.objects.all()  
+    
+    return render(request, 'homepage.html', {'salon_info': salon_info, 'services': services, 'addresses': addresses, 'sorted_salons': sorted_salons})
+
 
 def MakeBookingsView(request):
     return render(request, 'bookings/make_bookings.html')
@@ -86,3 +92,17 @@ def make_bookings(request, salon_service_id):
 def booking_confirmation(request, booking_id):
     booking = Booking.objects.get(id=booking_id)
     return render(request, 'bookings/booking_confirmation.html', {'booking': booking})
+
+def edit_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    if request.method == 'POST':
+        if 'cancel_booking' in request.POST:
+            booking.delete()
+            return redirect('bookings')
+        else:
+            booking.date = request.POST['date']
+            booking.start_time = request.POST['time']
+            booking.save()
+            return redirect('bookings')
+
+    return render(request, 'bookings/edit_booking.html', {'booking': booking})

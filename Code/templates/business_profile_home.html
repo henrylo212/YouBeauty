@@ -1,0 +1,46 @@
+{% extends "business_base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css\business_profile_home.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="main-body">
+        <div class="sidebar">
+            <nav>
+                <ul>
+                    <li class="nav-item"><a href="{% url 'business_profile_home' %}"><img src="{% static 'design/home-icon.png' %}" alt="home-icon"></a></li>
+                    <li class="nav-item"><a href="{% url 'business_profile_calendar' %}"><img src="{% static 'design/calendar-icon.png' %}" alt="calendar-icon"></a></li>
+                    <li class="nav-item"><a href="{% url 'business_profile_settings' %}"><img src="{% static 'design/settings-icon.png' %}" alt="settings-icon"></a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="horizontal-spacer"></div>
+
+        <div class="info-column">
+            <h2> Appointments Activity </h2>
+            <div class="info-container">
+
+            </div>
+        </div>
+
+        <div class="horizontal-spacer"></div>
+        
+        <div class="info-column">
+            <h2> Upcoming Appointments </h2>
+            <div class="info-container">
+            
+            </div>
+        </div>
+
+    </div>
+
+</body>
+{% endblock %}

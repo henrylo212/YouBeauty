@@ -5,8 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Base{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/business_base.css' %}">
+    <title>{% block title %}You Beauty{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css\business.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
@@ -30,16 +29,25 @@
         <nav>
             {% if user.is_authenticated %}
                 Hi {{ user.username }}!
-                <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
+                <!-- Change this link when business profile has been made!!! -->
+                <li><a class="active" class="logout" href="{% url 'business_profile_home' %}">Profile</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
                 <a href="{% url 'faq' %}">F.A.Q</a>
+                <div class="logout-button">
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-link">Logout</button>
+                    </form>
+                </div>
             {% else %}
-                <a href="{% url 'faq' %}">F.A.Q</a>
-                <!-- <li><a class="active" href="{% url 'salon_login' %}">Business Login</a></li> -->
+                <li><a class="active" href="{% url 'business_login' %}">Login</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'faq' %}">F.A.Q</a></li>
             {% endif %}
         </nav>
     </aside>
 </header>
-
+<div class="small-spacer"></div>
 
 {% block content %}
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css\accounts\register.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="registration-wrapper">
+        <h2>Account Set-Up</h2>
+        <div class="registration-form">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }} 
+                <button type="submit">Create Account</button>
+            </form>
+        </div>
+        <p>Already have an account? <a href="{% url 'login' %}">Login now</a></p>
+    </div>
+</body>
+
+{% endblock %}

@@ -76,7 +76,7 @@ h6 {
     font: 400 40px 'Kanit', sans-serif;
     font-size: 55px;
     margin-bottom: 18px;
-    margin-left: 80px;
+    margin-left: 380px;
     text-align: left;
   }
 
@@ -93,7 +93,7 @@ h3 {
 
 
 .flex-container{
-    margin: 0;
+    /* margin: 0; */
     flex-wrap: wrap; 
     /* z-index: 3; */
     /* align-content: center; */
@@ -105,8 +105,8 @@ h3 {
     /* border: 3px solid black; */
     /* width: 50%; */
     /* flex-wrap: wrap; */
-    /* margin-left: 100px; */
-    padding: 3% 10% 4%;
+    margin-left: 100px;
+    padding: 3% 5% 4%;
     /* background-color: #F4F4F4; */
     /* width: 900px; */
     /* height: 500px; */
