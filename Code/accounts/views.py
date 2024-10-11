@@ -298,8 +298,10 @@ def forBusinessView(request):
 def search_results(request):
     if request.method == 'POST':
         searched = request.POST['searched']
+        location = request.POST.get('location', False)
+        service = request.POST.get('service', False)
         salon_names = SalonInfo.objects.filter(salon_name__contains=searched)
-        return render(request, 'search_results.html', {'searched':searched, 'salon_names':salon_names})
+        return render(request, 'search_results.html', {'searched':searched, 'salon_names':salon_names, 'location':location, 'service':service})
     else:
         return render(request, 'search_results.html')
     

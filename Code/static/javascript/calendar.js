@@ -11,7 +11,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentMonthElement = document.getElementById('currentMonth');
     const weekViewBtn = document.getElementById('weekViewBtn');
     const monthViewBtn = document.getElementById('monthViewBtn');
+    const prevMonthBtn = document.getElementById('prevMonthBtn');
+    const nextMonthBtn = document.getElementById('nextMonthBtn');
+
     let currentDate = new Date();
+
+    
+    prevMonthBtn.addEventListener('click', function () {
+        changeMonth(-1); 
+    });
+
+    nextMonthBtn.addEventListener('click', function () {
+        changeMonth(1); 
+    });
 
     weekViewBtn.addEventListener('click', function () {
         switchView('week');
