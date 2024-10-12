@@ -63,5 +63,25 @@ form button {
     height: 40px;
     border-width: 0;
     grid-column: span 2; 
+    cursor: pointer;
 }
 
+
+.registration-form .error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.registration-form .error-message ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.registration-form .error-message li {
+    font-weight: bold;
+    margin: 0;
+}
