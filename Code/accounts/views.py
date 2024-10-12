@@ -197,7 +197,12 @@ def profileView(request):
         if is_customer:
             user = customer.user
             phone_number = customer.phone_number
-            profile_photo = customer.profile_photo
+            try:
+                if customer.profile_photo.url:
+                    profile_photo = customer.profile_photo
+            except:
+                print("No profile photo file.")
+                # profile_photo = None
             print(profile_photo)
             
             # Get upcoming bookings
@@ -219,6 +224,7 @@ def profileView(request):
             'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form})
     else:
         user = request.user
+
     
     return render(request, 'profile/profile.html' , 
         {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 

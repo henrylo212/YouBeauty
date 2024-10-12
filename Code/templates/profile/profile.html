@@ -20,7 +20,7 @@
         <div class="profile-details">
             <div class="profile-pic-container">
                 <div class="image-container">
-                    {% if is_customer %}
+                    {% if is_customer and profile_photo is not None %}
                     <!-- <img loading="lazy" src="/profile_photos/pexels-danxavier-1239291.jpg" class="profile-pic" alt="profile picture"> -->
                     <img loading="lazy" src="{{ profile_photo.url }}" class="profile-pic" alt="profile picture">
                     {% else %}
