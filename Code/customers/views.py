@@ -8,8 +8,10 @@ from salons.models import SalonAddress
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.core.mail import send_mail
+from django.core.paginator import Paginator
+from django.db.models import Count
 
-def extractSalonInfoView(request):
+def HomeView(request):
     '''
     Handles information about the salon homepage
 
@@ -24,14 +26,36 @@ def extractSalonInfoView(request):
     '''
     salon_info = SalonInfo.objects.all()  
     services = Service.objects.all()  
-    sorted_salons = SalonInfo.objects.filter(happyhour_discount__isnull=False).order_by('-happyhour_discount')
+    # gets top 10 salons with highest happy hour discount
+    happy_hour_salons = SalonInfo.objects.filter(happyhour_discount__isnull=False).order_by('-happyhour_discount')[:10]
+    # gets top 10 salons with most amount of bookings
+    top_salons = SalonInfo.objects.annotate(booking_count=Count('salonservice__booking')).order_by('-booking_count')[:10]
     addresses = SalonAddress.objects.all()  
     
-    return render(request, 'homepage.html', {'salon_info': salon_info, 'services': services, 'addresses': addresses, 'sorted_salons': sorted_salons})
-
+    return render(request, 'homepage.html', 
+                  {'salon_info': salon_info, 'services': services, 'addresses': addresses, 
+                   'happy_hour_salons': happy_hour_salons, 'top_salons': top_salons})
 
 def MakeBookingsView(request):
     return render(request, 'bookings/make_bookings.html')
+
+def HappyHourView(request):
+    salons = SalonInfo.objects.filter(happyhour_discount__isnull=False).order_by('-happyhour_discount')
+    paginator = Paginator(salons, 10) 
+    page_number = request.GET.get('page', 1) # find the current page number, default is 1
+    salon_page = paginator.get_page(page_number)
+    
+    return render(request, 'happy_hour.html', {'salons': salon_page})
+
+
+def TopSalonsView(request):
+    salons = SalonInfo.objects.annotate(booking_count=Count('salonservice__booking')).order_by('-booking_count') # sorts by number of bookings made
+    paginator = Paginator(salons, 10) 
+    page_number = request.GET.get('page', 1) # find the current page number, default is 1
+    salon_page = paginator.get_page(page_number)
+    
+    return render(request, 'salons/top_salons.html', {'salons': salon_page})
+
 
 @login_required
 def make_bookings(request, salon_service_id):
