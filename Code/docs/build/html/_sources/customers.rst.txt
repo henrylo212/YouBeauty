@@ -1,4 +1,4 @@
-accounts package
+customers package
 ================
 
 Subpackages
@@ -7,63 +7,63 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   accounts.migrations
+   customers.migrations
 
 Submodules
 ----------
 
-accounts.admin module
+customers.admin module
 ---------------------
 
-.. automodule:: accounts.admin
+.. automodule:: customers.admin
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.apps module
+customers.apps module
 --------------------
 
-.. automodule:: accounts.apps
+.. automodule:: customers.apps
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.forms module
+customers.forms module
 ---------------------
 
-.. automodule:: accounts.forms
+.. automodule:: customers.forms
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.models module
+customers.models module
 ----------------------
 
-.. automodule:: accounts.models
+.. automodule:: customers.models
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.tests module
+customers.tests module
 ---------------------
 
-.. automodule:: accounts.tests
+.. automodule:: customers.tests
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.urls module
+customers.urls module
 --------------------
 
-.. automodule:: accounts.urls
+.. automodule:: customers.urls
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.views module
+customers.views module
 ---------------------
 
-.. automodule:: accounts.views
+.. automodule:: customers.views
    :members:
    :undoc-members:
    :show-inheritance:
@@ -71,7 +71,7 @@ accounts.views module
 .. Module contents
 .. ---------------
 
-.. .. automodule:: accounts
+.. .. automodule:: customers
 ..    :members:
 ..    :undoc-members:
 ..    :show-inheritance:
