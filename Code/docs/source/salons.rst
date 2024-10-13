@@ -1,4 +1,4 @@
-accounts package
+salons package
 ================
 
 Subpackages
@@ -7,63 +7,63 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   accounts.migrations
+   salons.migrations
 
 Submodules
 ----------
 
-accounts.admin module
+salons.admin module
 ---------------------
 
-.. automodule:: accounts.admin
+.. automodule:: salons.admin
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.apps module
+salons.apps module
 --------------------
 
-.. automodule:: accounts.apps
+.. automodule:: salons.apps
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.forms module
+salons.forms module
 ---------------------
 
-.. automodule:: accounts.forms
+.. automodule:: salons.forms
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.models module
+salons.models module
 ----------------------
 
-.. automodule:: accounts.models
+.. automodule:: salons.models
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.tests module
+salons.tests module
 ---------------------
 
-.. automodule:: accounts.tests
+.. automodule:: salons.tests
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.urls module
+salons.urls module
 --------------------
 
-.. automodule:: accounts.urls
+.. automodule:: salons.urls
    :members:
    :undoc-members:
    :show-inheritance:
 
-accounts.views module
+salons.views module
 ---------------------
 
-.. automodule:: accounts.views
+.. automodule:: salons.views
    :members:
    :undoc-members:
    :show-inheritance:
@@ -71,7 +71,7 @@ accounts.views module
 .. Module contents
 .. ---------------
 
-.. .. automodule:: accounts
+.. .. automodule:: salons
 ..    :members:
 ..    :undoc-members:
 ..    :show-inheritance:
