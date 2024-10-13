@@ -101,7 +101,7 @@ def make_bookings(request, salon_service_id):
     This view handlers information about the make bookings page
 
     Args:
-        request (HttpRequest): The HTTP request object, which is GET
+        request (HttpRequest): The HTTP request object, which can be GET or POST
 
     Template:
         'bookings/make_bookings.html': The template used to display the make bookings page
@@ -184,7 +184,7 @@ def edit_booking(request, booking_id):
     This view handlers information about the edit booking page
 
     Args:
-        request (HttpRequest): The HTTP request object, which is GET
+        request (HttpRequest): The HTTP request object, which can be GET or POST
 
     Template:
         'bookings/edit_booking.html': The template used to display the edit booking page

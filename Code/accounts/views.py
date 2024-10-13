@@ -65,7 +65,7 @@ def CustomerRegistrationView(request):
     This view handles information about the customer registration page.
 
     Args:
-        request (HttpRequest): The HTTP request object, which is GET
+        request (HttpRequest): The HTTP request object, which can be GET or POST
 
     Template:
         'registration/customer_register.html': The template used to display the customer registration page
@@ -101,7 +101,7 @@ def SalonRegistrationView(request):
     This view handles information about the salon registration page.
 
     Args:
-        request (HttpRequest): The HTTP request object, which is GET
+        request (HttpRequest): The HTTP request object, which can be GET or POST
 
     Template:
         'registration/business_register.html': The template used to display the salon registration page
@@ -214,7 +214,7 @@ def profileView(request):
     This view handles information about the customer profile
 
     Args:
-        request (HttpRequest): The HTTP request object, which is GET
+        request (HttpRequest): The HTTP request object, which can be GET or POST
 
     Template:
         'profile/profile.html': The template used to display the user profile information
@@ -370,7 +370,7 @@ def search_results(request):
     This view handles information about the search results page.
 
     Args:
-        request (HttpRequest): The HTTP request object, which is GET
+        request (HttpRequest): The HTTP request object, which can be GET or POST
 
     Template:
         'search_results.html': The template used to display the search results page
