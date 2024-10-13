@@ -37,9 +37,33 @@ def HomeView(request):
                    'happy_hour_salons': happy_hour_salons, 'top_salons': top_salons})
 
 def MakeBookingsView(request):
+    '''
+    Handles information about the make bookings page
+
+    This view handlers information about the make bookings page
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'bookings/make_bookings.html': The template used to display the make bookings page
+    
+    '''
     return render(request, 'bookings/make_bookings.html')
 
 def HappyHourView(request):
+    '''
+    Handles information about the happy hour page
+
+    This view handlers information about the happy hour page
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'happy_hour.html': The template used to display the happy hour page
+    
+    '''
     salons = SalonInfo.objects.filter(happyhour_discount__isnull=False).order_by('-happyhour_discount')
     paginator = Paginator(salons, 10) 
     page_number = request.GET.get('page', 1) # find the current page number, default is 1
@@ -49,6 +73,18 @@ def HappyHourView(request):
 
 
 def TopSalonsView(request):
+    '''
+    Handles information about the top salons page
+
+    This view handlers information about the top salons page
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'salons/top_salons.html': The template used to display the top salons page
+    
+    '''
     salons = SalonInfo.objects.annotate(booking_count=Count('salonservice__booking')).order_by('-booking_count') # sorts by number of bookings made
     paginator = Paginator(salons, 10) 
     page_number = request.GET.get('page', 1) # find the current page number, default is 1
@@ -59,6 +95,18 @@ def TopSalonsView(request):
 
 @login_required
 def make_bookings(request, salon_service_id):
+    '''
+    Handles information about the make bookings page
+
+    This view handlers information about the make bookings page
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'bookings/make_bookings.html': The template used to display the make bookings page
+    
+    '''
     salon_service = SalonService.objects.get(id=salon_service_id)
     print('Helooo?')
     if request.method == 'POST':
@@ -114,10 +162,34 @@ def make_bookings(request, salon_service_id):
     return render(request, 'bookings/make_bookings.html', {'salon_service': salon_service})
 
 def booking_confirmation(request, booking_id):
+    '''
+    Handles information about the booking confirmation page
+
+    This view handlers information about the booking confirmation page
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'bookings/booking_confirmation.html': The template used to display the booking confirmation page
+    
+    '''
     booking = Booking.objects.get(id=booking_id)
     return render(request, 'bookings/booking_confirmation.html', {'booking': booking})
 
 def edit_booking(request, booking_id):
+    '''
+    Handles information about the edit booking page
+
+    This view handlers information about the edit booking page
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'bookings/edit_booking.html': The template used to display the edit booking page
+    
+    '''
     booking = get_object_or_404(Booking, id=booking_id)
     if request.method == 'POST':
         if 'cancel_booking' in request.POST:
