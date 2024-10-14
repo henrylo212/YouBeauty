@@ -3,12 +3,13 @@ from django.db import models
 class SalonAddress(models.Model):
     address_line1 = models.CharField(max_length=255)
     address_line2 = models.CharField(max_length=255, blank=True, null=True)
+    suburb = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     postcode = models.CharField(max_length=10)
     country = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'{self.address_line1}, {self.address_line2}, {self.state}, {self.country}'
+        return f'{self.address_line1}, {self.address_line2}, {self.suburb}, {self.state}, {self.country}'
 
 
 class SalonInfo(models.Model):
