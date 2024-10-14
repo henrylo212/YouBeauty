@@ -21,7 +21,6 @@
             <div class="profile-pic-container">
                 <div class="image-container">
                     {% if is_customer %}
-                    <!-- <img loading="lazy" src="/profile_photos/pexels-danxavier-1239291.jpg" class="profile-pic" alt="profile picture"> -->
                     <img loading="lazy" src="{{ profile_photo.url }}" class="profile-pic" alt="profile picture">
                     {% else %}
                     <img loading="lazy" src="{% static 'design/logo.png' %}" class="profile-pic" alt="profile picture">
@@ -49,20 +48,7 @@
                 <button type="submit" id="confirm">CONFIRM</button>
 
             </form>
-            <!-- <div class="profile-information-container">
-                <div class="profile-item-container">
-                    <h3>Profile name: </h3>
-                    <p>User Name</p>
-                </div>
-                <div class="profile-item-container">
-                    <h3>Email: </h3>
-                    <p>username@example.com</p>
-                </div>
-                <div class="profile-item-container">
-                    <h3>Phone number: </h3>
-                    <p>0000 000 000</p>
-                </div>
-            </div> -->
+            
         </div>
         <div class="upcoming-bookings">
             <div class="upcoming-title">
@@ -72,6 +58,7 @@
                 <a class="h2-link" href="{% url 'bookings' %}">Manage all bookings ></a>
             </div>
             <div class="booking-scroll">
+                {% if bookings.count >= 1 %}
                 {% for booking in bookings %}
                 <div class="booking">
                     <h3>{{ booking.salon_service.salon.salon_name }}</h3>
@@ -79,35 +66,28 @@
                     <p>{{ booking.salon_service.salon.salon_address }}</p>
                 </div>
                 {% endfor %}
-                <div class="booking">
-                    <h3>Tester's Salon</h3>
-                    <p>12th of September - 11am - Basic Cut</p>
-                    <p>Unit 3, Testing Rd, Darlington</p>
+                {% else %}
+                <!-- <p id="no-bookings-message">No bookings yet.</p> -->
+                <div class="no-bookings">
+                    <p class="no-bookings-message" id="large">No bookings yet!</p>
+                    <a href="{% url 'home' %}" id="explore-salons-link">Explore salons</a>
                 </div>
-                <div class="booking">
-                    <h3>Tester's Salon</h3>
-                    <p>12th of September - 11am - Basic Cut</p>
-                    <p>Unit 3, Testing Rd, Darlington</p>
-                </div>
-                <div class="booking">
-                    <h3>Tester's Salon</h3>
-                    <p>12th of September - 11am - Basic Cut</p>
-                    <p>Unit 3, Testing Rd, Darlington</p>
-                </div>
-                <div class="booking">
-                    <h3>Tester's Salon</h3>
-                    <p>12th of September - 11am - Basic Cut</p>
-                    <p>Unit 3, Testing Rd, Darlington</p>
-                </div>
+                {% endif %}
             </div>
         </div>
     </div>
 
-    <!-- <script>
-        function editProfile(element, color) {
-            element.style.backgroundcolor = color;
-        }
-    </script> -->
+    {% if messages %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        });
+    </script>
+{% endif %}
+
+
     <script src="../../static/javascript/profilescript.js"></script>
 
 

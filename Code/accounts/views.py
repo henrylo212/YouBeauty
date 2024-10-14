@@ -149,7 +149,8 @@ def profileView(request):
             email = form.cleaned_data.get('email')
             print(email)
             phone_number = form.cleaned_data.get('phone_number')
-            # return redirect("success")
+            messages.success(request, 'Profile changes have been successfully saved!')
+        
 
             return redirect("profile")
     else:
