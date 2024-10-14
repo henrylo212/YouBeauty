@@ -13,10 +13,29 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(emailInput);
     console.log(phoneInput);
 
-    // confirmButton.style.display = 'none';
+    const nameWarning = document.createElement('p');
+    const emailWarning = document.createElement('p');
+    const phoneWarning = document.createElement('p');
+    
+    nameWarning.style.color = 'red';
+    emailWarning.style.color = 'red';
+    phoneWarning.style.color = 'red';
+    
+    nameWarning.style.display = 'none';
+    emailWarning.style.display = 'none';
+    phoneWarning.style.display = 'none';
+    
+    nameWarning.textContent = 'Profile name cannot be empty!';
+    emailWarning.textContent = 'Email cannot be empty!';
+    phoneWarning.textContent = 'Phone number cannot be empty!';
+    
+    document.getElementById('profile-form').insertBefore(nameWarning, confirmButton);
+    document.getElementById('profile-form').insertBefore(emailWarning, confirmButton);
+    document.getElementById('profile-form').insertBefore(phoneWarning, confirmButton);
+
+    confirmButton.style.visibility = 'hidden';
 
     editButton.addEventListener('click', function() {
-        console.log("edit clicked!");
         inputs.forEach(input => {
             input.disabled = false;
         });
@@ -25,49 +44,49 @@ document.addEventListener('DOMContentLoaded', function() {
         emailInput.style.minWidth = "9em";
         phoneInput.style.minWidth = "9em";
 
-
         editButton.style.display = 'none';
         confirmButton.style.visibility = 'visible';
         confirmButton.style.width = '100%';
         confirmButton.style.height = 'auto';
         confirmButton.style.overflow = 'auto';
-    })
-
-    confirmButton.addEventListener('click', function() {
-        inputs.forEach(input => {
-            input.disabled = false;
-        });
-        // confirmButton.style.display = 'inline';
-        // confirmButton.style.display = 'inline-block';
-        // confirmButton.style.display = 'block';
-
-        // confirmButton.style.display = 'unset';
-        // confirmButton.style.display=
-        // confirmButton.style.display = "";
-        // confirmButton.style.color = 'red';
-        // confirmButton.style.contentVisibility = 'visible';
-        confirmButton.style.visibility = 'visible';
-        confirmButton.style.width = '100%';
-        confirmButton.style.overflow = 'auto';
-
-        // confirmButton.style.display = initial;
     });
-});
 
-document.getElementById("profile-form").addEventListener("submit", function(event) {
-    // event.preventDefault();
-    
-    const nameValue = nameInput.value;
-    const emailValue = emailInput.value;
-    const phoneValue = phoneInput.value;
+    document.getElementById("profile-form").addEventListener("submit", function(event) {
+        let isValid = true;
 
+        const nameValue = nameInput.value.trim();
+        const emailValue = emailInput.value.trim();
+        const phoneValue = phoneInput.value.trim();
 
-    nameInput.value = nameValue;
-    emailInput.value = emailValue;
-    phoneInput.value = phoneValue;
+        if (nameValue === "") {
+            nameWarning.style.display = 'block';
+            nameInput.style.borderColor = 'red';
+            isValid = false;
+        } else {
+            nameWarning.style.display = 'none';
+            nameInput.style.borderColor = '';
+        }
 
+        if (emailValue === "") {
+            emailWarning.style.display = 'block';
+            emailInput.style.borderColor = 'red';
+            isValid = false;
+        } else {
+            emailWarning.style.display = 'none';
+            emailInput.style.borderColor = '';
+        }
 
-    // nameInput = 
-    // this.submit();
-    
+        if (phoneValue === "") {
+            phoneWarning.style.display = 'block';
+            phoneInput.style.borderColor = 'red';
+            isValid = false;
+        } else {
+            phoneWarning.style.display = 'none';
+            phoneInput.style.borderColor = '';
+        }
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
 });
