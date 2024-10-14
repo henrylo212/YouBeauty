@@ -1,14 +1,13 @@
 <div>
-    {% if searched %}
-        <h1> You searched for {{ searched }} </h1>
-        <h1> location: {{ location }} </h1>
-        <h1> service: {{ service }} </h1>
-        <br/>
-        {% for salon in salons_obj %}
-            <li data-salon-name="{{ salon.salon.salon_name }}" data-salon-add="{{ salon.service.service_name }}">
-            {{ salon.salon.salon_name }}<br/>
-            {{ salon.service.service_name }}<br/><br/>
-            </li>
-        {% endfor %}
-    {% endif %}
+    <h1> You searched for {{ searched }} </h1>
+    <h1> location: {{ location }} </h1>
+    <h1> service: {{ service }} </h1>
+    <br/>
+    {% for salon in salons_obj %}
+        <li>
+        {{ salon.salon.salon_name }}<br/>
+        {{ salon.salon.salon_address.address_line1 }}<br/>
+        {{ salon.service.service_name }}<br/><br/>
+        </li>
+    {% endfor %}
 </div>

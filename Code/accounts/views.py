@@ -396,6 +396,10 @@ def search_results(request):
                 if searched in salon_name.lower():
                     if service in service_name.lower():
                         salons_obj.append(obj_salon_service)
+            if service == '':
+                if searched in salon_name.lower():
+                    if location in address.lower():
+                        salons_obj.append(obj_salon_service)
         return render(request, 'search_results.html', {'searched':searched, 'location':location, 'service':service, 'salons_obj':salons_obj})
     else:
         return render(request, 'search_results.html')
