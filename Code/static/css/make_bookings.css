@@ -57,3 +57,22 @@ h2 {
 .details-card h3 {
     margin-bottom: 10px;
 }
+.messages {
+    max-width: 600px;
+    margin: 20px auto; /* Center the message */
+    padding: 10px;
+    background-color: #ffffff; /* White background */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+    font-family: 'Kanit', sans-serif; /* Optional: Matches the font you're using */
+}
+
+.messages li {
+    list-style: none; /* Remove bullet points */
+    padding: 10px 15px;
+    background-color: #f8f9fa; /* Light background for each message */
+    color: #ff4d4d;; /* Dark text color */
+    border-bottom: 1px solid #ddd; /* Light border between messages */
+    font-size: 16px; /* Adjust font size */
+}
