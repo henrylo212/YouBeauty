@@ -118,3 +118,10 @@ def salon_details(request, salon_id):
     '''
     salon = get_object_or_404(SalonInfo, pk=salon_id)
     return render(request, 'salons/salon_page.html', {'salon': salon})
+
+def salon_dashboard(request):
+    # Assuming the logged-in user is a SalonOwner
+    salon_owner = SalonOwner.objects.get(user=request.user)
+    salon = salon_owner.salon
+    bookings = Booking.objects.filter(salon_service__salon=salon, is_cancelled=False).order_by('date', 'start_time')
+    return render(request, 'salon_dashboard.html', {'bookings': bookings})

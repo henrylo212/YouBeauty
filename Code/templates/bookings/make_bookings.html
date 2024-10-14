@@ -5,6 +5,13 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/make_bookings.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
 {% endblock %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 {% block content %}
 <div class="top-bar"></div>
