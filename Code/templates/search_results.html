@@ -4,10 +4,10 @@
         <h1> location: {{ location }} </h1>
         <h1> service: {{ service }} </h1>
         <br/>
-        {% for salon in salon_names %}
-            <li data-salon-name="{{ salon }}" data-salon-add="salon.salon_address">
-            {{ salon }}<br/>
-            {{ salon.salon_address }}<br/><br/>
+        {% for salon in salons_obj %}
+            <li data-salon-name="{{ salon.salon.salon_name }}" data-salon-add="{{ salon.service.service_name }}">
+            {{ salon.salon.salon_name }}<br/>
+            {{ salon.service.service_name }}<br/><br/>
             </li>
         {% endfor %}
     {% endif %}

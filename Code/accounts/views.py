@@ -8,6 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from customers.models import Customer, Booking
 from salons.models import SalonOwner
 from salons.models import SalonInfo
+from salons.models import SalonService
 # from .models import SalonInfo
 from salons.views import SalonRegistrationView
 from django.urls import reverse
@@ -377,11 +378,25 @@ def search_results(request):
     
     '''
     if request.method == 'POST':
-        searched = request.POST['searched']
+        searched = request.POST.get('searched', False)
         location = request.POST.get('location', False)
         service = request.POST.get('service', False)
-        salon_names = SalonInfo.objects.filter(salon_name__contains=searched)
-        return render(request, 'search_results.html', {'searched':searched, 'salon_names':salon_names, 'location':location, 'service':service})
+        salons_obj = []
+        for obj_salon_service in SalonService.objects.all():
+            salon_name = obj_salon_service.salon.salon_name
+            service_name = obj_salon_service.service.service_name
+            address = obj_salon_service.salon.salon_address.suburb
+            if searched == '' and location == '' and service == '':
+                salons_obj.append(obj_salon_service)
+            if searched == '':
+                if location in address.lower():
+                    if service in service_name.lower():
+                        salons_obj.append(obj_salon_service)
+            if location == '':
+                if searched in salon_name.lower():
+                    if service in service_name.lower():
+                        salons_obj.append(obj_salon_service)
+        return render(request, 'search_results.html', {'searched':searched, 'location':location, 'service':service, 'salons_obj':salons_obj})
     else:
         return render(request, 'search_results.html')
     
