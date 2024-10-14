@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.main-body{
+    display: flex;
+    background-color: #F4F4F4;
+    flex-direction: row;
+    width: 100%;
+    height: 90vh;
+    position: relative;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(224, 169, 232, 0.24);
+    /* transparency:  */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 9%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    /* padding-top: 20px; */
+}
+    nav ul {
+        margin-left: -40px;
+        list-style-type: none;
+    }
+    .nav-item {
+        margin-bottom: 30px;
+        width: 80%;
+        height: auto;
+    }
+    
+    .nav-item a img {
+        width: 45px;
+        height: 40px;
+    }
+
+    .nav-item a {
+        display: inline-block; /* Makes the anchor a block for easier styling */
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+        padding: 10px; 
+        /* margin-right: -5px; */
+        border-radius: 30px;
+    }
+
+    .nav-item a:hover{
+        background-color: rgb(157, 71, 136, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+.info-column{
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.info-container { 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: white;
+    height: 70%;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color:#585757;
+    font-family: "Kanit";
+    font-size: 30px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.horizontal-spacer {
+    margin-left: 150px;
+}
+    
+
+
+

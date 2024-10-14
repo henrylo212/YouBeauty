@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>customers.views &#8212; youbeauty  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for customers.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+<span class="kn">from</span> <span class="nn">salons.models</span> <span class="kn">import</span> <span class="n">SalonInfo</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Booking</span><span class="p">,</span> <span class="n">Customer</span>
+<span class="kn">from</span> <span class="nn">customers.models</span> <span class="kn">import</span> <span class="n">Customer</span>
+<span class="kn">from</span> <span class="nn">salons.models</span> <span class="kn">import</span> <span class="n">SalonService</span>
+<span class="kn">from</span> <span class="nn">salons.models</span> <span class="kn">import</span> <span class="n">Service</span>
+<span class="kn">from</span> <span class="nn">salons.models</span> <span class="kn">import</span> <span class="n">SalonAddress</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">django.core.mail</span> <span class="kn">import</span> <span class="n">send_mail</span>
+<span class="kn">from</span> <span class="nn">django.core.paginator</span> <span class="kn">import</span> <span class="n">Paginator</span>
+<span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">Count</span>
+
+<div class="viewcode-block" id="HomeView">
+<a class="viewcode-back" href="../../customers.html#customers.views.HomeView">[docs]</a>
+<span class="k">def</span> <span class="nf">HomeView</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handles information about the salon homepage</span>
+
+<span class="sd">    This view handlers information about the salon homepage.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request (HttpRequest): The HTTP request object, which is GET</span>
+
+<span class="sd">    Template:</span>
+<span class="sd">        &#39;homepage.html&#39;: The template used to display the salon homepage</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">salon_info</span> <span class="o">=</span> <span class="n">SalonInfo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  
+    <span class="n">services</span> <span class="o">=</span> <span class="n">Service</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  
+    <span class="c1"># gets top 10 salons with highest happy hour discount</span>
+    <span class="n">happy_hour_salons</span> <span class="o">=</span> <span class="n">SalonInfo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">happyhour_discount__isnull</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-happyhour_discount&#39;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="c1"># gets top 10 salons with most amount of bookings</span>
+    <span class="n">top_salons</span> <span class="o">=</span> <span class="n">SalonInfo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">booking_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;salonservice__booking&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-booking_count&#39;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="n">addresses</span> <span class="o">=</span> <span class="n">SalonAddress</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  
+    
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;homepage.html&#39;</span><span class="p">,</span> 
+                  <span class="p">{</span><span class="s1">&#39;salon_info&#39;</span><span class="p">:</span> <span class="n">salon_info</span><span class="p">,</span> <span class="s1">&#39;services&#39;</span><span class="p">:</span> <span class="n">services</span><span class="p">,</span> <span class="s1">&#39;addresses&#39;</span><span class="p">:</span> <span class="n">addresses</span><span class="p">,</span> 
+                   <span class="s1">&#39;happy_hour_salons&#39;</span><span class="p">:</span> <span class="n">happy_hour_salons</span><span class="p">,</span> <span class="s1">&#39;top_salons&#39;</span><span class="p">:</span> <span class="n">top_salons</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="MakeBookingsView">
+<a class="viewcode-back" href="../../customers.html#customers.views.MakeBookingsView">[docs]</a>
+<span class="k">def</span> <span class="nf">MakeBookingsView</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handles information about the make bookings page</span>
+
+<span class="sd">    This view handlers information about the make bookings page</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request (HttpRequest): The HTTP request object, which is GET</span>
+
+<span class="sd">    Template:</span>
+<span class="sd">        &#39;bookings/make_bookings.html&#39;: The template used to display the make bookings page</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;bookings/make_bookings.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HappyHourView">
+<a class="viewcode-back" href="../../customers.html#customers.views.HappyHourView">[docs]</a>
+<span class="k">def</span> <span class="nf">HappyHourView</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handles information about the happy hour page</span>
+
+<span class="sd">    This view handlers information about the happy hour page</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request (HttpRequest): The HTTP request object, which is GET</span>
+
+<span class="sd">    Template:</span>
+<span class="sd">        &#39;happy_hour.html&#39;: The template used to display the happy hour page</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">salons</span> <span class="o">=</span> <span class="n">SalonInfo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">happyhour_discount__isnull</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-happyhour_discount&#39;</span><span class="p">)</span>
+    <span class="n">paginator</span> <span class="o">=</span> <span class="n">Paginator</span><span class="p">(</span><span class="n">salons</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> 
+    <span class="n">page_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># find the current page number, default is 1</span>
+    <span class="n">salon_page</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">get_page</span><span class="p">(</span><span class="n">page_number</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;happy_hour.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;salons&#39;</span><span class="p">:</span> <span class="n">salon_page</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="TopSalonsView">
+<a class="viewcode-back" href="../../customers.html#customers.views.TopSalonsView">[docs]</a>
+<span class="k">def</span> <span class="nf">TopSalonsView</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handles information about the top salons page</span>
+
+<span class="sd">    This view handlers information about the top salons page</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request (HttpRequest): The HTTP request object, which is GET</span>
+
+<span class="sd">    Template:</span>
+<span class="sd">        &#39;salons/top_salons.html&#39;: The template used to display the top salons page</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">salons</span> <span class="o">=</span> <span class="n">SalonInfo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">booking_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;salonservice__booking&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-booking_count&#39;</span><span class="p">)</span> <span class="c1"># sorts by number of bookings made</span>
+    <span class="n">paginator</span> <span class="o">=</span> <span class="n">Paginator</span><span class="p">(</span><span class="n">salons</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> 
+    <span class="n">page_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># find the current page number, default is 1</span>
+    <span class="n">salon_page</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">get_page</span><span class="p">(</span><span class="n">page_number</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;salons/top_salons.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;salons&#39;</span><span class="p">:</span> <span class="n">salon_page</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="make_bookings">
+<a class="viewcode-back" href="../../customers.html#customers.views.make_bookings">[docs]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">make_bookings</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">salon_service_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handles information about the make bookings page</span>
+
+<span class="sd">    This view handlers information about the make bookings page</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request (HttpRequest): The HTTP request object, which can be GET or POST</span>
+
+<span class="sd">    Template:</span>
+<span class="sd">        &#39;bookings/make_bookings.html&#39;: The template used to display the make bookings page</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">salon_service</span> <span class="o">=</span> <span class="n">SalonService</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">salon_service_id</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Helooo?&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Confirm booking button clicked!&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Check if a Customer object exists for the current user</span>
+            <span class="n">customer</span> <span class="o">=</span> <span class="n">Customer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Customer</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+            <span class="c1"># Handle the case where the customer doesn&#39;t exist</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Customer does not exist for this user. Redirecting to the registration page.&quot;</span><span class="p">)</span>
+            <span class="c1"># You could redirect the user to a page where they can create a customer profile</span>
+            <span class="c1"># return redirect(&#39;create_customer_profile&#39;)</span>
+
+        <span class="c1"># Retrieve form data</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+        <span class="n">start_time_str</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;start_time&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Parse the start time and service duration</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">start_time_str</span><span class="p">,</span> <span class="s1">&#39;%H:%M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">service_duration</span> <span class="o">=</span> <span class="n">salon_service</span><span class="o">.</span><span class="n">duration</span>  <span class="c1"># Assuming duration is a timedelta</span>
+
+        <span class="c1"># Calculate the end time</span>
+        <span class="n">start_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">(),</span> <span class="n">start_time</span><span class="p">)</span>
+        <span class="n">end_datetime</span> <span class="o">=</span> <span class="n">start_datetime</span> <span class="o">+</span> <span class="n">service_duration</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">end_datetime</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+
+        <span class="c1"># Create a new booking</span>
+        <span class="n">customer</span> <span class="o">=</span> <span class="n">Customer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">booking</span> <span class="o">=</span> <span class="n">Booking</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">customer</span><span class="o">=</span><span class="n">customer</span><span class="p">,</span>
+            <span class="n">salon_service</span><span class="o">=</span><span class="n">salon_service</span><span class="p">,</span>
+            <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">,</span>
+            <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
+            <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">,</span>
+            <span class="n">is_cancelled</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Booking created for </span><span class="si">{</span><span class="n">Customer</span><span class="o">.</span><span class="n">user</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">date</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">start_time</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">subject</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Booking confirmed for </span><span class="si">{</span><span class="n">booking</span><span class="o">.</span><span class="n">customer</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">salon_service</span><span class="o">.</span><span class="n">salon</span><span class="o">.</span><span class="n">salon_name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Dear </span><span class="si">{</span><span class="n">booking</span><span class="o">.</span><span class="n">customer</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">,</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Thank you for booking with Youbeauty. Your </span><span class="si">{</span><span class="n">booking</span><span class="o">.</span><span class="n">salon_service</span><span class="si">}</span><span class="s2"> booking &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;on </span><span class="si">{</span><span class="n">date</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">start_time_str</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">salon_service</span><span class="o">.</span><span class="n">salon</span><span class="o">.</span><span class="n">salon_name</span><span class="si">}</span><span class="s2"> is confirmed.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Sincerely,</span><span class="se">\n</span><span class="s2">Youbeauty&quot;</span>
+        <span class="p">)</span>
+        <span class="n">recipient_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">customer</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">]</span>
+        <span class="n">send_mail</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s1">&#39;your_email@example.com&#39;</span><span class="p">,</span> <span class="n">recipient_list</span><span class="p">)</span>
+
+
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;booking_confirmation&#39;</span><span class="p">,</span> <span class="n">booking_id</span><span class="o">=</span><span class="n">booking</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;bookings/make_bookings.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;salon_service&#39;</span><span class="p">:</span> <span class="n">salon_service</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="booking_confirmation">
+<a class="viewcode-back" href="../../customers.html#customers.views.booking_confirmation">[docs]</a>
+<span class="k">def</span> <span class="nf">booking_confirmation</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">booking_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handles information about the booking confirmation page</span>
+
+<span class="sd">    This view handlers information about the booking confirmation page</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request (HttpRequest): The HTTP request object, which is GET</span>
+
+<span class="sd">    Template:</span>
+<span class="sd">        &#39;bookings/booking_confirmation.html&#39;: The template used to display the booking confirmation page</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">booking</span> <span class="o">=</span> <span class="n">Booking</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">booking_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;bookings/booking_confirmation.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;booking&#39;</span><span class="p">:</span> <span class="n">booking</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="edit_booking">
+<a class="viewcode-back" href="../../customers.html#customers.views.edit_booking">[docs]</a>
+<span class="k">def</span> <span class="nf">edit_booking</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">booking_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handles information about the edit booking page</span>
+
+<span class="sd">    This view handlers information about the edit booking page</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request (HttpRequest): The HTTP request object, which can be GET or POST</span>
+
+<span class="sd">    Template:</span>
+<span class="sd">        &#39;bookings/edit_booking.html&#39;: The template used to display the edit booking page</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">booking</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Booking</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">booking_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;cancel_booking&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">booking</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;bookings&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">booking</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+            <span class="n">booking</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+            <span class="n">booking</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;bookings&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;bookings/edit_booking.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;booking&#39;</span><span class="p">:</span> <span class="n">booking</span><span class="p">})</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">youbeauty</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accounts.html">accounts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customers.html">customers package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../salons.html">accounts package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Capstone.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

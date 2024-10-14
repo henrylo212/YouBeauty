@@ -2,32 +2,45 @@
 .salon-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    height: 30vh; 
+    justify-content: center;
+    align-items: left;
+    /* height: 30vh; 
     padding-left: 80px;
     padding-top: 70px;
-    padding-bottom: 40px;
+    padding-bottom: 40px; */
+    padding: 20px 0;
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 80px; /* added so it doesn't go right up to the right edge */
+    box-sizing: border-box;
 }
 
 .homepage-text-one {
     word-spacing: 4px;
     letter-spacing: 0.5px;
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 1300px;
+    text-shadow: /*creates shadows - general (no offset), bottom left, and bottom right */
+    0px 0px 30px #9b35ab, /* general shadow */
+    -1px 1px 5px #9b35ab, /* bottom left */
+    1px 1px 5px #9b35ab; /* bottom right */
+
 }
 
 .card-wrapper {
-    max-width: 1300px;
     width: 100%;
-    position: relative;
+    /* max-width: 1300px; */ /*removed so it can expand to larger screens */
     display: flex;
-    /* flex-wrap: wrap;
-    justify-content: space-between; */
-    flex-direction: row;
+    position: relative;
+    justify-content: center;
+    gap: 16px;
 }
 
 .card-wrapper a {
     color: black;
+    max-width: 400px;
 }
 
 .card-wrapper a:hover {
@@ -66,7 +79,8 @@
 .card-wrapper .slider {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% / 3) - 12px);
+    /* grid-auto-columns: calc((100% / 3) - 12px); */
+    grid-auto-columns: 400px; /*Made it pixels so it can handle more than 3 on the page with larger screens*/
     gap: 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -104,14 +118,12 @@
     background-color: white;
     list-style: none;
     border-radius: 8px;
-    margin: 5px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* width: 300px; */
-    width: 98%;
-    height: 280px;
+    width: 100%;
+    height: auto;
+    /* max-width: 400px; */
     padding-bottom: 15px;
-    /* margin-right: 40px; */
     cursor: pointer;
     align-items: center;
     justify-content: center;
@@ -122,7 +134,7 @@
     object-fit: cover;
     object-position: 0px 0px;
     width: 100%;
-    height: 65%;
+    height: 180px;
 }
 
 .spacer {
@@ -135,18 +147,45 @@
 
 .salon-card-text {
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: space-between; 
+    position: relative;
 }
+
+.happyhour-text {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-weight: bold;
+    color: green; 
+}
+
+
 
 @media screen and (max-width: 900px) {
     .card-wrapper .slider {
         grid-auto-columns: calc((100% / 2) - 9px);
-
     }
 }
 
 @media screen and (max-width: 600px) {
     .card-wrapper .slider {
         grid-auto-columns: 100%;
+    }
 
+    .card-wrapper i {
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+    }
+
+    .salon-card {
+        max-width: 100%;
+    }
+
+    .salon-image {
+        height: 150px;
     }
 }

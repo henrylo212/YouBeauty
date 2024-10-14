@@ -6,12 +6,22 @@
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
 {% endblock %}
 
+
+
 {% block content %}
 <div class="top-bar"></div>
 <link rel="stylesheet" type="text/css" href="{% static 'css/make_bookings.css' %}">    
 <div class="container">
     <link rel="stylesheet" type="text/css" href="{% static 'css/make_bookings.css' %}">    
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
     <h1>Make bookings</h1>
     <form method="post" action="{% url 'make_bookings' salon_service.id %}">

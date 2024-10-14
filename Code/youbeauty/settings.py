@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     # Custom apps
     'accounts',
     'salons',
-    'customers'
+    'customers',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +54,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'accounts.context_processors.global_variable',
             ],
         },
     },
@@ -113,6 +114,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

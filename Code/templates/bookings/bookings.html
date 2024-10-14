@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bookings.css' %}">
-    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
-{% endblock %}
 
 {% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/bookings.css' %}">
+
 <div class="top-bar"></div>
 <div class="container">
     <h1>Manage bookings</h1>
     {% for booking in bookings %}
     <div class="booking-card">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/bookings.css' %}">
-        <img src="{% static 'design/salon-image.jpg' %}" alt="Salon Image" class="salon-image">
-        <div class="booking-details">
+               <div class="booking-details">
             <h2>{{ booking.salon_service.salon.salon_name }}</h2>
             <p>{{ booking.date }} – {{ booking.start_time }} – {{ booking.salon_service.service }}</p>
             <p>{{ booking.salon_service.salon.salon_address }}</p>
@@ -23,7 +20,7 @@
             <div class="booking-price">
                 <span>${{ booking.salon_service.price }}</span>
             </div>
-            <button class="edit-button">Edit</button>
+            <button class="edit-button" onclick="window.location.href='{% url 'edit_booking' booking.id %}'">Edit</button>
         </div>
     </div>
     {% endfor %}

@@ -7,6 +7,18 @@ from .models import SalonOwner, SalonAddress, SalonInfo, SalonService
 
 
 def SalonDetailView(request, salon_id):
+    '''
+    Handles information about the salon detail page
+
+    This view handlers information about the salon detail page
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'salons/salon_page.html': The template used to display the salon detail page
+    
+    '''
     # extracts salon object according to the id and the services the salon offers
     salon = get_object_or_404(SalonInfo, pk=salon_id)
     services = SalonService.objects.filter(salon=salon)
@@ -15,6 +27,18 @@ def SalonDetailView(request, salon_id):
 
 @login_required
 def SalonRegistrationView(request):
+    '''
+    Handles information about the salon registration page
+
+    This view handlers information about the salon registration page
+
+    Args:
+        request (HttpRequest): The HTTP request object, which can be GET or POST
+
+    Template:
+        'salons/salon_form.html': The template used to display the salon registration page
+    
+    '''
     # Create a factory so that the user can start with adding one service to their salon, and then add more if they want
     SalonServiceFormSet = formset_factory(SalonServiceForm, extra=1, can_delete=True)
 
@@ -57,7 +81,7 @@ def SalonRegistrationView(request):
 
             # Redirect to the salon dashboard or home page
             # return redirect('salon_dashboard')
-            return redirect('home')
+            return redirect('forBusiness')
     else:
         salon_form = SalonForm()
         service_formset = SalonServiceFormSet()
@@ -66,9 +90,38 @@ def SalonRegistrationView(request):
 
 
 def salon_list(request):
+    '''
+    Handles information about the list of salons
+
+    This view handlers information about the list of salons
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+    
+    '''
     salons = SalonInfo.objects.all()  
     return
 
 def salon_details(request, salon_id):
+    '''
+    Handles information about the salon details
+
+    This view handlers information about the salon details
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+        salon_id (): The id of the salon whose details will be fetched
+
+    Template:
+        'salons/salon_page.html': The template used to display the salon details
+    
+    '''
     salon = get_object_or_404(SalonInfo, pk=salon_id)
     return render(request, 'salons/salon_page.html', {'salon': salon})
+
+def salon_dashboard(request):
+    # Assuming the logged-in user is a SalonOwner
+    salon_owner = SalonOwner.objects.get(user=request.user)
+    salon = salon_owner.salon
+    bookings = Booking.objects.filter(salon_service__salon=salon, is_cancelled=False).order_by('date', 'start_time')
+    return render(request, 'salon_dashboard.html', {'bookings': bookings})

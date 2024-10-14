@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Index &#8212; youbeauty  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
@@ -40,13 +41,12 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
- | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
- | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
@@ -55,13 +55,8 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    accounts
-
-      <ul>
-        <li><a href="accounts.html#module-accounts">module</a>
+      <li><a href="accounts.html#accounts.views.AboutView">AboutView() (in module accounts.views)</a>, <a href="views.html#accounts.views.AboutView">[1]</a>
 </li>
-      </ul></li>
       <li>
     accounts.admin
 
@@ -80,7 +75,7 @@
     accounts.forms
 
       <ul>
-        <li><a href="accounts.html#module-accounts.forms">module</a>, <a href="index.html#module-accounts.forms">[1]</a>
+        <li><a href="accounts.html#module-accounts.forms">module</a>
 </li>
       </ul></li>
       <li>
@@ -110,7 +105,7 @@
     accounts.models
 
       <ul>
-        <li><a href="accounts.html#module-accounts.models">module</a>, <a href="index.html#module-accounts.models">[1]</a>
+        <li><a href="accounts.html#module-accounts.models">module</a>
 </li>
       </ul></li>
       <li>
@@ -131,38 +126,58 @@
     accounts.views
 
       <ul>
-        <li><a href="accounts.html#module-accounts.views">module</a>, <a href="index.html#module-accounts.views">[1]</a>, <a href="views.html#module-accounts.views">[2]</a>
+        <li><a href="accounts.html#module-accounts.views">module</a>, <a href="views.html#module-accounts.views">[1]</a>
 </li>
       </ul></li>
       <li><a href="accounts.html#accounts.apps.AccountsConfig">AccountsConfig (class in accounts.apps)</a>
 </li>
-      <li><a href="accounts.html#accounts.models.SalonInfo.address">address (accounts.models.SalonInfo attribute)</a>, <a href="index.html#accounts.models.SalonInfo.address">[1]</a>
-
-      <ul>
-        <li><a href="accounts.html#accounts.models.Users.address">(accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.address">[1]</a>
+      <li><a href="salons.html#salons.models.SalonAddress.address_line1">address_line1 (salons.models.SalonAddress attribute)</a>
 </li>
-      </ul></li>
-      <li><a href="accounts.html#accounts.models.SalonAddress.address_id">address_id (accounts.models.SalonAddress attribute)</a>, <a href="index.html#accounts.models.SalonAddress.address_id">[1]</a>
-
-      <ul>
-        <li><a href="accounts.html#accounts.models.SalonInfo.address_id">(accounts.models.SalonInfo attribute)</a>, <a href="index.html#accounts.models.SalonInfo.address_id">[1]</a>
+      <li><a href="salons.html#salons.models.SalonAddress.address_line2">address_line2 (salons.models.SalonAddress attribute)</a>
 </li>
-        <li><a href="accounts.html#accounts.models.Users.address_id">(accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.address_id">[1]</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.forms.RegistrationForm.base_fields">base_fields (accounts.forms.RegistrationForm attribute)</a>, <a href="index.html#accounts.forms.RegistrationForm.base_fields">[1]</a>
+      <li><a href="accounts.html#accounts.forms.CustomerRegistrationForm.base_fields">base_fields (accounts.forms.CustomerRegistrationForm attribute)</a>
+
+      <ul>
+        <li><a href="accounts.html#accounts.forms.EditProfileForm.base_fields">(accounts.forms.EditProfileForm attribute)</a>
+</li>
+        <li><a href="accounts.html#accounts.forms.SalonOwnerRegistrationForm.base_fields">(accounts.forms.SalonOwnerRegistrationForm attribute)</a>
+</li>
+        <li><a href="salons.html#salons.forms.SalonForm.base_fields">(salons.forms.SalonForm attribute)</a>
+</li>
+        <li><a href="salons.html#salons.forms.SalonServiceForm.base_fields">(salons.forms.SalonServiceForm attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="customers.html#customers.models.Booking">Booking (class in customers.models)</a>
+</li>
+      <li><a href="customers.html#customers.models.Booking.DoesNotExist">Booking.DoesNotExist</a>
+</li>
+      <li><a href="customers.html#customers.models.Booking.MultipleObjectsReturned">Booking.MultipleObjectsReturned</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.views.bookingsView">bookingsView() (in module accounts.views)</a>, <a href="index.html#accounts.views.bookingsView">[1]</a>, <a href="views.html#accounts.views.bookingsView">[2]</a>
+      <li><a href="customers.html#customers.views.booking_confirmation">booking_confirmation() (in module customers.views)</a>
 </li>
-      <li><a href="accounts.html#accounts.models.SalonInfo.business_name">business_name (accounts.models.SalonInfo attribute)</a>, <a href="index.html#accounts.models.SalonInfo.business_name">[1]</a>
+      <li><a href="customers.html#customers.models.Customer.booking_set">booking_set (customers.models.Customer attribute)</a>
+
+      <ul>
+        <li><a href="salons.html#salons.models.SalonService.booking_set">(salons.models.SalonService attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="accounts.html#accounts.views.bookingsView">bookingsView() (in module accounts.views)</a>, <a href="views.html#accounts.views.bookingsView">[1]</a>
+</li>
+      <li><a href="accounts.html#accounts.views.BusinessLoginView">BusinessLoginView (class in accounts.views)</a>, <a href="views.html#accounts.views.BusinessLoginView">[1]</a>
+</li>
+      <li><a href="accounts.html#accounts.views.BusinessProfileCalendarView">BusinessProfileCalendarView() (in module accounts.views)</a>, <a href="views.html#accounts.views.BusinessProfileCalendarView">[1]</a>
+</li>
+      <li><a href="accounts.html#accounts.views.BusinessProfileHomeView">BusinessProfileHomeView() (in module accounts.views)</a>, <a href="views.html#accounts.views.BusinessProfileHomeView">[1]</a>
+</li>
+      <li><a href="accounts.html#accounts.views.BusinessProfileSettingsView">BusinessProfileSettingsView() (in module accounts.views)</a>, <a href="views.html#accounts.views.BusinessProfileSettingsView">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -170,19 +185,85 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.Users.created_at">created_at (accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.created_at">[1]</a>
+      <li><a href="salons.html#salons.models.SalonAddress.country">country (salons.models.SalonAddress attribute)</a>
 </li>
-      <li><a href="accounts.html#accounts.models.CustomerInfo.customer_id">customer_id (accounts.models.CustomerInfo attribute)</a>, <a href="index.html#accounts.models.CustomerInfo.customer_id">[1]</a>
+      <li><a href="customers.html#customers.models.Customer">Customer (class in customers.models)</a>
 </li>
-      <li><a href="accounts.html#accounts.models.CustomerInfo">CustomerInfo (class in accounts.models)</a>, <a href="index.html#accounts.models.CustomerInfo">[1]</a>
+      <li><a href="customers.html#customers.models.Booking.customer">customer (customers.models.Booking attribute)</a>
 </li>
+      <li><a href="customers.html#customers.models.Customer.DoesNotExist">Customer.DoesNotExist</a>
+</li>
+      <li><a href="customers.html#customers.models.Customer.MultipleObjectsReturned">Customer.MultipleObjectsReturned</a>
+</li>
+      <li><a href="customers.html#customers.models.Booking.customer_id">customer_id (customers.models.Booking attribute)</a>
+</li>
+      <li><a href="accounts.html#accounts.views.CustomerLoginView">CustomerLoginView (class in accounts.views)</a>, <a href="views.html#accounts.views.CustomerLoginView">[1]</a>
+</li>
+      <li><a href="accounts.html#accounts.forms.CustomerRegistrationForm">CustomerRegistrationForm (class in accounts.forms)</a>
+</li>
+      <li><a href="accounts.html#accounts.forms.CustomerRegistrationForm.Meta">CustomerRegistrationForm.Meta (class in accounts.forms)</a>
+</li>
+      <li><a href="accounts.html#accounts.views.CustomerRegistrationView">CustomerRegistrationView() (in module accounts.views)</a>, <a href="views.html#accounts.views.CustomerRegistrationView">[1]</a>
+</li>
+      <li>
+    customers.admin
+
+      <ul>
+        <li><a href="customers.html#module-customers.admin">module</a>
+</li>
+      </ul></li>
+      <li>
+    customers.apps
+
+      <ul>
+        <li><a href="customers.html#module-customers.apps">module</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.CustomerInfo.DoesNotExist">CustomerInfo.DoesNotExist</a>, <a href="index.html#accounts.models.CustomerInfo.DoesNotExist">[1]</a>
+      <li>
+    customers.migrations
+
+      <ul>
+        <li><a href="customers.migrations.html#module-customers.migrations">module</a>
 </li>
-      <li><a href="accounts.html#accounts.models.CustomerInfo.MultipleObjectsReturned">CustomerInfo.MultipleObjectsReturned</a>, <a href="index.html#accounts.models.CustomerInfo.MultipleObjectsReturned">[1]</a>
+      </ul></li>
+      <li>
+    customers.migrations.0001_initial
+
+      <ul>
+        <li><a href="customers.migrations.html#module-customers.migrations.0001_initial">module</a>
 </li>
-      <li><a href="accounts.html#accounts.models.Users.customerinfo_set">customerinfo_set (accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.customerinfo_set">[1]</a>
+      </ul></li>
+      <li>
+    customers.models
+
+      <ul>
+        <li><a href="customers.html#module-customers.models">module</a>
+</li>
+      </ul></li>
+      <li>
+    customers.tests
+
+      <ul>
+        <li><a href="customers.html#module-customers.tests">module</a>
+</li>
+      </ul></li>
+      <li>
+    customers.urls
+
+      <ul>
+        <li><a href="customers.html#module-customers.urls">module</a>
+</li>
+      </ul></li>
+      <li>
+    customers.views
+
+      <ul>
+        <li><a href="customers.html#module-customers.views">module</a>
+</li>
+      </ul></li>
+      <li><a href="customers.html#customers.apps.CustomersConfig">CustomersConfig (class in customers.apps)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -190,10 +271,28 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.forms.RegistrationForm.declared_fields">declared_fields (accounts.forms.RegistrationForm attribute)</a>, <a href="index.html#accounts.forms.RegistrationForm.declared_fields">[1]</a>
+      <li><a href="customers.html#customers.models.Booking.date">date (customers.models.Booking attribute)</a>
 </li>
+      <li><a href="accounts.html#accounts.forms.CustomerRegistrationForm.declared_fields">declared_fields (accounts.forms.CustomerRegistrationForm attribute)</a>
+
+      <ul>
+        <li><a href="accounts.html#accounts.forms.EditProfileForm.declared_fields">(accounts.forms.EditProfileForm attribute)</a>
+</li>
+        <li><a href="accounts.html#accounts.forms.SalonOwnerRegistrationForm.declared_fields">(accounts.forms.SalonOwnerRegistrationForm attribute)</a>
+</li>
+        <li><a href="salons.html#salons.forms.SalonForm.declared_fields">(salons.forms.SalonForm attribute)</a>
+</li>
+        <li><a href="salons.html#salons.forms.SalonServiceForm.declared_fields">(salons.forms.SalonServiceForm attribute)</a>
+</li>
+      </ul></li>
       <li><a href="accounts.html#accounts.apps.AccountsConfig.default_auto_field">default_auto_field (accounts.apps.AccountsConfig attribute)</a>
+
+      <ul>
+        <li><a href="customers.html#customers.apps.CustomersConfig.default_auto_field">(customers.apps.CustomersConfig attribute)</a>
 </li>
+        <li><a href="salons.html#salons.apps.SalonsConfig.default_auto_field">(salons.apps.SalonsConfig attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="accounts.migrations.html#accounts.migrations.0001_initial.Migration.dependencies">dependencies (accounts.migrations.0001_initial.Migration attribute)</a>
@@ -201,18 +300,28 @@
       <ul>
         <li><a href="accounts.migrations.html#accounts.migrations.0002_remove_users_user_type_users_type.Migration.dependencies">(accounts.migrations.0002_remove_users_user_type_users_type.Migration attribute)</a>
 </li>
+        <li><a href="customers.migrations.html#customers.migrations.0001_initial.Migration.dependencies">(customers.migrations.0001_initial.Migration attribute)</a>
+</li>
+        <li><a href="salons.migrations.html#salons.migrations.0001_initial.Migration.dependencies">(salons.migrations.0001_initial.Migration attribute)</a>
+</li>
       </ul></li>
+      <li><a href="salons.html#salons.models.SalonService.description">description (salons.models.SalonService attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonService.duration">duration (salons.models.SalonService attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.Users.email">email (accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.email">[1]</a>
+      <li><a href="customers.html#customers.views.edit_booking">edit_booking() (in module customers.views)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.views.extractSalonInfoView">extractSalonInfoView() (in module accounts.views)</a>, <a href="index.html#accounts.views.extractSalonInfoView">[1]</a>, <a href="views.html#accounts.views.extractSalonInfoView">[2]</a>
+      <li><a href="accounts.html#accounts.forms.EditProfileForm">EditProfileForm (class in accounts.forms)</a>
+</li>
+      <li><a href="customers.html#customers.models.Booking.end_time">end_time (customers.models.Booking attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -220,15 +329,21 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.views.FAQView">FAQView() (in module accounts.views)</a>, <a href="index.html#accounts.views.FAQView">[1]</a>, <a href="views.html#accounts.views.FAQView">[2]</a>
+      <li><a href="accounts.html#accounts.views.FAQView">FAQView() (in module accounts.views)</a>, <a href="views.html#accounts.views.FAQView">[1]</a>
 </li>
-      <li><a href="accounts.html#accounts.forms.RegistrationForm.Meta.fields">fields (accounts.forms.RegistrationForm.Meta attribute)</a>, <a href="index.html#accounts.forms.RegistrationForm.Meta.fields">[1]</a>
+      <li><a href="accounts.html#accounts.forms.CustomerRegistrationForm.Meta.fields">fields (accounts.forms.CustomerRegistrationForm.Meta attribute)</a>
+
+      <ul>
+        <li><a href="accounts.html#accounts.forms.SalonOwnerRegistrationForm.Meta.fields">(accounts.forms.SalonOwnerRegistrationForm.Meta attribute)</a>
 </li>
+        <li><a href="salons.html#salons.forms.SalonForm.Meta.fields">(salons.forms.SalonForm.Meta attribute)</a>
+</li>
+        <li><a href="salons.html#salons.forms.SalonServiceForm.Meta.fields">(salons.forms.SalonServiceForm.Meta attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.Users.first_name">first_name (accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.first_name">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.views.forBusinessView">forBusinessView() (in module accounts.views)</a>, <a href="index.html#accounts.views.forBusinessView">[1]</a>, <a href="views.html#accounts.views.forBusinessView">[2]</a>
+      <li><a href="accounts.html#accounts.views.forBusinessView">forBusinessView() (in module accounts.views)</a>, <a href="views.html#accounts.views.forBusinessView">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -236,35 +351,69 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.Users.get_next_by_created_at">get_next_by_created_at() (accounts.models.Users method)</a>, <a href="index.html#accounts.models.Users.get_next_by_created_at">[1]</a>
+      <li><a href="customers.html#customers.models.Booking.get_next_by_date">get_next_by_date() (customers.models.Booking method)</a>
 </li>
-      <li><a href="accounts.html#accounts.models.Users.get_previous_by_created_at">get_previous_by_created_at() (accounts.models.Users method)</a>, <a href="index.html#accounts.models.Users.get_previous_by_created_at">[1]</a>
+      <li><a href="customers.html#customers.models.Booking.get_previous_by_date">get_previous_by_date() (customers.models.Booking method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.SalonAddress.get_state_display">get_state_display() (accounts.models.SalonAddress method)</a>, <a href="index.html#accounts.models.SalonAddress.get_state_display">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.Users.get_type_display">get_type_display() (accounts.models.Users method)</a>, <a href="index.html#accounts.models.Users.get_type_display">[1]</a>
+      <li><a href="accounts.html#accounts.views.BusinessLoginView.get_success_url">get_success_url() (accounts.views.BusinessLoginView method)</a>, <a href="views.html#accounts.views.BusinessLoginView.get_success_url">[1]</a>
 
       <ul>
-        <li><a href="accounts.html#accounts.models.UserType.get_type_display">(accounts.models.UserType method)</a>, <a href="index.html#accounts.models.UserType.get_type_display">[1]</a>
+        <li><a href="accounts.html#accounts.views.CustomerLoginView.get_success_url">(accounts.views.CustomerLoginView method)</a>, <a href="views.html#accounts.views.CustomerLoginView.get_success_url">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="salons.html#salons.models.SalonInfo.happyhour_days">happyhour_days (salons.models.SalonInfo attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonInfo.happyhour_discount">happyhour_discount (salons.models.SalonInfo attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="salons.html#salons.models.SalonInfo.happyhour_times">happyhour_times (salons.models.SalonInfo attribute)</a>
+</li>
+      <li><a href="customers.html#customers.views.HappyHourView">HappyHourView() (in module customers.views)</a>
+</li>
+      <li><a href="customers.html#customers.views.HomeView">HomeView() (in module customers.views)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.migrations.html#accounts.migrations.0001_initial.Migration.initial">initial (accounts.migrations.0001_initial.Migration attribute)</a>
-</li>
-  </ul></td>
-</tr></table>
+      <li><a href="customers.html#customers.models.Booking.id">id (customers.models.Booking attribute)</a>
 
-<h2 id="L">L</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
+      <ul>
+        <li><a href="customers.html#customers.models.Customer.id">(customers.models.Customer attribute)</a>
+</li>
+        <li><a href="salons.html#salons.models.SalonAddress.id">(salons.models.SalonAddress attribute)</a>
+</li>
+        <li><a href="salons.html#salons.models.SalonInfo.id">(salons.models.SalonInfo attribute)</a>
+</li>
+        <li><a href="salons.html#salons.models.SalonOwner.id">(salons.models.SalonOwner attribute)</a>
+</li>
+        <li><a href="salons.html#salons.models.SalonService.id">(salons.models.SalonService attribute)</a>
+</li>
+        <li><a href="salons.html#salons.models.Service.id">(salons.models.Service attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.Users.last_name">last_name (accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.last_name">[1]</a>
+      <li><a href="accounts.migrations.html#accounts.migrations.0001_initial.Migration.initial">initial (accounts.migrations.0001_initial.Migration attribute)</a>
+
+      <ul>
+        <li><a href="customers.migrations.html#customers.migrations.0001_initial.Migration.initial">(customers.migrations.0001_initial.Migration attribute)</a>
+</li>
+        <li><a href="salons.migrations.html#salons.migrations.0001_initial.Migration.initial">(salons.migrations.0001_initial.Migration attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="customers.html#customers.models.Booking.is_cancelled">is_cancelled (customers.models.Booking attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -272,27 +421,51 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.forms.RegistrationForm.media">media (accounts.forms.RegistrationForm property)</a>, <a href="index.html#accounts.forms.RegistrationForm.media">[1]</a>
+      <li><a href="customers.html#customers.views.make_bookings">make_bookings() (in module customers.views)</a>
 </li>
+      <li><a href="customers.html#customers.views.MakeBookingsView">MakeBookingsView() (in module customers.views)</a>
+</li>
+      <li><a href="accounts.html#accounts.forms.CustomerRegistrationForm.media">media (accounts.forms.CustomerRegistrationForm property)</a>
+
+      <ul>
+        <li><a href="accounts.html#accounts.forms.EditProfileForm.media">(accounts.forms.EditProfileForm property)</a>
+</li>
+        <li><a href="accounts.html#accounts.forms.SalonOwnerRegistrationForm.media">(accounts.forms.SalonOwnerRegistrationForm property)</a>
+</li>
+        <li><a href="salons.html#salons.forms.SalonForm.media">(salons.forms.SalonForm property)</a>
+</li>
+        <li><a href="salons.html#salons.forms.SalonServiceForm.media">(salons.forms.SalonServiceForm property)</a>
+</li>
+      </ul></li>
       <li><a href="accounts.migrations.html#accounts.migrations.0001_initial.Migration">Migration (class in accounts.migrations.0001_initial)</a>
 
       <ul>
         <li><a href="accounts.migrations.html#accounts.migrations.0002_remove_users_user_type_users_type.Migration">(class in accounts.migrations.0002_remove_users_user_type_users_type)</a>
 </li>
-      </ul></li>
-      <li><a href="accounts.html#accounts.forms.RegistrationForm.Meta.model">model (accounts.forms.RegistrationForm.Meta attribute)</a>, <a href="index.html#accounts.forms.RegistrationForm.Meta.model">[1]</a>
+        <li><a href="customers.migrations.html#customers.migrations.0001_initial.Migration">(class in customers.migrations.0001_initial)</a>
 </li>
+        <li><a href="salons.migrations.html#salons.migrations.0001_initial.Migration">(class in salons.migrations.0001_initial)</a>
+</li>
+      </ul></li>
+      <li><a href="accounts.html#accounts.forms.CustomerRegistrationForm.Meta.model">model (accounts.forms.CustomerRegistrationForm.Meta attribute)</a>
+
+      <ul>
+        <li><a href="accounts.html#accounts.forms.SalonOwnerRegistrationForm.Meta.model">(accounts.forms.SalonOwnerRegistrationForm.Meta attribute)</a>
+</li>
+        <li><a href="salons.html#salons.forms.SalonForm.Meta.model">(salons.forms.SalonForm.Meta attribute)</a>
+</li>
+        <li><a href="salons.html#salons.forms.SalonServiceForm.Meta.model">(salons.forms.SalonServiceForm.Meta attribute)</a>
+</li>
+      </ul></li>
       <li>
     module
 
       <ul>
-        <li><a href="accounts.html#module-accounts">accounts</a>
-</li>
         <li><a href="accounts.html#module-accounts.admin">accounts.admin</a>
 </li>
         <li><a href="accounts.html#module-accounts.apps">accounts.apps</a>
 </li>
-        <li><a href="accounts.html#module-accounts.forms">accounts.forms</a>, <a href="index.html#module-accounts.forms">[1]</a>
+        <li><a href="accounts.html#module-accounts.forms">accounts.forms</a>
 </li>
         <li><a href="accounts.migrations.html#module-accounts.migrations">accounts.migrations</a>
 </li>
@@ -300,13 +473,47 @@
 </li>
         <li><a href="accounts.migrations.html#module-accounts.migrations.0002_remove_users_user_type_users_type">accounts.migrations.0002_remove_users_user_type_users_type</a>
 </li>
-        <li><a href="accounts.html#module-accounts.models">accounts.models</a>, <a href="index.html#module-accounts.models">[1]</a>
+        <li><a href="accounts.html#module-accounts.models">accounts.models</a>
 </li>
         <li><a href="accounts.html#module-accounts.tests">accounts.tests</a>
 </li>
         <li><a href="accounts.html#module-accounts.urls">accounts.urls</a>
 </li>
-        <li><a href="accounts.html#module-accounts.views">accounts.views</a>, <a href="index.html#module-accounts.views">[1]</a>, <a href="views.html#module-accounts.views">[2]</a>
+        <li><a href="accounts.html#module-accounts.views">accounts.views</a>, <a href="views.html#module-accounts.views">[1]</a>
+</li>
+        <li><a href="customers.html#module-customers.admin">customers.admin</a>
+</li>
+        <li><a href="customers.html#module-customers.apps">customers.apps</a>
+</li>
+        <li><a href="customers.migrations.html#module-customers.migrations">customers.migrations</a>
+</li>
+        <li><a href="customers.migrations.html#module-customers.migrations.0001_initial">customers.migrations.0001_initial</a>
+</li>
+        <li><a href="customers.html#module-customers.models">customers.models</a>
+</li>
+        <li><a href="customers.html#module-customers.tests">customers.tests</a>
+</li>
+        <li><a href="customers.html#module-customers.urls">customers.urls</a>
+</li>
+        <li><a href="customers.html#module-customers.views">customers.views</a>
+</li>
+        <li><a href="salons.html#module-salons.admin">salons.admin</a>
+</li>
+        <li><a href="salons.html#module-salons.apps">salons.apps</a>
+</li>
+        <li><a href="salons.html#module-salons.forms">salons.forms</a>
+</li>
+        <li><a href="salons.migrations.html#module-salons.migrations">salons.migrations</a>
+</li>
+        <li><a href="salons.migrations.html#module-salons.migrations.0001_initial">salons.migrations.0001_initial</a>
+</li>
+        <li><a href="salons.html#module-salons.models">salons.models</a>
+</li>
+        <li><a href="salons.html#module-salons.tests">salons.tests</a>
+</li>
+        <li><a href="salons.html#module-salons.urls">salons.urls</a>
+</li>
+        <li><a href="salons.html#module-salons.views">salons.views</a>
 </li>
       </ul></li>
   </ul></td>
@@ -316,23 +523,33 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="accounts.html#accounts.apps.AccountsConfig.name">name (accounts.apps.AccountsConfig attribute)</a>
+
+      <ul>
+        <li><a href="customers.html#customers.apps.CustomersConfig.name">(customers.apps.CustomersConfig attribute)</a>
 </li>
+        <li><a href="salons.html#salons.apps.SalonsConfig.name">(salons.apps.SalonsConfig attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.CustomerInfo.objects">objects (accounts.models.CustomerInfo attribute)</a>, <a href="index.html#accounts.models.CustomerInfo.objects">[1]</a>
+      <li><a href="customers.html#customers.models.Booking.objects">objects (customers.models.Booking attribute)</a>
 
       <ul>
-        <li><a href="accounts.html#accounts.models.SalonAddress.objects">(accounts.models.SalonAddress attribute)</a>, <a href="index.html#accounts.models.SalonAddress.objects">[1]</a>
+        <li><a href="customers.html#customers.models.Customer.objects">(customers.models.Customer attribute)</a>
 </li>
-        <li><a href="accounts.html#accounts.models.SalonInfo.objects">(accounts.models.SalonInfo attribute)</a>, <a href="index.html#accounts.models.SalonInfo.objects">[1]</a>
+        <li><a href="salons.html#salons.models.SalonAddress.objects">(salons.models.SalonAddress attribute)</a>
 </li>
-        <li><a href="accounts.html#accounts.models.Users.objects">(accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.objects">[1]</a>
+        <li><a href="salons.html#salons.models.SalonInfo.objects">(salons.models.SalonInfo attribute)</a>
 </li>
-        <li><a href="accounts.html#accounts.models.UserType.objects">(accounts.models.UserType attribute)</a>, <a href="index.html#accounts.models.UserType.objects">[1]</a>
+        <li><a href="salons.html#salons.models.SalonOwner.objects">(salons.models.SalonOwner attribute)</a>
+</li>
+        <li><a href="salons.html#salons.models.SalonService.objects">(salons.models.SalonService attribute)</a>
+</li>
+        <li><a href="salons.html#salons.models.Service.objects">(salons.models.Service attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -342,6 +559,10 @@
       <ul>
         <li><a href="accounts.migrations.html#accounts.migrations.0002_remove_users_user_type_users_type.Migration.operations">(accounts.migrations.0002_remove_users_user_type_users_type.Migration attribute)</a>
 </li>
+        <li><a href="customers.migrations.html#customers.migrations.0001_initial.Migration.operations">(customers.migrations.0001_initial.Migration attribute)</a>
+</li>
+        <li><a href="salons.migrations.html#salons.migrations.0001_initial.Migration.operations">(salons.migrations.0001_initial.Migration attribute)</a>
+</li>
       </ul></li>
   </ul></td>
 </tr></table>
@@ -349,29 +570,21 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.Users.password">password (accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.password">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.Users.phone">phone (accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.phone">[1]</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.SalonAddress.postcode">postcode (accounts.models.SalonAddress attribute)</a>, <a href="index.html#accounts.models.SalonAddress.postcode">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.views.profileView">profileView() (in module accounts.views)</a>, <a href="index.html#accounts.views.profileView">[1]</a>, <a href="views.html#accounts.views.profileView">[2]</a>
-</li>
-  </ul></td>
-</tr></table>
+      <li><a href="customers.html#customers.models.Customer.phone_number">phone_number (customers.models.Customer attribute)</a>
 
-<h2 id="R">R</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.forms.RegistrationForm">RegistrationForm (class in accounts.forms)</a>, <a href="index.html#accounts.forms.RegistrationForm">[1]</a>
+      <ul>
+        <li><a href="salons.html#salons.models.SalonOwner.phone_number">(salons.models.SalonOwner attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="salons.html#salons.models.SalonAddress.postcode">postcode (salons.models.SalonAddress attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.forms.RegistrationForm.Meta">RegistrationForm.Meta (class in accounts.forms)</a>, <a href="index.html#accounts.forms.RegistrationForm.Meta">[1]</a>
+      <li><a href="salons.html#salons.models.SalonService.price">price (salons.models.SalonService attribute)</a>
 </li>
-      <li><a href="accounts.html#accounts.views.RegistrationView">RegistrationView() (in module accounts.views)</a>, <a href="index.html#accounts.views.RegistrationView">[1]</a>, <a href="views.html#accounts.views.RegistrationView">[2]</a>
+      <li><a href="customers.html#customers.models.Customer.profile_photo">profile_photo (customers.models.Customer attribute)</a>
+</li>
+      <li><a href="accounts.html#accounts.views.profileView">profileView() (in module accounts.views)</a>, <a href="views.html#accounts.views.profileView">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -379,39 +592,184 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.SalonInfo.salon_email">salon_email (accounts.models.SalonInfo attribute)</a>, <a href="index.html#accounts.models.SalonInfo.salon_email">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.SalonInfo.salon_id">salon_id (accounts.models.SalonInfo attribute)</a>, <a href="index.html#accounts.models.SalonInfo.salon_id">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.SalonInfo.salon_phone">salon_phone (accounts.models.SalonInfo attribute)</a>, <a href="index.html#accounts.models.SalonInfo.salon_phone">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.SalonAddress">SalonAddress (class in accounts.models)</a>, <a href="index.html#accounts.models.SalonAddress">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.SalonAddress.DoesNotExist">SalonAddress.DoesNotExist</a>, <a href="index.html#accounts.models.SalonAddress.DoesNotExist">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.SalonAddress.MultipleObjectsReturned">SalonAddress.MultipleObjectsReturned</a>, <a href="index.html#accounts.models.SalonAddress.MultipleObjectsReturned">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.SalonInfo">SalonInfo (class in accounts.models)</a>, <a href="index.html#accounts.models.SalonInfo">[1]</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.SalonInfo.DoesNotExist">SalonInfo.DoesNotExist</a>, <a href="index.html#accounts.models.SalonInfo.DoesNotExist">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.SalonInfo.MultipleObjectsReturned">SalonInfo.MultipleObjectsReturned</a>, <a href="index.html#accounts.models.SalonInfo.MultipleObjectsReturned">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.SalonAddress.saloninfo_set">saloninfo_set (accounts.models.SalonAddress attribute)</a>, <a href="index.html#accounts.models.SalonAddress.saloninfo_set">[1]</a>
+      <li><a href="salons.html#salons.models.SalonOwner.salon">salon (salons.models.SalonOwner attribute)</a>
 
       <ul>
-        <li><a href="accounts.html#accounts.models.Users.saloninfo_set">(accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.saloninfo_set">[1]</a>
+        <li><a href="salons.html#salons.models.SalonService.salon">(salons.models.SalonService attribute)</a>
 </li>
       </ul></li>
-      <li><a href="accounts.html#accounts.forms.RegistrationForm.save">save() (accounts.forms.RegistrationForm method)</a>, <a href="index.html#accounts.forms.RegistrationForm.save">[1]</a>
+      <li><a href="salons.html#salons.models.SalonInfo.salon_address">salon_address (salons.models.SalonInfo attribute)</a>
 </li>
-      <li><a href="accounts.html#accounts.models.SalonAddress.state">state (accounts.models.SalonAddress attribute)</a>, <a href="index.html#accounts.models.SalonAddress.state">[1]</a>
+      <li><a href="salons.html#salons.models.SalonInfo.salon_address_id">salon_address_id (salons.models.SalonInfo attribute)</a>
 </li>
-      <li><a href="accounts.html#accounts.models.SalonAddress.street">street (accounts.models.SalonAddress attribute)</a>, <a href="index.html#accounts.models.SalonAddress.street">[1]</a>
+      <li><a href="salons.html#salons.models.SalonInfo.salon_closingtime">salon_closingtime (salons.models.SalonInfo attribute)</a>
 </li>
-      <li><a href="accounts.html#accounts.models.SalonAddress.suburb">suburb (accounts.models.SalonAddress attribute)</a>, <a href="index.html#accounts.models.SalonAddress.suburb">[1]</a>
+      <li><a href="salons.html#salons.views.salon_details">salon_details() (in module salons.views)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonOwner.salon_id">salon_id (salons.models.SalonOwner attribute)</a>
+
+      <ul>
+        <li><a href="salons.html#salons.models.SalonService.salon_id">(salons.models.SalonService attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="salons.html#salons.views.salon_list">salon_list() (in module salons.views)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonInfo.salon_name">salon_name (salons.models.SalonInfo attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonInfo.salon_openingtime">salon_openingtime (salons.models.SalonInfo attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonInfo.salon_photo">salon_photo (salons.models.SalonInfo attribute)</a>
+</li>
+      <li><a href="customers.html#customers.models.Booking.salon_service">salon_service (customers.models.Booking attribute)</a>
+</li>
+      <li><a href="customers.html#customers.models.Booking.salon_service_id">salon_service_id (customers.models.Booking attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonAddress">SalonAddress (class in salons.models)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonAddress.DoesNotExist">SalonAddress.DoesNotExist</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonAddress.MultipleObjectsReturned">SalonAddress.MultipleObjectsReturned</a>
+</li>
+      <li><a href="salons.html#salons.views.SalonDetailView">SalonDetailView() (in module salons.views)</a>
+</li>
+      <li><a href="salons.html#salons.forms.SalonForm">SalonForm (class in salons.forms)</a>
+</li>
+      <li><a href="salons.html#salons.forms.SalonForm.Meta">SalonForm.Meta (class in salons.forms)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonInfo">SalonInfo (class in salons.models)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonAddress.saloninfo">saloninfo (salons.models.SalonAddress attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonInfo.DoesNotExist">SalonInfo.DoesNotExist</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonInfo.MultipleObjectsReturned">SalonInfo.MultipleObjectsReturned</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonOwner">SalonOwner (class in salons.models)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonInfo.salonowner">salonowner (salons.models.SalonInfo attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonOwner.DoesNotExist">SalonOwner.DoesNotExist</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonOwner.MultipleObjectsReturned">SalonOwner.MultipleObjectsReturned</a>
+</li>
+      <li><a href="accounts.html#accounts.forms.SalonOwnerRegistrationForm">SalonOwnerRegistrationForm (class in accounts.forms)</a>
+</li>
+      <li><a href="accounts.html#accounts.forms.SalonOwnerRegistrationForm.Meta">SalonOwnerRegistrationForm.Meta (class in accounts.forms)</a>
+</li>
+      <li><a href="accounts.html#accounts.views.SalonRegistrationView">SalonRegistrationView() (in module accounts.views)</a>, <a href="views.html#accounts.views.SalonRegistrationView">[1]</a>
+
+      <ul>
+        <li><a href="salons.html#salons.views.SalonRegistrationView">(in module salons.views)</a>
+</li>
+      </ul></li>
+      <li>
+    salons.admin
+
+      <ul>
+        <li><a href="salons.html#module-salons.admin">module</a>
+</li>
+      </ul></li>
+      <li>
+    salons.apps
+
+      <ul>
+        <li><a href="salons.html#module-salons.apps">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    salons.forms
+
+      <ul>
+        <li><a href="salons.html#module-salons.forms">module</a>
+</li>
+      </ul></li>
+      <li>
+    salons.migrations
+
+      <ul>
+        <li><a href="salons.migrations.html#module-salons.migrations">module</a>
+</li>
+      </ul></li>
+      <li>
+    salons.migrations.0001_initial
+
+      <ul>
+        <li><a href="salons.migrations.html#module-salons.migrations.0001_initial">module</a>
+</li>
+      </ul></li>
+      <li>
+    salons.models
+
+      <ul>
+        <li><a href="salons.html#module-salons.models">module</a>
+</li>
+      </ul></li>
+      <li>
+    salons.tests
+
+      <ul>
+        <li><a href="salons.html#module-salons.tests">module</a>
+</li>
+      </ul></li>
+      <li>
+    salons.urls
+
+      <ul>
+        <li><a href="salons.html#module-salons.urls">module</a>
+</li>
+      </ul></li>
+      <li>
+    salons.views
+
+      <ul>
+        <li><a href="salons.html#module-salons.views">module</a>
+</li>
+      </ul></li>
+      <li><a href="salons.html#salons.apps.SalonsConfig">SalonsConfig (class in salons.apps)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonService">SalonService (class in salons.models)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonService.DoesNotExist">SalonService.DoesNotExist</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonService.MultipleObjectsReturned">SalonService.MultipleObjectsReturned</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonInfo.salonservice_set">salonservice_set (salons.models.SalonInfo attribute)</a>
+
+      <ul>
+        <li><a href="salons.html#salons.models.Service.salonservice_set">(salons.models.Service attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="salons.html#salons.forms.SalonServiceForm">SalonServiceForm (class in salons.forms)</a>
+</li>
+      <li><a href="salons.html#salons.forms.SalonServiceForm.Meta">SalonServiceForm.Meta (class in salons.forms)</a>
+</li>
+      <li><a href="accounts.html#accounts.forms.CustomerRegistrationForm.save">save() (accounts.forms.CustomerRegistrationForm method)</a>
+
+      <ul>
+        <li><a href="accounts.html#accounts.forms.EditProfileForm.save">(accounts.forms.EditProfileForm method)</a>
+</li>
+        <li><a href="accounts.html#accounts.forms.SalonOwnerRegistrationForm.save">(accounts.forms.SalonOwnerRegistrationForm method)</a>
+</li>
+      </ul></li>
+      <li><a href="accounts.html#accounts.views.search_results">search_results() (in module accounts.views)</a>, <a href="views.html#accounts.views.search_results">[1]</a>
+</li>
+      <li><a href="salons.html#salons.models.Service">Service (class in salons.models)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonService.service">service (salons.models.SalonService attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.Service.DoesNotExist">Service.DoesNotExist</a>
+</li>
+      <li><a href="salons.html#salons.models.Service.MultipleObjectsReturned">Service.MultipleObjectsReturned</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonService.service_id">service_id (salons.models.SalonService attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.Service.service_name">service_name (salons.models.Service attribute)</a>
+</li>
+      <li><a href="customers.html#customers.models.Booking.start_time">start_time (customers.models.Booking attribute)</a>
+</li>
+      <li><a href="salons.html#salons.models.SalonAddress.state">state (salons.models.SalonAddress attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -419,17 +777,15 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.tests.UserTypeTest.test_model_creation">test_model_creation() (accounts.tests.UserTypeTest method)</a>
-</li>
-      <li><a href="accounts.html#accounts.models.Users.type">type (accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.type">[1]</a>
+      <li><a href="accounts.html#accounts.views.BusinessLoginView.template_name">template_name (accounts.views.BusinessLoginView attribute)</a>, <a href="views.html#accounts.views.BusinessLoginView.template_name">[1]</a>
 
       <ul>
-        <li><a href="accounts.html#accounts.models.UserType.type">(accounts.models.UserType attribute)</a>, <a href="index.html#accounts.models.UserType.type">[1]</a>
+        <li><a href="accounts.html#accounts.views.CustomerLoginView.template_name">(accounts.views.CustomerLoginView attribute)</a>, <a href="views.html#accounts.views.CustomerLoginView.template_name">[1]</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.UserType.type_id">type_id (accounts.models.UserType attribute)</a>, <a href="index.html#accounts.models.UserType.type_id">[1]</a>
+      <li><a href="customers.html#customers.views.TopSalonsView">TopSalonsView() (in module customers.views)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -437,42 +793,26 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.forms.RegistrationForm.usable_password">usable_password (accounts.forms.RegistrationForm attribute)</a>, <a href="index.html#accounts.forms.RegistrationForm.usable_password">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.CustomerInfo.user">user (accounts.models.CustomerInfo attribute)</a>, <a href="index.html#accounts.models.CustomerInfo.user">[1]</a>
+      <li><a href="accounts.html#accounts.forms.CustomerRegistrationForm.usable_password">usable_password (accounts.forms.CustomerRegistrationForm attribute)</a>
 
       <ul>
-        <li><a href="accounts.html#accounts.models.SalonInfo.user">(accounts.models.SalonInfo attribute)</a>, <a href="index.html#accounts.models.SalonInfo.user">[1]</a>
+        <li><a href="accounts.html#accounts.forms.SalonOwnerRegistrationForm.usable_password">(accounts.forms.SalonOwnerRegistrationForm attribute)</a>
 </li>
       </ul></li>
-      <li><a href="accounts.html#accounts.models.CustomerInfo.user_id">user_id (accounts.models.CustomerInfo attribute)</a>, <a href="index.html#accounts.models.CustomerInfo.user_id">[1]</a>
+      <li><a href="customers.html#customers.models.Customer.user">user (customers.models.Customer attribute)</a>
 
       <ul>
-        <li><a href="accounts.html#accounts.models.SalonInfo.user_id">(accounts.models.SalonInfo attribute)</a>, <a href="index.html#accounts.models.SalonInfo.user_id">[1]</a>
-</li>
-        <li><a href="accounts.html#accounts.models.Users.user_id">(accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.user_id">[1]</a>
+        <li><a href="salons.html#salons.models.SalonOwner.user">(salons.models.SalonOwner attribute)</a>
 </li>
       </ul></li>
-      <li><a href="accounts.html#accounts.models.Users.username">username (accounts.models.Users attribute)</a>, <a href="index.html#accounts.models.Users.username">[1]</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="accounts.html#accounts.models.Users">Users (class in accounts.models)</a>, <a href="index.html#accounts.models.Users">[1]</a>
+      <li><a href="customers.html#customers.models.Customer.user_id">user_id (customers.models.Customer attribute)</a>
+
+      <ul>
+        <li><a href="salons.html#salons.models.SalonOwner.user_id">(salons.models.SalonOwner attribute)</a>
 </li>
-      <li><a href="accounts.html#accounts.models.Users.DoesNotExist">Users.DoesNotExist</a>, <a href="index.html#accounts.models.Users.DoesNotExist">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.Users.MultipleObjectsReturned">Users.MultipleObjectsReturned</a>, <a href="index.html#accounts.models.Users.MultipleObjectsReturned">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.SalonAddress.users_set">users_set (accounts.models.SalonAddress attribute)</a>, <a href="index.html#accounts.models.SalonAddress.users_set">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.UserType">UserType (class in accounts.models)</a>, <a href="index.html#accounts.models.UserType">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.UserType.DoesNotExist">UserType.DoesNotExist</a>, <a href="index.html#accounts.models.UserType.DoesNotExist">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.models.UserType.MultipleObjectsReturned">UserType.MultipleObjectsReturned</a>, <a href="index.html#accounts.models.UserType.MultipleObjectsReturned">[1]</a>
-</li>
-      <li><a href="accounts.html#accounts.tests.UserTypeTest">UserTypeTest (class in accounts.tests)</a>
-</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -493,7 +833,22 @@
 
 
 
-<h3>Navigation</h3>
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">accounts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">customers package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="salons.html">salons package</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
@@ -502,16 +857,6 @@
   </ul></li>
 </ul>
 </div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -528,8 +873,8 @@
       &#169;2024, Capstone.
       
       |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
     </div>
 
