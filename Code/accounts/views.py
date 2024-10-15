@@ -379,28 +379,43 @@ def search_results(request):
     
     '''
     if request.method == 'POST':
-        searched = request.POST.get('searched', False)
-        location = request.POST.get('location', False)
-        service = request.POST.get('service', False)
+        searched = request.POST.get('searched', False).lower()
+        location = request.POST.get('location', False).lower()
+        service = request.POST.get('service', False).lower()
         salons_obj = []
         for obj_salon_service in SalonService.objects.all():
-            salon_name = obj_salon_service.salon.salon_name
-            service_name = obj_salon_service.service.service_name
-            address = obj_salon_service.salon.salon_address.suburb
+            salon_name = obj_salon_service.salon.salon_name.lower()
+            service_name = obj_salon_service.service.service_name.lower()
+            address = obj_salon_service.salon.salon_address.suburb.lower()
             if searched == '' and location == '' and service == '':
                 salons_obj.append(obj_salon_service)
-            if searched == '':
-                if location in address.lower():
-                    if service in service_name.lower():
+            elif location == '' and service == '':
+                if searched in salon_name:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '' and service == '':
+                if location in address:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '' and location == '':
+                if service in service_name:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '':
+                if location in address:
+                    if service in service_name:
                         salons_obj.append(obj_salon_service)
-            if location == '':
-                if searched in salon_name.lower():
-                    if service in service_name.lower():
+            elif location == '':
+                if searched in salon_name:
+                    if service in service_name:
                         salons_obj.append(obj_salon_service)
-            if service == '':
-                if searched in salon_name.lower():
-                    if location in address.lower():
+            elif service == '':
+                if searched in salon_name:
+                    if location in address:
                         salons_obj.append(obj_salon_service)
+            else:
+                if searched in salon_name:
+                    if location in address:
+                        if service in service_name:
+                            salons_obj.append(obj_salon_service)
+            
         return render(request, 'search_results.html', {'searched':searched, 'location':location, 'service':service, 'salons_obj':salons_obj})
     else:
         return render(request, 'search_results.html')
