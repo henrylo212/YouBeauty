@@ -415,7 +415,6 @@ def search_results(request):
                     if location in address:
                         if service in service_name:
                             salons_obj.append(obj_salon_service)
-            
         return render(request, 'search_results.html', {'searched':searched, 'location':location, 'service':service, 'salons_obj':salons_obj})
     else:
         return render(request, 'search_results.html')
