@@ -4,6 +4,8 @@
     flex-direction: column;
     list-style: none;
     width: 20%;
+    max-height: 100vh;
+    overflow-y: auto;
     background: white;
     font-family: 'Kanit', Verdana, sans-serif;
     margin-top: 180px;
@@ -19,6 +21,15 @@
 }
 .salon-card :hover{
     color: #b644c8;
+}
+.results-list::-webkit-scrollbar {
+    width: 7px;
+}
+.results-list::-webkit-scrollbar-track {
+    background: white;
+}
+.results-list::-webkit-scrollbar-thumb {
+    background: lightgray;
 }
 .salon-image {
     object-fit: cover;
