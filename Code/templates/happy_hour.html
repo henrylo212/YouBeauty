@@ -13,38 +13,39 @@
 <div class="top-bar"></div>
 <div class="happy-hour-container">
     <h1>Happy Hour Deals</h1>
-    {% for salon in salons %}
-    <a href="{% url 'salons:salon_page' salon.id %}">
-        <div class="happy-hour-card">
-            <img src="{% static 'design/salon-image.jpg' %}" alt="Salon Image" class="happy-hour-image">
-            <div class="happy-hour-details">
-                <h2>{{ salon.salon_name }}</h2>
-                <p>{{ salon.salon_address }}</p>
-                <div class="happy-hour-highlight">
-                    <span class="happy-hour-discount">{{ salon.happyhour_discount }}% Off</span>
-                    <span class="happy-hour-days">{{ salon.happyhour_days }}</span>
-                    <span class="happy-hour-times">{{ salon.happyhour_times }}</span>
+    <div class="happy-hour-cards-container">
+        {% for salon in salons %}
+        <a href="{% url 'salons:salon_page' salon.id %}">
+            <div class="happy-hour-card">
+                <img src="{% static 'design/salon-image.jpg' %}" alt="Salon Image" class="happy-hour-image">
+                <div class="happy-hour-details">
+                    <h2>{{ salon.salon_name }}</h2>
+                    <p>{{ salon.salon_address }}</p>
+                    <div class="happy-hour-highlight">
+                        <span class="happy-hour-discount">{{ salon.happyhour_discount }}% Off</span>
+                        <span class="happy-hour-days">{{ salon.happyhour_days }}</span>
+                        <span class="happy-hour-times">{{ salon.happyhour_times }}</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </a>
-    {% endfor %}
+        </a>
+        {% endfor %}
 
-    <div class="pagination">
-        <span class="step-links">
-            {% if salons.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ salons.previous_page_number }}">previous</a>
-            {% endif %}
-    
-            <span class="current">Page {{ salons.number }} of {{ salons.paginator.num_pages }}</span>
-    
-            {% if salons.has_next %}
-                <a href="?page={{ salons.next_page_number }}">next</a>
-                <a href="?page={{ salons.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
+        <div class="pagination">
+            <span class="step-links">
+                {% if salons.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ salons.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">Page {{ salons.number }} of {{ salons.paginator.num_pages }}</span>
+        
+                {% if salons.has_next %}
+                    <a href="?page={{ salons.next_page_number }}">next</a>
+                    <a href="?page={{ salons.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     </div>
-    
 </div>
 {% endblock %}
