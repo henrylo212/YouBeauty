@@ -1,5 +1,4 @@
 .main-container {
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -61,7 +60,6 @@ a {
   top: 65%;
   left: 50%; */
   /* transform: translate(-50%, -50%); */
-  /* background-color: blue; */
   display: flex;
   justify-content: center;
 }
@@ -73,7 +71,6 @@ h3 {
   padding-top: 120px;
   text-align: center;
   color: white;
-  /* background-color: aqua; */
 }
 
 
