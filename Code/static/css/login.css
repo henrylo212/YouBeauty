@@ -33,7 +33,7 @@ form {
 
 }
 
-h4 {
+.login-page h4 {
   /* padding-top: -20px; */
   margin-top: -10px;
   margin-right: 80px;
@@ -41,7 +41,7 @@ h4 {
   font: 400 15px 'Kanit', sans-serif;
 }
 
-h5 {
+.login-page h5 {
   font: 100 20px 'Kanit', sans-serif;
   margin-top: 0;
   margin-bottom: 0;
@@ -49,7 +49,7 @@ h5 {
 
 }
 
-a {
+.login-page a {
   text-decoration: none;
   color: #B1B1B1;
 
