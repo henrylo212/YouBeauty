@@ -92,4 +92,5 @@ p {
 }
 .allservice-details button:hover {
     background-color: #b644c8;
+    cursor: pointer;
 }
