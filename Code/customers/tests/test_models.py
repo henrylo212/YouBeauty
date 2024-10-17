@@ -30,11 +30,14 @@ class BookingTest(TestCase):
         user = User.objects.create(username='test1', email="test1@email.com", password="123")
         customer = Customer.objects.create(user=user, phone_number='0412345678', profile_photo=None)
 
+        customer_str = str(customer)  # This covers the __str__ method for Customer
+        self.assertEqual(customer_str, "test1", "Customer __str__() method is not working correctly.")
+
+
         #Create SalonAddress (for SalonInfo)
         salon_address = SalonAddress.objects.create(address_line1='Cleveland St', address_line2='Chippendale', state='NSW', postcode="2008", country="Australia")
         print(type(salon_address))
         #Create SalonInfo (for SalonService)
-        # salon_info = SalonInfo.objects.create(salon_name="salon1", salon_address="23 Street St", salon_photo=None, 
         salon_info = SalonInfo.objects.create(salon_name="salon1", salon_address=salon_address, salon_photo=None, 
         salon_openingtime="09:00", salon_closingtime="16:00", happyhour_times="15:00", happyhour_days="Tuesday", happyhour_discount="0.4")
         
@@ -45,11 +48,7 @@ class BookingTest(TestCase):
 
         #Create SalonService
         salon_service = SalonService.objects.create(salon=salon_info, service=service, price="50", duration=datetime.timedelta(hours=1), description="Quick haircut.")
-        # salon = models.ForeignKey(SalonInfo, on_delete=models.CASCADE)
-        # service = models.ForeignKey(Service, on_delete=models.CASCADE)
-        # price = models.DecimalField(max_digits=10, decimal_places=2)
-        # duration = models.DurationField()
-        # description = models.TextField(blank=True, null=True)
+
         
         #Create Booking
         #set date, start time & end time
@@ -64,4 +63,9 @@ class BookingTest(TestCase):
         self.assertEqual(booking.start_time, start_time)
         self.assertEqual(booking.end_time, end_time)
         self.assertEqual(booking.is_cancelled, False)
+
+         # Ensure that Booking's __str__ method returns the correct format
+        booking_str = str(booking)  # This covers the __str__ method for Booking
+        expected_str = f'Booking by test1 for Haircut'
+        self.assertEqual(booking_str, expected_str, "Booking __str__() method is not working correctly.")
         # self.assertIsNotNone(user_type.type_id)  # Check that type_i
