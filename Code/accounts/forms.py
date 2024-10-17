@@ -24,6 +24,9 @@ class SalonOwnerRegistrationForm(UserCreationForm):
         self.fields['username'].help_text = None
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
+        # makes first name and last name mandatory
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
     
     
 class CustomerRegistrationForm(UserCreationForm):
@@ -46,6 +49,9 @@ class CustomerRegistrationForm(UserCreationForm):
         self.fields['username'].help_text = None
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
+        # makes first name and last name mandatory
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
 
 
 # class RegistrationForm(UserCreationForm):
