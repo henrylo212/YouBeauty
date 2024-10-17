@@ -55,6 +55,10 @@ form {
 
 }
 
+.login-page a:hover {
+  color: #757575;
+}
+
 .card {
   /* position: absolute;
   top: 65%;
