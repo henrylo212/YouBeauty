@@ -1,14 +1,27 @@
-<div>
-    {% if searched %}
-        <h1> You searched for {{ searched }} </h1>
-        <h1> location: {{ location }} </h1>
-        <h1> service: {{ service }} </h1>
-        <br/>
-        {% for salon in salon_names %}
-            <li data-salon-name="{{ salon }}" data-salon-add="salon.salon_address">
-            {{ salon }}<br/>
-            {{ salon.salon_address }}<br/><br/>
-            </li>
-        {% endfor %}
-    {% endif %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Happy Hour Page{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search_results.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+</head>
+
+<div class="results-list">
+    {% for salon in salons_obj %}
+    <a href="{% url 'salons:salon_page' salon.salon.id %}">
+        <div class="salon-card">
+            <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
+            <div class="salon-card-text">
+                <p class="salon-name-text">{{ salon.salon.salon_name }}</p>
+                <p>{{ salon.salon.salon_address.address_line1 }}</p>
+                <p>{{ salon.service.service_name }}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
 </div>
+{% endblock %}

@@ -8,6 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from customers.models import Customer, Booking
 from salons.models import SalonOwner
 from salons.models import SalonInfo
+from salons.models import SalonService
 # from .models import SalonInfo
 from salons.views import SalonRegistrationView
 from django.urls import reverse
@@ -250,7 +251,8 @@ def profileView(request):
             email = form.cleaned_data.get('email')
             print(email)
             phone_number = form.cleaned_data.get('phone_number')
-            # return redirect("success")
+            messages.success(request, 'Profile changes have been successfully saved!')
+        
 
             return redirect("profile")
     else:
@@ -377,11 +379,43 @@ def search_results(request):
     
     '''
     if request.method == 'POST':
-        searched = request.POST['searched']
-        location = request.POST.get('location', False)
-        service = request.POST.get('service', False)
-        salon_names = SalonInfo.objects.filter(salon_name__contains=searched)
-        return render(request, 'search_results.html', {'searched':searched, 'salon_names':salon_names, 'location':location, 'service':service})
+        searched = request.POST.get('searched', False).lower()
+        location = request.POST.get('location', False).lower()
+        service = request.POST.get('service', False).lower()
+        salons_obj = []
+        for obj_salon_service in SalonService.objects.all():
+            salon_name = obj_salon_service.salon.salon_name.lower()
+            service_name = obj_salon_service.service.service_name.lower()
+            address = obj_salon_service.salon.salon_address.suburb.lower()
+            if searched == '' and location == '' and service == '':
+                salons_obj.append(obj_salon_service)
+            elif location == '' and service == '':
+                if searched in salon_name:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '' and service == '':
+                if location in address:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '' and location == '':
+                if service in service_name:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '':
+                if location in address:
+                    if service in service_name:
+                        salons_obj.append(obj_salon_service)
+            elif location == '':
+                if searched in salon_name:
+                    if service in service_name:
+                        salons_obj.append(obj_salon_service)
+            elif service == '':
+                if searched in salon_name:
+                    if location in address:
+                        salons_obj.append(obj_salon_service)
+            else:
+                if searched in salon_name:
+                    if location in address:
+                        if service in service_name:
+                            salons_obj.append(obj_salon_service)
+        return render(request, 'search_results.html', {'searched':searched, 'location':location, 'service':service, 'salons_obj':salons_obj})
     else:
         return render(request, 'search_results.html')
     

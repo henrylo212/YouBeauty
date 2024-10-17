@@ -42,7 +42,7 @@
         <input class="location-form" type="search" placeholder="Location" aria-label="Location" name="location" value="{{ location }}">
         <div class="hide">
             {% for address in addresses %}
-                <li> {{ address.address_line1 }} </li>
+                <li> {{ address.suburb }} </li>
             {% endfor %}
         </div>
         <div class="content">
@@ -52,18 +52,6 @@
 
     <button class="go-btn" type="submit">Search</button>
 </form>
-
-<!-- <div class="wrapper-time">
-    <div class="time-btn">
-        <span>Time</span>
-    </div>
-    <div class="content">
-        <div class="search">
-            <input type="text" placeholder="Search">
-        </div>
-        <ul class="options"></ul>
-    </div>
-</div> -->
 
 
 <div class="spacer"></div>

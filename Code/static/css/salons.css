@@ -41,7 +41,7 @@ p {
 
 .salonpage-image-container {
     background-color: #ffffff;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     overflow: hidden;
     width: fit-content;
     height: 30vw;
@@ -53,6 +53,11 @@ p {
     align-self: center;
     width: 100%;
     height: 100%;
+    border-radius: 20px;
+}
+
+.salonpage-image img {
+    border-radius: 20px;
 }
 
 
@@ -92,4 +97,51 @@ p {
 }
 .allservice-details button:hover {
     background-color: #b644c8;
+    cursor: pointer;
+}
+
+
+@media(max-width: 900px) {
+    .salon-details {
+        flex-direction: column-reverse;
+        gap: 20px;
+        /* background-color: red; */
+        /* max-height: 34em;
+        height: 34em; */
+        max-height: none;
+        height: auto;
+    }
+
+    .salonpage-image-container {
+        width: 100%;
+        /* height: 80vw; */
+        /* max-height: 2000px; */
+        /* object-fit: fill; */
+        /* object-fit: none; */
+        height: auto;
+        /* height: 2000px; */
+        display: flex;
+    }
+
+    .salonpage-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .salonpage-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    .smaller-details {
+        width: 100%;
+    }
+    
+    /* .upcoming-bookings {
+        max-height: 34em;
+        height: 34em;
+    } */
 }

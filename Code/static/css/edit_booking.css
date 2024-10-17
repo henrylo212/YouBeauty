@@ -14,6 +14,7 @@
     max-width: 500px;
     width: 90%; /* Responsive width to fit on smaller screens */
     margin: 0 auto; /* Center horizontally */
+    margin-top: 170px; /* prevent creeping into nav bar */
     z-index: 10; /* Make sure it appears above any other background elements */
 }
 
