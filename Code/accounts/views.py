@@ -5,14 +5,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+
 from customers.models import Customer, Booking
-from salons.models import SalonOwner
-from salons.models import SalonInfo
-from salons.models import SalonService
-# from .models import SalonInfo
+from salons.models import SalonOwner, SalonInfo, SalonService
+
 from salons.views import SalonRegistrationView
 from django.urls import reverse
-# from .models import Users
+
 import datetime
 from django.contrib.auth.views import LoginView
 
@@ -95,7 +96,7 @@ def CustomerRegistrationView(request):
     return render(request, 'registration/customer_register.html', {'form': form})
 
 
-def SalonRegistrationView(request):
+def SalonOwnerRegistrationView(request):
     '''
     Handles information about the salon registration page
 
@@ -111,20 +112,23 @@ def SalonRegistrationView(request):
     if request.method == 'POST':
         form = SalonOwnerRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            phone_number = form.cleaned_data.get('phone_number')
-            
-            # creates SalonOwner object linked to this user
-            SalonOwner.objects.create(user=user, phone_number=phone_number)
-
-            #authenticate and log in the user
             username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            login(request, user)
+            if User.objects.filter(username=username).exists():
+                form.add_error('username', ValidationError('This username is already taken.'))
+            else:
+                user = form.save()
+                phone_number = form.cleaned_data.get('phone_number')
+                
+                # creates SalonOwner object linked to this user
+                SalonOwner.objects.create(user=user, phone_number=phone_number)
 
-            # redirect to the salon registration form
-            return redirect(reverse('salons:salon_form')) 
+                # authenticate and log in the user
+                password = form.cleaned_data.get('password1')
+                user = authenticate(username=username, password=password)
+                login(request, user)
+
+                # redirect to the salon registration form
+                return redirect(reverse('salons:salon_form'))
     else:
         form = SalonOwnerRegistrationForm()
     return render(request, 'registration/business_register.html', {'form': form})

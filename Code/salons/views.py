@@ -52,6 +52,7 @@ def SalonRegistrationView(request):
             salon_address = SalonAddress.objects.create(
                 address_line1=salon_form.cleaned_data['address_line1'],
                 address_line2=salon_form.cleaned_data.get('address_line2', ''),
+                suburb=salon_form.cleaned_data['suburb'],
                 state=salon_form.cleaned_data['state'],
                 postcode=salon_form.cleaned_data['postcode'],
                 country=salon_form.cleaned_data['country'],
@@ -63,10 +64,9 @@ def SalonRegistrationView(request):
             salon_info.save()
 
             # Associate the salon with the salon owner
-            try:
-                salon_owner = request.user.salonowner
-            except SalonOwner.DoesNotExist:
-                salon_owner = SalonOwner.objects.create(user=request.user, salon=salon_info)
+            salon_owner = request.user.salonowner
+            salon_owner.salon = salon_info
+            salon_owner.save()
 
             # Save each service offered by the salon
             for service_form in service_formset:
