@@ -1,0 +1,119 @@
+
+
+.top-bar {
+    background: #DCA8F5;
+    height: 165px; 
+    position: relative;
+    width: 100vw;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+
+.happy-hour-container {
+    background-color: white;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.happy-hour-container h1 {
+    margin-left: 100px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: left;
+    color: black;
+    font-size: 36px;
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+.happy-hour-cards-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.happy-hour-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.happy-hour-card img.happy-hour-image {
+    width: 140px;
+    height: 120px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.happy-hour-details {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.happy-hour-details h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.happy-hour-details p {
+    margin: 5px 0;
+    color: #777;
+    font-size: 16px;
+}
+
+.happy-hour-highlight {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.happy-hour-discount {
+    font-size: 22px;
+    font-weight: bold;
+    color: green;
+}
+
+.happy-hour-days, .happy-hour-times {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.happy-hour-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+.happy-hour-details .happy-hour-times {
+    font-weight: bold;
+    color: #b644c8;
+}
+
+.pagination {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}

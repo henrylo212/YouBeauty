@@ -8,6 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from customers.models import Customer, Booking
 from salons.models import SalonOwner
 from salons.models import SalonInfo
+from salons.models import SalonService
 # from .models import SalonInfo
 from salons.views import SalonRegistrationView
 from django.urls import reverse
@@ -16,6 +17,18 @@ import datetime
 from django.contrib.auth.views import LoginView
 
 class CustomerLoginView(LoginView):
+    '''
+    Handles information about the customer login page
+
+    This view handles information about the customer login page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'registration/login.html': The template used to display the customer login page
+    
+    '''
     template_name = "registration/login.html"
 
     def get_success_url(self):
@@ -23,6 +36,18 @@ class CustomerLoginView(LoginView):
         return "/customer/"
 
 class BusinessLoginView(LoginView):
+    '''
+    Handles information about the salon login page
+
+    This view handles information about the salon login page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'registration/business_login.html': The template used to display the salon login page
+    
+    '''
     template_name = "registration/business_login.html"
 
     def get_success_url(self):
@@ -35,6 +60,18 @@ class BusinessLoginView(LoginView):
 
 
 def CustomerRegistrationView(request):
+    '''
+    Handles information about the customer registration page
+
+    This view handles information about the customer registration page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which can be GET or POST
+
+    Template:
+        'registration/customer_register.html': The template used to display the customer registration page
+    
+    '''
     if request.method == 'POST':
         form = CustomerRegistrationForm(request.POST, request.FILES)  # also requests user to upload profile photo
         if form.is_valid():
@@ -59,6 +96,18 @@ def CustomerRegistrationView(request):
 
 
 def SalonRegistrationView(request):
+    '''
+    Handles information about the salon registration page
+
+    This view handles information about the salon registration page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which can be GET or POST
+
+    Template:
+        'registration/business_register.html': The template used to display the salon registration page
+    
+    '''
     if request.method == 'POST':
         form = SalonOwnerRegistrationForm(request.POST)
         if form.is_valid():
@@ -82,14 +131,50 @@ def SalonRegistrationView(request):
 
 
 def BusinessProfileHomeView(request):
+    '''
+    Handles information about the business profile home page
+
+    This view handles information about the business profile home page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'business_profile_home.html': The template used to display the business profile home page
+    
+    '''
 
     return render(request, 'business_profile_home.html')
 
 def BusinessProfileSettingsView(request):
+    '''
+    Handles information about the business profile settings page
+
+    This view handles information about the business profile settings page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'business_profile_settings.html': The template used to display the business profile settings page
+    
+    '''
 
     return render(request, 'business_profile_settings.html')
 
 def BusinessProfileCalendarView(request):
+    '''
+    Handles information about the business profile calendar page
+
+    This view handles information about the business profile calendar page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'business_profile_calendar.html': The template used to display the business profile calendar page
+    
+    '''
 
     return render(request, 'business_profile_calendar.html')
 
@@ -125,12 +210,12 @@ def AboutView(request):
 
 def profileView(request):
     '''
-    Handles information about the user profile 
+    Handles information about the customer profile 
 
-    This view handles information about the user profile
+    This view handles information about the customer profile
 
     Args:
-        request (HttpRequest): The HTTP request object, which is GET
+        request (HttpRequest): The HTTP request object, which can be GET or POST
 
     Template:
         'profile/profile.html': The template used to display the user profile information
@@ -166,7 +251,8 @@ def profileView(request):
             email = form.cleaned_data.get('email')
             print(email)
             phone_number = form.cleaned_data.get('phone_number')
-            # return redirect("success")
+            messages.success(request, 'Profile changes have been successfully saved!')
+        
 
             return redirect("profile")
     else:
@@ -197,7 +283,12 @@ def profileView(request):
         if is_customer:
             user = customer.user
             phone_number = customer.phone_number
-            profile_photo = customer.profile_photo
+            try:
+                if customer.profile_photo.url:
+                    profile_photo = customer.profile_photo
+            except:
+                print("No profile photo file.")
+                # profile_photo = None
             print(profile_photo)
             
             # Get upcoming bookings
@@ -219,6 +310,7 @@ def profileView(request):
             'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form})
     else:
         user = request.user
+
     
     return render(request, 'profile/profile.html' , 
         {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
@@ -226,10 +318,19 @@ def profileView(request):
         'form': form})   
 
 
-# def editProfileView(request):
-#     return render(request, 'profile/edit_profile.html')
-
 def bookingsView(request):
+    '''
+    Handles information about the bookings page
+
+    This view handles information about the bookings page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'bookings/bookings.html': The template used to display the bookings page
+    
+    '''
     current_user = request.user
     is_customer = False
     try:
@@ -248,60 +349,73 @@ def bookingsView(request):
         return render(request, 'bookings/bookings.html', {'bookings': None})
 
     
-
 def forBusinessView(request):
+    '''
+    Handles information about the for business page
+
+    This view handles information about the for business page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which is GET
+
+    Template:
+        'forBusiness.html': The template used to display the for business page
+    
+    '''
     return render(request, 'forBusiness.html')
 
 
-# def customer_login(request):
-#     if request.method == 'POST':
-#         form = AuthenticationForm(request, data=request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data.get('username')
-#             password = form.cleaned_data.get('password')
-#             user = authenticate(username=username, password=password)
-#             if user is not None:
-                
-#                 if hasattr(user, 'customer'):
-#                     login(request, user)
-#                     return redirect('customer_dashboard')
-#                 else:
-#                     form.add_error(None, "This account is not registered as a customer.")
-#             else:
-#                 form.add_error(None, "Invalid username or password.")
-#     else:
-#         form = AuthenticationForm()
-
-#     return render(request, 'registration/login.html', {'form': form})
-
-# def salon_login(request):
-#     if request.method == 'POST':
-#         form = AuthenticationForm(request, data=request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data.get('username')
-#             password = form.cleaned_data.get('password')
-#             user = authenticate(username=username, password=password)
-#             if user is not None:
-                
-#                 if hasattr(user, 'salonowner'):
-#                     login(request, user)
-#                     return redirect('salon_dashboard')
-#                 else:
-#                     form.add_error(None, "This account is not registered as a salon owner.")
-#             else:
-#                 form.add_error(None, "Invalid username or password.")
-#     else:
-#         form = AuthenticationForm()
-
-#     return render(request, 'registration/business_login.html', {'form': form})
-
 def search_results(request):
+    '''
+    Handles information about the search results page
+
+    This view handles information about the search results page.
+
+    Args:
+        request (HttpRequest): The HTTP request object, which can be GET or POST
+
+    Template:
+        'search_results.html': The template used to display the search results page
+    
+    '''
     if request.method == 'POST':
-        searched = request.POST['searched']
-        location = request.POST.get('location', False)
-        service = request.POST.get('service', False)
-        salon_names = SalonInfo.objects.filter(salon_name__contains=searched)
-        return render(request, 'search_results.html', {'searched':searched, 'salon_names':salon_names, 'location':location, 'service':service})
+        searched = request.POST.get('searched', False).lower()
+        location = request.POST.get('location', False).lower()
+        service = request.POST.get('service', False).lower()
+        salons_obj = []
+        for obj_salon_service in SalonService.objects.all():
+            salon_name = obj_salon_service.salon.salon_name.lower()
+            service_name = obj_salon_service.service.service_name.lower()
+            address = obj_salon_service.salon.salon_address.suburb.lower()
+            if searched == '' and location == '' and service == '':
+                salons_obj.append(obj_salon_service)
+            elif location == '' and service == '':
+                if searched in salon_name:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '' and service == '':
+                if location in address:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '' and location == '':
+                if service in service_name:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '':
+                if location in address:
+                    if service in service_name:
+                        salons_obj.append(obj_salon_service)
+            elif location == '':
+                if searched in salon_name:
+                    if service in service_name:
+                        salons_obj.append(obj_salon_service)
+            elif service == '':
+                if searched in salon_name:
+                    if location in address:
+                        salons_obj.append(obj_salon_service)
+            else:
+                if searched in salon_name:
+                    if location in address:
+                        if service in service_name:
+                            salons_obj.append(obj_salon_service)
+        return render(request, 'search_results.html', {'searched':searched, 'location':location, 'service':service, 'salons_obj':salons_obj})
     else:
         return render(request, 'search_results.html')
     

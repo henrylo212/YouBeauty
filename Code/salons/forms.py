@@ -5,6 +5,7 @@ from .models import SalonInfo, SalonAddress, Service, SalonService
 class SalonForm(forms.ModelForm):
     address_line1 = forms.CharField(max_length=255)
     address_line2 = forms.CharField(max_length=255, required=False)
+    suburb = forms.CharField(max_length=100)
     state = forms.CharField(max_length=100)
     postcode = forms.CharField(max_length=10)
     country = forms.CharField(max_length=100)

@@ -68,10 +68,10 @@ accounts.views module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+.. Module contents
+.. ---------------
 
-.. automodule:: accounts
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. .. automodule:: accounts
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:

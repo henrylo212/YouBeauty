@@ -42,7 +42,7 @@
         <input class="location-form" type="search" placeholder="Location" aria-label="Location" name="location" value="{{ location }}">
         <div class="hide">
             {% for address in addresses %}
-                <li> {{ address.address_line1 }} </li>
+                <li> {{ address.suburb }} </li>
             {% endfor %}
         </div>
         <div class="content">
@@ -53,27 +53,17 @@
     <button class="go-btn" type="submit">Search</button>
 </form>
 
-<!-- <div class="wrapper-time">
-    <div class="time-btn">
-        <span>Time</span>
-    </div>
-    <div class="content">
-        <div class="search">
-            <input type="text" placeholder="Search">
-        </div>
-        <ul class="options"></ul>
-    </div>
-</div> -->
-
 
 <div class="spacer"></div>
 <!-- Happy Hour Deals Section -->
 <div class="salon-wrapper">
-    <p class="homepage-text-one">DISCOVER HAPPY HOUR DEALS  > </p>
+    <p class="homepage-text-one">
+        <a href="{% url 'happy_hour' %}">DISCOVER HAPPY HOUR DEALS   ></a>
+    </p>
     <div class="card-wrapper happy-hour-wrapper">
         <i id="happy-hour-left" class="fas fa-chevron-left"></i>
         <ul class="slider happy-hour-slider">
-            {% for salon in sorted_salons %}
+            {% for salon in happy_hour_salons %}
             <a href="{% url 'salons:salon_page' salon.id %}">
                 <div class="salon-card">
                     <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
@@ -92,11 +82,13 @@
 
 <!-- Top Salons Section -->
 <div class="salon-wrapper">
-    <p class="homepage-text-one">TOP SALONS, SYDNEY > </p>
+    <p class="homepage-text-one">
+        <a href="{% url 'top_salons' %}">TOP SALONS, SYDNEY   ></a>
+    </p>
     <div class="card-wrapper top-salons-wrapper">
         <i id="top-salons-left" class="fas fa-chevron-left"></i>
         <ul class="slider top-salons-slider">
-            {% for salon in salon_info %}
+            {% for salon in top_salons %}
             <a href="{% url 'salons:salon_page' salon.id %}">
                 <div class="salon-card">
                     <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">

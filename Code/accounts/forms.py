@@ -11,7 +11,7 @@ class SalonOwnerRegistrationForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'phone_number']
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2', 'phone_number']
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -24,6 +24,9 @@ class SalonOwnerRegistrationForm(UserCreationForm):
         self.fields['username'].help_text = None
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
+        # makes first name and last name mandatory
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
     
     
 class CustomerRegistrationForm(UserCreationForm):
@@ -33,7 +36,7 @@ class CustomerRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'phone_number', 'profile_photo']
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2', 'phone_number', 'profile_photo']
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -46,6 +49,9 @@ class CustomerRegistrationForm(UserCreationForm):
         self.fields['username'].help_text = None
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
+        # makes first name and last name mandatory
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
 
 
 # class RegistrationForm(UserCreationForm):
