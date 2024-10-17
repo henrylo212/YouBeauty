@@ -13,11 +13,26 @@
   <div class="background">
     <section class="logo-section">
         <div class="logo-container">
-            <a href="{% url 'home' %}">
-                <div class="image-container">
-                    <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
-                </div>
-            </a>
+            {% if user.is_authenticated and is_authenticated_customer %}
+                <a href="{% url 'home' %}">
+                    <div class="image-container">
+                        <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+                    </div>
+                </a>
+            {% elif user.is_authenticated %}
+                <a href="{% url 'forBusiness' %}">
+                    <div class="image-container">
+                        <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+                    </div>
+                </a>
+   
+            {% else %}
+                <a href="{% url 'home' %}">
+                    <div class="image-container">
+                        <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+                    </div>
+                </a>
+            {% endif %}
         </div>
     </section>
 
