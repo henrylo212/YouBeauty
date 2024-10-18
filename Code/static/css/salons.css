@@ -14,13 +14,11 @@
     width: 85%;
     min-width: 24em;
     max-width: 1500px;
-    height: 30vw;
-    max-height: 600px;
     min-height: 350px;
     padding: 2em;
     border-radius: 20px;
     margin-bottom: 20px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     font-family: 'Kanit', Verdana, sans-serif;
 }
@@ -41,11 +39,11 @@ p {
 
 .salonpage-image-container {
     background-color: #ffffff;
-    /* border-radius: 20px; */
     overflow: hidden;
-    width: fit-content;
     height: 30vw;
+    width: auto;
     max-height: 600px;
+    width: 55%;
 }
 .salonpage-image {
     object-fit: contain;
@@ -100,26 +98,22 @@ p {
     cursor: pointer;
 }
 
+.smaller-details {
+    padding-top: 10px;
+    width: 40%;
+}
 
 @media(max-width: 900px) {
     .salon-details {
         flex-direction: column-reverse;
         gap: 20px;
-        /* background-color: red; */
-        /* max-height: 34em;
-        height: 34em; */
         max-height: none;
         height: auto;
     }
 
     .salonpage-image-container {
         width: 100%;
-        /* height: 80vw; */
-        /* max-height: 2000px; */
-        /* object-fit: fill; */
-        /* object-fit: none; */
         height: auto;
-        /* height: 2000px; */
         display: flex;
     }
 
@@ -139,9 +133,5 @@ p {
     .smaller-details {
         width: 100%;
     }
-    
-    /* .upcoming-bookings {
-        max-height: 34em;
-        height: 34em;
-    } */
+
 }
