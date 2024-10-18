@@ -63,8 +63,19 @@ header {
     font: 400 20px 'Julius Sans One', sans-serif;
     position: absolute;
     margin-top: 70px;
-    margin-left: 86%;
-    margin-right: 100px;
+    margin-top: 62px;
+
+    /* margin options (for different browser compatibility */
+    margin-left: -moz-calc(97% - 160px);
+    /* margin-left: -webkit-calc(97% - 160px); */
+    margin-left: -o-calc(97% - 160px);
+    margin-left: calc(97% - 160px);
+
+    margin-left: -moz-calc(13% + 160px);
+    /* margin-left: -webkit-calc(13% + 160px); */
+    margin-left: -o-calc(13% + 160px);
+    margin-right: calc(13% + 160px);
+
     text-transform: uppercase;
     width: fit-content;
 }
@@ -94,7 +105,10 @@ a:hover {
     align-items: end;
     gap: var(--hamburger-gap);
     width: fit-content;
-    margin-left: 96%;
+    /* margin left options (for different browser compatibility */
+    margin-left: -moz-calc(96% - 20px);
+    margin-left: -o-calc(96% - 20px);
+    margin-left: calc(96% - 20px); /* main one */
     position: absolute;
     top: 70px;
     z-index: 2;
@@ -138,7 +152,7 @@ a:hover {
     width: 97vw;
     height: 0;
     position: absolute;
-    justify-content: end;
+    justify-content: flex-end;
     opacity: 0;
     transition: opacity var(--animation-timing), height var(--animation-timing);
     list-style: none;
