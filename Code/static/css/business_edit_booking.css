@@ -1,0 +1,66 @@
+/* Center the container and make it fill the entire page */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* Ensure it takes the full viewport height */
+}
+
+/* Style the form box */
+.container .edit-booking-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for visibility */
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+/* Style the headings */
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Style the form fields */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the form action buttons */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.save-button, .cancel-button, .cancel-booking-button {
+    background-color: #9b59b6;
+    color: white;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-button:hover, .cancel-button:hover, .cancel-booking-button:hover {
+    background-color: #8e44ad;
+}
