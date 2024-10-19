@@ -185,11 +185,12 @@ def BusinessProfileSettingsView(request):
         form = EditSalonOwnerForm(data=request.POST)
         saloninfo_form = EditSalonInfoForm(data=request.POST)
 
-        print(form.errors)
+        # print(form.errors)
         print(saloninfo_form.errors)
 
         if form.is_valid():
             current_user = request.user
+            print("in salon owner form")
             print(f"exists {SalonOwner.objects.filter(user=current_user).exists()}, {SalonOwner.objects.filter(user=current_user)}")
 
             form.save(user)
@@ -199,6 +200,7 @@ def BusinessProfileSettingsView(request):
         
         if saloninfo_form.is_valid():
             # Saving salon info here
+            print("are we in here?")
             current_user = request.user
             saloninfo_form.save(user)
 

@@ -104,8 +104,8 @@ class EditSalonInfoForm(forms.Form):
         happyhour_days = self.cleaned_data["happyhour_days"]
         happyhour_discount = self.cleaned_data["happyhour_discount"]
 
-        addressline1 = self.cleaned_data["address_line1"]
-        addressline2 = self.cleaned_data["address_line2"]
+        address_line1 = self.cleaned_data["address_line1"]
+        address_line2 = self.cleaned_data["address_line2"]
         suburb = self.cleaned_data["suburb"]
         state = self.cleaned_data["state"]
         postcode = self.cleaned_data["postcode"]
@@ -129,8 +129,8 @@ class EditSalonInfoForm(forms.Form):
         saloninfo_instance.happyhour_days = happyhour_days
         saloninfo_instance.happyhour_discount = happyhour_discount
 
-        salon_address_instance.addressline1 = addressline1
-        salon_address_instance.addressline2 = addressline2
+        salon_address_instance.address_line1 = address_line1
+        salon_address_instance.address_line2 = address_line2
         salon_address_instance.suburb = suburb
         salon_address_instance.state = state
         salon_address_instance.postcode = postcode

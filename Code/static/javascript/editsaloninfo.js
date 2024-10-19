@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmButton = document.getElementById('salonconfirm');
     const inputs = document.querySelectorAll('#salon-form input');
 
-    // Existing salon fields
+
     const nameInput = document.getElementById('salon-name');
     const openingtimeInput = document.getElementById('salon_openingtime');
     const closingtimeInput = document.getElementById('salon_closingtime');
@@ -11,17 +11,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const happyhourdaysInput = document.getElementById('happyhour_days');
     const happyhourdiscountInput = document.getElementById('happyhour_discount');
 
-    // New address fields
-    const addressline1Input = document.getElementById('addressline1');
-    const addressline2Input = document.getElementById('addressline2');
+    const addressline1Input = document.getElementById('address_line1');
+    const addressline2Input = document.getElementById('address_line2');
     const suburbInput = document.getElementById('suburb');
     const stateInput = document.getElementById('state');
     const postcodeInput = document.getElementById('postcode');
     const countryInput = document.getElementById('country');
 
-    // Console logging for debugging
     console.log(editButton);
     console.log(confirmButton);
+
     console.log(inputs);
     console.log(nameInput);
     console.log(openingtimeInput);
@@ -36,15 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(postcodeInput);
     console.log(countryInput);
 
-    // Warnings for existing fields
     const nameWarning = document.createElement('p');
     const openingtimeWarning = document.createElement('p');
     const closingtimeWarning = document.createElement('p');
     const happyhourtimesWarning = document.createElement('p');
     const happyhourdaysWarning = document.createElement('p');
     const happyhourdiscountWarning = document.createElement('p');
-
-    // Warnings for new address fields
     const addressline1Warning = document.createElement('p');
     const addressline2Warning = document.createElement('p');
     const suburbWarning = document.createElement('p');
@@ -52,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const postcodeWarning = document.createElement('p');
     const countryWarning = document.createElement('p');
 
-    // Styling warnings
     const warnings = [
         { el: nameWarning, message: 'Salon name cannot be empty!' },
         { el: openingtimeWarning, message: 'Opening time cannot be empty!' },
@@ -75,6 +70,34 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('salon-form').insertBefore(el, confirmButton);
     });
 
+    // nameWarning.style.color = 'red';
+    // openingtimeWarning.style.color = 'red';
+    // closingtimeWarning.style.color = 'red';
+    // happyhourtimesWarning.style.color = 'red';
+    // happyhourdaysWarning.style.color = 'red';
+    // happyhourdiscountWarning.style.color = 'red';
+    
+    // nameWarning.style.display = 'none';
+    // openingtimeWarning.style.display = 'none';
+    // closingtimeWarning.style.display = 'none';
+    // happyhourtimesWarning.style.display = 'none';
+    // happyhourdaysWarning.style.display = 'none';
+    // happyhourdiscountWarning.style.display = 'none';
+
+    // nameWarning.textContent = 'Salon name cannot be empty!';
+    // openingtimeWarning.textContent = 'Opening time cannot be empty!';
+    // closingtimeWarning.textContent = 'Closing time cannot be empty!';
+    // happyhourtimesWarning.textContent = 'Happy hour times cannot be empty!';
+    // happyhourdaysWarning.textContent = 'Happy hour days cannot be empty!';
+    // happyhourdiscountWarning.textContent = 'Happy hour discount cannot be empty!';
+    
+    // document.getElementById('salon-form').insertBefore(nameWarning, confirmButton);
+    // document.getElementById('salon-form').insertBefore(openingtimeWarning, confirmButton);
+    // document.getElementById('salon-form').insertBefore(closingtimeWarning, confirmButton);
+    // document.getElementById('salon-form').insertBefore(happyhourtimesWarning, confirmButton);
+    // document.getElementById('salon-form').insertBefore(happyhourdaysWarning, confirmButton);
+    // document.getElementById('salon-form').insertBefore(happyhourdiscountWarning, confirmButton);
+
     confirmButton.style.visibility = 'hidden';
 
     editButton.addEventListener('click', function() {
@@ -82,15 +105,21 @@ document.addEventListener('DOMContentLoaded', function() {
             input.disabled = false;
         });
 
-        // Set minimum width for inputs
+        // nameInput.style.minWidth = "9em";
+        // openingtimeInput.style.minWidth = "9em";
+        // closingtimeInput.style.minWidth = "9em";
+        // happyhourtimesInput.style.minWidth = "9em";
+        // happyhourdaysInput.style.minWidth = "9em";
+        // happyhourdiscountInput.style.minWidth = "9em";
         [nameInput, openingtimeInput, closingtimeInput, happyhourtimesInput, happyhourdaysInput, happyhourdiscountInput,
             addressline1Input, addressline2Input, suburbInput, stateInput, postcodeInput, countryInput].forEach(input => {
             input.style.minWidth = "9em";
         });
 
         editButton.style.display = 'none';
+        
         confirmButton.style.visibility = 'visible';
-        confirmButton.style.width = '100%';
+        confirmButton.style.width = '45%';
         confirmButton.style.height = 'auto';
         confirmButton.style.overflow = 'auto';
     });
@@ -111,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const postcodeValue = postcodeInput.value.trim();
         const countryValue = countryInput.value.trim();
 
-        // Existing field validations
         if (nameValue === "") {
             nameWarning.style.display = 'block';
             nameInput.style.borderColor = 'red';
@@ -166,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
             happyhourdiscountInput.style.borderColor = '';
         }
 
-        // New address field validations
+        // Validate new address fields
         if (addressline1Value === "") {
             addressline1Warning.style.display = 'block';
             addressline1Input.style.borderColor = 'red';
@@ -220,6 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
             countryWarning.style.display = 'none';
             countryInput.style.borderColor = '';
         }
+
 
         if (!isValid) {
             event.preventDefault();

@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         editButton.style.display = 'none';
         confirmButton.style.visibility = 'visible';
-        confirmButton.style.width = '100%';
+        confirmButton.style.width = '45%';
         confirmButton.style.height = 'auto';
         confirmButton.style.overflow = 'auto';
     });
