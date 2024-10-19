@@ -279,36 +279,64 @@ def BusinessProfileCalendarView(request):
     Handles information about the business profile calendar page
     '''
 
-    # Get the logged-in user
     user = request.user
 
-    # Get the corresponding salon owner for the logged-in user
     salon_owner = get_object_or_404(SalonOwner, user=user)
 
-    # Get the salon associated with the salon owner
     salon = salon_owner.salon
 
-    # Retrieve all bookings for the services provided by this salon
     bookings = Booking.objects.filter(salon_service__salon=salon)
 
-    # Prepare bookings for the calendar in a format JavaScript can process
     booking_data = [
         {
+            'id': booking.id,
             'date': booking.date.strftime('%Y-%m-%d'),
             'title': booking.salon_service.service.service_name,
             'start_time': booking.start_time.strftime('%H:%M'),
             'end_time': booking.end_time.strftime('%H:%M'),
-            'color': 'blue'  # Assign a color or make dynamic if needed
+            'color': 'blue'  
         }
         for booking in bookings
     ]
 
-    # Pass booking data to the template
+    
     context = {
         'bookings': booking_data
     }
 
     return render(request, 'business_profile_calendar.html', context)
+
+
+def business_edit_booking(request, booking_id):
+    # Fetch the booking using the booking_id
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    # Fetch all services available for the salon that the booking is associated with
+    services = SalonService.objects.filter(salon=booking.salon_service.salon)
+
+    if request.method == 'POST':
+        if 'cancel_booking' in request.POST:
+            # Cancel the booking
+            booking.is_cancelled = True
+            booking.save()
+            return redirect('business_profile_calendar')
+        else:
+            # Update the booking details
+            booking.date = request.POST.get('date')
+            booking.start_time = request.POST.get('start_time')
+            booking.end_time = request.POST.get('end_time')
+            service_id = request.POST.get('service')
+            booking.salon_service = get_object_or_404(SalonService, id=service_id)
+            booking.save()
+            return redirect('business_profile_calendar')
+
+    # Pass the booking and available services to the template
+    context = {
+        'booking': booking,
+        'services': services,
+    }
+    return render(request, 'business_edit_booking.html', context)
+
 def FAQView(request):
     '''
     Handles information about the FAQ homepage
