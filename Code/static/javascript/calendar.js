@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Use the dynamically passed events from Django context
     const calendarGrid = document.getElementById('calendarGrid');
     const currentMonthElement = document.getElementById('currentMonth');
     const weekViewBtn = document.getElementById('weekViewBtn');
@@ -110,11 +109,17 @@ document.addEventListener("DOMContentLoaded", function () {
             if (typeof dayIndex !== 'undefined') {
                 const dayElement = calendarGrid.children[dayIndex];
                 if (dayElement) {
-                    const eventElement = document.createElement('div');
-                    eventElement.className = 'event event-item';
-                    eventElement.setAttribute('data-color', event.color);
-                    eventElement.textContent = `${event.start_time}-${event.end_time} ${event.title}`;
-                    dayElement.appendChild(eventElement);
+                    const eventButton = document.createElement('button');
+                    eventButton.className = 'event-button';
+                    eventButton.style.backgroundColor = getEventColor(event.title);
+                    eventButton.textContent = `${event.start_time}-${event.end_time} ${event.title}`;
+                    
+                    // Add any additional attributes or event listeners to the button
+                    eventButton.addEventListener('click', function () {
+                        alert(`Event: ${event.title}\nTime: ${event.start_time} to ${event.end_time}`);
+                    });
+
+                    dayElement.appendChild(eventButton);
                 }
             }
         });
@@ -125,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
             calendarGrid.removeChild(calendarGrid.lastChild);
         }
 
-        const eventElements = document.querySelectorAll('.event-item');
+        const eventElements = document.querySelectorAll('.event-button');
         eventElements.forEach(eventElement => eventElement.remove());
     }
 
@@ -141,4 +146,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updateCalendar();
+
+    function getEventColor(eventTitle) {
+        switch (eventTitle.toLowerCase()) {
+            case 'facial':
+                return 'green';
+            case 'haircut':
+                return 'red';
+            case 'nails':
+                return 'purple';
+            default:
+                return 'blue';  // Default 
+        }
+    }
+    
+ 
 });
