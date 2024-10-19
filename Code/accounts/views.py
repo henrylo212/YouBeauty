@@ -260,6 +260,17 @@ def BusinessProfileSettingsView(request):
             phone_number = salon_owner.phone_number
             salon = salon_owner.salon
             salon_address = salon.salon_address
+
+            # bookings = Booking.objects.filter(date__gte=datetime.date.today()).filter(customer=customer)
+            # print(bookings)
+
+            # Get all bookings for the salon by joining SalonInfo and Booking models
+            bookings = Booking.objects.filter(salon_service__salon=salon)
+            print("BOOKINGS: "+bookings)
+
+            salon_services = SalonService.objects.filter()
+
+
             return render(request, 'business_profile_settings.html' , 
             {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
             'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form, 'saloninfo_form': saloninfo_form, 'salon_address': salon_address})

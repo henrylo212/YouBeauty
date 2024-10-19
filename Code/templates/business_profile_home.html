@@ -35,8 +35,28 @@
         
         <div class="info-column">
             <h2> Upcoming Appointments </h2>
-            <div class="info-container">
             
+            <div class="info-container">
+                <div class="manage">
+                    <a class="h2-link" href="{% url 'business_profile_calendar' %}">Manage all bookings ></a>
+                </div>
+                <div class="booking-scroll">
+                    {% if bookings.count >= 1 %}
+                    {% for booking in bookings %}
+                    <div class="booking">
+                        <h3>{{ booking.salon_service.salon.salon_name }}</h3>
+                        <p>{{ booking.date }} - {{ booking.start_time }} - {{ booking.salon_service.service }}</p>
+                        <p>{{ booking.salon_service.salon.salon_address }}</p>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <!-- <p id="no-bookings-message">No bookings yet.</p> -->
+                    <div class="no-bookings">
+                        <p class="no-bookings-message" id="large">No bookings yet!</p>
+                        <!-- <a href="{% url 'home' %}" id="explore-salons-link">Explore salons</a> -->
+                    </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
 
