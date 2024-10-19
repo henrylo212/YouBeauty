@@ -1,12 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // generic events
-    const events = [
-        { date: '2024-10-10', title: 'facial', start_time: '10:00', end_time: '13:00', color: 'blue' },
-        { date: '2024-10-11', title: 'haircut', start_time: '15:00', end_time: '17:00', color: 'red' },
-        { date: '2024-10-12', title: 'nails', start_time: '14:00', end_time: '16:00', color: 'green' },
-        { date: '2024-10-13', title: 'whatever', start_time: '18:00', end_time: '21:00', color: 'yellow' },
-    ];
-
+    // Use the dynamically passed events from Django context
     const calendarGrid = document.getElementById('calendarGrid');
     const currentMonthElement = document.getElementById('currentMonth');
     const weekViewBtn = document.getElementById('weekViewBtn');
@@ -16,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentDate = new Date();
 
-    
     prevMonthBtn.addEventListener('click', function () {
         changeMonth(-1); 
     });
@@ -98,14 +90,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const eventDay = eventDate.getDate();
             const eventMonth = eventDate.getMonth();
             let dayIndex;
-    
+
             if (view === 'week') {
                 const startOfWeek = new Date(currentDate);
                 startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 1); // Set to Monday
-    
+
                 const endOfWeek = new Date(startOfWeek);
                 endOfWeek.setDate(startOfWeek.getDate() + 6); // Set to Sunday
-    
+
                 if (eventDate >= startOfWeek && eventDate <= endOfWeek) {
                     dayIndex = (eventDate.getDay() === 0 ? 6 : eventDate.getDay() - 1);
                 }
@@ -114,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const emptyCells = firstDay === 0 ? 6 : firstDay - 1;
                 dayIndex = eventDay - 1 + emptyCells + 7; // Adjust for the days of the week header and empty cells
             }
-    
+
             if (typeof dayIndex !== 'undefined') {
                 const dayElement = calendarGrid.children[dayIndex];
                 if (dayElement) {
@@ -127,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-    
 
     function clearCalendarGrid() {
         while (calendarGrid.children.length > 7) {

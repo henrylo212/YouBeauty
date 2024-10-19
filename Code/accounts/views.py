@@ -166,14 +166,6 @@ def BusinessProfileSettingsView(request):
 def BusinessProfileCalendarView(request):
     '''
     Handles information about the business profile calendar page
-
-    This view handles information about the business profile calendar page.
-
-    Args:
-        request (HttpRequest): The HTTP request object, which is GET
-
-    Template:
-        'business_profile_calendar.html': The template used to display the business profile calendar page
     '''
 
     # Get the logged-in user
@@ -188,13 +180,21 @@ def BusinessProfileCalendarView(request):
     # Retrieve all bookings for the services provided by this salon
     bookings = Booking.objects.filter(salon_service__salon=salon)
 
-    # Print bookings to console (for debugging purposes)
-    for booking in bookings:
-        print(f"Booking by {booking.customer.user.username} for {booking.salon_service.service.service_name} on {booking.date} from {booking.start_time} to {booking.end_time}")
+    # Prepare bookings for the calendar in a format JavaScript can process
+    booking_data = [
+        {
+            'date': booking.date.strftime('%Y-%m-%d'),
+            'title': booking.salon_service.service.service_name,
+            'start_time': booking.start_time.strftime('%H:%M'),
+            'end_time': booking.end_time.strftime('%H:%M'),
+            'color': 'blue'  # Assign a color or make dynamic if needed
+        }
+        for booking in bookings
+    ]
 
-    # Pass the bookings to the template for display (if needed)
+    # Pass booking data to the template
     context = {
-        'bookings': bookings
+        'bookings': booking_data
     }
 
     return render(request, 'business_profile_calendar.html', context)
