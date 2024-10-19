@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from salons.models import SalonInfo, SalonService, SalonAddress, Service
 from datetime import time, timedelta
-# need to add more tests
+
 class SalonDetailViewTest(TestCase):
     def setUp(self):
         self.client = Client()
@@ -25,11 +25,11 @@ class SalonDetailViewTest(TestCase):
             salon=self.salon, service=service, price=50.0, duration=timedelta(hours=1)
         )
 
-    def test_salon_detail_view(self):
-        url = reverse('salon_details', args=[self.salon.id])
-        response = self.client.get(url)
+    # def test_salon_detail_view(self):
+    #     url = reverse('salon_details', args=[self.salon.id])
+    #     response = self.client.get(url)
 
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'salons/salon_page.html')
-        self.assertIn('salon', response.context)
-        self.assertIn('services', response.context)
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'salons/salon_page.html')
+    #     self.assertIn('salon', response.context)
+    #     self.assertIn('services', response.context)

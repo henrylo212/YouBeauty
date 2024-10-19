@@ -100,7 +100,7 @@ def salon_list(request):
     
     '''
     salons = SalonInfo.objects.all()  
-    return
+    return salons
 
 def salon_details(request, salon_id):
     '''
