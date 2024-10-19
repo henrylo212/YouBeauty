@@ -28,7 +28,8 @@
         </div>
         
         <div class="salonpage-image-container" id="salonpage-image-container">
-            <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salonpage-image">
+            <img loading="lazy" src="{% if salon.salon_photo %}{{ salon.salon_photo.url }}{% else %}{% static 'design/salon-image.jpg' %}{% endif %}"
+             class="salonpage-image">
         </div>
     </div>
     <div class="services">

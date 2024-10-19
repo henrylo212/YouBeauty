@@ -17,7 +17,8 @@
         {% for salon in salons %}
         <a href="{% url 'salons:salon_page' salon.id %}">
             <div class="happy-hour-card">
-                <img src="{% static 'design/salon-image.jpg' %}" alt="Salon Image" class="happy-hour-image">
+                <img src="{% if salon.salon_photo %}{{ salon.salon_photo.url }}{% else %}{% static 'design/salon-image.jpg' %}{% endif %}"
+                 alt="Salon Image" class="happy-hour-image">
                 <div class="happy-hour-details">
                     <h2>{{ salon.salon_name }}</h2>
                     <p>{{ salon.salon_address }}</p>
