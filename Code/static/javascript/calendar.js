@@ -1,12 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // generic events
-    const events = [
-        { date: '2024-10-10', title: 'facial', start_time: '10:00', end_time: '13:00', color: 'blue' },
-        { date: '2024-10-11', title: 'haircut', start_time: '15:00', end_time: '17:00', color: 'red' },
-        { date: '2024-10-12', title: 'nails', start_time: '14:00', end_time: '16:00', color: 'green' },
-        { date: '2024-10-13', title: 'whatever', start_time: '18:00', end_time: '21:00', color: 'yellow' },
-    ];
-
     const calendarGrid = document.getElementById('calendarGrid');
     const currentMonthElement = document.getElementById('currentMonth');
     const weekViewBtn = document.getElementById('weekViewBtn');
@@ -16,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentDate = new Date();
 
-    
     prevMonthBtn.addEventListener('click', function () {
         changeMonth(-1); 
     });
@@ -118,15 +109,78 @@ document.addEventListener("DOMContentLoaded", function () {
             if (typeof dayIndex !== 'undefined') {
                 const dayElement = calendarGrid.children[dayIndex];
                 if (dayElement) {
-                    const eventElement = document.createElement('div');
-                    eventElement.className = 'event event-item';
-                    eventElement.setAttribute('data-color', event.color);
-                    eventElement.textContent = `${event.start_time}-${event.end_time} ${event.title}`;
-                    dayElement.appendChild(eventElement);
+                    const eventButton = document.createElement('button');
+                    eventButton.className = 'event-button'; // Basic button style
+                    
+                    // Apply the color directly using getEventColor
+                    const eventColor = getEventColor(event.title);
+                    eventButton.style.setProperty('--event-color', eventColor); // We'll use a custom property in CSS
+                    
+                    eventButton.textContent = `${event.start_time}-${event.end_time} ${event.title}`;
+                    
+                    // Add event listener for opening the custom modal instead of alert
+                    eventButton.addEventListener('click', function () {
+                        openCustomModal(event);
+                    });
+    
+                    dayElement.appendChild(eventButton);
                 }
             }
         });
     }
+    
+    function openCustomModal(event) {
+        // Create a modal dynamically
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+    
+        // Create content for the modal
+        modal.innerHTML = `
+            <div class="modal-content">
+                <h3>Event Details</h3>
+                <p><strong>Event:</strong> ${event.title}</p>
+                <p><strong>Time:</strong> ${event.start_time} to ${event.end_time}</p>
+                <button class="edit-btn">Edit</button>
+                <button class="close-btn">Close</button>
+            </div>
+        `;
+    
+        // Add modal to the body
+        document.body.appendChild(modal);
+    
+        // Handle the "Edit" button click
+        modal.querySelector('.edit-btn').addEventListener('click', () => {
+            alert(`Edit functionality for ${event.title} clicked!`);
+            closeModal(modal); // Close modal after clicking edit
+        });
+    
+        // Handle the "Close" button click
+        modal.querySelector('.close-btn').addEventListener('click', () => {
+            closeModal(modal); // Close modal
+        });
+    
+        // Close modal if clicking outside the modal content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal(modal); // Close modal if clicked outside
+            }
+        });
+    
+        // Close modal if pressing the "Esc" key
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal(modal); // Close modal on "Esc" press
+            }
+        });
+    }
+    
+    function closeModal(modal) {
+        document.body.removeChild(modal); // Remove modal from DOM
+        // Remove event listeners for cleanup
+        window.removeEventListener('click', closeModal);
+        window.removeEventListener('keydown', closeModal);
+    }
+    
     
 
     function clearCalendarGrid() {
@@ -134,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
             calendarGrid.removeChild(calendarGrid.lastChild);
         }
 
-        const eventElements = document.querySelectorAll('.event-item');
+        const eventElements = document.querySelectorAll('.event-button');
         eventElements.forEach(eventElement => eventElement.remove());
     }
 
@@ -150,4 +204,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updateCalendar();
+
+    function getEventColor(eventTitle) {
+        switch (eventTitle.toLowerCase()) {
+            case 'facial':
+                return 'green';
+            case 'haircut':
+                return 'red';
+            case 'nails':
+                return 'purple';
+            default:
+                return 'blue';  // Default 
+        }
+    }
+    
+ 
 });
