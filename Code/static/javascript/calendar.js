@@ -118,9 +118,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     
                     eventButton.textContent = `${event.start_time}-${event.end_time} ${event.title}`;
                     
-                    // Add event listener for opening the custom modal instead of alert
+                    // Add event listener to redirect to the edit page
                     eventButton.addEventListener('click', function () {
-                        openCustomModal(event);
+                        window.location.href = `/accounts/business_booking/edit/${event.id}/`;
                     });
     
                     dayElement.appendChild(eventButton);
@@ -180,8 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
         window.removeEventListener('click', closeModal);
         window.removeEventListener('keydown', closeModal);
     }
-    
-    
 
     function clearCalendarGrid() {
         while (calendarGrid.children.length > 7) {
@@ -217,6 +215,4 @@ document.addEventListener("DOMContentLoaded", function () {
                 return 'blue';  // Default 
         }
     }
-    
- 
 });
