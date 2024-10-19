@@ -29,7 +29,7 @@
             <form class="profile-information-container" method="post" action="{% url 'business_profile_settings' %}" id="profile-form">
                 {% csrf_token %}
                 <div class="profile-item-container">
-                    <label for="profile_name">Profile Name: </label>
+                    <label for="profile_name">Name: </label>
                     <input type="text" id="profile-name" name="profile_name" value="{{ user.first_name }} {{ user.last_name }}" disabled>
                 </div>
 
@@ -58,5 +58,8 @@
     </div>
 
 </body>
+
+<script src="../../static/javascript/profilescript.js"></script>
+
 
 {% endblock %}

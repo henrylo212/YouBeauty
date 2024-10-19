@@ -1,6 +1,5 @@
 
 
-from .forms import SalonOwnerRegistrationForm, CustomerRegistrationForm, EditProfileForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -8,10 +7,15 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-from customers.models import Customer, Booking
-from salons.models import SalonOwner, SalonInfo, SalonService
+from .forms import SalonOwnerRegistrationForm, CustomerRegistrationForm, EditProfileForm
 
+from salons.forms import EditSalonOwnerForm
 from salons.views import SalonRegistrationView
+from salons.models import SalonOwner, SalonInfo, SalonService, Service
+
+from customers.models import Customer, Booking
+
+
 from django.urls import reverse
 
 import datetime
@@ -164,6 +168,105 @@ def BusinessProfileSettingsView(request):
     
     '''
 
+    is_customer = False
+    is_salon_owner = False
+    user = request.user
+    phone_number = ""
+    profile_photo = None
+    form = None
+    # if hasattr(user, 'salonowner'):
+    # if not hasattr(user, 'customer'):
+    #     #is not customer
+    #     redirect()
+
+    if request.method == 'POST':
+        print("made it to POST")
+        form = EditSalonOwnerForm(data=request.POST)
+        print(form.errors)
+
+        if form.is_valid():
+            current_user = request.user
+            print(f"exists {SalonOwner.objects.filter(user=current_user).exists()}, {SalonOwner.objects.filter(user=current_user)}")
+            salonowner = get_object_or_404(SalonOwner, user=current_user) #get Customer w/ current user
+            saved = form.save(user)
+
+            # user = form.save(user)
+            print(user)
+            # extract data from form
+            
+            profile_name = form.cleaned_data.get('profile_name')
+            print(profile_name)
+            # password = form.cleaned_data.get('password1')
+            email = form.cleaned_data.get('email')
+            print(email)
+            phone_number = form.cleaned_data.get('phone_number')
+            messages.success(request, 'Profile changes have been successfully saved!')
+        
+
+            return redirect("business_profile_settings")
+    else:
+        form = EditSalonOwnerForm()
+
+
+    if request.method == "GET":
+        # current_username = request.user.username #get username of logged in user
+        current_user = request.user #get logged in user
+        print(current_user)
+        is_customer = False
+        is_salon_owner = False
+        try:
+            #try to get a customer
+            customer = get_object_or_404(Customer, user=current_user) #get Customer w/ current username
+            is_customer = True    
+            # is_salon_owner = False
+        except:
+            try:
+                #try to get a salon_owner
+                salon_owner = get_object_or_404(SalonOwner, user=current_user) #get SalonOwner w/ current username
+                is_salon_owner = True
+                # is_customer = False 
+            except:
+                #is logged in but not a customer, and not a salon owner
+                print("Not a customer. Not a salon owner.")
+
+        if is_customer:
+            user = customer.user
+            phone_number = customer.phone_number
+            try:
+                if customer.profile_photo.url:
+                    profile_photo = customer.profile_photo
+            except:
+                print("No profile photo file.")
+                # profile_photo = None
+            print(profile_photo)
+            
+            # Get upcoming bookings
+            #date_gte= means: date is GREATER THAN OR EQUAL to 
+            bookings = Booking.objects.filter(date__gte=datetime.date.today()).filter(customer=customer)
+            print(bookings)
+
+            return render(request, 'business_profile_settings.html' , 
+            {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+            'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
+            'bookings': bookings, 'form': form})
+            # return render(request, 'registration/login.html', {'form': form})
+        elif is_salon_owner:
+            user = salon_owner.user
+            phone_number = salon_owner.phone_number
+            salon = salon_owner.salon
+            return render(request, 'business_profile_settings.html' , 
+            {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+            'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form})
+    else:
+        user = request.user
+
+    
+    return render(request, 'business_profile_settings.html' , 
+        {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+        'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
+        'form': form})   
+
+    
     return render(request, 'business_profile_settings.html')
 
 def BusinessProfileCalendarView(request):

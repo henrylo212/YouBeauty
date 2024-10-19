@@ -99,24 +99,73 @@ h2 {
     display: flex;
     flex-direction: column;
     /* justify-content: flex-end; */
-    align-items: flex-start;
+    /* align-items: flex-start; */
     /* align-content: center; */
-    align-content: flex-start;
+    /* align-content: flex-start; */
     /* background-color: blue; */
-    font-size: 20px;
     /* padding: 0px 20px; */
     /* margin: 0px 40px; */
-    margin: 0% 10%;
-    padding: 1em;
+    /* margin: 0% 10%; */
+    padding: 5%;
     gap: 8px;
 }
+    
+    .profile-information-container button {
+        font-size: 15px;
+        border-radius: 16px;
+        background-color: #8A226C;
+        padding: 10px 5px;
+        align-self: center;
+        width: 45%;
+        border-width: 0px;
+        text-align: center;
+        color: #fff;
+        font-family: 'Julius Sans One';
+        font-weight: 1000;
+    }
+    .profile-information-container button:hover {
+        background-color: rgb(180, 122, 189);
+        cursor: pointer;
+    }
+
+
+
 
 .profile-item-container {
     display: flex;
-    align-items: flex-end;
-    gap: 15%;
+    flex-direction: row;
+    gap: 10%;
     /* border: 3px solid black; */
     width: 100%;
-    flex-wrap: wrap;
+    /* align-items: flex-end; */
+    /* flex-wrap: wrap; */
 }
+
+.profile-item-container input {
+    flex: 1;
+    overflow-wrap: anywhere;
+    min-width: 10em;
+    font-family: 'Kanit', Verdana, sans-serif;
+    background-color: #fff;
+    border-width: 0px;
+}
+.profile-item-container input[disabled] {
+    border-width: 0px;
+}
+
+
+.profile-item-container label {
+    /* font-size: x-large; */
+    font-family: "Kanit";
+    flex: 1;
+}
+
+/* .profile-item-container input {
+    background-color: #fff;
+    font-family: 'Kanit', Verdana, sans-serif;
+    color: #000;
+    overflow-wrap: anywhere;
+    text-overflow: ellipsis;
+    font-size: 20px;
+} */
 
