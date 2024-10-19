@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/business_edit_booking.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
 {% endblock %}
+<p>Selected Service: {{ booking.salon_service.service.service_name }}</p>
 
 {% block content %}
 <div class="container">
@@ -12,20 +13,19 @@
     <div class="edit-booking-box">
         <h1>Edit Client Booking</h1>
 
-        <!-- Form to edit booking details -->
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
                 <label for="customer">Customer Name:</label>
-                <input type="text" id="customer" name="customer" value="{{ booking.customer.user.username }}" readonly>
+                <input type="text" id="customer" name="customer" value="{{ booking.customer.user.username }}" readonly disabled>
             </div>
-
+            
             <div class="form-group">
                 <label for="service">Service:</label>
                 <select id="service" name="service" required>
                     {% for service in services %}
-                        <option value="{{ service.id }}" {% if service == booking.salon_service.service %}selected{% endif %}>
-                            {{ service.service_name }}
+                        <option value="{{ service.id }}" {% if service == booking.salon_service %}selected{% endif %}>
+                            {{ service.service.service_name }}
                         </option>
                     {% endfor %}
                 </select>
@@ -52,6 +52,7 @@
             </div>
         </form>
         
+        <!-- Separate form to handle booking cancellation -->
         <form method="post" style="margin-top: 1rem;">
             {% csrf_token %}
             <button type="submit" name="cancel_booking" class="cancel-booking-button">Cancel Booking</button>

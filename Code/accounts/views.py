@@ -303,6 +303,7 @@ def BusinessProfileCalendarView(request):
 
     booking_data = [
         {
+            'id': booking.id,
             'date': booking.date.strftime('%Y-%m-%d'),
             'title': booking.salon_service.service.service_name,
             'start_time': booking.start_time.strftime('%H:%M'),
@@ -319,17 +320,22 @@ def BusinessProfileCalendarView(request):
 
     return render(request, 'business_profile_calendar.html', context)
 
+
 def business_edit_booking(request, booking_id):
+    # Fetch the booking using the booking_id
     booking = get_object_or_404(Booking, id=booking_id)
 
+    # Fetch all services available for the salon that the booking is associated with
     services = SalonService.objects.filter(salon=booking.salon_service.salon)
 
     if request.method == 'POST':
         if 'cancel_booking' in request.POST:
+            # Cancel the booking
             booking.is_cancelled = True
             booking.save()
             return redirect('business_profile_calendar')
         else:
+            # Update the booking details
             booking.date = request.POST.get('date')
             booking.start_time = request.POST.get('start_time')
             booking.end_time = request.POST.get('end_time')
@@ -338,6 +344,7 @@ def business_edit_booking(request, booking_id):
             booking.save()
             return redirect('business_profile_calendar')
 
+    # Pass the booking and available services to the template
     context = {
         'booking': booking,
         'services': services,
