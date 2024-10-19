@@ -89,14 +89,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const eventDay = eventDate.getDate();
             const eventMonth = eventDate.getMonth();
             let dayIndex;
-
+    
             if (view === 'week') {
                 const startOfWeek = new Date(currentDate);
                 startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 1); // Set to Monday
-
+    
                 const endOfWeek = new Date(startOfWeek);
                 endOfWeek.setDate(startOfWeek.getDate() + 6); // Set to Sunday
-
+    
                 if (eventDate >= startOfWeek && eventDate <= endOfWeek) {
                     dayIndex = (eventDate.getDay() === 0 ? 6 : eventDate.getDay() - 1);
                 }
@@ -105,25 +105,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 const emptyCells = firstDay === 0 ? 6 : firstDay - 1;
                 dayIndex = eventDay - 1 + emptyCells + 7; // Adjust for the days of the week header and empty cells
             }
-
+    
             if (typeof dayIndex !== 'undefined') {
                 const dayElement = calendarGrid.children[dayIndex];
                 if (dayElement) {
                     const eventButton = document.createElement('button');
-                    eventButton.className = 'event-button';
-                    eventButton.style.backgroundColor = getEventColor(event.title);
+                    eventButton.className = 'event-button'; // Basic button style
+                    
+                    // Apply the color directly using getEventColor
+                    const eventColor = getEventColor(event.title);
+                    eventButton.style.setProperty('--event-color', eventColor); // We'll use a custom property in CSS
+                    
                     eventButton.textContent = `${event.start_time}-${event.end_time} ${event.title}`;
                     
                     // Add any additional attributes or event listeners to the button
                     eventButton.addEventListener('click', function () {
                         alert(`Event: ${event.title}\nTime: ${event.start_time} to ${event.end_time}`);
                     });
-
+    
                     dayElement.appendChild(eventButton);
                 }
             }
         });
     }
+    
+    
 
     function clearCalendarGrid() {
         while (calendarGrid.children.length > 7) {
