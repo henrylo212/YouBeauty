@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
 
 from .forms import SalonOwnerRegistrationForm, CustomerRegistrationForm, EditProfileForm
 
-from salons.forms import EditSalonOwnerForm
+from salons.forms import EditSalonOwnerForm, EditSalonInfoForm
 from salons.views import SalonRegistrationView
 from salons.models import SalonOwner, SalonInfo, SalonService, Service
 
@@ -174,6 +174,7 @@ def BusinessProfileSettingsView(request):
     phone_number = ""
     profile_photo = None
     form = None
+    saloninfo_form = None
     # if hasattr(user, 'salonowner'):
     # if not hasattr(user, 'customer'):
     #     #is not customer
@@ -182,27 +183,42 @@ def BusinessProfileSettingsView(request):
     if request.method == 'POST':
         print("made it to POST")
         form = EditSalonOwnerForm(data=request.POST)
+        saloninfo_form = EditSalonInfoForm(data=request.POST)
+
         print(form.errors)
+        print(saloninfo_form.errors)
 
         if form.is_valid():
             current_user = request.user
             print(f"exists {SalonOwner.objects.filter(user=current_user).exists()}, {SalonOwner.objects.filter(user=current_user)}")
-            salonowner = get_object_or_404(SalonOwner, user=current_user) #get Customer w/ current user
-            saved = form.save(user)
+            # salonowner = get_object_or_404(SalonOwner, user=current_user) #get Customer w/ current user
+            # saved = form.save(user)
+
+            form.save(user)
+
+            
 
             # user = form.save(user)
             print(user)
             # extract data from form
             
-            profile_name = form.cleaned_data.get('profile_name')
-            print(profile_name)
+            # profile_name = form.cleaned_data.get('profile_name')
+            print(saloninfo_form.cleaned_data.get('salon_name'))
             # password = form.cleaned_data.get('password1')
-            email = form.cleaned_data.get('email')
-            print(email)
-            phone_number = form.cleaned_data.get('phone_number')
+            # email = form.cleaned_data.get('email')
+            # print(email)
+            # phone_number = form.cleaned_data.get('phone_number')
+
             messages.success(request, 'Profile changes have been successfully saved!')
         
 
+            return redirect("business_profile_settings")
+        
+        if saloninfo_form.is_valid():
+            # Saving salon info here
+            saloninfo_form.save(user)
+
+            messages.success(request, 'Profile changes have been successfully saved!')
             return redirect("business_profile_settings")
     else:
         form = EditSalonOwnerForm()
@@ -214,6 +230,8 @@ def BusinessProfileSettingsView(request):
         print(current_user)
         is_customer = False
         is_salon_owner = False
+
+
         try:
             #try to get a customer
             customer = get_object_or_404(Customer, user=current_user) #get Customer w/ current username
@@ -248,7 +266,7 @@ def BusinessProfileSettingsView(request):
             return render(request, 'business_profile_settings.html' , 
             {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
             'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
-            'bookings': bookings, 'form': form})
+            'bookings': bookings, 'form': form, 'saloninfo_form': saloninfo_form})
             # return render(request, 'registration/login.html', {'form': form})
         elif is_salon_owner:
             user = salon_owner.user
@@ -256,7 +274,7 @@ def BusinessProfileSettingsView(request):
             salon = salon_owner.salon
             return render(request, 'business_profile_settings.html' , 
             {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
-            'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form})
+            'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form, 'saloninfo_form': saloninfo_form})
     else:
         user = request.user
 
@@ -264,10 +282,10 @@ def BusinessProfileSettingsView(request):
     return render(request, 'business_profile_settings.html' , 
         {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
         'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
-        'form': form})   
+        'form': form, 'saloninfo_form': saloninfo_form})   
 
     
-    return render(request, 'business_profile_settings.html')
+    # return render(request, 'business_profile_settings.html')
 
 def BusinessProfileCalendarView(request):
     '''

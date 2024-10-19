@@ -74,3 +74,47 @@ class EditSalonOwnerForm(forms.Form):
 
         print(f"user: {user_instance} salonowner: {salonowner_instance} boop number 2")
         return user_instance, salonowner_instance
+    
+class EditSalonInfoForm(forms.Form):
+    salon_name = forms.CharField(max_length=301)
+    salon_openingtime = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
+    salon_closingtime = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
+    happyhour_times = forms.CharField(max_length=301)
+    happyhour_days = forms.CharField(max_length=301)
+    happyhour_discount = forms.DecimalField(max_digits=5, decimal_places=2)
+
+    # email = forms.EmailField()
+    # phone_number = forms.CharField(max_length=20)
+
+    # print(email)
+    # print(phone_number)
+
+    def save(self, user):
+        salon_name = self.cleaned_data["salon_name"]
+        salon_openingtime = self.cleaned_data["salon_openingtime"]
+        salon_closingtime = self.cleaned_data["salon_closingtime"]
+        happyhour_times = self.cleaned_data["happyhour_times"]
+        happyhour_days = self.cleaned_data["happyhour_days"]
+        happyhour_discount = self.cleaned_data["happyhour_discount"]
+
+        
+        current_user_id = user.id
+        print(current_user_id)
+        
+        user_instance = get_object_or_404(User, id=current_user_id)
+        salonowner_instance = get_object_or_404(SalonOwner, user=user_instance)
+        saloninfo_instance = salonowner_instance.salon
+
+        print(f"user: {user_instance} salonowner: {salonowner_instance} saloninstance: {saloninfo_instance} boop")
+
+        saloninfo_instance.salon_name = salon_name
+        saloninfo_instance.salon_openingtime = salon_openingtime
+        saloninfo_instance.salon_closingtime = salon_closingtime
+        saloninfo_instance.happyhour_times = happyhour_times
+        saloninfo_instance.happyhour_days = happyhour_days
+        saloninfo_instance.happyhour_discount = happyhour_discount
+
+        saloninfo_instance.save()
+
+        print(f"user: {user_instance} salonowner: {salonowner_instance} saloninstance: {saloninfo_instance} boop")
+        return saloninfo_instance

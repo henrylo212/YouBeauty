@@ -53,6 +53,41 @@
 
         <div class="info-container">
             <h2>Business Details</h2>
+            <form class="profile-information-container" method="post" action="{% url 'business_profile_settings' %}" id="salon-info-form">
+                {% csrf_token %}
+                <div class="profile-item-container">
+                    <label for="profile_name">Salon Name: </label>
+                    <input type="text" id="salon-name" name="salon_name" value="{{ salon.salon_name }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="salon_openingtime">Opening Time: </label>
+                    <input type="time" id="salon_openingtime" name="salon_openingtime" value="{{ salon.salon_openingtime }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="salon_closingtime">Closing Time: </label>
+                    <input type="time" id="salon_closingtime" name="salon_closingtime" value="{{ salon.salon_closingtime }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="happyhour_times">Happy Hour Times: </label>
+                    <input type="text" id="happyhour_times" name="happyhour_times" value="{{ salon.happyhour_times }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="happyhour_days">Happy Hour Days: </label>
+                    <input type="text" id="happyhour_days" name="happyhour_days" value="{{ salon.happyhour_days }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="happyhour_discount">Happy Hour Discount: </label>
+                    <input type="text" id="happyhour_discount" name="happyhour_discount" value="{{ salon.happyhour_discount }}" disabled>
+                </div>
+
+                <button type="button" id="edit-button">EDIT</button>
+                <button type="submit" id="confirm">CONFIRM</button>
+            </form>
         </div>
 
     </div>
