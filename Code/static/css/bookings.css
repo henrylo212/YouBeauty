@@ -17,6 +17,9 @@
     width: 100%;
     padding: 20px;
     font-family: 'Kanit', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container h1 {
@@ -24,6 +27,14 @@
     margin-bottom: 50px;
     margin-top: 50px;
     text-align: left; 
+    align-self: flex-start;
+}
+
+.booking-cards-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
 }
 
 .booking-card {
@@ -36,8 +47,7 @@
     margin-bottom: 20px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    margin-left: 200px;
+    width: 88%;
 }
 
 .booking-card img.salon-image {

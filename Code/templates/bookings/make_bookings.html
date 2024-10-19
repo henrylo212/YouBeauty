@@ -23,7 +23,7 @@
     </ul>
     {% endif %}
 
-    <h1>Make bookings</h1>
+    <!-- <h1>Make bookings</h1> -->
     <form method="post" action="{% url 'make_bookings' salon_service.id %}">
         {% csrf_token %}
     <div class="booking-section">

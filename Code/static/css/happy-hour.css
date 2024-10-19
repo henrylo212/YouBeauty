@@ -17,6 +17,9 @@
     width: 100%;
     padding: 20px;
     font-family: 'Kanit', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .happy-hour-container h1 {
@@ -27,6 +30,13 @@
     color: black;
     font-size: 36px;
     font-weight: bold;
+    align-self: flex-start;
+}
+
+.happy-hour-cards-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
 }
 
 .happy-hour-card {

@@ -28,11 +28,14 @@ class SalonInfo(models.Model):
 
 class SalonOwner(models.Model):
     user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
-    salon = models.OneToOneField(SalonInfo, on_delete=models.CASCADE)
+    salon = models.OneToOneField(SalonInfo, on_delete=models.SET_NULL, null=True, blank=True) # null allowed so salon object can be created after registration
     phone_number = models.CharField(max_length=20)
 
     def __str__(self):
-        return f'{self.user.username} (Owner of {self.salon.salon_name})'
+        if self.salon:
+            return f'{self.user.username} (Owner of {self.salon.salon_name})'
+        else:
+            return f'{self.user.username} (No Salon Assigned)'
 
 class Service(models.Model):
     service_name = models.CharField(max_length=255)

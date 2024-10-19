@@ -22,7 +22,7 @@ function updateService(selectedLi) {
     serviceSearch.value = "";
     addService();
     serviceWrapper.classList.remove("active");
-    serviceSearch.innerHTML = selectedLi;
+    serviceSearch.value = selectedLi.innerText;
 }
 
 serviceSearch.addEventListener("keyup", () => {
@@ -66,7 +66,8 @@ function updateSalon(selectedLi) {
     salonSearch.value = "";
     addSalon();
     salonNames.classList.remove("active");
-    salonSearch.firstElementChild.innerText = selectedLi.innerText;
+    console.log(selectedLi.innerText)
+    salonSearch.value = selectedLi.innerText;
 }
 
 salonSearch.addEventListener("keyup", () => {
@@ -111,7 +112,7 @@ function updateLocation(selectedLi) {
     locationSearch.value = "";
     addLocation();
     locationWrapper.classList.remove("active");
-    locationSearch.firstElementChild.innerText = selectedLi.innerText;
+    locationSearch.value = selectedLi.innerText;
 }
 
 locationSearch.addEventListener("keyup", () => {

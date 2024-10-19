@@ -11,65 +11,82 @@
 
 <body>
   <div class="background">
-    <section class="logo-section">
-        <div class="logo-container">
-            <a href="{% url 'home' %}">
-                <div class="image-container">
-                    <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
-                </div>
-            </a>
-        </div>
-    </section>
+    <div class="nav-bar">
+        <section class="logo-section">
+            <div class="logo-container">
+                {% if user.is_authenticated and is_authenticated_customer %}
+                    <a href="{% url 'home' %}">
+                        <div class="image-container">
+                            <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+                        </div>
+                    </a>
+                {% elif user.is_authenticated %}
+                    <a href="{% url 'forBusiness' %}">
+                        <div class="image-container">
+                            <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+                        </div>
+                    </a>
+    
+                {% else %}
+                    <a href="{% url 'home' %}">
+                        <div class="image-container">
+                            <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
+                        </div>
+                    </a>
+                {% endif %}
+            </div>
+        </section>
 
-    {% if user.is_authenticated %}
-        <!-- Hi {{ user.username }}!
-        <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
-        <a href="{% url 'faq' %}">F.A.Q</a> -->
-    {% else %}
-        <header>
+        {% if user.is_authenticated %}
+            <!-- Hi {{ user.username }}!
+            <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
+            <a href="{% url 'faq' %}">F.A.Q</a> -->
+        {% else %}
+            <header>
+                <nav>
+                    <a href="{% url 'forBusiness' %}">For Business</a>
+                </nav>
+            </header>
+        {% endif %}
+
+        
+
+        <label class="hamburger">
+            <input type="checkbox" id="check">
+        </label>
+        <aside class="menu">  
             <nav>
-                <a href="{% url 'forBusiness' %}">For Business</a>
+                {% if is_authenticated_customer and user.is_authenticated %}
+                    Hi {{ user.username }}!
+                    <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'bookings' %}">Manage Bookings</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <div class="logout-button">
+                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-link">Logout</button>
+                        </form>
+                    </div>
+                {% elif user.is_authenticated %}
+                    Hi {{ user.username }}!
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <div class="logout-button">
+                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-link">Logout</button>
+                        </form>
+                    </div>
+                {% else %}
+                    <li><a class="active" href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                {% endif %}
             </nav>
-        </header>
-    {% endif %}
-
+        </aside>
     
-
-    <label class="hamburger">
-        <input type="checkbox" id="check">
-    </label>
-    <aside class="menu">
-        <nav>
-            {% if is_authenticated_customer and user.is_authenticated %}
-                Hi {{ user.username }}!
-                <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'bookings' %}">Manage Bookings</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'faq' %}">FAQ</a></li>
-                <div class="logout-button">
-                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="logout-link">Logout</button>
-                    </form>
-                </div>
-            {% elif user.is_authenticated %}
-                Hi {{ user.username }}!
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'faq' %}">FAQ</a></li>
-                <div class="logout-button">
-                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="logout-link">Logout</button>
-                    </form>
-                </div>
-            {% else %}
-                <li><a class="active" href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'faq' %}">FAQ</a></li>
-            {% endif %}
-        </nav>
-    </aside>
-    
+    </div>
 
     <main>
         {% block content %}

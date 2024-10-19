@@ -1,18 +1,23 @@
 
 
-from .forms import SalonOwnerRegistrationForm, CustomerRegistrationForm, EditProfileForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from customers.models import Customer, Booking
-from salons.models import SalonOwner
-from salons.models import SalonInfo
-from salons.models import SalonService
-# from .models import SalonInfo
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+
+from .forms import SalonOwnerRegistrationForm, CustomerRegistrationForm, EditProfileForm
+
+from salons.forms import EditSalonOwnerForm
 from salons.views import SalonRegistrationView
+from salons.models import SalonOwner, SalonInfo, SalonService, Service
+
+from customers.models import Customer, Booking
+
+
 from django.urls import reverse
-# from .models import Users
+
 import datetime
 from django.contrib.auth.views import LoginView
 
@@ -95,7 +100,7 @@ def CustomerRegistrationView(request):
     return render(request, 'registration/customer_register.html', {'form': form})
 
 
-def SalonRegistrationView(request):
+def SalonOwnerRegistrationView(request):
     '''
     Handles information about the salon registration page
 
@@ -111,20 +116,23 @@ def SalonRegistrationView(request):
     if request.method == 'POST':
         form = SalonOwnerRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            phone_number = form.cleaned_data.get('phone_number')
-            
-            # creates SalonOwner object linked to this user
-            SalonOwner.objects.create(user=user, phone_number=phone_number)
-
-            #authenticate and log in the user
             username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            login(request, user)
+            if User.objects.filter(username=username).exists():
+                form.add_error('username', ValidationError('This username is already taken.'))
+            else:
+                user = form.save()
+                phone_number = form.cleaned_data.get('phone_number')
+                
+                # creates SalonOwner object linked to this user
+                SalonOwner.objects.create(user=user, phone_number=phone_number)
 
-            # redirect to the salon registration form
-            return redirect(reverse('salons:salon_form')) 
+                # authenticate and log in the user
+                password = form.cleaned_data.get('password1')
+                user = authenticate(username=username, password=password)
+                login(request, user)
+
+                # redirect to the salon registration form
+                return redirect(reverse('salons:salon_form'))
     else:
         form = SalonOwnerRegistrationForm()
     return render(request, 'registration/business_register.html', {'form': form})
@@ -160,6 +168,105 @@ def BusinessProfileSettingsView(request):
     
     '''
 
+    is_customer = False
+    is_salon_owner = False
+    user = request.user
+    phone_number = ""
+    profile_photo = None
+    form = None
+    # if hasattr(user, 'salonowner'):
+    # if not hasattr(user, 'customer'):
+    #     #is not customer
+    #     redirect()
+
+    if request.method == 'POST':
+        print("made it to POST")
+        form = EditSalonOwnerForm(data=request.POST)
+        print(form.errors)
+
+        if form.is_valid():
+            current_user = request.user
+            print(f"exists {SalonOwner.objects.filter(user=current_user).exists()}, {SalonOwner.objects.filter(user=current_user)}")
+            salonowner = get_object_or_404(SalonOwner, user=current_user) #get Customer w/ current user
+            saved = form.save(user)
+
+            # user = form.save(user)
+            print(user)
+            # extract data from form
+            
+            profile_name = form.cleaned_data.get('profile_name')
+            print(profile_name)
+            # password = form.cleaned_data.get('password1')
+            email = form.cleaned_data.get('email')
+            print(email)
+            phone_number = form.cleaned_data.get('phone_number')
+            messages.success(request, 'Profile changes have been successfully saved!')
+        
+
+            return redirect("business_profile_settings")
+    else:
+        form = EditSalonOwnerForm()
+
+
+    if request.method == "GET":
+        # current_username = request.user.username #get username of logged in user
+        current_user = request.user #get logged in user
+        print(current_user)
+        is_customer = False
+        is_salon_owner = False
+        try:
+            #try to get a customer
+            customer = get_object_or_404(Customer, user=current_user) #get Customer w/ current username
+            is_customer = True    
+            # is_salon_owner = False
+        except:
+            try:
+                #try to get a salon_owner
+                salon_owner = get_object_or_404(SalonOwner, user=current_user) #get SalonOwner w/ current username
+                is_salon_owner = True
+                # is_customer = False 
+            except:
+                #is logged in but not a customer, and not a salon owner
+                print("Not a customer. Not a salon owner.")
+
+        if is_customer:
+            user = customer.user
+            phone_number = customer.phone_number
+            try:
+                if customer.profile_photo.url:
+                    profile_photo = customer.profile_photo
+            except:
+                print("No profile photo file.")
+                # profile_photo = None
+            print(profile_photo)
+            
+            # Get upcoming bookings
+            #date_gte= means: date is GREATER THAN OR EQUAL to 
+            bookings = Booking.objects.filter(date__gte=datetime.date.today()).filter(customer=customer)
+            print(bookings)
+
+            return render(request, 'business_profile_settings.html' , 
+            {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+            'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
+            'bookings': bookings, 'form': form})
+            # return render(request, 'registration/login.html', {'form': form})
+        elif is_salon_owner:
+            user = salon_owner.user
+            phone_number = salon_owner.phone_number
+            salon = salon_owner.salon
+            return render(request, 'business_profile_settings.html' , 
+            {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+            'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form})
+    else:
+        user = request.user
+
+    
+    return render(request, 'business_profile_settings.html' , 
+        {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
+        'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
+        'form': form})   
+
+    
     return render(request, 'business_profile_settings.html')
 
 
@@ -399,28 +506,42 @@ def search_results(request):
     
     '''
     if request.method == 'POST':
-        searched = request.POST.get('searched', False)
-        location = request.POST.get('location', False)
-        service = request.POST.get('service', False)
+        searched = request.POST.get('searched', False).lower()
+        location = request.POST.get('location', False).lower()
+        service = request.POST.get('service', False).lower()
         salons_obj = []
         for obj_salon_service in SalonService.objects.all():
-            salon_name = obj_salon_service.salon.salon_name
-            service_name = obj_salon_service.service.service_name
-            address = obj_salon_service.salon.salon_address.suburb
+            salon_name = obj_salon_service.salon.salon_name.lower()
+            service_name = obj_salon_service.service.service_name.lower()
+            address = obj_salon_service.salon.salon_address.suburb.lower()
             if searched == '' and location == '' and service == '':
                 salons_obj.append(obj_salon_service)
-            if searched == '':
-                if location in address.lower():
-                    if service in service_name.lower():
+            elif location == '' and service == '':
+                if searched in salon_name:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '' and service == '':
+                if location in address:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '' and location == '':
+                if service in service_name:
+                    salons_obj.append(obj_salon_service)
+            elif searched == '':
+                if location in address:
+                    if service in service_name:
                         salons_obj.append(obj_salon_service)
-            if location == '':
-                if searched in salon_name.lower():
-                    if service in service_name.lower():
+            elif location == '':
+                if searched in salon_name:
+                    if service in service_name:
                         salons_obj.append(obj_salon_service)
-            if service == '':
-                if searched in salon_name.lower():
-                    if location in address.lower():
+            elif service == '':
+                if searched in salon_name:
+                    if location in address:
                         salons_obj.append(obj_salon_service)
+            else:
+                if searched in salon_name:
+                    if location in address:
+                        if service in service_name:
+                            salons_obj.append(obj_salon_service)
         return render(request, 'search_results.html', {'searched':searched, 'location':location, 'service':service, 'salons_obj':salons_obj})
     else:
         return render(request, 'search_results.html')

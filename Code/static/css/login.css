@@ -1,3 +1,9 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .login-page {
     /* width: 400px; */
     /* height: 300px; */
@@ -5,11 +11,11 @@
     
     background-color: white;
 
-    width: 490px;
-    height: 500px;
-    padding: 2% 2% 10%;
+    width: 440px;
+    height: 440px;
+    padding: 8% 2% 15%;
     
-    margin-top: -5px;
+    margin-top: 20px;
     border-radius: 25px;
     text-align: center;
     align-content: center;
@@ -27,7 +33,7 @@ form {
 
 }
 
-h4 {
+.login-page h4 {
   /* padding-top: -20px; */
   margin-top: -10px;
   margin-right: 80px;
@@ -35,7 +41,7 @@ h4 {
   font: 400 15px 'Kanit', sans-serif;
 }
 
-h5 {
+.login-page h5 {
   font: 100 20px 'Kanit', sans-serif;
   margin-top: 0;
   margin-bottom: 0;
@@ -43,32 +49,40 @@ h5 {
 
 }
 
-a {
+.login-page a {
   text-decoration: none;
-  color: #EEEEEE;
+  color: #B1B1B1;
 
+}
+
+.login-page a:hover {
+  color: #757575;
 }
 
 .card {
-  position: absolute;
+  /* position: absolute;
   top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  display: flex;
+  justify-content: center;
 }
 
 h3 {
-  font: 400 20px 'Kanit', sans-serif;
-  font-size: 65px;
+  font-family: 'Julius Sans One';
+  font-size: 50px;
+  font-weight: bolder;
   /* margin-top: 1px; */
-  padding-top: 120px;
+  padding-top: 140px;
   text-align: center;
   color: white;
 }
 
 
 h2 {
-  font: 400 20px 'Kanit', sans-serif;
-  font-size: xx-large;
+  font-family: 'Julius Sans One';
+  font-weight: 700;
+  font-size: 40px;
   margin-bottom: 18px;
   text-align: center;
 }
@@ -96,6 +110,10 @@ h2 {
   margin-bottom: 10px;
 }
 
+.login-form button:hover {
+  background-color: #B644C8;
+  cursor: pointer;
+}
 
 
 .h3 {

@@ -21,18 +21,10 @@ urlpatterns = [
     path("business_dashboard_calendar/", views.BusinessProfileCalendarView, name="business_profile_calendar"),
 
     # path('salon-login/', views.salon_login, name='salon_login'),
-    path('business-register/', views.SalonRegistrationView, name="salon_register"),
+    path('business-register/', views.SalonOwnerRegistrationView, name="salon_register"),
     
     path("login/", views.CustomerLoginView.as_view(), name='login'),
     path("business_login/", views.BusinessLoginView.as_view(), name='business_login'),
-    # path("login/", views.CustomerLoginView.as_view(), name='login')
-
-
-    # path("logout/", views.CustomerLoginView.as_view(), name='login'),
-    # path("business_logout/", views.BusinessLoginView.as_view(), name='business_login'),
-
-    # path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name='login'),
-    # path("business_login/", auth_views.LoginView.as_view(template_name="registration/business_login.html"), name='business_login'),
 
     # These are all built in views!
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
