@@ -26,6 +26,10 @@ class CustomerRegistrationFormTest(TestCase):
         form = CustomerRegistrationForm(data=form_data)
         self.assertTrue(form.is_valid())
 
+         # Save with commit=False and ensure it's not in DB yet
+        unsaved_user = form.save(commit=False)
+        self.assertIsNone(unsaved_user.id)  # Unsaved user should have no ID yet
+
     def test_invalid_password_mismatch(self):
         form_data = {
             'username': 'customer',
@@ -38,8 +42,6 @@ class CustomerRegistrationFormTest(TestCase):
         }
         form = CustomerRegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())  # Should fail due to password mismatch
-
-        
 
 
 
@@ -74,3 +76,57 @@ class EditProfileFormTest(TestCase):
         form = EditProfileForm(data=form_data)
         self.assertFalse(form.is_valid())  # Should fail due to invalid email
         self.assertIn('email', form.errors)
+    
+    def test_last_name_absent(self):
+            # Provide only the first name in the 'profile_name'
+            form_data = {
+                'profile_name': 'OnlyFirst',  # No space for last name
+                'email': 'newemail@example.com',
+                'phone_number': '0987654321'
+            }
+            form = EditProfileForm(data=form_data)
+
+            # Ensure the form is valid
+            self.assertTrue(form.is_valid())
+
+            # Save the form and verify the user and customer instances are updated correctly
+            user, customer = form.save(self.user)
+
+            self.assertEqual(user.first_name, 'OnlyFirst')  # First name should match input
+            self.assertEqual(user.last_name, '-')  # Last name should be set to '-'
+            self.assertEqual(user.email, 'newemail@example.com')  # Email should be updated
+            self.assertEqual(customer.phone_number, '0987654321')  # Phone number should be updated
+
+
+from accounts.forms import SalonOwnerRegistrationForm
+
+
+class SalonOwnerRegistrationFormTest(TestCase):
+    def test_valid_form(self):
+        form_data = {
+            'username': 'salonowner',
+            'email': 'owner@example.com',
+            'first_name': 'Salon',
+            'last_name': 'Owner',
+            'password1': 'fsX£9!h4,{57',
+            'password2': 'fsX£9!h4,{57',
+            'phone_number': '1234567890'
+        }
+        form = SalonOwnerRegistrationForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+         # Save with commit=False and ensure it doesn’t hit the DB immediately
+        unsaved_user = form.save(commit=False)
+        self.assertIsNone(unsaved_user.id)  # User shouldn't have an ID yet (unsaved)
+
+    def test_missing_required_field(self):
+        form_data = {
+            'username': 'salonowner',
+            'email': 'owner@example.com',
+            'password1': 'fsX£9!h4,{57',
+            'password2': 'fsX£9!h4,{57',
+        }
+        form = SalonOwnerRegistrationForm(data=form_data)
+        self.assertFalse(form.is_valid())  # Should fail because first_name and last_name are required
+        self.assertIn('first_name', form.errors)
+        self.assertIn('last_name', form.errors)
