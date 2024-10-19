@@ -66,7 +66,9 @@
             {% for salon in happy_hour_salons %}
             <a href="{% url 'salons:salon_page' salon.id %}">
                 <div class="salon-card">
-                    <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
+                    <img loading="lazy" 
+                         src="{% if salon.salon_photo %}{{ salon.salon_photo.url }}{% else %}{% static 'design/salon-image.jpg' %}{% endif %}" 
+                         class="salon-image">
                     <div class="salon-card-text">
                         <p class="salon-name-text">{{ salon.salon_name }}</p>
                         <p>{{ salon.salon_address.address_line1 }}</p>
@@ -91,7 +93,9 @@
             {% for salon in top_salons %}
             <a href="{% url 'salons:salon_page' salon.id %}">
                 <div class="salon-card">
-                    <img loading="lazy" src="{% static 'design/salon-image.jpg' %}" class="salon-image">
+                    <img loading="lazy" 
+                         src="{% if salon.salon_photo %}{{ salon.salon_photo.url }}{% else %}{% static 'design/salon-image.jpg' %}{% endif %}" 
+                         class="salon-image">
                     <div class="salon-card-text">
                         <p class="salon-name-text">{{ salon.salon_name }}</p>
                         <p>{{ salon.salon_address.address_line1 }}</p>
