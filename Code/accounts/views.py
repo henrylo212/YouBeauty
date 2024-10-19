@@ -191,37 +191,22 @@ def BusinessProfileSettingsView(request):
         if form.is_valid():
             current_user = request.user
             print(f"exists {SalonOwner.objects.filter(user=current_user).exists()}, {SalonOwner.objects.filter(user=current_user)}")
-            # salonowner = get_object_or_404(SalonOwner, user=current_user) #get Customer w/ current user
-            # saved = form.save(user)
 
             form.save(user)
 
-            
-
-            # user = form.save(user)
-            print(user)
-            # extract data from form
-            
-            # profile_name = form.cleaned_data.get('profile_name')
-            print(saloninfo_form.cleaned_data.get('salon_name'))
-            # password = form.cleaned_data.get('password1')
-            # email = form.cleaned_data.get('email')
-            # print(email)
-            # phone_number = form.cleaned_data.get('phone_number')
-
             messages.success(request, 'Profile changes have been successfully saved!')
-        
-
             return redirect("business_profile_settings")
         
         if saloninfo_form.is_valid():
             # Saving salon info here
+            current_user = request.user
             saloninfo_form.save(user)
 
-            messages.success(request, 'Profile changes have been successfully saved!')
+            messages.success(request, 'Salon Info changes have been successfully saved!')
             return redirect("business_profile_settings")
     else:
         form = EditSalonOwnerForm()
+        saloninfo_form = EditSalonInfoForm()
 
 
     if request.method == "GET":
@@ -272,9 +257,10 @@ def BusinessProfileSettingsView(request):
             user = salon_owner.user
             phone_number = salon_owner.phone_number
             salon = salon_owner.salon
+            salon_address = salon.salon_address
             return render(request, 'business_profile_settings.html' , 
             {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
-            'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form, 'saloninfo_form': saloninfo_form})
+            'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form, 'saloninfo_form': saloninfo_form, 'salon_address': salon_address})
     else:
         user = request.user
 

@@ -53,7 +53,7 @@
 
         <div class="info-container">
             <h2>Business Details</h2>
-            <form class="profile-information-container" method="post" action="{% url 'business_profile_settings' %}" id="salon-info-form">
+            <form class="profile-information-container" method="post" action="{% url 'business_profile_settings' %}" id="salon-form">
                 {% csrf_token %}
                 <div class="profile-item-container">
                     <label for="profile_name">Salon Name: </label>
@@ -62,12 +62,12 @@
 
                 <div class="profile-item-container">
                     <label for="salon_openingtime">Opening Time: </label>
-                    <input type="time" id="salon_openingtime" name="salon_openingtime" value="{{ salon.salon_openingtime }}" disabled>
+                    <input type="time" id="salon_openingtime" name="salon_openingtime" value="{{ salon.salon_openingtime|time:'H:i' }}" disabled>
                 </div>
 
                 <div class="profile-item-container">
                     <label for="salon_closingtime">Closing Time: </label>
-                    <input type="time" id="salon_closingtime" name="salon_closingtime" value="{{ salon.salon_closingtime }}" disabled>
+                    <input type="time" id="salon_closingtime" name="salon_closingtime" value="{{ salon.salon_closingtime|time:'H:i' }}" disabled>
                 </div>
 
                 <div class="profile-item-container">
@@ -85,8 +85,39 @@
                     <input type="text" id="happyhour_discount" name="happyhour_discount" value="{{ salon.happyhour_discount }}" disabled>
                 </div>
 
-                <button type="button" id="edit-button">EDIT</button>
-                <button type="submit" id="confirm">CONFIRM</button>
+                <!-- Address Fields -->
+                <div class="profile-item-container">
+                    <label for="addressline1">Address Line 1: </label>
+                    <input type="text" id="addressline1" name="addressline1" value="{{ salon.salon_address.address_line1 }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="addressline2">Address Line 2: </label>
+                    <input type="text" id="addressline2" name="addressline2" value="{{ salon.salon_address.address_line2 }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="suburb">Suburb: </label>
+                    <input type="text" id="suburb" name="suburb" value="{{ salon.salon_address.suburb }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="state">State: </label>
+                    <input type="text" id="state" name="state" value="{{ salon_address.state }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="postcode">Postcode: </label>
+                    <input type="text" id="postcode" name="postcode" value="{{ salon.salon_address.postcode }}" disabled>
+                </div>
+
+                <div class="profile-item-container">
+                    <label for="country">Country: </label>
+                    <input type="text" id="country" name="country" value="{{ salon.salon_address.country }}" disabled>
+                </div>
+
+                <button type="button" id="salonedit-button">EDIT</button>
+                <button type="submit" id="salonconfirm">CONFIRM</button>
             </form>
         </div>
 
@@ -95,6 +126,7 @@
 </body>
 
 <script src="../../static/javascript/profilescript.js"></script>
+<script src="../../static/javascript/editsaloninfo.js"></script>
 
 
 {% endblock %}

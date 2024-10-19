@@ -83,6 +83,13 @@ class EditSalonInfoForm(forms.Form):
     happyhour_days = forms.CharField(max_length=301)
     happyhour_discount = forms.DecimalField(max_digits=5, decimal_places=2)
 
+    address_line1 = forms.CharField(max_length=255)
+    address_line2 = forms.CharField(max_length=255)
+    suburb = forms.CharField(max_length=100)
+    state = forms.CharField(max_length=100)
+    postcode = forms.CharField(max_length=20)
+    country = forms.CharField(max_length=20)
+
     # email = forms.EmailField()
     # phone_number = forms.CharField(max_length=20)
 
@@ -97,6 +104,13 @@ class EditSalonInfoForm(forms.Form):
         happyhour_days = self.cleaned_data["happyhour_days"]
         happyhour_discount = self.cleaned_data["happyhour_discount"]
 
+        addressline1 = self.cleaned_data["address_line1"]
+        addressline2 = self.cleaned_data["address_line2"]
+        suburb = self.cleaned_data["suburb"]
+        state = self.cleaned_data["state"]
+        postcode = self.cleaned_data["postcode"]
+        country = self.cleaned_data["country"]
+
         
         current_user_id = user.id
         print(current_user_id)
@@ -104,6 +118,7 @@ class EditSalonInfoForm(forms.Form):
         user_instance = get_object_or_404(User, id=current_user_id)
         salonowner_instance = get_object_or_404(SalonOwner, user=user_instance)
         saloninfo_instance = salonowner_instance.salon
+        salon_address_instance = saloninfo_instance.salon_address
 
         print(f"user: {user_instance} salonowner: {salonowner_instance} saloninstance: {saloninfo_instance} boop")
 
@@ -114,7 +129,15 @@ class EditSalonInfoForm(forms.Form):
         saloninfo_instance.happyhour_days = happyhour_days
         saloninfo_instance.happyhour_discount = happyhour_discount
 
-        saloninfo_instance.save()
+        salon_address_instance.addressline1 = addressline1
+        salon_address_instance.addressline2 = addressline2
+        salon_address_instance.suburb = suburb
+        salon_address_instance.state = state
+        salon_address_instance.postcode = postcode
+        salon_address_instance.country = country
 
-        print(f"user: {user_instance} salonowner: {salonowner_instance} saloninstance: {saloninfo_instance} boop")
+        saloninfo_instance.save()
+        salon_address_instance.save()
+
+        print(f"user: {user_instance} salonowner: {salonowner_instance} saloninstance: {saloninfo_instance}, address: {salon_address_instance} boop2")
         return saloninfo_instance
