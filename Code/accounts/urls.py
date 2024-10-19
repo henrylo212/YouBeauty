@@ -19,6 +19,7 @@ urlpatterns = [
     path("business_dashboard_home/", views.BusinessProfileHomeView, name="business_profile_home"),
     path("business_dashboard_settings/", views.BusinessProfileSettingsView, name="business_profile_settings"),
     path("business_dashboard_calendar/", views.BusinessProfileCalendarView, name="business_profile_calendar"),
+    path('business_booking/edit/<int:booking_id>/', views.business_edit_booking, name='business_edit_booking'),
 
     # path('salon-login/', views.salon_login, name='salon_login'),
     path('business-register/', views.SalonOwnerRegistrationView, name="salon_register"),
