@@ -319,9 +319,8 @@ def business_edit_booking(request, booking_id):
     if request.method == 'POST':
         if 'cancel_booking' in request.POST:
             # Cancel the booking
-            booking.is_cancelled = True
-            booking.save()
-            return redirect('business_profile_calendar')
+            booking.delete()
+            return redirect(reverse('business_profile_calendar'))
         else:
             # Update the booking details
             booking.date = request.POST.get('date')
