@@ -13,7 +13,7 @@
 
 <header>
     <div class="logo-container">
-        {% if user.is_authenticated and is_authenticated_customer %}
+        <!-- {% if user.is_authenticated and is_authenticated_customer %}
             <a href="{% url 'home' %}">
                 <div class="image-container">
                     <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
@@ -32,12 +32,12 @@
                     <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
                 </div>
             </a>
-        {% endif %}
-        <!-- <a href="{% url 'forBusiness' %}">
+        {% endif %} -->
+        <a href="{% url 'forBusiness' %}">
             <div class="image-container">
                 <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
             </div>
-        </a> -->
+        </a>
     </div>
 
     <h1>FOR BUSINESS</h1>
