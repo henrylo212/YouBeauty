@@ -30,11 +30,11 @@
         <div class="left-section">
             <h2>Choose a date</h2>
             <div class="calendar">
-                <input type="date" id="booking-date" name="date" class="calendar-input">
+                <input type="date" id="booking-date" name="date" class="calendar-input" required>
             </div>
             <h2>Choose a time</h2>
             <div class="time-picker">
-                <input type="time" id="booking-time" name="start_time" class="time-input">
+                <input type="time" id="booking-time" name="start_time" class="time-input" required>
             </div>
         </div>
 
@@ -55,12 +55,27 @@
     </div>
 </div>
 <script>
-    // JavaScript to update the selected date and time dynamically on the right side
+    // Get today's date
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('booking-date').setAttribute('min', today);
+
+    // If date selected is today, time options can only be now or later
     document.getElementById('booking-date').addEventListener('change', function () {
-        document.getElementById('selected-date').textContent = this.value;
+        const selectedDate = this.value;
+        const currentDate = new Date().toISOString().split('T')[0];
+        
+        // if the date selected is today
+        if (selectedDate === currentDate) {
+            // Get the current time
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const currentTime = `${hours}:${minutes}`;
+            document.getElementById('booking-time').setAttribute('min', currentTime);
+        } else {
+            // Reset the time options if another date is chosen
+            document.getElementById('booking-time').removeAttribute('min');
+        }
     });
-    document.getElementById('booking-time').addEventListener('change', function () {
-        document.getElementById('selected-time').textContent = this.value;
-    });
-    </script>
+</script>
 {% endblock %}
