@@ -5,10 +5,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Happy Hour Page{% endblock %}</title>
+    <title>{% block title %}Search Results{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/search_results.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
 </head>
+
+
+<!-- search bar -->
+<form class="search-form-btn" method=POST action="{% url 'search_results' %}">
+    {% csrf_token %}
+    <div class="search-keywords">
+        <input class="search-form" type="search" placeholder="Search keywords" aria-label="Search keywords" name="searched" value="{{ searched }}"> 
+        <div class="hide">
+            {% for salon in salon_info %}
+                <li> {{ salon.salon_name }} </li>
+            {% endfor %}
+        </div>
+        <div class="content">
+            <ul class="options"></ul>
+        </div>
+    </div>
+
+    <div class="wrapper-service">
+        <input class="service-form" type="search" placeholder="Service" aria-label="Service" name="service" value="{{ service }}">
+        <div class="hide">
+            {% for service in services %}
+                <li> {{ service.service_name }} </li>
+            {% endfor %}
+        </div>
+        <div class="content">
+            <ul class="options"></ul>
+        </div>
+    </div>
+
+    <div class="wrapper-location">
+        <input class="location-form" type="search" placeholder="Location" aria-label="Location" name="location" value="{{ location }}">
+        <div class="hide">
+            {% for address in addresses %}
+                <li> {{ address.suburb }} </li>
+            {% endfor %}
+        </div>
+        <div class="content">
+            <ul class="options"></ul>
+        </div>
+    </div>
+
+    <button class="go-btn" type="submit">Search</button>
+</form>
 
 <div class="results-list">
     {% for salon in salons_obj %}
@@ -19,10 +62,11 @@
             <div class="salon-card-text">
                 <p class="salon-name-text">{{ salon.salon.salon_name }}</p>
                 <p>{{ salon.salon.salon_address.address_line1 }}</p>
-                <p>{{ salon.service.service_name }}</p>
+                <p>Service: {{ salon.service.service_name }}</p>
             </div>
         </div>
     </a>
     {% endfor %}
 </div>
+<script src="{% static 'javascript/script.js' %}"></script>
 {% endblock %}

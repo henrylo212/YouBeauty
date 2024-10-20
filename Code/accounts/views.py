@@ -11,7 +11,7 @@ from .forms import SalonOwnerRegistrationForm, CustomerRegistrationForm, EditPro
 
 from salons.forms import EditSalonOwnerForm, EditSalonInfoForm
 from salons.views import SalonRegistrationView
-from salons.models import SalonOwner, SalonInfo, SalonService, Service
+from salons.models import SalonOwner, SalonInfo, SalonService, Service, SalonAddress
 
 from customers.models import Customer, Booking
 
@@ -330,9 +330,8 @@ def business_edit_booking(request, booking_id):
     if request.method == 'POST':
         if 'cancel_booking' in request.POST:
             # Cancel the booking
-            booking.is_cancelled = True
-            booking.save()
-            return redirect('business_profile_calendar')
+            booking.delete()
+            return redirect(reverse('business_profile_calendar'))
         else:
             # Update the booking details
             booking.date = request.POST.get('date')
@@ -550,6 +549,9 @@ def search_results(request):
         'search_results.html': The template used to display the search results page
     
     '''
+    salon_info = SalonInfo.objects.all()  
+    services = Service.objects.all() 
+    addresses = SalonAddress.objects.all() 
     if request.method == 'POST':
         searched = request.POST.get('searched', False).lower()
         location = request.POST.get('location', False).lower()
@@ -587,7 +589,8 @@ def search_results(request):
                     if location in address:
                         if service in service_name:
                             salons_obj.append(obj_salon_service)
-        return render(request, 'search_results.html', {'searched':searched, 'location':location, 'service':service, 'salons_obj':salons_obj})
+        return render(request, 'search_results.html', {'searched':searched, 'location':location, 'service':service, 'salons_obj':salons_obj, 
+                                                       'salon_info': salon_info, 'services': services, 'addresses': addresses})
     else:
-        return render(request, 'search_results.html')
+        return render(request, 'search_results.html', {'salon_info': salon_info, 'services': services, 'addresses': addresses})
     
