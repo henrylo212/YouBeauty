@@ -73,7 +73,6 @@ h2 {
     font-size: 30px;
     text-align: center;
     font-weight: normal;
-
 }
 
 
@@ -106,7 +105,7 @@ h2 {
     /* padding: 0px 20px; */
     /* margin: 0px 40px; */
     /* margin: 0% 10%; */
-    padding: 5%;
+    /* padding: 0%; */
     gap: 8px;
 }
     
@@ -168,4 +167,3 @@ h2 {
     text-overflow: ellipsis;
     font-size: 20px;
 } */
-

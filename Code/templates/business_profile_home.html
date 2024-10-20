@@ -25,9 +25,35 @@
         <div class="horizontal-spacer"></div>
 
         <div class="info-column">
-            <h2> Appointments Activity </h2>
+            <h2> Appointments Dashboard </h2>
             <div class="info-container">
-
+                <div class="main-stat">
+                    <h3>${{ total_revenue|floatformat:2  }}</h3>
+                    <h2>Total Revenue</h2>
+                </div>
+                <div class="other-stats">
+                    <div class="stat">
+                        <h3>{{ total_bookings_before_today  }}</h3>
+                        <h2>Total Bookings</h2>
+                    </div>
+                    <div class="stat">
+                        <h3>${{ avg_revenue_per_hour|floatformat:2  }}</h3>
+                        <h2>Average Revenue Per Hour</h2>
+                    </div>
+                </div>
+                <div class="other-stats">
+                    <div class="stat">
+                        <h3>${{ avg_price_bookings|floatformat:2  }}</h3>
+                        <h2>Average Booking Price</h2>
+                    </div>
+                    <div class="stat">
+                        <h3>{{ cancelled_bookings }}</h3>
+                        <h2>Total Cancelled Bookings</h2>
+                    </div>
+                </div>
+                <div class="main-stat"> 
+                    <p>Most Popular Service is {{service_name}} with {{service_count}} bookings! </p>
+                </div>
             </div>
         </div>
 
@@ -35,8 +61,33 @@
         
         <div class="info-column">
             <h2> Upcoming Appointments </h2>
-            <div class="info-container">
             
+            <div class="info-container">
+                <div class="manage">
+                    <a class="h2-link" href="{% url 'business_profile_calendar' %}">Manage all bookings ></a>
+                </div>
+                <div class="booking-scroll">
+                    {% if upcoming_bookings.count >= 1 %}
+                    {% for booking in upcoming_bookings %}
+                    <div class="booking">
+                        <div class="col1">
+                            <h2>{{ booking.customer }}</h2>
+                            <h3>{{ booking.salon_service.service }}</h3>
+                        </div>
+                        <div class="col2">
+                            <p>{{ booking.date }}</p>
+                            <p>{{ booking.start_time }} - {{ booking.end_time}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <!-- <p id="no-bookings-message">No bookings yet.</p> -->
+                    <div class="no-bookings">
+                        <p class="no-bookings-message" id="large">No bookings yet!</p>
+                        <!-- <a href="{% url 'home' %}" id="explore-salons-link">Explore salons</a> -->
+                    </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
 

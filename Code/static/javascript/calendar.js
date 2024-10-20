@@ -129,58 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
     
-    function openCustomModal(event) {
-        // Create a modal dynamically
-        const modal = document.createElement('div');
-        modal.classList.add('modal');
     
-        // Create content for the modal
-        modal.innerHTML = `
-            <div class="modal-content">
-                <h3>Event Details</h3>
-                <p><strong>Event:</strong> ${event.title}</p>
-                <p><strong>Time:</strong> ${event.start_time} to ${event.end_time}</p>
-                <button class="edit-btn">Edit</button>
-                <button class="close-btn">Close</button>
-            </div>
-        `;
-    
-        // Add modal to the body
-        document.body.appendChild(modal);
-    
-        // Handle the "Edit" button click
-        modal.querySelector('.edit-btn').addEventListener('click', () => {
-            alert(`Edit functionality for ${event.title} clicked!`);
-            closeModal(modal); // Close modal after clicking edit
-        });
-    
-        // Handle the "Close" button click
-        modal.querySelector('.close-btn').addEventListener('click', () => {
-            closeModal(modal); // Close modal
-        });
-    
-        // Close modal if clicking outside the modal content
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                closeModal(modal); // Close modal if clicked outside
-            }
-        });
-    
-        // Close modal if pressing the "Esc" key
-        window.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal(modal); // Close modal on "Esc" press
-            }
-        });
-    }
-    
-    function closeModal(modal) {
-        document.body.removeChild(modal); // Remove modal from DOM
-        // Remove event listeners for cleanup
-        window.removeEventListener('click', closeModal);
-        window.removeEventListener('keydown', closeModal);
-    }
-
     function clearCalendarGrid() {
         while (calendarGrid.children.length > 7) {
             calendarGrid.removeChild(calendarGrid.lastChild);
@@ -209,8 +158,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 return 'green';
             case 'haircut':
                 return 'red';
-            case 'nails':
+            case 'nail service':
                 return 'purple';
+            case 'massage':
+                return 'yellow';
+            case 'Hair Colour':
+                return 'brown';     
             default:
                 return 'blue';  // Default 
         }
