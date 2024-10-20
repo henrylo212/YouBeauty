@@ -27,7 +27,33 @@
         <div class="info-column">
             <h2> Appointments Dashboard </h2>
             <div class="info-container">
-
+                <div class="main-stat">
+                    <h3>${{ total_revenue|floatformat:2  }}</h3>
+                    <h2>Total Revenue</h2>
+                </div>
+                <div class="other-stats">
+                    <div class="stat">
+                        <h3>{{ total_bookings_before_today  }}</h3>
+                        <h2>Total Bookings</h2>
+                    </div>
+                    <div class="stat">
+                        <h3>${{ avg_revenue_per_hour|floatformat:2  }}</h3>
+                        <h2>Average Revenue Per Hour</h2>
+                    </div>
+                </div>
+                <div class="other-stats">
+                    <div class="stat">
+                        <h3>${{ avg_price_bookings|floatformat:2  }}</h3>
+                        <h2>Average Booking Price</h2>
+                    </div>
+                    <div class="stat">
+                        <h3>{{ cancelled_bookings }}</h3>
+                        <h2>Total Cancelled Bookings</h2>
+                    </div>
+                </div>
+                <div class="main-stat"> 
+                    <p>Most Popular Service is {{service_name}} with {{service_count}} bookings! </p>
+                </div>
             </div>
         </div>
 

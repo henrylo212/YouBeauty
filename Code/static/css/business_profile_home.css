@@ -69,7 +69,62 @@ body {
     height: 70%;
     width: 100%;
     margin-bottom: 20px;
+    gap: 10px;
 }
+    .info-container .main-stat{
+        margin-top: 0px;
+        
+        h3 {
+            font-size: 40px;
+            color:#8A226F;
+            justify-self: center;
+            margin-bottom: 0px;
+            margin-top:20px;
+        }
+        h2 {
+            font-size: 35px;
+            color:#585757;
+            justify-self: center;
+            margin-top: 0px;
+            margin-bottom: 20px;
+        }
+        p {
+            color:#585757;
+            font-size: 20px;
+            font-family: "Kanit";
+            text-align: center;
+        }
+    }
+
+    .info-container .other-stats{
+        display:flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 0px;
+
+        .stat {
+            flex: 1;
+            border-radius: 10px;
+            border-width: 1px;
+            border-color: #d6d4d4;
+            border-style: solid;
+
+            h3 {
+                font-size: 20px;
+                color:#8A226F;
+                justify-self: center;
+                margin-bottom: 0px;
+                margin-top:20px;
+            }
+            h2 {
+                font-size: 15px;
+                color:#585757;
+                justify-self: center;
+                margin-top: 0px;
+            }
+        }
+    }
+
 
 h2 {
     color:#585757;
