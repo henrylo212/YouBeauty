@@ -25,7 +25,7 @@
         <div class="horizontal-spacer"></div>
 
         <div class="info-column">
-            <h2> Appointments Activity </h2>
+            <h2> Appointments Dashboard </h2>
             <div class="info-container">
 
             </div>
@@ -41,12 +41,17 @@
                     <a class="h2-link" href="{% url 'business_profile_calendar' %}">Manage all bookings ></a>
                 </div>
                 <div class="booking-scroll">
-                    {% if bookings.count >= 1 %}
-                    {% for booking in bookings %}
+                    {% if upcoming_bookings.count >= 1 %}
+                    {% for booking in upcoming_bookings %}
                     <div class="booking">
-                        <h3>{{ booking.salon_service.salon.salon_name }}</h3>
-                        <p>{{ booking.date }} - {{ booking.start_time }} - {{ booking.salon_service.service }}</p>
-                        <p>{{ booking.salon_service.salon.salon_address }}</p>
+                        <div class="col1">
+                            <h2>{{ booking.customer }}</h2>
+                            <h3>{{ booking.salon_service.service }}</h3>
+                        </div>
+                        <div class="col2">
+                            <p>{{ booking.date }}</p>
+                            <p>{{ booking.start_time }} - {{ booking.end_time}}</p>
+                        </div>
                     </div>
                     {% endfor %}
                     {% else %}

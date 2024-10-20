@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.utils import timezone
+from django.db.models import Sum
 
 from .forms import SalonOwnerRegistrationForm, CustomerRegistrationForm, EditProfileForm
 
@@ -152,7 +154,36 @@ def BusinessProfileHomeView(request):
     
     '''
 
-    return render(request, 'business_profile_home.html')
+    is_salonowner = False
+    current_user = request.user
+
+    if request.method == "GET":
+        print(current_user)
+        try: 
+            salon_owner = get_object_or_404(SalonOwner, user=current_user)
+            is_salonowner = True
+        except:
+            print("Is not a salon owner!!")
+
+    if is_salonowner:
+        salon = salon_owner.salon
+        
+        upcoming_bookings = Booking.objects.filter(salon_service__salon=salon, date__gte=timezone.now().date())
+        print("Bookings: ", upcoming_bookings)
+
+        completed_bookings = Booking.objects.filter(
+            date__lt=timezone.now().date(),  # Filter bookings before today
+            is_cancelled=False  # Exclude cancelled bookings, if needed
+        )
+
+        total_revenue = completed_bookings.aggregate(total=Sum('salon_service__price'))['total']
+        print(f"Total revenue: {total_revenue}")
+
+        return render(request, 'business_profile_home.html', {'is_salonowner': is_salonowner, 'upcoming_bookings': upcoming_bookings, 'completed_bookings':completed_bookings})
+    else: 
+        return render(request, 'business_profile_home.html', {'is_salonowner': is_salonowner, 'upcoming_bookings': ""})
+    
+
 
 def BusinessProfileSettingsView(request):
     '''
@@ -265,10 +296,10 @@ def BusinessProfileSettingsView(request):
             # print(bookings)
 
             # Get all bookings for the salon by joining SalonInfo and Booking models
-            bookings = Booking.objects.filter(salon_service__salon=salon)
-            print("BOOKINGS: "+bookings)
+            # bookings = Booking.objects.filter(salon_service__salon=salon)
+            # print("BOOKINGS: ", bookings)
 
-            salon_services = SalonService.objects.filter()
+            # salon_services = SalonService.objects.filter()
 
 
             return render(request, 'business_profile_settings.html' , 
