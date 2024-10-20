@@ -1,4 +1,4 @@
-{% extends "salon_base.html" %}
+{% extends "business_base.html" %}
 {% load static %}
 
 {% block content %}
@@ -11,8 +11,8 @@
     <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
 </head>
 
+<h1 class="header">Register Your Salon</h1>
 <div class="form-wrapper">
-    <h1>Register Your Salon</h1>
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}

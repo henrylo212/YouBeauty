@@ -77,25 +77,35 @@ h1 {
 }
 .menu {
     display: flex;
-    margin-top: 100px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: 130px;
     overflow: hidden;
     font: 20px 'Julius Sans One', sans-serif;
     line-height: 40px;
     color: #8A226F;
-    width: 98vw;
+    width: fit-content;
+    max-width: 300px;
+    padding: 30px;
     height: 0;
     position: absolute;
-    justify-content: end;
     opacity: 0;
+    background: transparent;
     transition: opacity var(--animation-timing), height var(--animation-timing);
     list-style: none;
+    text-align: right;
     z-index: 100;
-}
-.hamburger.hamburger:has(input:checked) + .menu {
-    height: fit-content;
-    opacity: 100;
+    right: 20px;
 }
 
+.hamburger:has(input:checked) + .menu {
+    background-color: #EFE2F1; 
+    height: fit-content;
+    opacity: 1;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 .menu a{
     text-decoration: none;
     color: inherit;

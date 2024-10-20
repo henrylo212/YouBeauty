@@ -48,7 +48,7 @@
     <aside class="menu">
         <nav>
             {% if user.is_authenticated %}
-                Hi {{ user.username }}!
+                Hi,<a style="font-weight:bold"> {{ user.username }}!</a>
                 <!-- Change this link when business profile has been made!!! -->
                 <li><a class="active" class="logout" href="{% url 'business_profile_home' %}">Profile</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>

@@ -54,10 +54,10 @@
         <label class="hamburger">
             <input type="checkbox" id="check">
         </label>
-        <aside class="menu">  
+        <aside class="menu"> 
             <nav>
                 {% if is_authenticated_customer and user.is_authenticated %}
-                    Hi {{ user.username }}!
+                    Hi,<a style="font-weight:bold"> {{ user.username }}!</a>
                     <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
                     <li><a href="{% url 'bookings' %}">Manage Bookings</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
@@ -69,7 +69,7 @@
                         </form>
                     </div>
                 {% elif user.is_authenticated %}
-                    Hi {{ user.username }}!
+                    Hi,<a style="font-weight:bold;"> {{ user.username }}!</a>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'faq' %}">FAQ</a></li>
                     <div class="logout-button">

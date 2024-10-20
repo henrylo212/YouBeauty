@@ -142,28 +142,51 @@ a:hover {
     opacity: 0;
     width: 0;
 }
+
 .menu {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
     margin-top: 130px;
     overflow: hidden;
     font: 20px 'Julius Sans One', sans-serif;
     line-height: 40px;
-    color: #fff;
-    width: 97vw;
+    color: black;
+    width: fit-content;
+    max-width: 300px;
+    padding: 30px;
     height: 0;
     position: absolute;
-    justify-content: flex-end;
     opacity: 0;
+    background: transparent;
     transition: opacity var(--animation-timing), height var(--animation-timing);
     list-style: none;
     text-align: right;
     z-index:1000;
-}
-.hamburger.hamburger:has(input:checked) + .menu {
-    height: fit-content;
-    opacity: 100;
+    right: 20px;
 }
 
+
+
+
+.menu a {
+    text-decoration: none;
+    color: black; 
+}
+
+.menu a:hover {
+    color: #D282DE;
+}
+
+
+.hamburger:has(input:checked) + .menu {
+    background-color: white; 
+    height: fit-content;
+    opacity: 1;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 
 .login-wrapper {
     display: flex;
@@ -181,7 +204,7 @@ a:hover {
     background-color: transparent!important;
     border: none;
     padding: 0!important;
-    color: #fff; 
+    color: black; 
     margin: 0;
     font: 20px 'Julius Sans One', sans-serif;
     cursor: pointer;
@@ -190,7 +213,7 @@ a:hover {
 }
 
 .logout-link:hover {
-    color: #000;
+    color: #D282DE;
 }
 
 .logout-button {
