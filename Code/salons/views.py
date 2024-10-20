@@ -89,39 +89,32 @@ def SalonRegistrationView(request):
     return render(request, 'salons/salon_form.html', {'salon_form': salon_form, 'service_formset': service_formset})
 
 
-def salon_list(request):
-    '''
-    Handles information about the list of salons
+# def salon_list(request):
+#     '''
+#     Handles information about the list of salons
 
-    This view handlers information about the list of salons
+#     This view handlers information about the list of salons
 
-    Args:
-        request (HttpRequest): The HTTP request object, which is GET
+#     Args:
+#         request (HttpRequest): The HTTP request object, which is GET
     
-    '''
-    salons = SalonInfo.objects.all()  
-    return salons
+#     '''
+#     salons = SalonInfo.objects.all()  
+#     return salons
 
-def salon_details(request, salon_id):
-    '''
-    Handles information about the salon details
+# def salon_details(request, salon_id):
+#     '''
+#     Handles information about the salon details
 
-    This view handlers information about the salon details
+#     This view handlers information about the salon details
 
-    Args:
-        request (HttpRequest): The HTTP request object, which is GET
-        salon_id (): The id of the salon whose details will be fetched
+#     Args:
+#         request (HttpRequest): The HTTP request object, which is GET
+#         salon_id (): The id of the salon whose details will be fetched
 
-    Template:
-        'salons/salon_page.html': The template used to display the salon details
+#     Template:
+#         'salons/salon_page.html': The template used to display the salon details
     
-    '''
-    salon = get_object_or_404(SalonInfo, pk=salon_id)
-    return render(request, 'salons/salon_page.html', {'salon': salon})
-
-def salon_dashboard(request):
-    # Assuming the logged-in user is a SalonOwner
-    salon_owner = SalonOwner.objects.get(user=request.user)
-    salon = salon_owner.salon
-    bookings = Booking.objects.filter(salon_service__salon=salon, is_cancelled=False).order_by('date', 'start_time')
-    return render(request, 'salon_dashboard.html', {'bookings': bookings})
+#     '''
+#     salon = get_object_or_404(SalonInfo, pk=salon_id)
+#     return render(request, 'salons/salon_page.html', {'salon': salon})

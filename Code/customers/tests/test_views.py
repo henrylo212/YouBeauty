@@ -1,13 +1,13 @@
 from django.test import TestCase, Client
-from salons.models import SalonInfo, Service, SalonAddress
 from django.urls import reverse
-from datetime import time
-from django.test import TestCase, Client
-from django.urls import reverse
-from salons.models import SalonInfo, SalonService, Service, SalonAddress
 from django.contrib.auth.models import User
+
+from salons.models import SalonInfo, SalonService, Service, SalonAddress
 from customers.models import Customer, Booking
 from datetime import time, timedelta, date
+
+from unittest.mock import patch
+
 
 class ViewTest(TestCase):
     def setUp(self):
@@ -131,36 +131,65 @@ class HappyHourViewTest(TestCase):
         self.assertTemplateUsed(response, 'happy_hour.html')
         self.assertIn('salons', response.context)
 
-# class MakeBookingsViewTest(TestCase):
-#     def setUp(self):
-#         # Set up client and create necessary data for the test
-#         self.client = Client()
-#         self.user = User.objects.create_user(username='testuser', password='testpass')
-#         self.client.login(username='testuser', password='testpass')
+class MakeBookingsViewTest(TestCase):
+    def setUp(self):
+        # Set up client and create necessary data for the test
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.client.login(username='testuser', password='testpass')
 
-#         customer = Customer.objects.create(user=self.user, phone_number='0412345678')
+        customer = Customer.objects.create(user=self.user, phone_number='0412345678')
 
-#         address = SalonAddress.objects.create(
-#             address_line1="123 Main St", suburb="Sydney", state="NSW", postcode="2000", country="Australia"
-#         )
-#         salon_info = SalonInfo.objects.create(
-#             salon_name="Test Salon", salon_address=address, 
-#             salon_openingtime=time(9, 0), salon_closingtime=time(17, 0)
-#         )
-#         service = Service.objects.create(service_name="Haircut")
-#         self.salon_service = SalonService.objects.create(
-#             salon=salon_info, service=service, price=50.0, 
-#             duration=timedelta(hours=1), description="A premium haircut."
-#         )
+        address = SalonAddress.objects.create(
+            address_line1="123 Main St", suburb="Sydney", state="NSW", postcode="2000", country="Australia"
+        )
+        salon_info = SalonInfo.objects.create(
+            salon_name="Test Salon", salon_address=address, 
+            salon_openingtime=time(9, 0), salon_closingtime=time(17, 0), happyhour_discount=0.3,
+            happyhour_times="4-7pm", happyhour_days="Mon-Wed"
+        )
+        service = Service.objects.create(service_name="Haircut")
+        self.salon_service = SalonService.objects.create(
+            salon=salon_info, service=service, price=50.0, 
+            duration=timedelta(hours=1), description="A premium haircut."
+        )
 
-#     def test_make_bookings_view(self):
-#         # Pass the salon_service_id in the reverse function
-#         url = reverse('make_bookings', args=[self.salon_service.id])
+    def test_make_bookings_view(self):
+        # Pass the salon_service_id in the reverse function
+        url = reverse('make_bookings', args=[self.salon_service.id])
 
-#         response = self.client.get(url)
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'bookings/make_bookings.html')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'bookings/make_bookings.html')
 
+    # def test_make_booking_no_customer(self):
+    #     # Log in as a new user without a customer profile
+    #     new_user = User.objects.create_user(username='newuser', password='newpass')
+    #     self.client.login(username='newuser', password='newpass')
+
+    #     url = reverse('make_bookings', args=[self.salon_service.id])
+    #     response = self.client.post(url, {'date': '2024-10-22', 'start_time': '10:00'})
+
+    #     # Check that the user is redirected to the create customer profile page
+    #     self.assertRedirects(response, reverse('create_customer_profile'))
+
+    # def test_make_booking_success(self):
+    #     # Mocking the is_time_slot_available function to return True
+    #     with patch('bookings.views.is_time_slot_available') as mock_is_time_slot_available:
+    #         mock_is_time_slot_available.return_value = True
+
+    #         url = reverse('make_bookings', args=[self.salon_service.id])
+    #         response = self.client.post(url, {'date': '2024-10-22', 'start_time': '10:00'})
+
+    #         # Check that the booking was created
+    #         self.assertEqual(Booking.objects.count(), 1)
+    #         booking = Booking.objects.first()
+    #         self.assertEqual(booking.customer, self.customer)
+    #         self.assertEqual(booking.salon_service, self.salon_service)
+
+    #         # Check for the redirect to the booking confirmation page
+    #         self.assertRedirects(response, reverse('booking_confirmation', args=[booking.id]))
+    
 # class TopSalonsViewTest(TestCase):
 #     def setUp(self):
 #         self.client = Client()

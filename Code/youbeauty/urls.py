@@ -27,7 +27,7 @@ urlpatterns = [
     path('', include("customers.urls")),
     path('salons/', include(('salons.urls', 'salons'), namespace='salons')),
     path('', include("customers.urls")),
-    # path('salon/', include('salons.urls')),
+    path('salon/', include('salons.urls')),
     path('customer/', include('customers.urls')),
     path('book/<int:salon_service_id>/', views.make_bookings, name='make_bookings'),
     path('booking_confirmation/<int:booking_id>/', views.booking_confirmation, name='booking_confirmation'),

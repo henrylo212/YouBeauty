@@ -102,6 +102,7 @@ def CustomerRegistrationView(request):
             return redirect('home')
     else:
         form = CustomerRegistrationForm()
+
     return render(request, 'registration/customer_register.html', {'form': form})
 
 
@@ -232,10 +233,15 @@ def BusinessProfileHomeView(request):
             service_count = most_popular_service['service_count']
             print(f'Most Popular Service Before Today: Service ID {service_name} with {service_count} bookings')
         else:
+            service_name = ""
+            service_count = 0
             print("No bookings found before today.")
 
-        revenue_per_hour = (float(total_revenue)/total_duration_in_minutes)*60
-        
+        # revenue_per_hour = (float(total_revenue)/total_duration_in_minutes)*60
+        if total_duration_in_minutes > 0:
+            revenue_per_hour = (float(total_revenue) / total_duration_in_minutes) * 60
+        else:
+            revenue_per_hour = 0  # Set to 0 or handle this scenario differently
 
         return render(request, 'business_profile_home.html', {'is_salonowner': is_salonowner, 'upcoming_bookings': upcoming_bookings, 'completed_bookings':completed_bookings, 'total_revenue':total_revenue,
                                                               'total_bookings_before_today':total_bookings_before_today, 'avg_revenue_per_hour':revenue_per_hour, 'cancelled_bookings': total_canceled_bookings, 'avg_price_bookings':average_price_before_today, 
