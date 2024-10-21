@@ -4,11 +4,12 @@ pipelines:
   default:
     - step:
         name: Install Dependencies
-        caches:
-          - pip
+        # caches:
+        #   - pip
         script:
           - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.10/site-packages:/opt/atlassian/pipelines/agent/build/Code
           - pip install -r Code/requirements.txt
+          - pip freeze
           - pip install coverage
           - pip install unittest-xml-reporting
     - step:
