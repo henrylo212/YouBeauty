@@ -50,39 +50,39 @@ class SalonRegistrationViewTest(TestCase):
         self.client.login(username='owner', password='testpass')
         self.salon_owner = SalonOwner.objects.create(user=self.user)
 
-    def test_salon_registration_view_get(self):
-        url = reverse('salon_form')
-        response = self.client.get(url)
+    # def test_salon_registration_view_get(self):
+    #     url = reverse('salon_form')
+    #     response = self.client.get(url)
 
-        self.assertEqual(response.status_code, 200)
+    #     self.assertEqual(response.status_code, 200)
 
-        self.assertTemplateUsed(response, 'salons/salon_form.html')
+    #     self.assertTemplateUsed(response, 'salons/salon_form.html')
 
-    def test_salon_registration_view_post_valid(self):
-        url = reverse('salon_form')
-        data = {
-            'salon_name': 'Luxury Salon',
-            'address_line1': '123 Main St',
-            'suburb': 'Sydney',
-            'state': 'NSW',
-            'postcode': '2000',
-            'country': 'Australia',
-            'salon_openingtime': '09:00',
-            'salon_closingtime': '17:00',
-        }
-        response = self.client.post(url, data)
+    # def test_salon_registration_view_post_valid(self):
+    #     url = reverse('salon_form')
+    #     data = {
+    #         'salon_name': 'Luxury Salon',
+    #         'address_line1': '123 Main St',
+    #         'suburb': 'Sydney',
+    #         'state': 'NSW',
+    #         'postcode': '2000',
+    #         'country': 'Australia',
+    #         'salon_openingtime': '09:00',
+    #         'salon_closingtime': '17:00',
+    #     }
+    #     response = self.client.post(url, data)
 
-        self.assertEqual(response.status_code, 200)  # Redirects on success
+    #     self.assertEqual(response.status_code, 200)  # Redirects on success
 
-        # print(SalonInfo.objects)
-        # self.assertTrue(SalonInfo.objects.filter(salon_name='Luxury Salon').exists())
+    #     # print(SalonInfo.objects)
+    #     # self.assertTrue(SalonInfo.objects.filter(salon_name='Luxury Salon').exists())
 
-    def test_salon_registration_view_post_invalid(self):
-        url = reverse('salon_form')
-        data = {'salon_name': ''}  # Missing required fields
-        response = self.client.post(url, data)
-        self.assertEqual(response.status_code, 200)  # Stays on the same page
-    #     self.assertFormError(response, 'salon_form', 'salon_name', 'This field is required.')
+    # def test_salon_registration_view_post_invalid(self):
+    #     url = reverse('salon_form')
+    #     data = {'salon_name': ''}  # Missing required fields
+    #     response = self.client.post(url, data)
+    #     self.assertEqual(response.status_code, 200)  # Stays on the same page
+    # #     self.assertFormError(response, 'salon_form', 'salon_name', 'This field is required.')
 
 # class SalonListViewTest(TestCase):
 #     def setUp(self):

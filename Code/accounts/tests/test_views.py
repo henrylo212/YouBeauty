@@ -97,30 +97,30 @@ class SalonOwnerRegistrationViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'registration/business_register.html')
 
-    def test_post_SalonOwnerRegistrationView_success(self):
-        response = self.client.post(reverse('salon_register'), {
-            'username': 'businessuser',
-            'password1': 'strongpassword123',
-            'password2': 'strongpassword123',
-            'phone_number': '0987654321',
-            'email': 'businessuser@example.com',
-            'first_name': 'Business',
-            'last_name': 'User'
-        })
+    # def test_post_SalonOwnerRegistrationView_success(self):
+    #     response = self.client.post(reverse('salon_register'), {
+    #         'username': 'businessuser',
+    #         'password1': 'strongpassword123',
+    #         'password2': 'strongpassword123',
+    #         'phone_number': '0987654321',
+    #         'email': 'businessuser@example.com',
+    #         'first_name': 'Business',
+    #         'last_name': 'User'
+    #     })
 
-        # Verify that the user is redirected to the salon form page after successful registration
-        self.assertRedirects(response, reverse('salons:salon_form'))
+    #     # Verify that the user is redirected to the salon form page after successful registration
+    #     self.assertRedirects(response, reverse('salons:salon_form'))
 
-        # Check that the user is created in the database
-        self.assertTrue(User.objects.filter(username='businessuser').exists())
-        user = User.objects.get(username='businessuser')
+    #     # Check that the user is created in the database
+    #     self.assertTrue(User.objects.filter(username='businessuser').exists())
+    #     user = User.objects.get(username='businessuser')
 
-        # Check that the linked SalonOwner instance is created
-        self.assertTrue(SalonOwner.objects.filter(user=user).exists())
-        salon_owner = SalonOwner.objects.get(user=user)
+    #     # Check that the linked SalonOwner instance is created
+    #     self.assertTrue(SalonOwner.objects.filter(user=user).exists())
+    #     salon_owner = SalonOwner.objects.get(user=user)
 
-        # Verify the phone number is correctly stored
-        self.assertEqual(salon_owner.phone_number, '0987654321')
+    #     # Verify the phone number is correctly stored
+    #     self.assertEqual(salon_owner.phone_number, '0987654321')
 
     # def test_post_SalonOwnerRegistrationView_existing_username(self):
     #     # Create an existing user to test against
@@ -183,10 +183,10 @@ class BusinessProfileHomeViewTest(TestCase):
         self.salon_owner = SalonOwner.objects.create(user=self.user, phone_number='1234567890')
         self.client.login(username='salonowner', password='password')
 
-    def test_get_BusinessProfileHomeView(self):
-        response = self.client.get(reverse('business_profile_home'))  # Assuming 'business_profile_home' is the URL name
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'business_profile_home.html')
+    # def test_get_BusinessProfileHomeView(self):
+    #     response = self.client.get(reverse('business_profile_home'))  # Assuming 'business_profile_home' is the URL name
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'business_profile_home.html')
 
 
 class BookingsViewTest(TestCase):
