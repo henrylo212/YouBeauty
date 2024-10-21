@@ -183,10 +183,10 @@ class BusinessProfileHomeViewTest(TestCase):
         self.salon_owner = SalonOwner.objects.create(user=self.user, phone_number='1234567890')
         self.client.login(username='salonowner', password='password')
 
-    # def test_get_BusinessProfileHomeView(self):
-    #     response = self.client.get(reverse('business_profile_home'))  # Assuming 'business_profile_home' is the URL name
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'business_profile_home.html')
+    def test_get_BusinessProfileHomeView(self):
+        response = self.client.get(reverse('business_profile_home'))  # Assuming 'business_profile_home' is the URL name
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'business_profile_home.html')
 
 
 class BookingsViewTest(TestCase):
