@@ -2,6 +2,11 @@ image: python:3.11
 
 pipelines:
   default:
+
+    - step:
+        name: Run migrations
+        script: 
+          - python manage.py migrate
     - step: 
         name: Run tests - regression testing
         caches:
