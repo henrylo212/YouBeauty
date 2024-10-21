@@ -9,10 +9,13 @@ pipelines:
         script:
           # - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.10/site-packages:/opt/atlassian/pipelines/agent/build/Code
           - ls -R
-          - pip install -r Code/requirements.txt
+          - pip install --user -r Code/requirements.txt
+          - export PATH=$PATH:/root/.local/bin
           - pip freeze
           - pip install coverage
           - pip install unittest-xml-reporting
+          - echo $PYTHONPATH
+          - python -c "import sys; print(sys.path)"
     - step:
         name: Run migrations
         script: 
