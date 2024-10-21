@@ -8,6 +8,7 @@ pipelines:
           - pip
         script:
           - export PYTHONPATH="$PYTHONPATH:/opt/atlassian/pipelines/agent/build/Code"
+          - echo $PYTHONPATH
           - pip install -r Code/requirements.txt
           - pip install coverage
           - pip install unittest-xml-reporting
