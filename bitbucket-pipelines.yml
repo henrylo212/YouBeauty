@@ -3,7 +3,7 @@ image: python:3.10
 pipelines:
   default:
     - step:
-        name: Install Dependencies
+        name: Migrate + run tests
         # caches:
         #   - pip
         script:
