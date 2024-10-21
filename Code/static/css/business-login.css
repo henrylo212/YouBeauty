@@ -3,9 +3,11 @@ body {
   background-color:  #F4F4F4;
   overflow: hidden x;
   /* max-width: 100%; */
+  margin: 0px;
+  padding: 0px;
 }
 .login-page {
-    /* width: 490px; */
+    width: 500px;
     height: 510px;
     
     /* padding: 2% 2% 10%; */
@@ -97,28 +99,40 @@ h3 {
     flex-wrap: wrap; 
     /* z-index: 3; */
     /* align-content: center; */
-    flex-direction: row;
     display: flex;
+    flex-direction: row;
     align-items: center;
     /* align-items: baseline; */
     gap: 100px;
     /* border: 3px solid black; */
     /* width: 50%; */
     /* flex-wrap: wrap; */
-    margin-left: 100px;
+    /* margin-left: 100px; */
     padding: 3% 5% 4%;
     /* background-color: #F4F4F4; */
     /* width: 900px; */
     /* height: 500px; */
-  
+    min-height: 550px;
+
 }
 
 .flex-box{
-  width: 500px;
+  width: 45%;
+  /* width: 500px; */
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 510px;
 }
 
 img {
   max-width: 100%;
+}
+
+@media (max-width: 1110px) {
+  .flex-box{
+    width: 95%;
+  }
 }
 
 
