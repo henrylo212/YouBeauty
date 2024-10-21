@@ -2,7 +2,6 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from salons.models import SalonInfo, SalonService, SalonAddress, Service, SalonOwner
 from datetime import time, timedelta
-from salons.views import SalonDetailView
 from salons.urls import *
 from django.contrib.auth.models import User
 from salons.forms import SalonForm, SalonServiceForm

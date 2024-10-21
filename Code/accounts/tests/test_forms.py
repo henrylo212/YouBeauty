@@ -12,6 +12,8 @@ from django.test import TestCase
 from accounts.forms import CustomerRegistrationForm
 from django.contrib.auth.models import User
 
+
+
 class CustomerRegistrationFormTest(TestCase):
     def test_valid_form(self):
         form_data = {
