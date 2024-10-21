@@ -3,7 +3,7 @@ from django.db import models
 class SalonAddress(models.Model):
     address_line1 = models.CharField(max_length=255)
     address_line2 = models.CharField(max_length=255, blank=True, null=True)
-    suburb = models.CharField(max_length=100)
+    suburb = models.CharField(max_length=100, default="")
     state = models.CharField(max_length=100)
     postcode = models.CharField(max_length=10)
     country = models.CharField(max_length=100)
