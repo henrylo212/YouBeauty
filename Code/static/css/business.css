@@ -150,12 +150,17 @@ h1 {
 
 
 .Rectangle {
-    position: absolute;
+    /* position: absolute; */
     background-color: #F4F4F4;
-    width: 100%;
-    height: 444px;
+    width: 90%;
+    min-height: 400px;
+    /* height: 444px;
+    height: 400px; */
     top: 175px;
-    z-index: 60;
+    /* z-index: 60; */
+    display: flex;
+    padding: 0px 5%;
+    /* gap: 50px; */
 }
 /* .Rectangle2 {
     position: absolute;
@@ -166,17 +171,18 @@ h1 {
     z-index: 60;
 } */
 
-
-
 .about {
-    position: absolute;
+    /* position: absolute; */
     text-align: center;
     top: 200px;
-    z-index: 90;
-    width: 500px;
+    /* z-index: 90; */
+    /* width: 500px; */
     display: flex;
     flex-direction: column;
-    margin-left: 50%;
+    width: 90%;
+    padding: 0px 40px;
+    padding-top: 20px;
+    margin-left: 100px;
 }
 
 h3 {
@@ -190,11 +196,17 @@ p {
 }
 
 .logo2 {
-    z-index: 100;
-    width: 250px;
-    margin-top: 110px;
-    margin-left: 20%;
-    position: absolute;
+    /* z-index: 100; */
+    /* width: 300px; */
+    width: auto;
+    height: 400px;
+    /* margin-top: 110px; */
+    /* margin-left: 20%; */
+    padding-left: 15px;
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* .testimonials {
@@ -210,7 +222,7 @@ p {
 .testimonials {
     background-color: #3a3a3a; /* Dark background color */
     color: white;
-    position: absolute;
+    /* position: absolute; */
     top: 700px;
     padding: 2px 0;
     text-align: center;
@@ -219,6 +231,7 @@ p {
     /* margin: 40px auto; */
     flex-direction: column;
     width: 80%;
+    margin-top: 100px;
 }
 
 /* Heading style */
@@ -279,7 +292,7 @@ p {
 /* Pricing Section */
 
 .pricing-section {
-    position: absolute;
+    /* position: absolute; */
     top: 900px; /* Adjust this value to fit the layout */
     margin-left: 9.5%;
     width: 100%;
@@ -411,4 +424,9 @@ header {
 
 .small-spacer {
     margin-bottom: 20px;
+}
+
+.landing-page {
+    display: flex;
+    flex-direction: column;
 }

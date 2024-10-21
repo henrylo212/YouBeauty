@@ -3,88 +3,86 @@
 
 {% block content %}
 
-
-    <div class="Rectangle"></div>
-
-    <div class="about">
-        <h3>Why choose YOU BEAUTY?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-
-
-
-    <div class="logo2">
-        <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
-    </div>
-
-
-
-    <!-- <div class="testimonials">
-        <h2>Testimonials</h2>
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-        <span>- Jenny Smith, Tester's Salon CEO</span>
-    </div> -->
-
-    <div class="testimonials">
-        <h2>Testimonials</h2>
-        <div class="testimonial-slider">
-            <div class="testimonial">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                <span>- Jenny Smith, Tester's Salon CEO</span>
+    <div class="landing-page">
+        <div class="Rectangle">
+            <div class="logo2">
+                <img loading="lazy" src="{% static 'design/logo.png' %}" class="logo" alt="logo">
             </div>
-            <div class="testimonial-navigation">
-                <button class="prev">&lt;</button>
-                <span>......</span>
-                <button class="next">&gt;</button>
+            <div class="about">
+                <h3>Why choose YOU BEAUTY?</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
+
+
+
+        <!-- <div class="testimonials">
+            <h2>Testimonials</h2>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+            <span>- Jenny Smith, Tester's Salon CEO</span>
+        </div> -->
+
+        <div class="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                    <span>- Jenny Smith, Tester's Salon CEO</span>
+                </div>
+                <div class="testimonial-navigation">
+                    <button class="prev">&lt;</button>
+                    <span>......</span>
+                    <button class="next">&gt;</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Pricing Options Section -->
+        <div class="pricing-section">
+            <h2>Pricing Options</h2>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <h3>Pricing Option 1</h3>
+                    <ul>
+                        <li>Something basic for plan 1</li>
+                        <li>Something basic for plan 1</li>
+                        <li>Something basic for plan 1</li>
+                    </ul>
+                    <p class="price">$15 per month</p>
+                    <button class="start-now">START NOW</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Pricing Option 2</h3>
+                    <ul>
+                        <li>Something more for plan 2</li>
+                        <li>Something more for plan 2</li>
+                        <li>Something more for plan 2</li>
+                        <li>Something more for plan 2</li>
+
+                    </ul>
+                    <p class="price">$50 per month</p>
+                    <button class="start-now">START NOW</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Pricing Option 3</h3>
+                    <ul>
+                        <li>Something nice for plan 3</li>
+                        <li>Something nice for plan 3</li>
+                        <li>Something nice for plan 3</li>
+                        <li>Something nice for plan 3</li>
+                        <li>Something nice for plan 3</li>
+                        <li>Something nice for plan 3</li>
+
+                    </ul>
+                    <p class="price">$80 per month</p>
+                    <button class="start-now">START NOW</button>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-    <!-- Pricing Options Section -->
-<div class="pricing-section">
-    <h2>Pricing Options</h2>
-    <div class="pricing-container">
-        <div class="pricing-card">
-            <h3>Pricing Option 1</h3>
-            <ul>
-                <li>Something basic for plan 1</li>
-                <li>Something basic for plan 1</li>
-                <li>Something basic for plan 1</li>
-            </ul>
-            <p class="price">$15 per month</p>
-            <button class="start-now">START NOW</button>
-        </div>
-
-        <div class="pricing-card">
-            <h3>Pricing Option 2</h3>
-            <ul>
-                <li>Something more for plan 2</li>
-                <li>Something more for plan 2</li>
-                <li>Something more for plan 2</li>
-                <li>Something more for plan 2</li>
-
-            </ul>
-            <p class="price">$50 per month</p>
-            <button class="start-now">START NOW</button>
-        </div>
-
-        <div class="pricing-card">
-            <h3>Pricing Option 3</h3>
-            <ul>
-                <li>Something nice for plan 3</li>
-                <li>Something nice for plan 3</li>
-                <li>Something nice for plan 3</li>
-                <li>Something nice for plan 3</li>
-                <li>Something nice for plan 3</li>
-                <li>Something nice for plan 3</li>
-
-            </ul>
-            <p class="price">$80 per month</p>
-            <button class="start-now">START NOW</button>
-        </div>
-    </div>
-</div>
 </body>
 
 {% endblock %}
