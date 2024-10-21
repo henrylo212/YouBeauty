@@ -9,20 +9,18 @@ pipelines:
         script:
           # - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.10/site-packages:/opt/atlassian/pipelines/agent/build/Code
           - ls -R
-          - pip install --user -r Code/requirements.txt
-          - export PATH=$PATH:/root/.local/bin
+          - pip install -r Code/requirements.txt
+          # - export PATH=$PATH:/root/.local/bin
           - pip freeze
           - pip install coverage
           - pip install unittest-xml-reporting
-          - echo $PYTHONPATH
-          - python -c "import sys; print(sys.path)"
-    - step:
-        name: Run migrations
-        script: 
+          # - echo $PYTHONPATH
+          # - python -c "import sys; print(sys.path)"
+          
+          # migrate
           - python Code/manage.py migrate
-    - step: 
-        name: Run tests - regression testing
-        script:
+
+          # run tests
           - TEST_OUTPUT_DIRECTORY="test-results" coverage run --source="./Code" Code/manage.py test accounts.tests customers.tests salons.tests 
           - coverage report
           - coverage html 
