@@ -7,7 +7,7 @@ pipelines:
         # caches:
         #   - pip
         script:
-          - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.10/site-packages:/opt/atlassian/pipelines/agent/build/Code
+          # - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.10/site-packages:/opt/atlassian/pipelines/agent/build/Code
           - pip install -r Code/requirements.txt
           - pip freeze
           - pip install coverage
