@@ -1,9 +1,9 @@
-image: python:3.11
+image: python:3.10
 
 pipelines:
   default:
     - step:
-        name: Installations
+        name: Install Dependencies
         caches:
           - pip
         script:
