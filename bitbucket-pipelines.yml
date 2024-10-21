@@ -6,7 +6,7 @@ pipelines:
     - step:
         name: Run migrations
         script: 
-          - python manage.py migrate
+          - python Code/manage.py migrate
     - step: 
         name: Run tests - regression testing
         caches:
