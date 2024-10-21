@@ -2,23 +2,22 @@ image: python:3.11
 
 pipelines:
   default:
-    - step: 
-        name: Run tests - regression testing
+    - step:
+        name: Installations
         caches:
           - pip
         script:
+          - export PYTHONPATH="$PYTHONPATH:/opt/atlassian/pipelines/agent/build/Code"
           - pip install -r Code/requirements.txt
           - pip install coverage
-          # - pip install pytest
-          # - pip install pytest-django
-          # - pip install django-test-xmlrunner
           - pip install unittest-xml-reporting
-
-          # - coverage run --source="." Code/manage.py test --testrunner=pytest_django.runner.PytestDjangoTestRunner --junitxml=test-results/test-report.xml #test
-          # - coverage run --source="." Code/manage.py test --testrunner=xmlrunner.extra.djangotestrunner.XMLTestRunner --output-dir=test-results #test
-          # - python Code/manage.py test --testrunner=xmlrunner.extra.djangotestrunner.XMLTestRunner --output-dir=test-results #test
-          # - coverage run --source="." Code/manage.py test --testrunner=xmlrunner.XMLTestRunner --output-dir=test-results #test
-          # - TEST_OUTPUT_DIRECTORY="test-results" coverage run --source="./Code" Code/manage.py test accounts.tests customers.tests salons.tests --testrunner=xmlrunner.extra.djangotestrunner.XMLTestRunner
+    - step:
+        name: Run migrations
+        script: 
+          - python Code/manage.py migrate
+    - step: 
+        name: Run tests - regression testing
+        script:
           - TEST_OUTPUT_DIRECTORY="test-results" coverage run --source="./Code" Code/manage.py test accounts.tests customers.tests salons.tests 
           - coverage report
           - coverage html 
