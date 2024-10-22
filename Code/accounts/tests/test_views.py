@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from customers.models import Customer, Booking
 from salons.models import SalonOwner, SalonAddress, SalonInfo, SalonService, Service
 from datetime import datetime, timedelta
+from datetime import time
 # from accounts.views import RegistrationView
 
 
@@ -406,6 +407,112 @@ class BusinessProfileCalendarViewTest(TestCase):
         bookings = response.context['bookings']
         self.assertEqual(len(bookings), 0)
 
+# class SearchResultsViewTest(TestCase):
+#     def setUp(self):
+#         # Set up test data
+#         self.address1 = SalonAddress.objects.create(
+#             address_line1="123 Main St", suburb="Testville", state="TS", postcode="12345", country="Testland"
+#         )
+#         self.address2 = SalonAddress.objects.create(
+#             address_line1="456 Another Rd", suburb="Anothertown", state="AT", postcode="67890", country="Testland"
+#         )
+
+#         self.salon1 = SalonInfo.objects.create(
+#             salon_name="Best Salon",
+#             salon_address=self.address1,
+#             salon_openingtime=time(9, 0),
+#             salon_closingtime=time(18, 0),
+#             happyhour_times="12:00-14:00",
+#             happyhour_days="Monday-Friday",
+#             happyhour_discount=20.00
+#         )
+#         self.salon2 = SalonInfo.objects.create(
+#             salon_name="Glam Salon",
+#             salon_address=self.address2,
+#             salon_openingtime=time(10, 0),
+#             salon_closingtime=time(19, 0),
+#             happyhour_times="14:00-16:00",
+#             happyhour_days="Saturday-Sunday",
+#             happyhour_discount=15.00
+#         )
+
+#         self.service1 = Service.objects.create(service_name="Haircut")
+#         self.service2 = Service.objects.create(service_name="Manicure")
+
+#         self.salon_service1 = SalonService.objects.create(
+#             salon=self.salon1, service=self.service1, price=50.00, duration=30, description="Basic Haircut"
+#         )
+#         self.salon_service2 = SalonService.objects.create(
+#             salon=self.salon2, service=self.service2, price=30.00, duration=20, description="Basic Manicure"
+#         )
+
+#     def test_get_search_results_empty(self):
+#         response = self.client.get(reverse('search_results'))
+#         self.assertEqual(response.status_code, 200)
+#         self.assertTemplateUsed(response, 'search_results.html')
+#         # Check that no search filters are applied
+#         self.assertContains(response, "search-results")
+
+#     def test_post_search_results_no_filters(self):
+#         response = self.client.post(reverse('search_results'), {
+#             'searched': '',
+#             'location': '',
+#             'service': ''
+#         })
+#         self.assertEqual(response.status_code, 200)
+#         self.assertTemplateUsed(response, 'search_results.html')
+#         # Expect to get all salon services
+#         self.assertContains(response, "Best Salon")
+#         self.assertContains(response, "Glam Salon")
+
+#     def test_post_search_results_by_name(self):
+#         response = self.client.post(reverse('search_results'), {
+#             'searched': 'Best',
+#             'location': '',
+#             'service': ''
+#         })
+#         self.assertEqual(response.status_code, 200)
+#         self.assertContains(response, "Best Salon")
+#         self.assertNotContains(response, "Glam Salon")
+
+#     def test_post_search_results_by_location(self):
+#         response = self.client.post(reverse('search_results'), {
+#             'searched': '',
+#             'location': 'Testville',
+#             'service': ''
+#         })
+#         self.assertEqual(response.status_code, 200)
+#         self.assertContains(response, "Best Salon")
+#         self.assertNotContains(response, "Glam Salon")
+
+#     def test_post_search_results_by_service(self):
+#         response = self.client.post(reverse('search_results'), {
+#             'searched': '',
+#             'location': '',
+#             'service': 'manicure'
+#         })
+#         self.assertEqual(response.status_code, 200)
+#         self.assertNotContains(response, "Best Salon")
+#         self.assertContains(response, "Glam Salon")
+
+#     def test_post_search_results_multiple_filters(self):
+#         response = self.client.post(reverse('search_results'), {
+#             'searched': 'Glam',
+#             'location': 'Anothertown',
+#             'service': 'manicure'
+#         })
+#         self.assertEqual(response.status_code, 200)
+#         self.assertNotContains(response, "Best Salon")
+#         self.assertContains(response, "Glam Salon")
+
+#     def test_post_search_results_no_match(self):
+#         response = self.client.post(reverse('search_results'), {
+#             'searched': 'Unknown',
+#             'location': 'Nowhere',
+#             'service': 'Pedicure'
+#         })
+#         self.assertEqual(response.status_code, 200)
+#         self.assertContains(response, "No results found")
 
 class FAQViewTest(TestCase):
     def test_get_FAQView(self):
