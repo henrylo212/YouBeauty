@@ -1,10 +1,10 @@
 =# SOFT3888_F16_04 meeting minutes
 
 ## Information:
-- Subject: In-tutorial meeting 23rd August (Week 4)
+- Subject: In-tutorial meeting 6/9
 - Project name: P24 You Beauty
 - Facilitator: 
-- Prepared by: Claudia
+- Prepared by: Henry Lo
 - Mode: In person, in-tutorial
 - Date: 23/08/2024
 - Time: 4:00pm
@@ -24,58 +24,43 @@
 </tr>
 
 <tr>
-    <th> Presentation</th>
-    <td> Discuss how presentation went</td>
-    <td><ol>
-        <li>Consider more security measures</li>
-    </ol>
+    <th> Project scope and contract</th>
+    <td> Update project scope and contract</td>
+    <td>Can include what we have implemented so far
     </td>
-    <td><ol>
-        <li>Everyone</li>
-    </ol>
-    </td>
+    <td>Everyone    </td>
     <td></td>
 </tr>
 
 <tr>
-    <th> Group report week 6</th>
-    <td> Discuss week 6 group report </td>
-    <td><ol>
-        <li>Start group report (start by Thursday 29th August)</li>
-        <li>Give mock presentation/demo to tutor on Friday 30th August</li>
-    </ol>
-    </td>
-    <td><ol>
-        <li>Henry, Kathy</li>
-        <li>Everyone</li>
-    </ol>
-    </td>
-    <td><ul>
-        <li>Introduction includes stakeholders</li>
-        <li>Tutor has more details in another set of slides</li>
-        <li>Oydan has photos of all the slides</li>
-    </ul>
-    </td>
-</tr>
-
-
-
-
-<tr>
-    <th> W7 Client Demo </th>
-    <td> Discuss W7 Client Demo </td>
-    <td><ol>
-        <li>Read specifications</li>
-        <li>details to be discussed on Monday client meeting/tuesday evening meeting</li>
-    </ol>
-    </td>
-    <td><ol>
-        <li>Everyone</li>
-    </ol>
-    </td>
+    <th> Tutorial slides</th>
+    <td> Slides available on slack</td>
+    <td></td>
+    <td></td>
     <td></td>
 </tr>
+<tr>
+    <th> individual reports</th>
+    <td> question raised around report submission</td>
+    <td></td>
+    <td></td>
+    <td>Include extension approval, bullet points ok on part 1</td>
+</tr>
 
+<tr>
+    <th> Discussion of webapp database</th>
+    <td> consider major restructure</td>
+    <td>allocate groupmates responsible for database restructure</td>
+    <td>tbd</td>
+    <td>3 apps on django at the moment</td>
+</tr>
+<tr>
+    <th> Presentation feedback</th>
+    <td> Good overall, update sitemap to have a more professional look</td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
 
 </table>
 
