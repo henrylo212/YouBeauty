@@ -47,10 +47,22 @@
 
     <aside class="menu">
         <nav>
-            {% if user.is_authenticated %}
+            {% if is_authenticated_salon_owner and user.is_authenticated %}
+                <!-- is a salon owner user -->
                 Hi,<a style="font-weight:bold"> {{ user.username }}!</a>
-                <!-- Change this link when business profile has been made!!! -->
                 <li><a class="active" class="logout" href="{% url 'business_profile_home' %}">Profile</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <a href="{% url 'faq' %}">F.A.Q</a>
+                <div class="logout-button">
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-link">Logout</button>
+                    </form>
+                </div>
+                
+            {% elif user.is_authenticated %}
+                <!-- is not a salon owner user -->
+                Hi,<a style="font-weight:bold"> {{ user.username }}!</a>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <a href="{% url 'faq' %}">F.A.Q</a>
                 <div class="logout-button">

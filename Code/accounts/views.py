@@ -160,18 +160,13 @@ def BusinessProfileHomeView(request):
 
     is_salonowner = False
     current_user = request.user
-
-    if request.method == "GET":
-        print(current_user)
-        try: 
-            salon_owner = get_object_or_404(SalonOwner, user=current_user)
-            is_salonowner = True
-        except:
-            print("Is not a salon owner!!")
-
-    if is_salonowner:
+    try:
+        salon_owner = get_object_or_404(SalonOwner, user=current_user)
         salon = salon_owner.salon
-        
+
+        if salon is None or salon.salon_address is None:
+            return redirect('salons:salon_form')  
+
         upcoming_bookings = Booking.objects.filter(salon_service__salon=salon, date__gte=timezone.now().date())
         print("Bookings: ", upcoming_bookings)
 
@@ -246,9 +241,8 @@ def BusinessProfileHomeView(request):
         return render(request, 'business_profile_home.html', {'is_salonowner': is_salonowner, 'upcoming_bookings': upcoming_bookings, 'completed_bookings':completed_bookings, 'total_revenue':total_revenue,
                                                               'total_bookings_before_today':total_bookings_before_today, 'avg_revenue_per_hour':revenue_per_hour, 'cancelled_bookings': total_canceled_bookings, 'avg_price_bookings':average_price_before_today, 
                                                               'service_name':service_name, 'service_count':service_count})
-    else: 
-        return render(request, 'business_profile_home.html', {'is_salonowner': is_salonowner, 'upcoming_bookings': ""})
-    
+    except SalonOwner.DoesNotExist:
+        return render(request, 'business_profile_home.html', {'is_salonowner': False})
 
 
 def BusinessProfileSettingsView(request):
