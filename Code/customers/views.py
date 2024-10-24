@@ -40,21 +40,6 @@ def HomeView(request):
                   {'salon_info': salon_info, 'services': services, 'addresses': addresses, 
                    'happy_hour_salons': happy_hour_salons, 'top_salons': top_salons})
 
-# def MakeBookingsView(request):
-#     '''
-#     Handles information about the make bookings page
-
-#     This view handlers information about the make bookings page
-
-#     Args:
-#         request (HttpRequest): The HTTP request object, which is GET
-
-#     Template:
-#         'bookings/make_bookings.html': The template used to display the make bookings page
-    
-#     '''
-#     return render(request, 'bookings/make_bookings.html')
-
 def HappyHourView(request):
     '''
     Handles information about the happy hour page

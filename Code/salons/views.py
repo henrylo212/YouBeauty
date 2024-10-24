@@ -80,7 +80,6 @@ def SalonRegistrationView(request):
                     )
 
             # Redirect to the salon dashboard or home page
-            # return redirect('salon_dashboard')
             return redirect('forBusiness')
     else:
         salon_form = SalonForm()
@@ -88,33 +87,3 @@ def SalonRegistrationView(request):
 
     return render(request, 'salons/salon_form.html', {'salon_form': salon_form, 'service_formset': service_formset})
 
-
-# def salon_list(request):
-#     '''
-#     Handles information about the list of salons
-
-#     This view handlers information about the list of salons
-
-#     Args:
-#         request (HttpRequest): The HTTP request object, which is GET
-    
-#     '''
-#     salons = SalonInfo.objects.all()  
-#     return salons
-
-# def salon_details(request, salon_id):
-#     '''
-#     Handles information about the salon details
-
-#     This view handlers information about the salon details
-
-#     Args:
-#         request (HttpRequest): The HTTP request object, which is GET
-#         salon_id (): The id of the salon whose details will be fetched
-
-#     Template:
-#         'salons/salon_page.html': The template used to display the salon details
-    
-#     '''
-#     salon = get_object_or_404(SalonInfo, pk=salon_id)
-#     return render(request, 'salons/salon_page.html', {'salon': salon})

@@ -90,12 +90,6 @@ class EditSalonInfoForm(forms.Form):
     postcode = forms.CharField(max_length=20)
     country = forms.CharField(max_length=20)
 
-    # email = forms.EmailField()
-    # phone_number = forms.CharField(max_length=20)
-
-    # print(email)
-    # print(phone_number)
-
     def save(self, user):
         salon_name = self.cleaned_data["salon_name"]
         salon_openingtime = self.cleaned_data["salon_openingtime"]

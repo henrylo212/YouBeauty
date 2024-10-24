@@ -97,75 +97,6 @@ class SalonOwnerRegistrationViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'registration/business_register.html')
 
-    # def test_post_SalonOwnerRegistrationView_success(self):
-    #     response = self.client.post(reverse('salon_register'), {
-    #         'username': 'businessuser',
-    #         'password1': 'strongpassword123',
-    #         'password2': 'strongpassword123',
-    #         'phone_number': '0987654321',
-    #         'email': 'businessuser@example.com',
-    #         'first_name': 'Business',
-    #         'last_name': 'User'
-    #     })
-
-    #     # Verify that the user is redirected to the salon form page after successful registration
-    #     self.assertRedirects(response, reverse('salons:salon_form'))
-
-    #     # Check that the user is created in the database
-    #     self.assertTrue(User.objects.filter(username='businessuser').exists())
-    #     user = User.objects.get(username='businessuser')
-
-    #     # Check that the linked SalonOwner instance is created
-    #     self.assertTrue(SalonOwner.objects.filter(user=user).exists())
-    #     salon_owner = SalonOwner.objects.get(user=user)
-
-    #     # Verify the phone number is correctly stored
-    #     self.assertEqual(salon_owner.phone_number, '0987654321')
-
-    # def test_post_SalonOwnerRegistrationView_existing_username(self):
-    #     # Create an existing user to test against
-    #     User.objects.create_user(username='differentuser', password='password')
-
-    #     # Simulate a POST request using an existing username
-    #     response = self.client.post(reverse('salon_register'), {
-    #         'username': 'existinguser',
-    #         'password1': 'strongpassword123',
-    #         'password2': 'strongpassword123',
-    #         'phone_number': '0987654321',
-    #         'email': 'test@example.com',
-    #         'first_name': 'Existing',
-    #         'last_name': 'User'
-    #     })
-
-    #     # Check that the response status is 200 (form re-renders)
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertTemplateUsed(response, 'registration/business_register.html')
-
-    #     # Verify that the form displays an error for the username field
-    #     self.assertContains(response, "This username is already taken.")
-
-    # def test_post_SalonOwnerRegistrationView_password_mismatch(self):
-    #     # Simulate a POST request with mismatched passwords
-    #     response = self.client.post(reverse('salon_register'), {
-    #         'username': 'newbusinessuser',
-    #         'password1': 'strongpassword123',
-    #         'password2': 'differentpassword',
-    #         'phone_number': '0987654321',
-    #         'email': 'test2@example.com',
-    #         'first_name': 'New',
-    #         'last_name': 'User'
-    #     })
-
-    #     # Check that the response status is 200 (form re-renders)
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'registration/business_register.html')
-
-    #     # Verify that no user is created
-    #     self.assertFalse(User.objects.filter(username='newbusinessuser').exists())
-
-    #     # Ensure form error about password mismatch is shown
-    #     self.assertFormError(response, 'form', 'password2', "The two password fields didn’t match.")
-    
     def test_post_SalonOwnerRegistrationView_fail(self):
         response = self.client.post(reverse('salon_register'), {
             'username': 'businessuser',
@@ -182,11 +113,6 @@ class BusinessProfileHomeViewTest(TestCase):
         self.user = User.objects.create_user(username='salonowner', password='password')
         self.salon_owner = SalonOwner.objects.create(user=self.user, phone_number='1234567890')
         self.client.login(username='salonowner', password='password')
-
-    # def test_get_BusinessProfileHomeView(self):
-    #     response = self.client.get(reverse('business_profile_home'))  # Assuming 'business_profile_home' is the URL name
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'business_profile_home.html')
 
 
 class BookingsViewTest(TestCase):
@@ -272,35 +198,6 @@ class BusinessProfileSettingsViewTest(TestCase):
         self.assertEqual(self.salon_owner.user.last_name, 'Name')
         self.assertEqual(self.salon_owner.user.email, 'updated@example.com')
         self.assertEqual(self.salon_owner.phone_number, '1112223333')
-
-    # def test_post_BusinessProfileSettingsView_edit_salon_info(self):
-    #     # Log in as a salon owner and make a POST request to update salon info
-    #     self.client.login(username='salonowneruser', password='password')
-    #     response = self.client.post(reverse('business_profile_settings'), {
-    #         'salon_name': 'Updated Test Salon',
-    #         'salon_openingtime': '10:00:00',
-    #         'salon_closingtime': '19:00:00',
-    #         'happyhour_times': '13:00-15:00',
-    #         'happyhour_days': 'Tuesday-Friday',
-    #         'happyhour_discount': '15.00',
-    #         'address_line1': '456 New St',
-    #         'address_line2': '',
-    #         'suburb': 'Newville',
-    #         'state': 'NS',
-    #         'postcode': '67890',
-    #         'country': 'Newland'
-    #     })
-
-    #     # Verify redirect after successful form submission
-    #     self.assertRedirects(response, reverse('business_profile_settings'))
-
-    #     # Check that the salon info was updated correctly
-    #     self.salon_info.refresh_from_db()
-    #     self.salon_address.refresh_from_db()
-    #     self.assertEqual(self.salon_info.salon_name, 'Updated Test Salon')
-    #     self.assertEqual(self.salon_info.salon_openingtime.strftime('%H:%M:%S'), '10:00:00')
-    #     self.assertEqual(self.salon_info.happyhour_times, '13:00-15:00')
-    #     self.assertEqual(self.salon_address.address_line1, '456 New St')
 
     def test_post_BusinessProfileSettingsView_invalid_form(self):
         # Log in as a salon owner and submit an invalid form (missing required field)
@@ -427,12 +324,3 @@ class ForBusinessViewTest(TestCase):
         client_response = self.client.get(reverse("forBusiness"))
         self.assertEqual(client_response.status_code, 200)
 
-# class CustomerLoginTest(TestCase):
-#     def test_get_CustomerLogin(self):
-#         client_response = self.client.get(reverse("customer_login"))
-#         self.assertEqual(client_response.status_code, 200)
-
-# class SalonLoginTest(TestCase):
-#     def test_get_SalonLogin(self):
-#         client_response = self.client.get(reverse("salon_login"))
-#         self.assertEqual(client_response.status_code, 200)

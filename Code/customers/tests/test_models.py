@@ -68,4 +68,3 @@ class BookingTest(TestCase):
         booking_str = str(booking)  # This covers the __str__ method for Booking
         expected_str = f'Booking by test1 for Haircut'
         self.assertEqual(booking_str, expected_str, "Booking __str__() method is not working correctly.")
-        # self.assertIsNotNone(user_type.type_id)  # Check that type_i

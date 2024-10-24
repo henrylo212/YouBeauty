@@ -12,18 +12,6 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
 
     # THIS INCLUDES THE LOGIN VIEW!! There's a built in login view in Django!
-
-    # path('accounts/login', auth_views.LoginView.as_view(), name='login'),
-    # Make sure this is first to override default values later in django.auth.urls.
-    # path("accounts/login/", auth_views.LoginView.as_view(template_name="registration/login.html")),
-    # path("accounts/salon_login/", auth_views.LoginView.as_view(template_name="registration/business_login.html")),
-
-    
-
-
-   
-    # path("accounts/logout/", auth_views.LogoutView.as_view),
-
     path('', include("customers.urls")),
     path('salons/', include(('salons.urls', 'salons'), namespace='salons')),
     path('', include("customers.urls")),

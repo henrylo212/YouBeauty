@@ -272,10 +272,6 @@ def BusinessProfileSettingsView(request):
     profile_photo = None
     form = None
     saloninfo_form = None
-    # if hasattr(user, 'salonowner'):
-    # if not hasattr(user, 'customer'):
-    #     #is not customer
-    #     redirect()
 
     if request.method == 'POST':
         print("made it to POST")
@@ -358,16 +354,6 @@ def BusinessProfileSettingsView(request):
             salon = salon_owner.salon
             salon_address = salon.salon_address
 
-            # bookings = Booking.objects.filter(date__gte=datetime.date.today()).filter(customer=customer)
-            # print(bookings)
-
-            # Get all bookings for the salon by joining SalonInfo and Booking models
-            # bookings = Booking.objects.filter(salon_service__salon=salon)
-            # print("BOOKINGS: ", bookings)
-
-            # salon_services = SalonService.objects.filter()
-
-
             return render(request, 'business_profile_settings.html' , 
             {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
             'user': user, 'phone_number': phone_number, 'salon': salon, 'form': form, 'saloninfo_form': saloninfo_form, 'salon_address': salon_address})
@@ -379,9 +365,6 @@ def BusinessProfileSettingsView(request):
         {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
         'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
         'form': form, 'saloninfo_form': saloninfo_form})   
-
-    
-    # return render(request, 'business_profile_settings.html')
 
 
 def BusinessProfileCalendarView(request):
@@ -496,10 +479,7 @@ def profileView(request):
     phone_number = ""
     profile_photo = None
     form = None
-    # if hasattr(user, 'salonowner'):
-    # if not hasattr(user, 'customer'):
-    #     #is not customer
-    #     redirect()
+
 
     if request.method == 'POST':
         print("made it to POST")
@@ -537,13 +517,11 @@ def profileView(request):
             #try to get a customer
             customer = get_object_or_404(Customer, user=current_user) #get Customer w/ current username
             is_customer = True    
-            # is_salon_owner = False
         except:
             try:
                 #try to get a salon_owner
                 salon_owner = get_object_or_404(SalonOwner, user=current_user) #get SalonOwner w/ current username
                 is_salon_owner = True
-                # is_customer = False 
             except:
                 #is logged in but not a customer, and not a salon owner
                 print("Not a customer. Not a salon owner.")
@@ -556,7 +534,6 @@ def profileView(request):
                     profile_photo = customer.profile_photo
             except:
                 print("No profile photo file.")
-                # profile_photo = None
             print(profile_photo)
             
             # Get upcoming bookings
@@ -568,7 +545,6 @@ def profileView(request):
             {'is_customer': is_customer, 'is_salon_owner': is_salon_owner, 
             'user': user, 'phone_number': phone_number, 'profile_photo': profile_photo,
             'bookings': bookings, 'form': form})
-            # return render(request, 'registration/login.html', {'form': form})
         elif is_salon_owner:
             user = salon_owner.user
             phone_number = salon_owner.phone_number
