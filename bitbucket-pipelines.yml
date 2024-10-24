@@ -1,0 +1,41 @@
+image: python:3.10
+
+pipelines:
+  default:
+    - step:
+        name: Migrate + run tests
+        # caches:
+        #   - pip
+        script:
+          # - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.10/site-packages:/opt/atlassian/pipelines/agent/build/Code
+          - ls -R
+          - pip install -r Code/requirements.txt
+          # - export PATH=$PATH:/root/.local/bin
+          - pip freeze
+          - pip install coverage
+          - pip install unittest-xml-reporting
+          # - echo $PYTHONPATH
+          # - python -c "import sys; print(sys.path)"
+          
+          # migrate
+          - python Code/manage.py makemigrations
+          - python Code/manage.py showmigrations
+          - python Code/manage.py migrate
+
+          # run tests
+          - TEST_OUTPUT_DIRECTORY="test-results" coverage run --source="./Code" Code/manage.py test accounts.tests customers.tests salons.tests 
+          - coverage report
+          - coverage html 
+          - coverage xml
+
+        artifacts:
+          - htmlcov/**
+          - coverage.xml
+          - test-results/test-report.xml
+        # test:
+        #   reports:
+        #     junit: test-results/test-report.xml
+
+definitions:
+  caches:
+    pip: ~/.cache/pip
