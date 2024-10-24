@@ -42,12 +42,17 @@
             <h2>Your booking details:</h2>
 
             <div class="details-card">
+                <br>
                 <h3>{{ salon_service.salon.salon_name }}</h3>
                 <p>{{ salon_service.salon.salon_address }}</p>
-                <p>{{ salon_service.service.service_name }} <span>{{ salon_service.duration }}</span></p>
-                <p>Date: <span id="selected-date">Not selected</span></p>
-                <p>Time: <span id="selected-time">Not selected</span></p>
-                <p>Total amount: <strong>${{ salon_service.price }}</strong></p>
+                <br>
+                <p><strong>{{ salon_service.service.service_name }}</strong> <span>{{ salon_service.duration }} hours and minutes</span></p>
+                <br>
+                <p><strong>Date:</strong> <span id="selected-date">Not selected</span></p>
+                <p><strong>Time:</strong> <span id="selected-time">Not selected</span></p>
+                <br>
+                <p><strong>Total amount:</strong> <strong>${{ salon_service.price }}</strong></p>
+                <br>
                 <button type="submit" class="confirm-button">CONFIRM BOOKING</button>
             </div>
         </div>
