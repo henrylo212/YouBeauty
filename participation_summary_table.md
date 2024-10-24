@@ -56,13 +56,13 @@
 <tr>
     <th rowspan="4"> Week 3</th>
     <th> In-tutorial Group Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td></td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 <tr>
     <th> Out-tutorial Group Meeting </th>
@@ -86,97 +86,97 @@
 </tr>
 <tr>
     <th> Tutor Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td></td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 
 <tr>
     <th rowspan="4"> Week 4</th>
     <th> In-tutorial Group Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td></td>
+    <td></td>
+    <td> &#10003 </td>
 </tr>
 <tr>
     <th> Out-tutorial Group Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> </td>
 </tr>
 <tr>
     <th> Client Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 <tr>
     <th> Tutor Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 
 <tr>
     <th rowspan="4"> Week 5</th>
     <th> In-tutorial Group Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 <tr>
     <th> Out-tutorial Group Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 <tr>
     <th> Client Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 <tr>
     <th> Tutor Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 
 <tr>
@@ -192,13 +192,13 @@
 </tr>
 <tr>
     <th> Out-tutorial Group Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td> &#10003 </td>
+    <td></td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
 </tr>
 <tr>
     <th> Client Meeting </th>
@@ -276,13 +276,13 @@
 </tr>
 <tr>
     <th> Out-tutorial Group Meeting </th>
-    <td> Claudia Choi </td>
-    <td> Oydan Khan </td>
-    <td> Katholiki Kritharides </td>
-    <td> Henry Lo </td>
-    <td> Mohitha Mohan </td>
-    <td> Niranjana Saxena </td>
-    <td> Selina Thai </td>
+    <td></td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td> &#10003 </td>
+    <td></td>
+    <td> &#10003 </td>
 </tr>
 <tr>
     <th> Client Meeting </th>
